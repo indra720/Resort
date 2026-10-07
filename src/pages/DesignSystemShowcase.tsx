@@ -73,14 +73,14 @@ export const DesignSystemShowcase: React.FC = () => {
       {/* Page Title & Status Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#2A2A35] pb-6">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/30 text-[#FF6B00] text-xs font-semibold mb-2">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#CC5500]/18 border border-[#CC5500]/30 text-[#FF8A3D] text-xs font-semibold mb-2">
             <Sparkles className="w-3.5 h-3.5" /> Step 1: Design System & Core Architecture
           </div>
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#F5F5F7] tracking-tight">
             Resort Design System UI
           </h2>
           <p className="text-sm text-[#A1A1AA] mt-1">
-            Pure Dark + Orange theme (#0B0B0F / #FF6B00), mobile-first 44px touch targets, zero TanStack.
+            Dark Orange theme (#0B0B0F / #CC5500), mobile-first 44px touch targets, zero TanStack.
           </p>
         </div>
 
@@ -107,7 +107,7 @@ export const DesignSystemShowcase: React.FC = () => {
       {/* 1. Indian Currency (formatINR) & GST Breakdown */}
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <IndianRupee className="w-5 h-5 text-[#FF6B00]" />
+          <IndianRupee className="w-5 h-5 text-[#FF8A3D]" />
           <h3 className="text-lg font-semibold text-[#F5F5F7]">
             Currency (INR ₹) & GST Tax Calculator
           </h3>
@@ -117,7 +117,7 @@ export const DesignSystemShowcase: React.FC = () => {
           <Card hoverEffect>
             <CardHeader className="pb-2">
               <CardDescription>Single Room Rate</CardDescription>
-              <CardTitle className="text-2xl text-[#FF6B00]">
+              <CardTitle className="text-2xl text-[#FF8A3D]">
                 {formatINR(5500)}
               </CardTitle>
             </CardHeader>
@@ -167,7 +167,7 @@ export const DesignSystemShowcase: React.FC = () => {
       {/* 2. StatusBadges Requirement */}
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <Layers className="w-5 h-5 text-[#FF6B00]" />
+          <Layers className="w-5 h-5 text-[#FF8A3D]" />
           <h3 className="text-lg font-semibold text-[#F5F5F7]">
             StatusBadges (All 8 Required Statuses)
           </h3>
@@ -193,7 +193,7 @@ export const DesignSystemShowcase: React.FC = () => {
         <Card>
           <CardContent className="pt-6 space-y-6">
             <div className="flex flex-wrap items-center gap-3">
-              <Button variant="primary">Primary (#FF6B00)</Button>
+              <Button variant="primary">Primary (#B84C00)</Button>
               <Button variant="secondary">Secondary</Button>
               <Button variant="outline">Outline</Button>
               <Button variant="ghost">Ghost</Button>
@@ -353,10 +353,10 @@ export const DesignSystemShowcase: React.FC = () => {
         {/* Mobile Swipe Guidance Banner */}
         <div className="sm:hidden flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#1C1C24] border border-[#2A2A35] text-[11px] text-[#A1A1AA]">
           <span className="flex items-center gap-1.5">
-            <ArrowLeftRight className="w-3.5 h-3.5 text-[#FF6B00] animate-pulse shrink-0" />
+            <ArrowLeftRight className="w-3.5 h-3.5 text-[#FF8A3D] animate-pulse shrink-0" />
             <span>Swipe horizontally to view full table columns</span>
           </span>
-          <span className="text-[10px] text-[#FF6B00] font-medium bg-[#FF6B00]/10 px-1.5 py-0.5 rounded">
+          <span className="text-[10px] text-[#FF8A3D] font-medium bg-[#CC5500]/18 px-1.5 py-0.5 rounded">
             Full Table
           </span>
         </div>
@@ -424,7 +424,7 @@ export const DesignSystemShowcase: React.FC = () => {
 
               <div className="flex items-center justify-between text-xs pt-2 border-t border-[#2A2A35]/50">
                 <span className="text-[#A1A1AA]">Tariff:</span>
-                <span className="font-semibold text-[#FF6B00] text-sm">
+                <span className="font-semibold text-[#FF8A3D] text-sm">
                   {formatINR(room.ratePerNight)} / night
                 </span>
               </div>
@@ -492,7 +492,7 @@ export const DesignSystemShowcase: React.FC = () => {
       {/* 8. Active Bookings with Indian Guest Data & Dates */}
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <Calendar className="w-5 h-5 text-[#FF6B00]" />
+          <Calendar className="w-5 h-5 text-[#FF8A3D]" />
           <h3 className="text-lg font-semibold text-[#F5F5F7]">
             Recent Bookings (Indian Guest Data & Date Formatter)
           </h3>
@@ -517,7 +517,7 @@ export const DesignSystemShowcase: React.FC = () => {
                 </div>
                 <div className="flex justify-between text-[#A1A1AA]">
                   <span>Total Amount (incl. GST):</span>
-                  <span className="text-[#FF6B00] font-semibold text-sm">
+                  <span className="text-[#FF8A3D] font-semibold text-sm">
                     {formatINR(b.totalAmount)}
                   </span>
                 </div>
@@ -537,7 +537,7 @@ export const DesignSystemShowcase: React.FC = () => {
       {/* 9. Roles Architecture & Resort Staff Preview */}
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <Shield className="w-5 h-5 text-[#FF6B00]" />
+          <Shield className="w-5 h-5 text-[#FF8A3D]" />
           <h3 className="text-lg font-semibold text-[#F5F5F7]">
             User Roles Architecture (7 Supported Roles)
           </h3>
@@ -550,7 +550,7 @@ export const DesignSystemShowcase: React.FC = () => {
               key={role}
               className="p-3 rounded-lg bg-[#14141A] border border-[#2A2A35] text-center flex flex-col items-center justify-center gap-1.5"
             >
-              <div className="w-8 h-8 rounded-full bg-[#1C1C24] flex items-center justify-center text-[#FF6B00]">
+              <div className="w-8 h-8 rounded-full bg-[#1C1C24] flex items-center justify-center text-[#FF8A3D]">
                 <Shield className="w-4 h-4" />
               </div>
               <span className="text-xs font-medium text-[#F5F5F7] line-clamp-1">{role}</span>
@@ -567,13 +567,13 @@ export const DesignSystemShowcase: React.FC = () => {
                 key={usr.id}
                 className="p-3.5 rounded-xl bg-[#14141A] border border-[#2A2A35] flex items-center gap-3"
               >
-                <div className="w-10 h-10 rounded-full bg-[#1C1C24] border border-[#2A2A35] flex items-center justify-center text-[#FF6B00] shrink-0 font-semibold text-sm">
+                <div className="w-10 h-10 rounded-full bg-[#1C1C24] border border-[#2A2A35] flex items-center justify-center text-[#FF8A3D] shrink-0 font-semibold text-sm">
                   {usr.name.slice(0, 2).toUpperCase()}
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-semibold text-[#F5F5F7] truncate">{usr.name}</p>
                   <div className="flex items-center gap-2 mt-0.5">
-                    <span className="text-xs text-[#FF6B00] font-medium truncate">{usr.role}</span>
+                    <span className="text-xs text-[#FF8A3D] font-medium truncate">{usr.role}</span>
                     <span className="text-[11px] text-[#A1A1AA] truncate">{usr.phone}</span>
                   </div>
                 </div>
@@ -655,7 +655,7 @@ export const DesignSystemShowcase: React.FC = () => {
             </div>
             <div className="flex justify-between font-semibold text-[#F5F5F7] pt-1 border-t border-[#2A2A35]">
               <span>Total Payable:</span>
-              <span className="text-[#FF6B00]">{formatINR(13570)}</span>
+              <span className="text-[#FF8A3D]">{formatINR(13570)}</span>
             </div>
           </div>
         </div>

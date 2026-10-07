@@ -56,13 +56,13 @@ export const MyBookingsPage: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-2 text-[#A1A1AA]">
-                <BedDouble className="w-4 h-4 text-[#FF6B00]" />
+                <BedDouble className="w-4 h-4 text-[#FF8A3D]" />
                 <span>Occupying: Room #{booking.roomNumber}</span>
               </div>
 
               <div className="p-3 rounded-lg bg-[#1C1C24] border border-[#2A2A35] flex items-center justify-between">
                 <span className="text-[#A1A1AA]">Total Tariff (incl. GST):</span>
-                <span className="font-bold text-sm text-[#FF6B00]">
+                <span className="font-bold text-sm text-[#FF8A3D]">
                   {formatINR(booking.totalAmount)}
                 </span>
               </div>

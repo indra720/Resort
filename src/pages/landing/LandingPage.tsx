@@ -212,7 +212,7 @@ export const LandingPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#0B0B0F] text-[#F5F5F7] font-sans selection:bg-[#FF6B00] selection:text-white overflow-x-hidden">
+    <div className="min-h-screen w-full bg-[#0B0B0F] text-[#F5F5F7] font-sans selection:bg-[#CC5500] selection:text-white overflow-x-hidden">
       {/* =========================================================================
           1. TOP NAVIGATION BAR (Full Width, No Content Shrink or Text Wrapping)
           ========================================================================= */}
@@ -223,12 +223,12 @@ export const LandingPage: React.FC = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center gap-3 cursor-pointer group select-none shrink-0"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#FF6B00] to-[#FF8A33] flex items-center justify-center text-white shadow-[0_0_20px_rgba(255,107,0,0.45)] group-hover:scale-105 transition-transform shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#CC5500] to-[#E06A10] flex items-center justify-center text-white shadow-[0_0_20px_rgba(204,85,0,0.45)] group-hover:scale-105 transition-transform shrink-0">
               <Sparkles className="w-5 h-5" />
             </div>
             <div className="leading-tight">
               <span className="text-base sm:text-lg font-bold tracking-tight text-[#F5F5F7] whitespace-nowrap">
-                Aura Palms <span className="text-[#FF6B00]">Resort</span>
+                Aura Palms <span className="text-[#FF8A3D]">Resort</span>
               </span>
               <span className="hidden sm:block text-[10px] text-[#A1A1AA] uppercase tracking-widest font-medium whitespace-nowrap">
                 Luxury Coastal Sanctuary • Goa
@@ -240,37 +240,37 @@ export const LandingPage: React.FC = () => {
           <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs font-semibold text-[#A1A1AA] shrink-0">
             <a
               href="#home"
-              className="text-[#F5F5F7] hover:text-[#FF6B00] transition-colors whitespace-nowrap py-1"
+              className="text-[#F5F5F7] hover:text-[#FF8A3D] transition-colors whitespace-nowrap py-1"
             >
               Home
             </a>
             <a
               href="#villas"
-              className="hover:text-[#FF6B00] transition-colors whitespace-nowrap py-1"
+              className="hover:text-[#FF8A3D] transition-colors whitespace-nowrap py-1"
             >
               Villas & Suites
             </a>
             <a
               href="#packages"
-              className="hover:text-[#FF6B00] transition-colors whitespace-nowrap py-1"
+              className="hover:text-[#FF8A3D] transition-colors whitespace-nowrap py-1"
             >
               Stay Packages
             </a>
             <a
               href="#concierge"
-              className="hover:text-[#FF6B00] transition-colors whitespace-nowrap py-1"
+              className="hover:text-[#FF8A3D] transition-colors whitespace-nowrap py-1"
             >
               Experiences
             </a>
             <a
               href="#reviews"
-              className="hover:text-[#FF6B00] transition-colors whitespace-nowrap py-1"
+              className="hover:text-[#FF8A3D] transition-colors whitespace-nowrap py-1"
             >
               Guest Reviews
             </a>
             <a
               href="#contact"
-              className="hover:text-[#FF6B00] transition-colors whitespace-nowrap py-1"
+              className="hover:text-[#FF8A3D] transition-colors whitespace-nowrap py-1"
             >
               Contact
             </a>
@@ -281,16 +281,16 @@ export const LandingPage: React.FC = () => {
             {/* Direct Phone Concierge - visible on xl */}
             <a
               href="tel:+918322499888"
-              className="hidden xl:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#14141A] border border-[#2A2A35] hover:border-[#FF6B00]/40 text-xs font-semibold text-[#F5F5F7] transition-all whitespace-nowrap"
+              className="hidden xl:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#14141A] border border-[#2A2A35] hover:border-[#CC5500]/40 text-xs font-semibold text-[#F5F5F7] transition-all whitespace-nowrap"
             >
-              <Phone className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
+              <Phone className="w-3.5 h-3.5 text-[#FF8A3D] shrink-0" />
               <span>+91 832 249 9888</span>
             </a>
 
             <button
               type="button"
               onClick={() => navigate('/login')}
-              className="px-4 py-2 rounded-xl bg-[#14141A] hover:bg-[#1C1C24] border border-[#2A2A35] hover:border-[#FF6B00] text-xs font-semibold text-[#F5F5F7] hover:text-[#FF6B00] transition-all whitespace-nowrap shrink-0"
+              className="px-4 py-2 rounded-xl bg-[#14141A] hover:bg-[#1C1C24] border border-[#2A2A35] hover:border-[#CC5500] text-xs font-semibold text-[#F5F5F7] hover:text-[#FF8A3D] transition-all whitespace-nowrap shrink-0"
             >
               Sign In
             </button>
@@ -298,7 +298,7 @@ export const LandingPage: React.FC = () => {
             <button
               type="button"
               onClick={() => navigate('/dashboard')}
-              className="px-4 py-2 rounded-xl bg-[#FF6B00] hover:bg-[#FF8A33] text-xs font-bold text-white shadow-lg shadow-[#FF6B00]/30 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 active:scale-95"
+              className="px-4 py-2 rounded-xl bg-[#B84C00] hover:bg-[#E06A10] text-xs font-bold text-white shadow-lg shadow-[#CC5500]/30 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 active:scale-95"
             >
               <span>Management Suite</span>
               <ArrowRight className="w-3.5 h-3.5 shrink-0" />
@@ -366,7 +366,7 @@ export const LandingPage: React.FC = () => {
                   setIsMobileMenuOpen(false);
                   navigate('/dashboard');
                 }}
-                className="w-full py-2.5 rounded-xl bg-[#FF6B00] text-xs font-semibold text-white shadow-md shadow-[#FF6B00]/25"
+                className="w-full py-2.5 rounded-xl bg-[#B84C00] text-xs font-semibold text-white shadow-md shadow-[#CC5500]/25"
               >
                 Staff / Admin Portal
               </button>
@@ -396,7 +396,7 @@ export const LandingPage: React.FC = () => {
         </div>
 
         {/* Ambient Orange Glow Orb behind Headline */}
-        <div className="absolute left-10 top-1/3 w-96 h-96 rounded-full bg-[#FF6B00]/20 blur-[130px] pointer-events-none" />
+        <div className="absolute left-10 top-1/3 w-96 h-96 rounded-full bg-[#CC5500]/18 blur-[130px] pointer-events-none" />
 
         {/* Hero Content - Fluid Full-Width Container (No large empty side margins) */}
         <div className="relative z-10 w-full px-4 sm:px-8 lg:px-12 xl:px-16">
@@ -404,8 +404,8 @@ export const LandingPage: React.FC = () => {
             {/* Left Column: Bold Luxury Typography & CTAs (7 cols on lg) */}
             <div className="lg:col-span-7 space-y-6 text-left">
               {/* Pill Badge with Pulsing Glow */}
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#14141A]/90 border border-[#FF6B00]/40 backdrop-blur-md shadow-xl shadow-[#FF6B00]/10">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FF6B00] animate-ping" />
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#14141A]/90 border border-[#CC5500]/40 backdrop-blur-md shadow-xl shadow-[#CC5500]/10">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#B84C00] animate-ping" />
                 <span className="text-[11px] font-bold tracking-wider uppercase text-[#F5F5F7]">
                   ✨ LUXURY BEACHFRONT SANCTUARY • CANDOLIM, GOA
                 </span>
@@ -414,7 +414,7 @@ export const LandingPage: React.FC = () => {
               {/* Main Headline */}
               <h1 className="text-3xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight text-[#F5F5F7] leading-[1.12]">
                 Find your dream <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] via-[#FFA048] to-[#FFD166] drop-shadow-[0_0_40px_rgba(255,107,0,0.45)]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#CC5500] via-[#FF8A3D] to-[#FFB878] drop-shadow-[0_0_40px_rgba(204,85,0,0.45)]">
                   Stay & Villa
                 </span>{' '}
                 <br />
@@ -432,7 +432,7 @@ export const LandingPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => navigate('/rooms')}
-                  className="px-7 py-4 rounded-xl bg-[#FF6B00] hover:bg-[#FF8A33] text-sm font-bold text-white shadow-[0_0_30px_rgba(255,107,0,0.4)] transition-all flex items-center gap-2.5 group active:scale-95"
+                  className="px-7 py-4 rounded-xl bg-[#B84C00] hover:bg-[#E06A10] text-sm font-bold text-white shadow-[0_0_30px_rgba(204,85,0,0.4)] transition-all flex items-center gap-2.5 group active:scale-95"
                 >
                   <span>Explore Villas Now</span>
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
@@ -441,9 +441,9 @@ export const LandingPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsVideoModalOpen(true)}
-                  className="px-6 py-4 rounded-xl bg-[#14141A]/90 hover:bg-[#1C1C24] border border-[#2A2A35] hover:border-[#FF6B00]/60 text-sm font-semibold text-[#F5F5F7] backdrop-blur-md transition-all flex items-center gap-2.5"
+                  className="px-6 py-4 rounded-xl bg-[#14141A]/90 hover:bg-[#1C1C24] border border-[#2A2A35] hover:border-[#CC5500]/60 text-sm font-semibold text-[#F5F5F7] backdrop-blur-md transition-all flex items-center gap-2.5"
                 >
-                  <div className="w-7 h-7 rounded-full bg-[#FF6B00]/25 flex items-center justify-center text-[#FF6B00] shadow-md shadow-[#FF6B00]/20">
+                  <div className="w-7 h-7 rounded-full bg-[#CC5500]/18 flex items-center justify-center text-[#FF8A3D] shadow-md shadow-[#CC5500]/20">
                     <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
                   </div>
                   <span>Watch Resort Tour</span>
@@ -453,16 +453,16 @@ export const LandingPage: React.FC = () => {
               {/* Quick Perks Strip under buttons */}
               <div className="pt-4 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-[#A1A1AA] border-t border-white/10">
                 <div className="flex items-center gap-1.5">
-                  <Star className="w-4 h-4 fill-[#FF6B00] text-[#FF6B00]" />
+                  <Star className="w-4 h-4 fill-[#FF8A3D] text-[#FF8A3D]" />
                   <span className="font-semibold text-[#F5F5F7]">4.92 / 5.0</span>
                   <span>(340+ Verified Reviews)</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Waves className="w-4 h-4 text-[#FF6B00]" />
+                  <Waves className="w-4 h-4 text-[#FF8A3D]" />
                   <span className="text-[#F5F5F7]">Direct Beachfront Access</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Coffee className="w-4 h-4 text-[#FF6B00]" />
+                  <Coffee className="w-4 h-4 text-[#FF8A3D]" />
                   <span className="text-[#F5F5F7]">Complimentary In-Villa Breakfast</span>
                 </div>
               </div>
@@ -471,7 +471,7 @@ export const LandingPage: React.FC = () => {
             {/* Right Column: Floating 3D Villa Showcase Card (5 cols on lg) */}
             <div className="lg:col-span-5 hidden lg:block relative">
               {/* Outer Glow behind the card */}
-              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#FF6B00]/40 to-[#FF8A33]/20 blur-xl opacity-70 pointer-events-none" />
+              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#CC5500]/40 to-[#E06A10]/20 blur-xl opacity-70 pointer-events-none" />
 
               {/* Main Floating Villa Card */}
               <div className="relative rounded-3xl overflow-hidden bg-[#14141A]/95 border border-[#2A2A35] shadow-2xl p-4 space-y-4 backdrop-blur-xl">
@@ -486,7 +486,7 @@ export const LandingPage: React.FC = () => {
 
                   {/* Top Badges */}
                   <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                    <span className="px-3 py-1 rounded-full bg-[#0B0B0F]/85 backdrop-blur-md text-[11px] font-bold text-[#FF6B00] border border-[#FF6B00]/40">
+                    <span className="px-3 py-1 rounded-full bg-[#0B0B0F]/85 backdrop-blur-md text-[11px] font-bold text-[#FF8A3D] border border-[#CC5500]/40">
                       ⭐ Featured Masterpiece
                     </span>
                     <span className="px-2.5 py-1 rounded-full bg-[#22C55E]/90 text-white text-[10px] font-bold shadow-md">
@@ -508,7 +508,7 @@ export const LandingPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => navigate('/rooms')}
-                      className="px-3.5 py-1.5 rounded-xl bg-[#FF6B00] hover:bg-[#FF8A33] text-xs font-bold text-white shadow-md transition-all flex items-center gap-1"
+                      className="px-3.5 py-1.5 rounded-xl bg-[#B84C00] hover:bg-[#E06A10] text-xs font-bold text-white shadow-md transition-all flex items-center gap-1"
                     >
                       <span>Reserve</span>
                       <ArrowRight className="w-3 h-3" />
@@ -522,7 +522,7 @@ export const LandingPage: React.FC = () => {
                     <h3 className="text-base font-bold text-[#F5F5F7]">
                       Presidential Plunge Pool Villa
                     </h3>
-                    <div className="flex items-center gap-1 text-[#FF6B00] text-xs font-bold">
+                    <div className="flex items-center gap-1 text-[#FF8A3D] text-xs font-bold">
                       <Star className="w-3.5 h-3.5 fill-current" />
                       <span>5.0 (52 stays)</span>
                     </div>
@@ -565,7 +565,7 @@ export const LandingPage: React.FC = () => {
 
         {/* Carousel indicator dots on the right */}
         <div className="hidden lg:flex flex-col gap-2.5 absolute right-6 top-1/2 -translate-y-1/2 z-20">
-          <div className="w-2.5 h-7 rounded-full bg-[#FF6B00] shadow-[0_0_12px_#FF6B00]" />
+          <div className="w-2.5 h-7 rounded-full bg-[#B84C00] shadow-[0_0_12px_#CC5500]" />
           <div className="w-2.5 h-2.5 rounded-full bg-[#2A2A35] hover:bg-[#A1A1AA] transition-colors cursor-pointer" />
           <div className="w-2.5 h-2.5 rounded-full bg-[#2A2A35] hover:bg-[#A1A1AA] transition-colors cursor-pointer" />
           <div className="w-2.5 h-2.5 rounded-full bg-[#2A2A35] hover:bg-[#A1A1AA] transition-colors cursor-pointer" />
@@ -584,7 +584,7 @@ export const LandingPage: React.FC = () => {
               onClick={() => setActiveTab('villas')}
               className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all whitespace-nowrap ${
                 activeTab === 'villas'
-                  ? 'bg-[#FF6B00] text-white shadow-md shadow-[#FF6B00]/25'
+                  ? 'bg-[#B84C00] text-white shadow-md shadow-[#CC5500]/25'
                   : 'text-[#A1A1AA] hover:text-[#F5F5F7] hover:bg-[#1C1C24]'
               }`}
             >
@@ -597,7 +597,7 @@ export const LandingPage: React.FC = () => {
               onClick={() => setActiveTab('activities')}
               className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all whitespace-nowrap ${
                 activeTab === 'activities'
-                  ? 'bg-[#FF6B00] text-white shadow-md shadow-[#FF6B00]/25'
+                  ? 'bg-[#B84C00] text-white shadow-md shadow-[#CC5500]/25'
                   : 'text-[#A1A1AA] hover:text-[#F5F5F7] hover:bg-[#1C1C24]'
               }`}
             >
@@ -610,7 +610,7 @@ export const LandingPage: React.FC = () => {
               onClick={() => setActiveTab('packages')}
               className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all whitespace-nowrap ${
                 activeTab === 'packages'
-                  ? 'bg-[#FF6B00] text-white shadow-md shadow-[#FF6B00]/25'
+                  ? 'bg-[#B84C00] text-white shadow-md shadow-[#CC5500]/25'
                   : 'text-[#A1A1AA] hover:text-[#F5F5F7] hover:bg-[#1C1C24]'
               }`}
             >
@@ -623,7 +623,7 @@ export const LandingPage: React.FC = () => {
               onClick={() => setActiveTab('deals')}
               className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all whitespace-nowrap ${
                 activeTab === 'deals'
-                  ? 'bg-[#FF6B00] text-white shadow-md shadow-[#FF6B00]/25'
+                  ? 'bg-[#B84C00] text-white shadow-md shadow-[#CC5500]/25'
                   : 'text-[#A1A1AA] hover:text-[#F5F5F7] hover:bg-[#1C1C24]'
               }`}
             >
@@ -639,7 +639,7 @@ export const LandingPage: React.FC = () => {
           >
             {/* Field 1: Destination / Room Type */}
             <div className="lg:col-span-3 p-3 rounded-xl bg-[#0B0B0F] border border-[#2A2A35] flex items-center gap-3">
-              <MapPin className="w-5 h-5 text-[#FF6B00] shrink-0" />
+              <MapPin className="w-5 h-5 text-[#FF8A3D] shrink-0" />
               <div className="flex-1 text-left">
                 <span className="block text-[10px] text-[#A1A1AA] font-bold uppercase tracking-wider">
                   Location / Villa Type
@@ -656,7 +656,7 @@ export const LandingPage: React.FC = () => {
 
             {/* Field 2: Check-in Date */}
             <div className="lg:col-span-2 p-3 rounded-xl bg-[#0B0B0F] border border-[#2A2A35] flex items-center gap-3">
-              <Calendar className="w-5 h-5 text-[#FF6B00] shrink-0" />
+              <Calendar className="w-5 h-5 text-[#FF8A3D] shrink-0" />
               <div className="flex-1 text-left">
                 <span className="block text-[10px] text-[#A1A1AA] font-bold uppercase tracking-wider">
                   Check In
@@ -672,7 +672,7 @@ export const LandingPage: React.FC = () => {
 
             {/* Field 3: Check-out Date */}
             <div className="lg:col-span-2 p-3 rounded-xl bg-[#0B0B0F] border border-[#2A2A35] flex items-center gap-3">
-              <Calendar className="w-5 h-5 text-[#FF6B00] shrink-0" />
+              <Calendar className="w-5 h-5 text-[#FF8A3D] shrink-0" />
               <div className="flex-1 text-left">
                 <span className="block text-[10px] text-[#A1A1AA] font-bold uppercase tracking-wider">
                   Check Out
@@ -688,7 +688,7 @@ export const LandingPage: React.FC = () => {
 
             {/* Field 4: Guests / Travelers */}
             <div className="lg:col-span-3 p-3 rounded-xl bg-[#0B0B0F] border border-[#2A2A35] flex items-center gap-3">
-              <Users className="w-5 h-5 text-[#FF6B00] shrink-0" />
+              <Users className="w-5 h-5 text-[#FF8A3D] shrink-0" />
               <div className="flex-1 text-left">
                 <span className="block text-[10px] text-[#A1A1AA] font-bold uppercase tracking-wider">
                   Travelers
@@ -707,7 +707,7 @@ export const LandingPage: React.FC = () => {
             <div className="lg:col-span-2">
               <button
                 type="submit"
-                className="w-full min-h-[48px] py-3.5 px-5 rounded-xl bg-[#FF6B00] hover:bg-[#FF8A33] text-xs font-bold text-white shadow-xl shadow-[#FF6B00]/30 transition-all flex items-center justify-center gap-2 active:scale-95"
+                className="w-full min-h-[48px] py-3.5 px-5 rounded-xl bg-[#B84C00] hover:bg-[#E06A10] text-xs font-bold text-white shadow-xl shadow-[#CC5500]/30 transition-all flex items-center justify-center gap-2 active:scale-95"
               >
                 <Search className="w-4 h-4" />
                 <span>Check Availability</span>
@@ -727,7 +727,7 @@ export const LandingPage: React.FC = () => {
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F5F5F7]">
                 Popular Accommodations
               </h2>
-              <span className="text-[#FF6B00] font-bold text-xl select-none">〰〰</span>
+              <span className="text-[#FF8A3D] font-bold text-xl select-none">〰〰</span>
             </div>
             <p className="text-xs sm:text-sm text-[#A1A1AA] mt-1">
               Curated private pool villas, beachside cottages, and royal heritage suites.
@@ -737,7 +737,7 @@ export const LandingPage: React.FC = () => {
           <button
             type="button"
             onClick={() => navigate('/rooms')}
-            className="text-xs font-semibold text-[#FF6B00] hover:text-[#FF8A33] flex items-center gap-1 group self-start sm:self-auto"
+            className="text-xs font-semibold text-[#FF8A3D] hover:text-[#E06A10] flex items-center gap-1 group self-start sm:self-auto"
           >
             <span>View all accommodations</span>
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -750,7 +750,7 @@ export const LandingPage: React.FC = () => {
             <div
               key={acc.id}
               onClick={() => navigate('/rooms')}
-              className="group cursor-pointer rounded-2xl overflow-hidden bg-[#14141A] border border-[#2A2A35] hover:border-[#FF6B00]/60 transition-all shadow-xl hover:-translate-y-1.5"
+              className="group cursor-pointer rounded-2xl overflow-hidden bg-[#14141A] border border-[#2A2A35] hover:border-[#CC5500]/60 transition-all shadow-xl hover:-translate-y-1.5"
             >
               <div className="relative h-48 sm:h-56 w-full overflow-hidden">
                 <img
@@ -759,16 +759,16 @@ export const LandingPage: React.FC = () => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0F] via-transparent to-black/20" />
-                <span className="absolute top-3 left-3 px-2 py-0.5 rounded-full bg-[#0B0B0F]/80 backdrop-blur-md text-[10px] font-semibold text-[#FF6B00] border border-[#2A2A35]">
+                <span className="absolute top-3 left-3 px-2 py-0.5 rounded-full bg-[#0B0B0F]/80 backdrop-blur-md text-[10px] font-semibold text-[#FF8A3D] border border-[#2A2A35]">
                   {acc.tag}
                 </span>
                 <div className="absolute bottom-3 left-3 right-3 text-left">
                   <div className="flex items-center gap-1 text-[11px] text-[#A1A1AA] mb-0.5">
-                    <MapPin className="w-3 h-3 text-[#FF6B00]" />
+                    <MapPin className="w-3 h-3 text-[#FF8A3D]" />
                     <span className="truncate">{acc.location}</span>
                   </div>
                   <h3 className="text-xs font-bold text-[#F5F5F7] line-clamp-1">{acc.name}</h3>
-                  <div className="text-xs font-semibold text-[#FF6B00] mt-1">
+                  <div className="text-xs font-semibold text-[#FF8A3D] mt-1">
                     {formatINR(acc.price)}{' '}
                     <span className="text-[10px] font-normal text-[#A1A1AA]">/ night</span>
                   </div>
@@ -789,7 +789,7 @@ export const LandingPage: React.FC = () => {
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F5F5F7]">
                 Popular Tour Packages
               </h2>
-              <span className="text-[#FF6B00] font-bold text-xl select-none">〰〰</span>
+              <span className="text-[#FF8A3D] font-bold text-xl select-none">〰〰</span>
             </div>
             <p className="text-xs sm:text-sm text-[#A1A1AA] mt-1">
               All-inclusive luxury holidays with gourmet breakfast, airport transfers, and private excursions.
@@ -799,7 +799,7 @@ export const LandingPage: React.FC = () => {
           <button
             type="button"
             onClick={() => navigate('/bookings')}
-            className="text-xs font-semibold text-[#FF6B00] hover:text-[#FF8A33] flex items-center gap-1 group self-start sm:self-auto"
+            className="text-xs font-semibold text-[#FF8A3D] hover:text-[#E06A10] flex items-center gap-1 group self-start sm:self-auto"
           >
             <span>View all packages</span>
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -811,7 +811,7 @@ export const LandingPage: React.FC = () => {
           {tourPackages.map((pkg) => (
             <div
               key={pkg.id}
-              className="rounded-2xl overflow-hidden bg-[#14141A] border border-[#2A2A35] hover:border-[#FF6B00]/50 transition-all shadow-xl group flex flex-col justify-between"
+              className="rounded-2xl overflow-hidden bg-[#14141A] border border-[#2A2A35] hover:border-[#CC5500]/50 transition-all shadow-xl group flex flex-col justify-between"
             >
               <div>
                 <div className="relative h-52 w-full overflow-hidden">
@@ -825,19 +825,19 @@ export const LandingPage: React.FC = () => {
                     {pkg.discount}
                   </span>
                   <div className="absolute bottom-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#0B0B0F]/80 backdrop-blur-md text-[11px] text-[#F5F5F7] border border-[#2A2A35]">
-                    <Clock className="w-3.5 h-3.5 text-[#FF6B00]" />
+                    <Clock className="w-3.5 h-3.5 text-[#FF8A3D]" />
                     <span>{pkg.duration}</span>
                   </div>
                 </div>
 
                 <div className="p-5 text-left space-y-2">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1 text-[#FF6B00] text-xs font-semibold">
+                    <div className="flex items-center gap-1 text-[#FF8A3D] text-xs font-semibold">
                       <Star className="w-3.5 h-3.5 fill-current" />
                       <span>{pkg.rating} (Verified Stay)</span>
                     </div>
                   </div>
-                  <h3 className="text-sm font-bold text-[#F5F5F7] group-hover:text-[#FF6B00] transition-colors line-clamp-1">
+                  <h3 className="text-sm font-bold text-[#F5F5F7] group-hover:text-[#FF8A3D] transition-colors line-clamp-1">
                     {pkg.title}
                   </h3>
                 </div>
@@ -849,7 +849,7 @@ export const LandingPage: React.FC = () => {
                   <span className="text-[11px] text-[#A1A1AA] line-through block">
                     {formatINR(pkg.originalPrice)}
                   </span>
-                  <span className="text-base font-bold text-[#FF6B00]">
+                  <span className="text-base font-bold text-[#FF8A3D]">
                     {formatINR(pkg.discountPrice)}
                   </span>
                 </div>
@@ -857,7 +857,7 @@ export const LandingPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => navigate('/bookings')}
-                  className="px-4 py-2 rounded-xl bg-[#1C1C24] hover:bg-[#FF6B00] hover:text-white border border-[#2A2A35] text-xs font-semibold text-[#F5F5F7] transition-all"
+                  className="px-4 py-2 rounded-xl bg-[#1C1C24] hover:bg-[#E06A10] hover:text-white border border-[#2A2A35] text-xs font-semibold text-[#F5F5F7] transition-all"
                 >
                   Book Package
                 </button>
@@ -883,7 +883,7 @@ export const LandingPage: React.FC = () => {
 
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
             <div className="max-w-2xl space-y-3">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#FF6B00] bg-[#FF6B00]/15 px-3 py-1 rounded-full border border-[#FF6B00]/30 inline-block">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#FF8A3D] bg-[#CC5500]/18 px-3 py-1 rounded-full border border-[#CC5500]/30 inline-block">
                 WE'RE HERE TO HELP 24/7
               </span>
               <h2 className="text-2xl sm:text-4xl font-extrabold text-[#F5F5F7]">
@@ -896,7 +896,7 @@ export const LandingPage: React.FC = () => {
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
                 <a
                   href="tel:+918322499888"
-                  className="px-5 py-3 rounded-xl bg-[#FF6B00] hover:bg-[#FF8A33] text-xs font-bold text-white shadow-lg transition-all flex items-center gap-2"
+                  className="px-5 py-3 rounded-xl bg-[#B84C00] hover:bg-[#E06A10] text-xs font-bold text-white shadow-lg transition-all flex items-center gap-2"
                 >
                   <Phone className="w-4 h-4" />
                   <span>Call +91 832 249 9888</span>
@@ -914,19 +914,19 @@ export const LandingPage: React.FC = () => {
             {/* 3 Trust Feature Pills */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 w-full lg:w-auto">
               <div className="p-4 rounded-2xl bg-[#0B0B0F]/70 border border-white/10 backdrop-blur-md text-center space-y-1">
-                <ShieldCheck className="w-5 h-5 text-[#FF6B00] mx-auto" />
+                <ShieldCheck className="w-5 h-5 text-[#FF8A3D] mx-auto" />
                 <h4 className="text-xs font-bold text-[#F5F5F7]">Best Rate</h4>
                 <p className="text-[10px] text-[#A1A1AA]">Direct booking promise</p>
               </div>
 
               <div className="p-4 rounded-2xl bg-[#0B0B0F]/70 border border-white/10 backdrop-blur-md text-center space-y-1">
-                <Headphones className="w-5 h-5 text-[#FF6B00] mx-auto" />
+                <Headphones className="w-5 h-5 text-[#FF8A3D] mx-auto" />
                 <h4 className="text-xs font-bold text-[#F5F5F7]">24/7 Support</h4>
                 <p className="text-[10px] text-[#A1A1AA]">Dedicated villa butler</p>
               </div>
 
               <div className="p-4 rounded-2xl bg-[#0B0B0F]/70 border border-white/10 backdrop-blur-md text-center space-y-1">
-                <CreditCard className="w-5 h-5 text-[#FF6B00] mx-auto" />
+                <CreditCard className="w-5 h-5 text-[#FF8A3D] mx-auto" />
                 <h4 className="text-xs font-bold text-[#F5F5F7]">Secure Booking</h4>
                 <p className="text-[10px] text-[#A1A1AA]">100% encrypted & UPI</p>
               </div>
@@ -945,7 +945,7 @@ export const LandingPage: React.FC = () => {
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F5F5F7]">
                 What Our Guests Say
               </h2>
-              <span className="text-[#FF6B00] font-bold text-xl select-none">〰〰</span>
+              <span className="text-[#FF8A3D] font-bold text-xl select-none">〰〰</span>
             </div>
             <p className="text-xs sm:text-sm text-[#A1A1AA] mt-1">
               Read authentic feedback from couples, families, and business executives who stayed with us.
@@ -960,7 +960,7 @@ export const LandingPage: React.FC = () => {
                   prev === 0 ? testimonials.length - 1 : prev - 1
                 )
               }
-              className="w-9 h-9 rounded-full bg-[#14141A] border border-[#2A2A35] hover:border-[#FF6B00] flex items-center justify-center text-[#A1A1AA] hover:text-[#FF6B00] transition-colors"
+              className="w-9 h-9 rounded-full bg-[#14141A] border border-[#2A2A35] hover:border-[#CC5500] flex items-center justify-center text-[#A1A1AA] hover:text-[#FF8A3D] transition-colors"
               aria-label="Previous review"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -972,7 +972,7 @@ export const LandingPage: React.FC = () => {
                   (prev + 1) % testimonials.length
                 )
               }
-              className="w-9 h-9 rounded-full bg-[#14141A] border border-[#2A2A35] hover:border-[#FF6B00] flex items-center justify-center text-[#A1A1AA] hover:text-[#FF6B00] transition-colors"
+              className="w-9 h-9 rounded-full bg-[#14141A] border border-[#2A2A35] hover:border-[#CC5500] flex items-center justify-center text-[#A1A1AA] hover:text-[#FF8A3D] transition-colors"
               aria-label="Next review"
             >
               <ChevronRight className="w-4 h-4" />
@@ -985,14 +985,14 @@ export const LandingPage: React.FC = () => {
           {testimonials.map((t, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-2xl bg-[#14141A] border border-[#2A2A35] flex flex-col justify-between text-left space-y-4 hover:border-[#FF6B00]/40 transition-colors shadow-lg"
+              className="p-5 rounded-2xl bg-[#14141A] border border-[#2A2A35] flex flex-col justify-between text-left space-y-4 hover:border-[#CC5500]/40 transition-colors shadow-lg"
             >
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <img
                     src={t.avatar}
                     alt={t.name}
-                    className="w-10 h-10 rounded-full object-cover border border-[#FF6B00]/50"
+                    className="w-10 h-10 rounded-full object-cover border border-[#CC5500]/50"
                   />
                   <div>
                     <h4 className="text-xs font-bold text-[#F5F5F7]">{t.name}</h4>
@@ -1000,7 +1000,7 @@ export const LandingPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-0.5 text-[#FF6B00]">
+                <div className="flex items-center gap-0.5 text-[#FF8A3D]">
                   {[...Array(t.rating)].map((_, i) => (
                     <Star key={i} className="w-3.5 h-3.5 fill-current" />
                   ))}
@@ -1026,25 +1026,25 @@ export const LandingPage: React.FC = () => {
       <section className="py-10 bg-[#0B0B0F] border-t border-[#2A2A35] w-full px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
           <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-[#14141A]/50 border border-[#2A2A35]/50 sm:border-0 sm:bg-transparent">
-            <Building className="w-6 h-6 text-[#FF6B00]" />
+            <Building className="w-6 h-6 text-[#FF8A3D]" />
             <h4 className="text-xs font-bold text-[#F5F5F7]">30+ Private Luxury Villas</h4>
             <p className="text-[10px] text-[#A1A1AA]">Beachfront & plunge pools</p>
           </div>
 
           <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-[#14141A]/50 border border-[#2A2A35]/50 sm:border-0 sm:bg-transparent">
-            <Percent className="w-6 h-6 text-[#FF6B00]" />
+            <Percent className="w-6 h-6 text-[#FF8A3D]" />
             <h4 className="text-xs font-bold text-[#F5F5F7]">Best Price Guarantee</h4>
             <p className="text-[10px] text-[#A1A1AA]">Get best direct rates in ₹</p>
           </div>
 
           <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-[#14141A]/50 border border-[#2A2A35]/50 sm:border-0 sm:bg-transparent">
-            <Users className="w-6 h-6 text-[#FF6B00]" />
+            <Users className="w-6 h-6 text-[#FF8A3D]" />
             <h4 className="text-xs font-bold text-[#F5F5F7]">10K+ Happy Guests</h4>
             <p className="text-[10px] text-[#A1A1AA]">4.9 / 5 rated hospitality</p>
           </div>
 
           <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-[#14141A]/50 border border-[#2A2A35]/50 sm:border-0 sm:bg-transparent">
-            <CreditCard className="w-6 h-6 text-[#FF6B00]" />
+            <CreditCard className="w-6 h-6 text-[#FF8A3D]" />
             <h4 className="text-xs font-bold text-[#F5F5F7]">100% Safe Payments</h4>
             <p className="text-[10px] text-[#A1A1AA]">UPI, Cards & Net Banking</p>
           </div>
@@ -1057,7 +1057,7 @@ export const LandingPage: React.FC = () => {
       <section className="py-16 w-full px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="rounded-3xl bg-gradient-to-r from-[#14141A] via-[#1C1C24] to-[#14141A] border border-[#2A2A35] p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
           <div className="flex items-center gap-4 text-center md:text-left">
-            <div className="w-12 h-12 rounded-2xl bg-[#FF6B00]/20 border border-[#FF6B00]/40 flex items-center justify-center text-[#FF6B00] shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-[#CC5500]/18 border border-[#CC5500]/40 flex items-center justify-center text-[#FF8A3D] shrink-0">
               <Send className="w-6 h-6" />
             </div>
             <div>
@@ -1080,11 +1080,11 @@ export const LandingPage: React.FC = () => {
               onChange={(e) => setNewsletterEmail(e.target.value)}
               placeholder="Enter your email address"
               required
-              className="w-full sm:flex-1 px-4 py-3 rounded-xl bg-[#0B0B0F] border border-[#2A2A35] text-xs text-[#F5F5F7] placeholder-[#A1A1AA] focus:outline-none focus:border-[#FF6B00] min-w-0"
+              className="w-full sm:flex-1 px-4 py-3 rounded-xl bg-[#0B0B0F] border border-[#2A2A35] text-xs text-[#F5F5F7] placeholder-[#A1A1AA] focus:outline-none focus:border-[#CC5500] min-w-0"
             />
             <button
               type="submit"
-              className="w-full sm:w-auto min-h-[44px] px-6 py-3 rounded-xl bg-[#FF6B00] hover:bg-[#FF8A33] text-xs font-bold text-white transition-all shadow-md shrink-0 whitespace-nowrap active:scale-95"
+              className="w-full sm:w-auto min-h-[44px] px-6 py-3 rounded-xl bg-[#B84C00] hover:bg-[#E06A10] text-xs font-bold text-white transition-all shadow-md shrink-0 whitespace-nowrap active:scale-95"
             >
               {isSubscribed ? 'Subscribed!' : 'Subscribe'}
             </button>
@@ -1101,11 +1101,11 @@ export const LandingPage: React.FC = () => {
             {/* Col 1: Brand Info & Socials */}
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#FF6B00] to-[#FF8A33] flex items-center justify-center text-white shadow-md">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#CC5500] to-[#E06A10] flex items-center justify-center text-white shadow-md">
                   <Sparkles className="w-5 h-5" />
                 </div>
                 <span className="text-lg font-bold text-[#F5F5F7]">
-                  Aura Palms <span className="text-[#FF6B00]">Resort</span>
+                  Aura Palms <span className="text-[#FF8A3D]">Resort</span>
                 </span>
               </div>
               <p className="text-xs text-[#A1A1AA] max-w-sm leading-relaxed">
@@ -1123,21 +1123,21 @@ export const LandingPage: React.FC = () => {
               </h4>
               <ul className="space-y-2 text-xs text-[#A1A1AA]">
                 <li>
-                  <a href="#home" className="hover:text-[#FF6B00] transition-colors">Home</a>
+                  <a href="#home" className="hover:text-[#FF8A3D] transition-colors">Home</a>
                 </li>
                 <li>
-                  <a href="#villas" className="hover:text-[#FF6B00] transition-colors">Villas & Suites</a>
+                  <a href="#villas" className="hover:text-[#FF8A3D] transition-colors">Villas & Suites</a>
                 </li>
                 <li>
-                  <a href="#packages" className="hover:text-[#FF6B00] transition-colors">Stay Packages</a>
+                  <a href="#packages" className="hover:text-[#FF8A3D] transition-colors">Stay Packages</a>
                 </li>
                 <li>
-                  <button type="button" onClick={() => navigate('/feedback')} className="hover:text-[#FF6B00] transition-colors">
+                  <button type="button" onClick={() => navigate('/feedback')} className="hover:text-[#FF8A3D] transition-colors">
                     Guest Feedback
                   </button>
                 </li>
                 <li>
-                  <button type="button" onClick={() => navigate('/login')} className="hover:text-[#FF6B00] transition-colors">
+                  <button type="button" onClick={() => navigate('/login')} className="hover:text-[#FF8A3D] transition-colors">
                     Staff Portal
                   </button>
                 </li>
@@ -1165,15 +1165,15 @@ export const LandingPage: React.FC = () => {
               </h4>
               <ul className="space-y-2.5 text-xs text-[#A1A1AA]">
                 <li className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-[#FF6B00]" />
+                  <Phone className="w-3.5 h-3.5 text-[#FF8A3D]" />
                   <span>+91 832 249 9888</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Send className="w-3.5 h-3.5 text-[#FF6B00]" />
+                  <Send className="w-3.5 h-3.5 text-[#FF8A3D]" />
                   <span>reservations@aurapalms.in</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-[#FF6B00]" />
+                  <MapPin className="w-3.5 h-3.5 text-[#FF8A3D]" />
                   <span>Candolim, North Goa</span>
                 </li>
               </ul>
@@ -1184,12 +1184,12 @@ export const LandingPage: React.FC = () => {
           <div className="pt-8 border-t border-[#2A2A35] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#A1A1AA]">
             <p>© 2026 Aura Palms Resort & Spa. All Rights Reserved. GSTIN: 30AABCA1234F1Z8.</p>
             <div className="flex items-center gap-6">
-              <span className="hover:text-[#FF6B00] cursor-pointer">Privacy Policy</span>
-              <span className="hover:text-[#FF6B00] cursor-pointer">Terms & Conditions</span>
+              <span className="hover:text-[#FF8A3D] cursor-pointer">Privacy Policy</span>
+              <span className="hover:text-[#FF8A3D] cursor-pointer">Terms & Conditions</span>
               <button
                 type="button"
                 onClick={() => navigate('/dashboard')}
-                className="text-[#FF6B00] hover:underline font-medium"
+                className="text-[#FF8A3D] hover:underline font-medium"
               >
                 Go to Dashboard →
               </button>
@@ -1221,7 +1221,7 @@ export const LandingPage: React.FC = () => {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-3">
-                <div className="w-16 h-16 rounded-full bg-[#FF6B00] text-white flex items-center justify-center shadow-2xl animate-pulse">
+                <div className="w-16 h-16 rounded-full bg-[#B84C00] text-white flex items-center justify-center shadow-2xl animate-pulse">
                   <Play className="w-7 h-7 fill-current ml-1" />
                 </div>
                 <span className="text-xs font-semibold text-white">

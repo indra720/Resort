@@ -68,7 +68,7 @@ export const BookingDetailsModal: React.FC<BookingDetailsModalProps> = ({
           <div className="flex items-center justify-between p-3.5 rounded-xl bg-[#1C1C24] border border-[#2A2A35]">
             <div className="flex items-center gap-2">
               <span className="text-xs text-[#A1A1AA]">Reservation Code:</span>
-              <span className="font-bold text-sm text-[#FF6B00]">{booking.bookingCode}</span>
+              <span className="font-bold text-sm text-[#FF8A3D]">{booking.bookingCode}</span>
             </div>
             <StatusBadge status={booking.paymentStatus} />
           </div>
@@ -77,7 +77,7 @@ export const BookingDetailsModal: React.FC<BookingDetailsModalProps> = ({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="p-3.5 rounded-xl bg-[#14141A] border border-[#2A2A35] space-y-1">
               <span className="text-xs font-semibold text-[#A1A1AA] flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5 text-[#FF6B00]" /> Primary Guest
+                <User className="w-3.5 h-3.5 text-[#FF8A3D]" /> Primary Guest
               </span>
               <p className="text-sm font-bold text-[#F5F5F7]">{booking.guestName}</p>
               <p className="text-xs text-[#A1A1AA]">{booking.guestPhone}</p>
@@ -86,7 +86,7 @@ export const BookingDetailsModal: React.FC<BookingDetailsModalProps> = ({
 
             <div className="p-3.5 rounded-xl bg-[#14141A] border border-[#2A2A35] space-y-1">
               <span className="text-xs font-semibold text-[#A1A1AA] flex items-center gap-1.5">
-                <BedDouble className="w-3.5 h-3.5 text-[#FF6B00]" /> Room Assigned
+                <BedDouble className="w-3.5 h-3.5 text-[#FF8A3D]" /> Room Assigned
               </span>
               <p className="text-sm font-bold text-[#F5F5F7]">Room #{booking.roomNumber}</p>
               <div className="flex items-center gap-1.5 text-xs text-[#A1A1AA] pt-1">
@@ -116,7 +116,7 @@ export const BookingDetailsModal: React.FC<BookingDetailsModalProps> = ({
 
             <div className="flex justify-between font-bold text-sm text-[#F5F5F7] pt-2 border-t border-[#2A2A35]">
               <span>Grand Total:</span>
-              <span className="text-[#FF6B00] text-base">{formatINR(booking.totalAmount)}</span>
+              <span className="text-[#FF8A3D] text-base">{formatINR(booking.totalAmount)}</span>
             </div>
           </div>
         </div>

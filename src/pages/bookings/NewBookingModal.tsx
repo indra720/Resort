@@ -136,7 +136,7 @@ export const NewBookingModal: React.FC<NewBookingModalProps> = ({
                     isCompleted
                       ? 'bg-[#22C55E] text-white'
                       : isCurrent
-                      ? 'bg-[#FF6B00] text-white ring-2 ring-[#FF6B00]/40'
+                      ? 'bg-[#B84C00] text-white ring-2 ring-[#CC5500]/40'
                       : 'bg-[#1C1C24] text-[#A1A1AA] border border-[#2A2A35]'
                   }`}
                 >
@@ -220,7 +220,7 @@ export const NewBookingModal: React.FC<NewBookingModalProps> = ({
               Select luxury concierge add-ons for the guest stay:
             </p>
 
-            <label className="flex items-center justify-between p-3.5 rounded-xl bg-[#1C1C24] border border-[#2A2A35] cursor-pointer hover:border-[#FF6B00]/40 transition-colors">
+            <label className="flex items-center justify-between p-3.5 rounded-xl bg-[#1C1C24] border border-[#2A2A35] cursor-pointer hover:border-[#CC5500]/40 transition-colors">
               <div>
                 <span className="text-sm font-semibold text-[#F5F5F7] block">
                   Private Airport Transfer (AC Sedan)
@@ -228,17 +228,17 @@ export const NewBookingModal: React.FC<NewBookingModalProps> = ({
                 <span className="text-xs text-[#A1A1AA]">Pick-up from Goa Dabolim Airport</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-xs font-semibold text-[#FF6B00]">{formatINR(2500)}</span>
+                <span className="text-xs font-semibold text-[#FF8A3D]">{formatINR(2500)}</span>
                 <input
                   type="checkbox"
                   checked={includeAirportPickup}
                   onChange={(e) => setIncludeAirportPickup(e.target.checked)}
-                  className="w-5 h-5 rounded accent-[#FF6B00]"
+                  className="w-5 h-5 rounded accent-[#CC5500]"
                 />
               </div>
             </label>
 
-            <label className="flex items-center justify-between p-3.5 rounded-xl bg-[#1C1C24] border border-[#2A2A35] cursor-pointer hover:border-[#FF6B00]/40 transition-colors">
+            <label className="flex items-center justify-between p-3.5 rounded-xl bg-[#1C1C24] border border-[#2A2A35] cursor-pointer hover:border-[#CC5500]/40 transition-colors">
               <div>
                 <span className="text-sm font-semibold text-[#F5F5F7] block">
                   Ayurvedic Spa Couple Package
@@ -246,12 +246,12 @@ export const NewBookingModal: React.FC<NewBookingModalProps> = ({
                 <span className="text-xs text-[#A1A1AA]">60-minute therapeutic massage</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-xs font-semibold text-[#FF6B00]">{formatINR(3800)}</span>
+                <span className="text-xs font-semibold text-[#FF8A3D]">{formatINR(3800)}</span>
                 <input
                   type="checkbox"
                   checked={includeSpaPackage}
                   onChange={(e) => setIncludeSpaPackage(e.target.checked)}
-                  className="w-5 h-5 rounded accent-[#FF6B00]"
+                  className="w-5 h-5 rounded accent-[#CC5500]"
                 />
               </div>
             </label>
@@ -299,7 +299,7 @@ export const NewBookingModal: React.FC<NewBookingModalProps> = ({
 
               <div className="flex justify-between items-center pt-2 border-t border-[#2A2A35] font-bold text-sm text-[#F5F5F7]">
                 <span>Total Amount Payable:</span>
-                <span className="text-[#FF6B00] text-base">
+                <span className="text-[#FF8A3D] text-base">
                   {formatINR(gstBreakup.totalWithGst)}
                 </span>
               </div>

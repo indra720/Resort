@@ -75,7 +75,7 @@ export const RoomsPage: React.FC = () => {
       key: 'ratePerNight',
       header: 'Tariff / Night',
       accessor: (r) => (
-        <span className="font-semibold text-[#FF6B00]">{formatINR(r.ratePerNight)}</span>
+        <span className="font-semibold text-[#FF8A3D]">{formatINR(r.ratePerNight)}</span>
       ),
       sortable: true,
       sortValue: (r) => r.ratePerNight,
@@ -112,7 +112,7 @@ export const RoomsPage: React.FC = () => {
               onClick={() => setViewMode('grid')}
               className={`p-2 rounded-lg text-xs flex items-center gap-1.5 transition-colors ${
                 viewMode === 'grid'
-                  ? 'bg-[#FF6B00] text-white font-semibold'
+                  ? 'bg-[#B84C00] text-white font-semibold'
                   : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
               }`}
               title="Grid View"
@@ -124,7 +124,7 @@ export const RoomsPage: React.FC = () => {
               onClick={() => setViewMode('table')}
               className={`p-2 rounded-lg text-xs flex items-center gap-1.5 transition-colors ${
                 viewMode === 'table'
-                  ? 'bg-[#FF6B00] text-white font-semibold'
+                  ? 'bg-[#B84C00] text-white font-semibold'
                   : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
               }`}
               title="Table View"
@@ -136,7 +136,7 @@ export const RoomsPage: React.FC = () => {
               onClick={() => setViewMode('calendar')}
               className={`p-2 rounded-lg text-xs flex items-center gap-1.5 transition-colors ${
                 viewMode === 'calendar'
-                  ? 'bg-[#FF6B00] text-white font-semibold'
+                  ? 'bg-[#B84C00] text-white font-semibold'
                   : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
               }`}
               title="Availability Calendar"
@@ -172,7 +172,7 @@ export const RoomsPage: React.FC = () => {
               onClick={() => setCategoryFilter(cat)}
               className={`px-3 py-1.5 text-xs rounded-lg border transition-all ${
                 categoryFilter === cat
-                  ? 'bg-[#FF6B00] text-white border-[#FF6B00] font-semibold'
+                  ? 'bg-[#B84C00] text-white border-[#CC5500] font-semibold'
                   : 'bg-[#14141A] text-[#A1A1AA] border-[#2A2A35] hover:text-[#F5F5F7]'
               }`}
             >
@@ -226,7 +226,7 @@ export const RoomsPage: React.FC = () => {
           {filteredRooms.map((room) => (
             <div
               key={room.id}
-              className="p-5 rounded-2xl bg-[#14141A] border border-[#2A2A35] hover:border-[#FF6B00]/40 transition-all flex flex-col justify-between space-y-4"
+              className="p-5 rounded-2xl bg-[#14141A] border border-[#2A2A35] hover:border-[#CC5500]/40 transition-all flex flex-col justify-between space-y-4"
             >
               <div className="space-y-3">
                 <div className="flex items-start justify-between gap-2">
@@ -240,14 +240,14 @@ export const RoomsPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-baseline gap-1">
-                  <span className="text-xl font-bold text-[#FF6B00]">
+                  <span className="text-xl font-bold text-[#FF8A3D]">
                     {formatINR(room.ratePerNight)}
                   </span>
                   <span className="text-xs text-[#A1A1AA]">/ night + GST</span>
                 </div>
 
                 <div className="flex items-center gap-2 text-xs text-[#A1A1AA]">
-                  <Users className="w-4 h-4 text-[#FF6B00]" />
+                  <Users className="w-4 h-4 text-[#FF8A3D]" />
                   <span>Up to {room.maxGuests} Guests</span>
                 </div>
 
@@ -315,7 +315,7 @@ export const RoomsPage: React.FC = () => {
             <div className="p-4 rounded-xl bg-[#1C1C24] border border-[#2A2A35] flex items-center justify-between">
               <div>
                 <span className="text-xs text-[#A1A1AA] block">Standard Tariff</span>
-                <span className="text-xl font-bold text-[#FF6B00]">
+                <span className="text-xl font-bold text-[#FF8A3D]">
                   {formatINR(selectedRoomDetails.ratePerNight)}
                 </span>
                 <span className="text-[11px] text-[#A1A1AA] block">per night</span>

@@ -185,7 +185,7 @@ export function DataTable<T>({
               setCurrentPage(1);
             }}
             placeholder={searchPlaceholder}
-            className="w-full min-h-[44px] pl-10 pr-4 text-xs sm:text-sm bg-[#1C1C24] text-[#F5F5F7] placeholder:text-[#A1A1AA] border border-[#2A2A35] rounded-lg focus:outline-none focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00]"
+            className="w-full min-h-[44px] pl-10 pr-4 text-xs sm:text-sm bg-[#1C1C24] text-[#F5F5F7] placeholder:text-[#A1A1AA] border border-[#2A2A35] rounded-lg focus:outline-none focus:border-[#CC5500] focus:ring-1 focus:ring-[#CC5500]"
           />
         </div>
 
@@ -198,7 +198,7 @@ export function DataTable<T>({
                 setActiveFilter(e.target.value);
                 setCurrentPage(1);
               }}
-              className="min-h-[44px] px-3 text-xs bg-[#1C1C24] text-[#F5F5F7] border border-[#2A2A35] rounded-lg focus:outline-none focus:border-[#FF6B00] shrink-0"
+              className="min-h-[44px] px-3 text-xs bg-[#1C1C24] text-[#F5F5F7] border border-[#2A2A35] rounded-lg focus:outline-none focus:border-[#CC5500] shrink-0"
             >
               <option value="ALL">All {filterOptions.label}</option>
               {filterOptions.options.map((opt) => (
@@ -217,7 +217,7 @@ export function DataTable<T>({
               className={cn(
                 'min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-md flex items-center gap-1.5 transition-colors',
                 viewMode === 'table'
-                  ? 'bg-[#FF6B00] text-white shadow-sm'
+                  ? 'bg-[#B84C00] text-white shadow-sm'
                   : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
               )}
               title="Table View (Full LG multi-column with clear smooth scroll)"
@@ -231,7 +231,7 @@ export function DataTable<T>({
               className={cn(
                 'min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-md flex items-center gap-1.5 transition-colors',
                 viewMode === 'cards'
-                  ? 'bg-[#FF6B00] text-white shadow-sm'
+                  ? 'bg-[#B84C00] text-white shadow-sm'
                   : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
               )}
               title="Card View (Stacked cards)"
@@ -246,10 +246,10 @@ export function DataTable<T>({
             <button
               type="button"
               onClick={() => setIsColumnDropdownOpen((prev) => !prev)}
-              className="min-h-[44px] px-3 flex items-center gap-1.5 text-xs font-medium bg-[#1C1C24] text-[#F5F5F7] border border-[#2A2A35] rounded-lg hover:border-[#FF6B00] transition-colors shrink-0 whitespace-nowrap"
+              className="min-h-[44px] px-3 flex items-center gap-1.5 text-xs font-medium bg-[#1C1C24] text-[#F5F5F7] border border-[#2A2A35] rounded-lg hover:border-[#CC5500] transition-colors shrink-0 whitespace-nowrap"
               title="Show or hide table columns"
             >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
+              <SlidersHorizontal className="w-3.5 h-3.5 text-[#FF8A3D] shrink-0" />
               <span>Columns</span>
             </button>
 
@@ -274,7 +274,7 @@ export function DataTable<T>({
                     >
                       <span className="truncate pr-2">{col.header}</span>
                       {visibleColumns[col.key] && (
-                        <Check className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-[#FF8A3D] shrink-0" />
                       )}
                     </button>
                   ))}
@@ -305,7 +305,7 @@ export function DataTable<T>({
                   setSearchQuery('');
                   setActiveFilter('ALL');
                 }}
-                className="text-xs text-[#FF6B00] underline font-medium hover:text-[#FF8A33]"
+                className="text-xs text-[#FF8A3D] underline font-medium hover:text-[#E06A10]"
               >
                 Reset Search & Filters
               </button>
@@ -319,10 +319,10 @@ export function DataTable<T>({
               {/* Mobile Swipe Guidance Banner */}
               <div className="sm:hidden flex items-center justify-between px-3 py-2 rounded-xl bg-[#1C1C24] border border-[#2A2A35] text-xs text-[#A1A1AA]">
                 <div className="flex items-center gap-2">
-                  <ArrowLeftRight className="w-4 h-4 text-[#FF6B00] animate-pulse shrink-0" />
+                  <ArrowLeftRight className="w-4 h-4 text-[#FF8A3D] animate-pulse shrink-0" />
                   <span className="font-medium text-[#F5F5F7]">Scroll horizontally for all columns</span>
                 </div>
-                <span className="text-[10px] uppercase font-bold tracking-wider text-[#FF6B00] bg-[#FF6B00]/15 border border-[#FF6B00]/30 px-2 py-0.5 rounded shrink-0">
+                <span className="text-[10px] uppercase font-bold tracking-wider text-[#FF8A3D] bg-[#CC5500]/18 border border-[#CC5500]/30 px-2 py-0.5 rounded shrink-0">
                   Full Table
                 </span>
               </div>
@@ -343,14 +343,14 @@ export function DataTable<T>({
                               <button
                                 type="button"
                                 onClick={() => handleSort(col.key)}
-                                className="flex items-center gap-1.5 hover:text-[#FF6B00] transition-colors whitespace-nowrap"
+                                className="flex items-center gap-1.5 hover:text-[#FF8A3D] transition-colors whitespace-nowrap"
                               >
                                 <span>{col.header}</span>
                                 {isSorted ? (
                                   sortOrder === 'asc' ? (
-                                    <ArrowUp className="w-3.5 h-3.5 text-[#FF6B00]" />
+                                    <ArrowUp className="w-3.5 h-3.5 text-[#FF8A3D]" />
                                   ) : (
-                                    <ArrowDown className="w-3.5 h-3.5 text-[#FF6B00]" />
+                                    <ArrowDown className="w-3.5 h-3.5 text-[#FF8A3D]" />
                                   )
                                 ) : (
                                   <ArrowUpDown className="w-3.5 h-3.5 text-[#A1A1AA]/50" />

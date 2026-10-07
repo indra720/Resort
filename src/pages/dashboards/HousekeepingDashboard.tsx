@@ -51,7 +51,7 @@ export const HousekeepingDashboard: React.FC = () => {
             variant="outline"
             size="md"
             onClick={() => navigate('/housekeeping')}
-            leftIcon={<RotateCcw className="w-4 h-4 text-[#FF6B00]" />}
+            leftIcon={<RotateCcw className="w-4 h-4 text-[#FF8A3D]" />}
           >
             Kanban Task View
           </Button>

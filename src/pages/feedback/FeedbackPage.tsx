@@ -41,12 +41,12 @@ export const FeedbackPage: React.FC = () => {
             key={star}
             type="button"
             onClick={() => setRating(star)}
-            className="p-1 text-[#A1A1AA] hover:text-[#FF6B00] transition-colors focus-visible:outline-none"
+            className="p-1 text-[#A1A1AA] hover:text-[#FF8A3D] transition-colors focus-visible:outline-none"
             aria-label={`Rate ${star} star`}
           >
             <Star
               className={`w-6 h-6 ${
-                star <= rating ? 'fill-[#FF6B00] text-[#FF6B00]' : 'text-[#2A2A35]'
+                star <= rating ? 'fill-[#FF8A3D] text-[#FF8A3D]' : 'text-[#2A2A35]'
               }`}
             />
           </button>
@@ -86,7 +86,7 @@ export const FeedbackPage: React.FC = () => {
       {/* Page Header */}
       <div>
         <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7] flex items-center gap-2">
-          <MessageSquareHeart className="w-6 h-6 text-[#FF6B00]" />
+          <MessageSquareHeart className="w-6 h-6 text-[#FF8A3D]" />
           <span>Guest Stay Review & Feedback Center</span>
         </h1>
         <p className="text-xs sm:text-sm text-[#A1A1AA]">
@@ -193,7 +193,7 @@ export const FeedbackPage: React.FC = () => {
                     value={comments}
                     onChange={(e) => setComments(e.target.value)}
                     placeholder="Share your stay experience or any special compliments for the staff..."
-                    className="w-full p-3.5 text-sm rounded-xl bg-[#1C1C24] text-[#F5F5F7] placeholder:text-[#A1A1AA] border border-[#2A2A35] focus:outline-none focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00]"
+                    className="w-full p-3.5 text-sm rounded-xl bg-[#1C1C24] text-[#F5F5F7] placeholder:text-[#A1A1AA] border border-[#2A2A35] focus:outline-none focus:border-[#CC5500] focus:ring-1 focus:ring-[#CC5500]"
                     required
                   />
                 </div>
@@ -218,7 +218,7 @@ export const FeedbackPage: React.FC = () => {
           <div className="p-6 rounded-2xl bg-[#14141A] border border-[#2A2A35] shadow-xl space-y-5">
             <div className="flex items-center justify-between">
               <span className="text-xs font-semibold uppercase tracking-wider text-[#A1A1AA] flex items-center gap-1.5">
-                <Award className="w-4 h-4 text-[#FF6B00]" /> Satisfaction Scorecard
+                <Award className="w-4 h-4 text-[#FF8A3D]" /> Satisfaction Scorecard
               </span>
               <span className="px-2 py-0.5 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] text-[11px] font-semibold">
                 Superb 4.9/5
@@ -228,9 +228,9 @@ export const FeedbackPage: React.FC = () => {
             <div className="flex items-baseline gap-3">
               <span className="text-4xl font-extrabold text-[#F5F5F7]">4.92</span>
               <div>
-                <div className="flex items-center gap-1 text-[#FF6B00]">
+                <div className="flex items-center gap-1 text-[#FF8A3D]">
                   {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#FF6B00]" />
+                    <Star key={i} className="w-4 h-4 fill-[#FF8A3D]" />
                   ))}
                 </div>
                 <span className="text-[11px] text-[#A1A1AA]">342 verified guest reviews</span>
@@ -247,7 +247,7 @@ export const FeedbackPage: React.FC = () => {
                   </div>
                   <div className="w-full h-1.5 rounded-full bg-[#1C1C24] overflow-hidden">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-[#FF6B00] to-[#FF8A33]"
+                      className="h-full rounded-full bg-gradient-to-r from-[#CC5500] to-[#E06A10]"
                       style={{ width: `${m.val}%` }}
                     />
                   </div>
@@ -259,7 +259,7 @@ export const FeedbackPage: React.FC = () => {
           {/* Recent Guest Reviews */}
           <div className="p-6 rounded-2xl bg-[#14141A] border border-[#2A2A35] shadow-xl space-y-4">
             <div className="flex items-center gap-2">
-              <Quote className="w-4 h-4 text-[#FF6B00]" />
+              <Quote className="w-4 h-4 text-[#FF8A3D]" />
               <h3 className="text-sm font-semibold text-[#F5F5F7]">Recent Verified Reviews</h3>
             </div>
 
@@ -274,9 +274,9 @@ export const FeedbackPage: React.FC = () => {
                       <span className="font-semibold text-[#F5F5F7] block">{rev.guest}</span>
                       <span className="text-[10px] text-[#A1A1AA]">{rev.stay}</span>
                     </div>
-                    <div className="flex items-center gap-0.5 text-[#FF6B00] shrink-0">
+                    <div className="flex items-center gap-0.5 text-[#FF8A3D] shrink-0">
                       {[...Array(rev.rating)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 fill-[#FF6B00]" />
+                        <Star key={i} className="w-3 h-3 fill-[#FF8A3D]" />
                       ))}
                     </div>
                   </div>

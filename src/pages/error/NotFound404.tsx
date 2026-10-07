@@ -8,11 +8,11 @@ export const NotFound404: React.FC = () => {
 
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center text-center p-6">
-      <div className="w-16 h-16 rounded-2xl bg-[#FF6B00]/15 border border-[#FF6B00]/30 flex items-center justify-center text-[#FF6B00] mb-6 shadow-lg shadow-[#FF6B00]/5">
+      <div className="w-16 h-16 rounded-2xl bg-[#CC5500]/18 border border-[#CC5500]/30 flex items-center justify-center text-[#FF8A3D] mb-6 shadow-lg shadow-[#CC5500]/5">
         <Compass className="w-8 h-8" />
       </div>
 
-      <span className="text-xs font-semibold uppercase tracking-wider text-[#FF6B00] bg-[#FF6B00]/10 px-3 py-1 rounded-full border border-[#FF6B00]/20 mb-3">
+      <span className="text-xs font-semibold uppercase tracking-wider text-[#FF8A3D] bg-[#CC5500]/18 px-3 py-1 rounded-full border border-[#CC5500]/20 mb-3">
         404 • Page Not Found
       </span>
 

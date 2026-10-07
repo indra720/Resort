@@ -62,7 +62,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
             {/* Header */}
             <div className="p-4 border-b border-[#2A2A35] flex items-center justify-between bg-[#1C1C24]/50">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-[#FF6B00] flex items-center justify-center text-white">
+                <div className="w-8 h-8 rounded-lg bg-[#CC5500] flex items-center justify-center text-white">
                   <Sparkles className="w-4 h-4" />
                 </div>
                 <div>
@@ -84,7 +84,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
             {/* User & Current Role Header */}
             <div className="p-3.5 bg-[#1C1C24]/30 border-b border-[#2A2A35] text-left">
               <p className="text-xs font-semibold text-[#F5F5F7]">{user?.name}</p>
-              <div className="mt-1 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#FF6B00]/15 text-[#FF6B00] text-[11px] font-medium border border-[#FF6B00]/30">
+              <div className="mt-1 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#CC5500]/18 text-[#FF8A3D] text-[11px] font-medium border border-[#CC5500]/30">
                 <Shield className="w-3 h-3" /> {role}
               </div>
             </div>
@@ -105,7 +105,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
                       cn(
                         'flex items-center justify-between px-3.5 min-h-[44px] rounded-xl transition-colors text-sm text-left',
                         isActive
-                          ? 'bg-[#FF6B00] text-white font-semibold'
+                          ? 'bg-[#CC5500] text-white font-semibold'
                           : 'text-[#A1A1AA] hover:text-[#F5F5F7] hover:bg-[#1C1C24]'
                       )
                     }
@@ -114,7 +114,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
                       <>
                         <div className="flex items-center gap-3">
                           <Icon
-                            className={cn('w-4 h-4', isActive ? 'text-white' : 'text-[#FF6B00]')}
+                            className={cn('w-4 h-4', isActive ? 'text-white' : 'text-[#FF8A3D]')}
                           />
                           <span>{item.label}</span>
                         </div>
@@ -146,7 +146,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
                       className={cn(
                         'px-2 py-1.5 text-left text-xs rounded-lg border transition-colors truncate',
                         role === r
-                          ? 'bg-[#FF6B00]/20 border-[#FF6B00] text-[#FF6B00] font-semibold'
+                          ? 'bg-[#CC5500]/20 border-[#CC5500] text-[#FF8A3D] font-semibold'
                           : 'bg-[#1C1C24] border-[#2A2A35] text-[#A1A1AA] hover:text-white'
                       )}
                     >

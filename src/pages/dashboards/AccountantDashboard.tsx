@@ -63,7 +63,7 @@ export const AccountantDashboard: React.FC = () => {
     {
       key: 'invoiceNumber',
       header: 'Invoice #',
-      accessor: (i) => <span className="font-semibold text-[#FF6B00]">{i.invoiceNumber}</span>,
+      accessor: (i) => <span className="font-semibold text-[#FF8A3D]">{i.invoiceNumber}</span>,
       sortable: true,
       sortValue: (i) => i.invoiceNumber,
     },
@@ -122,7 +122,7 @@ export const AccountantDashboard: React.FC = () => {
             variant="outline"
             size="md"
             onClick={() => navigate('/reports')}
-            leftIcon={<FileSpreadsheet className="w-4 h-4 text-[#FF6B00]" />}
+            leftIcon={<FileSpreadsheet className="w-4 h-4 text-[#FF8A3D]" />}
           >
             GST Audit Report
           </Button>
@@ -210,7 +210,7 @@ export const AccountantDashboard: React.FC = () => {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <h3 className="text-base font-semibold text-[#F5F5F7] flex items-center gap-2">
-            <Receipt className="w-4 h-4 text-[#FF6B00]" />
+            <Receipt className="w-4 h-4 text-[#FF8A3D]" />
             <span>Recent GST Tax Invoices</span>
           </h3>
           <Button variant="ghost" size="sm" onClick={() => navigate('/billing')}>

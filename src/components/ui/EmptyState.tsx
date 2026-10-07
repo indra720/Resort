@@ -27,7 +27,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
         className
       )}
     >
-      <div className="w-14 h-14 rounded-2xl bg-[#1C1C24] border border-[#2A2A35] flex items-center justify-center text-[#FF6B00] mb-4 shadow-sm">
+      <div className="w-14 h-14 rounded-2xl bg-[#1C1C24] border border-[#2A2A35] flex items-center justify-center text-[#FF8A3D] mb-4 shadow-sm">
         {icon || <Inbox className="w-7 h-7" />}
       </div>
 

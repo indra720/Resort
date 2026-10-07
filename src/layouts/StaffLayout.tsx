@@ -17,7 +17,7 @@ export const StaffLayout: React.FC<StaffLayoutProps> = ({ children }) => {
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
 
   return (
-    <div className="h-screen w-full bg-[#0B0B0F] text-[#F5F5F7] flex flex-col font-sans selection:bg-[#FF6B00] selection:text-white overflow-hidden">
+    <div className="h-screen w-full bg-[#0B0B0F] text-[#F5F5F7] flex flex-col font-sans selection:bg-[#CC5500] selection:text-white overflow-hidden">
       {/* Top Bar with glass blur - Fixed */}
       <TopBar
         isSidebarCollapsed={isSidebarCollapsed}
@@ -28,7 +28,7 @@ export const StaffLayout: React.FC<StaffLayoutProps> = ({ children }) => {
       {/* Staff Operations Sub-header Banner - Fixed */}
       <div className="shrink-0 bg-[#14141A] border-b border-[#2A2A35] px-4 sm:px-6 py-2 flex items-center justify-between text-xs z-10">
         <div className="flex items-center gap-2 text-[#A1A1AA]">
-          <Briefcase className="w-3.5 h-3.5 text-[#FF6B00]" />
+          <Briefcase className="w-3.5 h-3.5 text-[#FF8A3D]" />
           <span>Staff Operations Desk</span>
           <span className="hidden sm:inline">•</span>
           <span className="hidden sm:inline text-[#F5F5F7] font-medium">{role}</span>

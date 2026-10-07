@@ -16,7 +16,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
 
     const variantStyles = {
       default: 'bg-[#1C1C24] text-[#F5F5F7] border-[#2A2A35]',
-      primary: 'bg-[#FF6B00]/15 text-[#FF6B00] border-[#FF6B00]/30',
+      primary: 'bg-[#CC5500]/18 text-[#FF8A3D] border-[#CC5500]/30',
       secondary: 'bg-[#14141A] text-[#A1A1AA] border-[#2A2A35]',
       outline: 'bg-transparent text-[#F5F5F7] border-[#2A2A35]',
       success: 'bg-[#22C55E]/15 text-[#22C55E] border-[#22C55E]/30',

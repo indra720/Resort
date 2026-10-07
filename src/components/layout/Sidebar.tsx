@@ -33,7 +33,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
                   'group flex items-center rounded-xl transition-all duration-150 min-h-[44px]',
                   isCollapsed ? 'justify-center px-0 w-12 mx-auto' : 'px-3.5 gap-3 w-full',
                   isActive
-                    ? 'bg-[#FF6B00] text-white shadow-[0_0_15px_rgba(255,107,0,0.3)] font-semibold'
+                    ? 'bg-[#CC5500] text-white shadow-[0_0_15px_rgba(204,85,0,0.3)] font-semibold'
                     : 'text-[#A1A1AA] hover:text-[#F5F5F7] hover:bg-[#14141A]'
                 )
               }
@@ -43,7 +43,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
                   <Icon
                     className={cn(
                       'w-5 h-5 shrink-0 transition-colors',
-                      isActive ? 'text-white' : 'text-[#A1A1AA] group-hover:text-[#FF6B00]'
+                      isActive ? 'text-white' : 'text-[#A1A1AA] group-hover:text-[#FF8A3D]'
                     )}
                   />
 
@@ -59,7 +59,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
                         'text-[10px] px-1.5 py-0.5 rounded-full font-medium',
                         isActive
                           ? 'bg-black/30 text-white'
-                          : 'bg-[#FF6B00]/20 text-[#FF6B00]'
+                          : 'bg-[#CC5500]/20 text-[#FF8A3D]'
                       )}
                     >
                       {item.badge}
@@ -78,7 +78,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
           <p className="text-[11px] text-[#A1A1AA] uppercase tracking-wider font-semibold">
             Role Workspace
           </p>
-          <p className="text-xs font-semibold text-[#FF6B00] mt-0.5 truncate">{role}</p>
+          <p className="text-xs font-semibold text-[#FF8A3D] mt-0.5 truncate">{role}</p>
         </div>
       )}
     </aside>

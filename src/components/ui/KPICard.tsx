@@ -35,7 +35,7 @@ export const KPICard: React.FC<KPICardProps> = ({
             {title}
           </span>
           {Icon && (
-            <div className="w-9 h-9 rounded-xl bg-[#1C1C24] border border-[#2A2A35] flex items-center justify-center text-[#FF6B00] shrink-0">
+            <div className="w-9 h-9 rounded-xl bg-[#1C1C24] border border-[#2A2A35] flex items-center justify-center text-[#FF8A3D] shrink-0">
               <Icon className="w-4 h-4" />
             </div>
           )}
@@ -67,7 +67,7 @@ export const KPICard: React.FC<KPICardProps> = ({
             )}
 
             {badge && (
-              <span className="ml-auto text-[10px] px-2 py-0.5 rounded-full bg-[#FF6B00]/15 text-[#FF6B00] font-medium border border-[#FF6B00]/30">
+              <span className="ml-auto text-[10px] px-2 py-0.5 rounded-full bg-[#CC5500]/18 text-[#FF8A3D] font-medium border border-[#CC5500]/30">
                 {badge}
               </span>
             )}

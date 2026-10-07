@@ -23,7 +23,7 @@ export const Unauthorized403: React.FC = () => {
       </h1>
 
       <p className="text-sm text-[#A1A1AA] max-w-md mb-8 leading-relaxed">
-        Your current role (<strong className="text-[#FF6B00]">{role}</strong>) does not have
+        Your current role (<strong className="text-[#FF8A3D]">{role}</strong>) does not have
         permission to view this section of the resort management system.
       </p>
 

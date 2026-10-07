@@ -44,7 +44,7 @@ export const SuperAdminDashboard: React.FC = () => {
     {
       key: 'bookingCode',
       header: 'Booking #',
-      accessor: (b) => <span className="font-semibold text-[#FF6B00]">{b.bookingCode}</span>,
+      accessor: (b) => <span className="font-semibold text-[#FF8A3D]">{b.bookingCode}</span>,
       sortable: true,
       sortValue: (b) => b.bookingCode,
     },
@@ -101,7 +101,7 @@ export const SuperAdminDashboard: React.FC = () => {
             variant="outline"
             size="md"
             onClick={() => navigate('/reports')}
-            leftIcon={<FileSpreadsheet className="w-4 h-4 text-[#FF6B00]" />}
+            leftIcon={<FileSpreadsheet className="w-4 h-4 text-[#FF8A3D]" />}
           >
             Export GSTR & PnL
           </Button>
@@ -194,9 +194,9 @@ export const SuperAdminDashboard: React.FC = () => {
                 type="monotone"
                 dataKey="rooms"
                 name="Rooms Revenue"
-                stroke="#FF6B00"
+                stroke="#CC5500"
                 strokeWidth={3}
-                dot={{ r: 4, fill: '#FF6B00' }}
+                dot={{ r: 4, fill: '#CC5500' }}
               />
               <Line
                 type="monotone"
@@ -256,7 +256,7 @@ export const SuperAdminDashboard: React.FC = () => {
         <div className="lg:col-span-2 space-y-3">
           <div className="flex items-center justify-between">
             <h3 className="text-base font-semibold text-[#F5F5F7] flex items-center gap-2">
-              <CalendarCheck className="w-4 h-4 text-[#FF6B00]" />
+              <CalendarCheck className="w-4 h-4 text-[#FF8A3D]" />
               <span>Recent Guest Bookings</span>
             </h3>
             <Button

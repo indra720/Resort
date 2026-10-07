@@ -46,7 +46,7 @@ export const SettingsPage: React.FC = () => {
     <div className="w-full space-y-6 text-left">
       <div>
         <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7] flex items-center gap-2">
-          <Settings className="w-6 h-6 text-[#FF6B00]" />
+          <Settings className="w-6 h-6 text-[#FF8A3D]" />
           <span>Resort Settings & RBAC Permissions</span>
         </h1>
         <p className="text-xs sm:text-sm text-[#A1A1AA]">
@@ -59,7 +59,7 @@ export const SettingsPage: React.FC = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Building className="w-4 h-4 text-[#FF6B00]" />
+              <Building className="w-4 h-4 text-[#FF8A3D]" />
               <span>Resort Identity & Contact</span>
             </CardTitle>
           </CardHeader>
@@ -91,7 +91,7 @@ export const SettingsPage: React.FC = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Receipt className="w-4 h-4 text-[#FF6B00]" />
+              <Receipt className="w-4 h-4 text-[#FF8A3D]" />
               <span>Goods & Services Tax (GST) Configuration</span>
             </CardTitle>
           </CardHeader>
@@ -133,7 +133,7 @@ export const SettingsPage: React.FC = () => {
           <CardHeader>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               <CardTitle className="flex items-center gap-2">
-                <Shield className="w-4 h-4 text-[#FF6B00]" />
+                <Shield className="w-4 h-4 text-[#FF8A3D]" />
                 <span>Role-Based Access Control (RBAC) Matrix</span>
               </CardTitle>
               <span className="text-xs text-[#A1A1AA]">
@@ -145,10 +145,10 @@ export const SettingsPage: React.FC = () => {
             {/* Mobile swipe helper */}
             <div className="sm:hidden flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#1C1C24] border border-[#2A2A35] text-[11px] text-[#A1A1AA]">
               <span className="flex items-center gap-1.5">
-                <ArrowLeftRight className="w-3.5 h-3.5 text-[#FF6B00] animate-pulse shrink-0" />
+                <ArrowLeftRight className="w-3.5 h-3.5 text-[#FF8A3D] animate-pulse shrink-0" />
                 <span>Swipe horizontally to view all roles</span>
               </span>
-              <span className="text-[10px] text-[#FF6B00] font-medium bg-[#FF6B00]/10 px-1.5 py-0.5 rounded">
+              <span className="text-[10px] text-[#FF8A3D] font-medium bg-[#CC5500]/18 px-1.5 py-0.5 rounded">
                 7 Roles
               </span>
             </div>

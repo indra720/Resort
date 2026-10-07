@@ -31,7 +31,7 @@ export const BookingsPage: React.FC = () => {
     {
       key: 'bookingCode',
       header: 'Reservation Code',
-      accessor: (b) => <span className="font-bold text-[#FF6B00]">{b.bookingCode}</span>,
+      accessor: (b) => <span className="font-bold text-[#FF8A3D]">{b.bookingCode}</span>,
       sortable: true,
       sortValue: (b) => b.bookingCode,
     },

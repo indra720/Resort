@@ -36,10 +36,10 @@ export const AvailabilityCalendar: React.FC = () => {
       {/* Mobile Swipe Banner */}
       <div className="sm:hidden flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#1C1C24] border border-[#2A2A35] text-[11px] text-[#A1A1AA]">
         <span className="flex items-center gap-1.5">
-          <ArrowLeftRight className="w-3.5 h-3.5 text-[#FF6B00] animate-pulse shrink-0" />
+          <ArrowLeftRight className="w-3.5 h-3.5 text-[#FF8A3D] animate-pulse shrink-0" />
           <span>Swipe horizontally to view full 7-day schedule</span>
         </span>
-        <span className="text-[10px] text-[#FF6B00] font-medium bg-[#FF6B00]/10 px-1.5 py-0.5 rounded">
+        <span className="text-[10px] text-[#FF8A3D] font-medium bg-[#CC5500]/18 px-1.5 py-0.5 rounded">
           7 Days
         </span>
       </div>
@@ -75,7 +75,7 @@ export const AvailabilityCalendar: React.FC = () => {
                   const status = getDayStatus(rIdx, dIdx);
                   const colors: Record<string, string> = {
                     Available: 'bg-[#22C55E]/15 text-[#22C55E] border-[#22C55E]/30',
-                    Occupied: 'bg-[#FF6B00]/15 text-[#FF6B00] border-[#FF6B00]/30',
+                    Occupied: 'bg-[#CC5500]/18 text-[#FF8A3D] border-[#CC5500]/30',
                     Reserved: 'bg-[#3B82F6]/15 text-[#3B82F6] border-[#3B82F6]/30',
                     Cleaning: 'bg-[#F59E0B]/15 text-[#F59E0B] border-[#F59E0B]/30',
                     Maintenance: 'bg-[#EF4444]/15 text-[#EF4444] border-[#EF4444]/30',

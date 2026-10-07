@@ -14,7 +14,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
 
   return (
-    <div className="h-screen w-full bg-[#0B0B0F] text-[#F5F5F7] flex flex-col font-sans selection:bg-[#FF6B00] selection:text-white overflow-hidden">
+    <div className="h-screen w-full bg-[#0B0B0F] text-[#F5F5F7] flex flex-col font-sans selection:bg-[#CC5500] selection:text-white overflow-hidden">
       {/* Top Navigation Bar - Fixed at top, never scrolls */}
       <TopBar
         isSidebarCollapsed={isSidebarCollapsed}

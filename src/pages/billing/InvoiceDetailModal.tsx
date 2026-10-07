@@ -54,13 +54,13 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4 border-b border-[#2A2A35]">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <div className="w-8 h-8 rounded-lg bg-[#FF6B00] flex items-center justify-center text-white">
+              <div className="w-8 h-8 rounded-lg bg-[#B84C00] flex items-center justify-center text-white">
                 <Sparkles className="w-4 h-4" />
               </div>
               <h2 className="text-lg font-bold text-[#F5F5F7]">Aura Palms Resort & Spa</h2>
             </div>
             <p className="text-xs text-[#A1A1AA]">Candolim Beach Road, North Goa, 403515</p>
-            <p className="text-xs text-[#FF6B00] font-semibold mt-1">
+            <p className="text-xs text-[#FF8A3D] font-semibold mt-1">
               GSTIN: 30AABCA1234F1Z8 (Goa State Code: 30)
             </p>
           </div>
@@ -131,7 +131,7 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
                 <td className="py-3 px-3.5 text-right text-[#A1A1AA] whitespace-nowrap">
                   {formatINR(halfGst)}
                 </td>
-                <td className="py-3 px-3.5 text-right font-bold text-[#FF6B00] whitespace-nowrap">
+                <td className="py-3 px-3.5 text-right font-bold text-[#FF8A3D] whitespace-nowrap">
                   {formatINR(invoice.grandTotal)}
                 </td>
               </tr>
@@ -155,7 +155,7 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
           </div>
           <div className="flex justify-between items-center pt-2 border-t border-[#2A2A35] font-bold text-sm text-[#F5F5F7]">
             <span>Invoice Grand Total:</span>
-            <span className="text-base text-[#FF6B00]">{formatINR(invoice.grandTotal)}</span>
+            <span className="text-base text-[#FF8A3D]">{formatINR(invoice.grandTotal)}</span>
           </div>
         </div>
 

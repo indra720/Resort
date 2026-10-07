@@ -153,7 +153,7 @@ export const HousekeepingPage: React.FC = () => {
           onClick={() => setActiveTab('kanban')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'kanban'
-              ? 'border-[#FF6B00] text-[#FF6B00]'
+              ? 'border-[#CC5500] text-[#FF8A3D]'
               : 'border-transparent text-[#A1A1AA] hover:text-[#F5F5F7]'
           }`}
         >
@@ -165,7 +165,7 @@ export const HousekeepingPage: React.FC = () => {
           onClick={() => setActiveTab('maintenance')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'maintenance'
-              ? 'border-[#FF6B00] text-[#FF6B00]'
+              ? 'border-[#CC5500] text-[#FF8A3D]'
               : 'border-transparent text-[#A1A1AA] hover:text-[#F5F5F7]'
           }`}
         >
@@ -205,7 +205,7 @@ export const HousekeepingPage: React.FC = () => {
                         <span className="text-[10px] text-[#A1A1AA]">{task.category}</span>
                       </div>
                       <p className="text-xs text-[#A1A1AA] leading-relaxed">{task.notes}</p>
-                      <span className="text-[11px] text-[#FF6B00] block">
+                      <span className="text-[11px] text-[#FF8A3D] block">
                         Assigned: {task.assignedTo}
                       </span>
                       <div className="pt-2 border-t border-[#2A2A35] flex justify-end">
@@ -335,7 +335,7 @@ export const HousekeepingPage: React.FC = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <span className="font-bold text-sm text-[#F5F5F7]">{tck.id}</span>
-                  <span className="text-xs text-[#FF6B00] font-semibold block">
+                  <span className="text-xs text-[#FF8A3D] font-semibold block">
                     Room #{tck.roomNumber}
                   </span>
                 </div>

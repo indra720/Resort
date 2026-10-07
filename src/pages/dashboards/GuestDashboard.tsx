@@ -23,10 +23,10 @@ export const GuestDashboard: React.FC = () => {
     <div className="space-y-6">
       {/* Welcome Banner */}
       <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#14141A] via-[#1C1C24] to-[#14141A] border border-[#2A2A35] relative overflow-hidden text-left shadow-xl">
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-[#FF6B00]/10 to-transparent pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-[#CC5500]/10 to-transparent pointer-events-none" />
 
         <div className="max-w-xl space-y-2 relative z-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF6B00]/15 border border-[#FF6B00]/30 text-[#FF6B00] text-xs font-semibold">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#CC5500]/18 border border-[#CC5500]/30 text-[#FF8A3D] text-xs font-semibold">
             <Sparkles className="w-3.5 h-3.5" /> Welcome to Goa, Pooja Hegde
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-[#F5F5F7] tracking-tight">
@@ -64,7 +64,7 @@ export const GuestDashboard: React.FC = () => {
             <CardHeader className="flex-row items-center justify-between pb-3">
               <div>
                 <CardTitle className="text-base sm:text-lg flex items-center gap-2">
-                  <Key className="w-5 h-5 text-[#FF6B00]" />
+                  <Key className="w-5 h-5 text-[#FF8A3D]" />
                   <span>Current Stay Details</span>
                 </CardTitle>
                 <p className="text-xs text-[#A1A1AA]">Reservation Code: RES-8821</p>
@@ -77,7 +77,7 @@ export const GuestDashboard: React.FC = () => {
                 <div>
                   <span className="text-[11px] text-[#A1A1AA] block">Accommodation</span>
                   <span className="text-sm font-bold text-[#F5F5F7]">Pool Villa V-01</span>
-                  <span className="text-xs text-[#FF6B00] block mt-0.5">Private Plunge Pool</span>
+                  <span className="text-xs text-[#FF8A3D] block mt-0.5">Private Plunge Pool</span>
                 </div>
 
                 <div>
@@ -97,7 +97,7 @@ export const GuestDashboard: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <div className="p-3 rounded-lg bg-[#14141A] border border-[#2A2A35] flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <Wifi className="w-4 h-4 text-[#FF6B00]" />
+                    <Wifi className="w-4 h-4 text-[#FF8A3D]" />
                     <div>
                       <span className="font-semibold text-[#F5F5F7] block">Complimentary Wi-Fi</span>
                       <span className="text-[#A1A1AA]">Passcode: luxury@stay26</span>
@@ -149,7 +149,7 @@ export const GuestDashboard: React.FC = () => {
           <Card className="text-left h-full flex flex-col justify-between">
             <CardHeader className="pb-2">
               <CardTitle className="text-base flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#FF6B00]" />
+                <Sparkles className="w-4 h-4 text-[#FF8A3D]" />
                 <span>Featured Experiences</span>
               </CardTitle>
             </CardHeader>
@@ -158,7 +158,7 @@ export const GuestDashboard: React.FC = () => {
               <div className="p-3 rounded-xl bg-[#1C1C24] border border-[#2A2A35] space-y-1">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[#F5F5F7]">Ayurvedic Abhyanga Spa</span>
-                  <span className="text-xs font-semibold text-[#FF6B00]">{formatINR(3800)}</span>
+                  <span className="text-xs font-semibold text-[#FF8A3D]">{formatINR(3800)}</span>
                 </div>
                 <p className="text-[11px] text-[#A1A1AA]">60 mins herbal oil massage with steam bath</p>
                 <Button
@@ -175,7 +175,7 @@ export const GuestDashboard: React.FC = () => {
               <div className="p-3 rounded-xl bg-[#1C1C24] border border-[#2A2A35] space-y-1">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[#F5F5F7]">Candlelight Poolside Dinner</span>
-                  <span className="text-xs font-semibold text-[#FF6B00]">{formatINR(4500)}</span>
+                  <span className="text-xs font-semibold text-[#FF8A3D]">{formatINR(4500)}</span>
                 </div>
                 <p className="text-[11px] text-[#A1A1AA]">4-course chef tasting menu with live acoustic guitar</p>
                 <Button

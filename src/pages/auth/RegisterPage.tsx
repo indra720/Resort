@@ -52,7 +52,7 @@ export const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-[#0B0B0F] text-[#F5F5F7] flex flex-col lg:flex-row font-sans selection:bg-[#FF6B00] selection:text-white">
+    <div className="h-screen w-screen overflow-hidden bg-[#0B0B0F] text-[#F5F5F7] flex flex-col lg:flex-row font-sans selection:bg-[#CC5500] selection:text-white">
       {/* =========================================================================
           LEFT SIDE: LUXURY GUEST PRIVILEGES SHOWCASE (Non-scrolling Desktop View)
           ========================================================================= */}
@@ -71,12 +71,12 @@ export const RegisterPage: React.FC = () => {
         {/* Top Header */}
         <div className="relative z-10 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 select-none">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#FF6B00] to-[#FF8A33] flex items-center justify-center text-white shadow-lg shadow-[#FF6B00]/30">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#CC5500] to-[#E06A10] flex items-center justify-center text-white shadow-lg shadow-[#CC5500]/30">
               <Sparkles className="w-5 h-5" />
             </div>
             <div className="text-left">
               <span className="text-lg font-bold tracking-tight text-[#F5F5F7]">
-                Aura Palms <span className="text-[#FF6B00]">Resort</span>
+                Aura Palms <span className="text-[#FF8A3D]">Resort</span>
               </span>
               <span className="block text-[10px] text-[#A1A1AA] uppercase tracking-widest font-medium">
                 Luxury Coastal Sanctuary • Goa
@@ -86,7 +86,7 @@ export const RegisterPage: React.FC = () => {
 
           <Link
             to="/"
-            className="px-3.5 py-1.5 rounded-xl bg-[#14141A]/80 border border-[#2A2A35] hover:border-[#FF6B00] text-xs text-[#A1A1AA] hover:text-[#F5F5F7] transition-all flex items-center gap-1.5 backdrop-blur-md"
+            className="px-3.5 py-1.5 rounded-xl bg-[#14141A]/80 border border-[#2A2A35] hover:border-[#CC5500] text-xs text-[#A1A1AA] hover:text-[#F5F5F7] transition-all flex items-center gap-1.5 backdrop-blur-md"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Website</span>
@@ -95,7 +95,7 @@ export const RegisterPage: React.FC = () => {
 
         {/* Middle Content: Guest Privileges */}
         <div className="relative z-10 space-y-4 max-w-lg text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B00]/15 border border-[#FF6B00]/30 text-[#FF6B00] text-xs font-semibold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#CC5500]/18 border border-[#CC5500]/30 text-[#FF8A3D] text-xs font-semibold">
             <Gift className="w-3.5 h-3.5" />
             <span>Exclusive Guest Privileges</span>
           </div>
@@ -111,7 +111,7 @@ export const RegisterPage: React.FC = () => {
           {/* Benefits Grid */}
           <div className="space-y-2.5 pt-1">
             <div className="p-3 rounded-xl bg-[#14141A]/85 border border-[#2A2A35] flex items-center gap-3 backdrop-blur-md">
-              <div className="w-8 h-8 rounded-lg bg-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00] shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-[#CC5500]/18 flex items-center justify-center text-[#FF8A3D] shrink-0">
                 <CheckCircle2 className="w-4 h-4" />
               </div>
               <div className="text-xs">
@@ -147,17 +147,17 @@ export const RegisterPage: React.FC = () => {
           {/* Mobile Top Brand Bar */}
           <div className="lg:hidden flex items-center justify-between mb-1">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#FF6B00] to-[#FF8A33] flex items-center justify-center text-white">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#CC5500] to-[#E06A10] flex items-center justify-center text-white">
                 <Sparkles className="w-4 h-4" />
               </div>
               <span className="text-base font-bold text-[#F5F5F7]">
-                Aura Palms <span className="text-[#FF6B00]">Resort</span>
+                Aura Palms <span className="text-[#FF8A3D]">Resort</span>
               </span>
             </Link>
 
             <Link
               to="/"
-              className="text-xs text-[#A1A1AA] hover:text-[#FF6B00] flex items-center gap-1"
+              className="text-xs text-[#A1A1AA] hover:text-[#FF8A3D] flex items-center gap-1"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Website</span>
@@ -167,7 +167,7 @@ export const RegisterPage: React.FC = () => {
           {/* Form Header */}
           <div className="text-left space-y-1">
             <h1 className="text-2xl font-bold tracking-tight text-[#F5F5F7] flex items-center gap-2">
-              <UserCheck className="w-5 h-5 text-[#FF6B00]" />
+              <UserCheck className="w-5 h-5 text-[#FF8A3D]" />
               <span>Create Guest Account</span>
             </h1>
             <p className="text-xs text-[#A1A1AA]">
@@ -236,9 +236,9 @@ export const RegisterPage: React.FC = () => {
               <button
                 type="button"
                 onClick={handleInstantGuestDemo}
-                className="w-full py-2 px-3 rounded-xl bg-[#1C1C24] hover:bg-[#1C1C24]/80 border border-[#2A2A35] hover:border-[#FF6B00] text-xs font-semibold text-[#F5F5F7] hover:text-[#FF6B00] transition-all flex items-center justify-center gap-2 active:scale-95"
+                className="w-full py-2 px-3 rounded-xl bg-[#1C1C24] hover:bg-[#1C1C24]/80 border border-[#2A2A35] hover:border-[#CC5500] text-xs font-semibold text-[#F5F5F7] hover:text-[#FF8A3D] transition-all flex items-center justify-center gap-2 active:scale-95"
               >
-                <Sparkles className="w-3.5 h-3.5 text-[#FF6B00]" />
+                <Sparkles className="w-3.5 h-3.5 text-[#FF8A3D]" />
                 <span>1-Click Test: Sign in as Verified Guest</span>
               </button>
             </div>
@@ -248,7 +248,7 @@ export const RegisterPage: React.FC = () => {
               <span className="text-[#A1A1AA]">Already have an account?</span>
               <Link
                 to="/login"
-                className="text-xs font-semibold text-[#FF6B00] hover:text-[#FF8A33] transition-colors flex items-center gap-1"
+                className="text-xs font-semibold text-[#FF8A3D] hover:text-[#E06A10] transition-colors flex items-center gap-1"
               >
                 <span>Sign In to System</span>
                 <ArrowRight className="w-3 h-3" />
@@ -261,7 +261,7 @@ export const RegisterPage: React.FC = () => {
             <Link to="/" className="hover:text-[#F5F5F7] flex items-center gap-1">
               <ArrowLeft className="w-3 h-3" /> Aura Palms Website
             </Link>
-            <span>Staff member? <Link to="/login" className="text-[#FF6B00] hover:underline">Staff Login</Link></span>
+            <span>Staff member? <Link to="/login" className="text-[#FF8A3D] hover:underline">Staff Login</Link></span>
           </div>
         </div>
       </div>

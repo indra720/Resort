@@ -32,7 +32,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder={searchPlaceholder}
-          className="w-full min-h-[44px] pl-10 pr-9 text-xs sm:text-sm bg-[#1C1C24] text-[#F5F5F7] placeholder:text-[#A1A1AA] border border-[#2A2A35] rounded-lg focus:outline-none focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00]"
+          className="w-full min-h-[44px] pl-10 pr-9 text-xs sm:text-sm bg-[#1C1C24] text-[#F5F5F7] placeholder:text-[#A1A1AA] border border-[#2A2A35] rounded-lg focus:outline-none focus:border-[#CC5500] focus:ring-1 focus:ring-[#CC5500]"
         />
         {searchQuery && (
           <button

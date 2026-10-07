@@ -14,10 +14,13 @@ export default {
         elevated: '#1C1C24',
         border: '#2A2A35',
         
-        // Brand Primary & Hover Orange
+        // Brand Primary & Hover Dark Orange
         primary: {
-          DEFAULT: '#FF6B00',
-          hover: '#FF8A33',
+          DEFAULT: '#CC5500',
+          hover: '#E06A10',
+          button: '#B84C00',
+          accent: '#FF8A3D',
+          soft: 'rgba(204, 85, 0, 0.18)',
           foreground: '#FFFFFF',
         },
 

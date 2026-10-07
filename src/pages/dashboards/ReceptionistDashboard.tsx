@@ -31,7 +31,7 @@ export const ReceptionistDashboard: React.FC = () => {
     {
       key: 'bookingCode',
       header: 'Reservation',
-      accessor: (b) => <span className="font-semibold text-[#FF6B00]">{b.bookingCode}</span>,
+      accessor: (b) => <span className="font-semibold text-[#FF8A3D]">{b.bookingCode}</span>,
       sortable: true,
       sortValue: (b) => b.bookingCode,
     },
@@ -93,7 +93,7 @@ export const ReceptionistDashboard: React.FC = () => {
             variant="outline"
             size="md"
             onClick={() => navigate('/check-in-out')}
-            leftIcon={<Key className="w-4 h-4 text-[#FF6B00]" />}
+            leftIcon={<Key className="w-4 h-4 text-[#FF8A3D]" />}
           >
             Check-In Terminal
           </Button>
@@ -147,7 +147,7 @@ export const ReceptionistDashboard: React.FC = () => {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <h3 className="text-base font-semibold text-[#F5F5F7] flex items-center gap-2">
-            <Search className="w-4 h-4 text-[#FF6B00]" />
+            <Search className="w-4 h-4 text-[#FF8A3D]" />
             <span>Today's Arrival Queue</span>
           </h3>
           <Button variant="ghost" size="sm" onClick={() => navigate('/bookings')}>
@@ -221,7 +221,7 @@ export const ReceptionistDashboard: React.FC = () => {
                 Reservation #{selectedBooking?.bookingCode || 'RES-8822'}
               </p>
             </div>
-            <span className="text-xs font-semibold text-[#FF6B00] bg-[#FF6B00]/10 px-2 py-1 rounded">
+            <span className="text-xs font-semibold text-[#FF8A3D] bg-[#CC5500]/18 px-2 py-1 rounded">
               Room #{selectedBooking?.roomNumber || '201'}
             </span>
           </div>

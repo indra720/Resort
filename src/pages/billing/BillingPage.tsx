@@ -90,7 +90,7 @@ export const BillingPage: React.FC = () => {
     {
       key: 'invoiceNumber',
       header: 'Tax Invoice #',
-      accessor: (i) => <span className="font-bold text-[#FF6B00]">{i.invoiceNumber}</span>,
+      accessor: (i) => <span className="font-bold text-[#FF8A3D]">{i.invoiceNumber}</span>,
       sortable: true,
       sortValue: (i) => i.invoiceNumber,
     },

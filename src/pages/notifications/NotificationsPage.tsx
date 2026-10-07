@@ -34,7 +34,7 @@ export const NotificationsPage: React.FC = () => {
   const getIcon = (type: string) => {
     switch (type) {
       case 'booking':
-        return <CalendarCheck className="w-4 h-4 text-[#FF6B00]" />;
+        return <CalendarCheck className="w-4 h-4 text-[#FF8A3D]" />;
       case 'alert':
         return <AlertTriangle className="w-4 h-4 text-[#F59E0B]" />;
       case 'service':
@@ -42,7 +42,7 @@ export const NotificationsPage: React.FC = () => {
       case 'payment':
         return <CreditCard className="w-4 h-4 text-[#22C55E]" />;
       default:
-        return <Bell className="w-4 h-4 text-[#FF6B00]" />;
+        return <Bell className="w-4 h-4 text-[#FF8A3D]" />;
     }
   };
 
@@ -51,7 +51,7 @@ export const NotificationsPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7] flex items-center gap-2">
-            <Bell className="w-6 h-6 text-[#FF6B00]" />
+            <Bell className="w-6 h-6 text-[#FF8A3D]" />
             <span>Resort Notifications Center</span>
           </h1>
           <p className="text-xs sm:text-sm text-[#A1A1AA]">
@@ -85,7 +85,7 @@ export const NotificationsPage: React.FC = () => {
           onClick={() => setFilter('all')}
           className={`px-3 py-1.5 rounded-lg transition-colors font-medium ${
             filter === 'all'
-              ? 'bg-[#FF6B00] text-white'
+              ? 'bg-[#B84C00] text-white'
               : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
           }`}
         >
@@ -95,7 +95,7 @@ export const NotificationsPage: React.FC = () => {
           onClick={() => setFilter('unread')}
           className={`px-3 py-1.5 rounded-lg transition-colors font-medium ${
             filter === 'unread'
-              ? 'bg-[#FF6B00] text-white'
+              ? 'bg-[#B84C00] text-white'
               : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
           }`}
         >
@@ -115,7 +115,7 @@ export const NotificationsPage: React.FC = () => {
               key={item.id}
               className={`p-4 rounded-xl border transition-all flex items-start gap-3.5 ${
                 !item.read
-                  ? 'bg-[#1C1C24] border-[#FF6B00]/40 shadow-sm'
+                  ? 'bg-[#1C1C24] border-[#CC5500]/40 shadow-sm'
                   : 'bg-[#14141A] border-[#2A2A35]'
               }`}
             >
@@ -132,7 +132,7 @@ export const NotificationsPage: React.FC = () => {
               </div>
 
               {!item.read && (
-                <div className="w-2 h-2 rounded-full bg-[#FF6B00] shrink-0 mt-1" />
+                <div className="w-2 h-2 rounded-full bg-[#B84C00] shrink-0 mt-1" />
               )}
             </div>
           ))

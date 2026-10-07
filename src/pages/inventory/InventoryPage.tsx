@@ -91,7 +91,7 @@ export const InventoryPage: React.FC = () => {
     {
       key: 'itemCode',
       header: 'Item SKU',
-      accessor: (s) => <span className="font-bold text-[#FF6B00]">{s.itemCode}</span>,
+      accessor: (s) => <span className="font-bold text-[#FF8A3D]">{s.itemCode}</span>,
       sortable: true,
       sortValue: (s) => s.itemCode,
     },

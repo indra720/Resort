@@ -75,7 +75,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
         >
           {/* Search Header */}
           <div className="flex items-center px-4 border-b border-[#2A2A35] bg-[#1C1C24]/50">
-            <Search className="w-5 h-5 text-[#FF6B00] shrink-0 mr-3" />
+            <Search className="w-5 h-5 text-[#FF8A3D] shrink-0 mr-3" />
             <input
               type="text"
               autoFocus
@@ -115,10 +115,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   <button
                     key={item.path}
                     onClick={() => handleSelect(item.path)}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm text-[#F5F5F7] hover:bg-[#1C1C24] hover:text-[#FF6B00] transition-colors group text-left"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm text-[#F5F5F7] hover:bg-[#1C1C24] hover:text-[#FF8A3D] transition-colors group text-left"
                   >
                     <span>{item.label}</span>
-                    <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 text-[#FF6B00] transition-opacity" />
+                    <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 text-[#FF8A3D] transition-opacity" />
                   </button>
                 ))}
               </div>
@@ -138,13 +138,13 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                       className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm bg-[#1C1C24]/40 hover:bg-[#1C1C24] transition-colors text-left"
                     >
                       <div className="flex items-center gap-2.5">
-                        <BedDouble className="w-4 h-4 text-[#FF6B00]" />
+                        <BedDouble className="w-4 h-4 text-[#FF8A3D]" />
                         <span className="font-medium text-[#F5F5F7]">Room #{room.roomNumber}</span>
                         <span className="text-xs text-[#A1A1AA]">{room.category}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <StatusBadge status={room.status} size="sm" />
-                        <span className="text-xs font-semibold text-[#FF6B00]">
+                        <span className="text-xs font-semibold text-[#FF8A3D]">
                           {formatINR(room.ratePerNight)}
                         </span>
                       </div>

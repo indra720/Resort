@@ -31,10 +31,10 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
       dot: 'bg-[#22C55E]',
     },
     Occupied: {
-      bg: 'bg-[#FF6B00]/10',
-      text: 'text-[#FF6B00]',
-      border: 'border-[#FF6B00]/30',
-      dot: 'bg-[#FF6B00]',
+      bg: 'bg-[#CC5500]/18',
+      text: 'text-[#FF8A3D]',
+      border: 'border-[#CC5500]/30',
+      dot: 'bg-[#CC5500]',
     },
     Reserved: {
       bg: 'bg-[#3B82F6]/10',

@@ -16,7 +16,7 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
 
   return (
-    <div className="h-screen w-full bg-[#0B0B0F] text-[#F5F5F7] flex flex-col font-sans selection:bg-[#FF6B00] selection:text-white overflow-hidden">
+    <div className="h-screen w-full bg-[#0B0B0F] text-[#F5F5F7] flex flex-col font-sans selection:bg-[#CC5500] selection:text-white overflow-hidden">
       {/* Top Bar with Glass Blur - Fixed */}
       <TopBar
         isSidebarCollapsed={isSidebarCollapsed}
@@ -27,7 +27,7 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
       {/* Guest Hospitality Welcome Banner - Fixed */}
       <div className="shrink-0 bg-gradient-to-r from-[#14141A] via-[#1C1C24] to-[#14141A] border-b border-[#2A2A35] px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between text-xs gap-2 z-10">
         <div className="flex items-center gap-2 text-[#F5F5F7]">
-          <Sparkles className="w-4 h-4 text-[#FF6B00]" />
+          <Sparkles className="w-4 h-4 text-[#FF8A3D]" />
           <span>Guest Experience Portal</span>
           <span className="text-[#A1A1AA] hidden sm:inline">| Complimentary Wi-Fi Active</span>
         </div>
@@ -37,7 +37,7 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
             onClick={() =>
               toast.info('Resort Wi-Fi', 'SSID: AuraPalms_Guest | Passcode: luxury@stay26')
             }
-            className="flex items-center gap-1.5 text-[#A1A1AA] hover:text-[#FF6B00] transition-colors"
+            className="flex items-center gap-1.5 text-[#A1A1AA] hover:text-[#FF8A3D] transition-colors"
           >
             <Wifi className="w-3.5 h-3.5" />
             <span className="text-[11px]">Wi-Fi Info</span>
@@ -47,7 +47,7 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
             onClick={() =>
               toast.success('Front Desk Call', 'Front desk notified. An attendant is contacting you.')
             }
-            className="flex items-center gap-1.5 text-[#FF6B00] hover:text-[#FF8A33] transition-colors font-medium"
+            className="flex items-center gap-1.5 text-[#FF8A3D] hover:text-[#E06A10] transition-colors font-medium"
           >
             <PhoneCall className="w-3.5 h-3.5" />
             <span className="text-[11px]">Dial Concierge (Ext. 0)</span>

@@ -59,7 +59,7 @@ export const StaffListPage: React.FC = () => {
       header: 'Employee Name',
       accessor: (u) => (
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-[#1C1C24] border border-[#2A2A35] flex items-center justify-center font-bold text-xs text-[#FF6B00]">
+          <div className="w-8 h-8 rounded-full bg-[#1C1C24] border border-[#2A2A35] flex items-center justify-center font-bold text-xs text-[#FF8A3D]">
             {u.name.slice(0, 2).toUpperCase()}
           </div>
           <div>
@@ -75,7 +75,7 @@ export const StaffListPage: React.FC = () => {
       key: 'role',
       header: 'Role & Permissions',
       accessor: (u) => (
-        <span className="text-xs px-2.5 py-1 rounded-full bg-[#FF6B00]/10 text-[#FF6B00] border border-[#FF6B00]/30 font-medium">
+        <span className="text-xs px-2.5 py-1 rounded-full bg-[#CC5500]/18 text-[#FF8A3D] border border-[#CC5500]/30 font-medium">
           {u.role}
         </span>
       ),

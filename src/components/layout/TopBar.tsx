@@ -106,12 +106,12 @@ export const TopBar: React.FC<TopBarProps> = ({
             onClick={() => navigate('/dashboard')}
             className="flex items-center gap-2.5 cursor-pointer select-none"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#FF6B00] to-[#FF8A33] flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,107,0,0.3)] shrink-0">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#CC5500] to-[#E06A10] flex items-center justify-center text-white shadow-[0_0_15px_rgba(204,85,0,0.3)] shrink-0">
               <Sparkles className="w-4 h-4" />
             </div>
             <div className="hidden lg:block leading-tight">
               <span className="text-sm sm:text-base font-semibold tracking-tight text-[#F5F5F7]">
-                Aura Palms <span className="text-[#FF6B00]">Resort</span>
+                Aura Palms <span className="text-[#FF8A3D]">Resort</span>
               </span>
               <span className="block text-[10px] text-[#A1A1AA] uppercase tracking-wider font-medium">
                 Luxury & Heritage
@@ -125,10 +125,10 @@ export const TopBar: React.FC<TopBarProps> = ({
           <button
             type="button"
             onClick={() => setIsSearchOpen(true)}
-            className="w-full min-h-[40px] px-3.5 py-2 rounded-xl bg-[#14141A] border border-[#2A2A35] hover:border-[#FF6B00]/50 transition-colors flex items-center justify-between text-xs text-[#A1A1AA]"
+            className="w-full min-h-[40px] px-3.5 py-2 rounded-xl bg-[#14141A] border border-[#2A2A35] hover:border-[#CC5500]/50 transition-colors flex items-center justify-between text-xs text-[#A1A1AA]"
           >
             <div className="flex items-center gap-2">
-              <Search className="w-4 h-4 text-[#FF6B00]" />
+              <Search className="w-4 h-4 text-[#FF8A3D]" />
               <span>Search rooms, guests, bookings...</span>
             </div>
             <kbd className="px-1.5 py-0.5 rounded bg-[#1C1C24] border border-[#2A2A35] text-[10px] text-[#A1A1AA]">
@@ -146,7 +146,7 @@ export const TopBar: React.FC<TopBarProps> = ({
             className="sm:hidden w-11 h-11 flex items-center justify-center rounded-lg text-[#F5F5F7] hover:bg-[#1C1C24] transition-colors"
             aria-label="Search"
           >
-            <Search className="w-5 h-5 text-[#FF6B00]" />
+            <Search className="w-5 h-5 text-[#FF8A3D]" />
           </button>
 
           {/* Notifications Dropdown */}
@@ -159,7 +159,7 @@ export const TopBar: React.FC<TopBarProps> = ({
             >
               <Bell className="w-5 h-5" />
               {unreadCount > 0 && (
-                <span className="absolute top-2 right-2 w-4 h-4 rounded-full bg-[#FF6B00] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-[#0B0B0F]">
+                <span className="absolute top-2 right-2 w-4 h-4 rounded-full bg-[#CC5500] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-[#0B0B0F]">
                   {unreadCount}
                 </span>
               )}
@@ -172,7 +172,7 @@ export const TopBar: React.FC<TopBarProps> = ({
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-[#F5F5F7]">Notifications</span>
                     {unreadCount > 0 && (
-                      <span className="px-1.5 py-0.2 rounded-full bg-[#FF6B00]/20 text-[#FF6B00] text-[11px] font-medium">
+                      <span className="px-1.5 py-0.2 rounded-full bg-[#CC5500]/20 text-[#FF8A3D] text-[11px] font-medium">
                         {unreadCount} new
                       </span>
                     )}
@@ -180,7 +180,7 @@ export const TopBar: React.FC<TopBarProps> = ({
                   {unreadCount > 0 && (
                     <button
                       onClick={handleMarkAllRead}
-                      className="text-xs text-[#FF6B00] hover:text-[#FF8A33] flex items-center gap-1"
+                      className="text-xs text-[#FF8A3D] hover:text-[#E06A10] flex items-center gap-1"
                     >
                       <CheckCheck className="w-3.5 h-3.5" /> Mark all read
                     </button>
@@ -192,7 +192,7 @@ export const TopBar: React.FC<TopBarProps> = ({
                     <div
                       key={notif.id}
                       className={`p-3.5 hover:bg-[#1C1C24]/60 transition-colors text-left ${
-                        !notif.read ? 'bg-[#FF6B00]/5' : ''
+                        !notif.read ? 'bg-[#CC5500]/10' : ''
                       }`}
                     >
                       <div className="flex items-start justify-between gap-2">
@@ -215,14 +215,14 @@ export const TopBar: React.FC<TopBarProps> = ({
               className="min-h-[44px] flex items-center gap-2 p-1.5 rounded-xl hover:bg-[#1C1C24] border border-transparent hover:border-[#2A2A35] transition-all"
               aria-label="User Profile and Role Menu"
             >
-              <div className="w-8 h-8 rounded-full bg-[#1C1C24] border border-[#FF6B00]/40 text-[#FF6B00] flex items-center justify-center font-bold text-xs shrink-0">
+              <div className="w-8 h-8 rounded-full bg-[#1C1C24] border border-[#CC5500]/40 text-[#FF8A3D] flex items-center justify-center font-bold text-xs shrink-0">
                 {user?.name.slice(0, 2).toUpperCase() || 'AD'}
               </div>
               <div className="hidden md:flex flex-col text-left leading-tight pr-1">
                 <span className="text-xs font-medium text-[#F5F5F7] max-w-[110px] truncate">
                   {user?.name || 'Administrator'}
                 </span>
-                <span className="text-[10px] text-[#FF6B00] font-medium">{role}</span>
+                <span className="text-[10px] text-[#FF8A3D] font-medium">{role}</span>
               </div>
               <ChevronDown className="w-3.5 h-3.5 text-[#A1A1AA] hidden md:block" />
             </button>
@@ -234,7 +234,7 @@ export const TopBar: React.FC<TopBarProps> = ({
                 <div className="p-4 bg-[#1C1C24]/50">
                   <p className="text-sm font-semibold text-[#F5F5F7]">{user?.name}</p>
                   <p className="text-xs text-[#A1A1AA]">{user?.email}</p>
-                  <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FF6B00]/15 border border-[#FF6B00]/30 text-[#FF6B00] text-[11px] font-semibold">
+                  <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#CC5500]/18 border border-[#CC5500]/30 text-[#FF8A3D] text-[11px] font-semibold">
                     <Shield className="w-3 h-3" /> Active: {role}
                   </div>
                 </div>
@@ -256,8 +256,8 @@ export const TopBar: React.FC<TopBarProps> = ({
                         }}
                         className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left ${
                           role === r
-                            ? 'bg-[#FF6B00] text-white font-medium'
-                            : 'text-[#F5F5F7] hover:bg-[#1C1C24] hover:text-[#FF6B00]'
+                            ? 'bg-[#CC5500] text-white font-medium'
+                            : 'text-[#F5F5F7] hover:bg-[#1C1C24] hover:text-[#FF8A3D]'
                         }`}
                       >
                         <span>{r}</span>

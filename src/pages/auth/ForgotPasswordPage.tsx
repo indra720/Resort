@@ -26,7 +26,7 @@ export const ForgotPasswordPage: React.FC = () => {
       <div className="w-full max-w-md space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="inline-flex w-12 h-12 rounded-2xl bg-[#FF6B00]/15 border border-[#FF6B00]/30 items-center justify-center text-[#FF6B00] mb-1">
+          <div className="inline-flex w-12 h-12 rounded-2xl bg-[#CC5500]/18 border border-[#CC5500]/30 items-center justify-center text-[#FF8A3D] mb-1">
             <KeyRound className="w-6 h-6" />
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-[#F5F5F7]">
@@ -81,7 +81,7 @@ export const ForgotPasswordPage: React.FC = () => {
               <div className="pt-2 text-center">
                 <Link
                   to="/login"
-                  className="inline-flex items-center gap-1.5 text-xs text-[#A1A1AA] hover:text-[#FF6B00] transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#A1A1AA] hover:text-[#FF8A3D] transition-colors"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" /> Back to Sign In
                 </Link>

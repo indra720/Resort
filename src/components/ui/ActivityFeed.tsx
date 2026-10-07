@@ -31,7 +31,7 @@ export const ActivityFeed: React.FC<ActivityFeedProps> = ({
     <Card className={cn('text-left flex flex-col h-full', className)}>
       <CardHeader className="pb-3 border-b-0">
         <CardTitle className="text-base sm:text-lg flex items-center gap-2">
-          <Sparkles className="w-4 h-4 text-[#FF6B00]" />
+          <Sparkles className="w-4 h-4 text-[#FF8A3D]" />
           <span>{title}</span>
         </CardTitle>
       </CardHeader>
@@ -43,13 +43,13 @@ export const ActivityFeed: React.FC<ActivityFeedProps> = ({
             return (
               <div key={item.id} className="relative group text-left">
                 {/* Timeline node circle */}
-                <div className="absolute -left-[27px] top-1 w-4 h-4 rounded-full bg-[#14141A] border-2 border-[#FF6B00] flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#FF6B00]" />
+                <div className="absolute -left-[27px] top-1 w-4 h-4 rounded-full bg-[#14141A] border-2 border-[#CC5500] flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#B84C00]" />
                 </div>
 
                 <div className="space-y-0.5">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-xs font-semibold text-[#F5F5F7] group-hover:text-[#FF6B00] transition-colors">
+                    <span className="text-xs font-semibold text-[#F5F5F7] group-hover:text-[#FF8A3D] transition-colors">
                       {item.title}
                     </span>
                     <span className="text-[10px] text-[#A1A1AA] shrink-0">{item.time}</span>
@@ -60,7 +60,7 @@ export const ActivityFeed: React.FC<ActivityFeedProps> = ({
                   </p>
 
                   {item.user && (
-                    <span className="inline-block text-[10px] text-[#FF6B00] bg-[#FF6B00]/10 px-1.5 py-0.5 rounded font-medium mt-1">
+                    <span className="inline-block text-[10px] text-[#FF8A3D] bg-[#CC5500]/18 px-1.5 py-0.5 rounded font-medium mt-1">
                       By: {item.user}
                     </span>
                   )}

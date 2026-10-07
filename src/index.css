@@ -8,8 +8,11 @@
     --card: #14141A;
     --elevated: #1C1C24;
     --border: #2A2A35;
-    --primary: #FF6B00;
-    --primary-hover: #FF8A33;
+    --primary: #CC5500;
+    --primary-hover: #E06A10;
+    --primary-button: #B84C00;
+    --primary-accent: #FF8A3D;
+    --primary-soft: rgba(204, 85, 0, 0.18);
     --primary-foreground: #FFFFFF;
     --foreground: #F5F5F7;
     --muted-foreground: #A1A1AA;
@@ -32,14 +35,14 @@
     overflow-x: hidden;
   }
 
-  /* Universal Orange Focus Ring for Accessibility */
+  /* Universal Dark Orange Focus Ring for Accessibility */
   *:focus-visible {
-    outline: 2px solid #FF6B00;
+    outline: 2px solid #CC5500;
     outline-offset: 2px;
   }
 
   ::selection {
-    background-color: #FF6B00;
+    background-color: #CC5500;
     color: #ffffff;
   }
 }
@@ -60,7 +63,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF6B00;
+  background: #CC5500;
 }
 
 /* Utility to ensure mobile touch targets are at least 44px */

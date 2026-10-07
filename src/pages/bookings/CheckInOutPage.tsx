@@ -56,7 +56,7 @@ export const CheckInOutPage: React.FC = () => {
           onClick={() => setActiveTab('checkin')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'checkin'
-              ? 'border-[#FF6B00] text-[#FF6B00]'
+              ? 'border-[#CC5500] text-[#FF8A3D]'
               : 'border-transparent text-[#A1A1AA] hover:text-[#F5F5F7]'
           }`}
         >
@@ -68,7 +68,7 @@ export const CheckInOutPage: React.FC = () => {
           onClick={() => setActiveTab('checkout')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'checkout'
-              ? 'border-[#FF6B00] text-[#FF6B00]'
+              ? 'border-[#CC5500] text-[#FF8A3D]'
               : 'border-transparent text-[#A1A1AA] hover:text-[#F5F5F7]'
           }`}
         >
@@ -94,7 +94,7 @@ export const CheckInOutPage: React.FC = () => {
                 <div className="grid grid-cols-2 gap-2 text-xs text-[#A1A1AA] pt-1">
                   <div>
                     <span className="block text-[11px]">Room Assigned:</span>
-                    <span className="font-semibold text-[#FF6B00] text-sm">
+                    <span className="font-semibold text-[#FF8A3D] text-sm">
                       Room #{b.roomNumber}
                     </span>
                   </div>
@@ -150,7 +150,7 @@ export const CheckInOutPage: React.FC = () => {
 
                 <div className="text-xs text-[#A1A1AA]">
                   <span>Occupying: </span>
-                  <span className="font-bold text-[#FF6B00]">Room #{b.roomNumber}</span>
+                  <span className="font-bold text-[#FF8A3D]">Room #{b.roomNumber}</span>
                 </div>
 
                 <div className="text-xs text-[#A1A1AA]">
@@ -159,7 +159,7 @@ export const CheckInOutPage: React.FC = () => {
                 </div>
 
                 <div className="p-2.5 rounded-lg bg-[#1C1C24] border border-[#2A2A35] text-xs text-[#A1A1AA] flex items-center gap-2">
-                  <CreditCard className="w-4 h-4 text-[#FF6B00]" />
+                  <CreditCard className="w-4 h-4 text-[#FF8A3D]" />
                   <span>Mini-bar and room service charges cleared.</span>
                 </div>
               </div>

@@ -29,7 +29,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenMore }) => {
                 cn(
                   'flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 px-2 rounded-xl transition-all duration-150',
                   isActive
-                    ? 'text-[#FF6B00] font-semibold'
+                    ? 'text-[#FF8A3D] font-semibold'
                     : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
                 )
               }
@@ -39,7 +39,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenMore }) => {
                   <Icon
                     className={cn(
                       'w-5 h-5 transition-transform duration-150',
-                      isActive ? 'text-[#FF6B00] scale-110' : 'text-[#A1A1AA]'
+                      isActive ? 'text-[#FF8A3D] scale-110' : 'text-[#A1A1AA]'
                     )}
                   />
                   <span className="text-[10px] mt-1 tracking-tight truncate max-w-[64px]">

@@ -83,7 +83,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                 onClick={() => setMethod(item.id as typeof method)}
                 className={`p-2.5 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all text-xs ${
                   isSelected
-                    ? 'bg-[#FF6B00]/15 border-[#FF6B00] text-[#FF6B00] font-semibold'
+                    ? 'bg-[#CC5500]/18 border-[#CC5500] text-[#FF8A3D] font-semibold'
                     : 'bg-[#1C1C24] border-[#2A2A35] text-[#A1A1AA] hover:text-[#F5F5F7]'
                 }`}
               >

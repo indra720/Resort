@@ -45,7 +45,7 @@ export const ResortManagerDashboard: React.FC = () => {
       key: 'ratePerNight',
       header: 'Rate/Night',
       accessor: (r) => (
-        <span className="font-semibold text-[#FF6B00]">{formatINR(r.ratePerNight)}</span>
+        <span className="font-semibold text-[#FF8A3D]">{formatINR(r.ratePerNight)}</span>
       ),
       sortable: true,
       sortValue: (r) => r.ratePerNight,
@@ -143,7 +143,7 @@ export const ResortManagerDashboard: React.FC = () => {
                 }}
               />
               <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }} />
-              <Bar dataKey="arrivals" name="Arrivals" fill="#FF6B00" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="arrivals" name="Arrivals" fill="#FF8A3D" radius={[4, 4, 0, 0]} />
               <Bar dataKey="departures" name="Departures" fill="#3B82F6" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ChartCard>

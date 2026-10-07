@@ -124,7 +124,7 @@ export const ServicesPage: React.FC = () => {
             onClick={() => setSelectedCategory(cat)}
             className={`px-3 py-1.5 text-xs rounded-lg border transition-all ${
               selectedCategory === cat
-                ? 'bg-[#FF6B00] text-white border-[#FF6B00] font-semibold'
+                ? 'bg-[#B84C00] text-white border-[#CC5500] font-semibold'
                 : 'bg-[#14141A] text-[#A1A1AA] border-[#2A2A35] hover:text-[#F5F5F7]'
             }`}
           >
@@ -138,7 +138,7 @@ export const ServicesPage: React.FC = () => {
         {filteredServices.map((srv) => (
           <div
             key={srv.id}
-            className="p-5 rounded-2xl bg-[#14141A] border border-[#2A2A35] hover:border-[#FF6B00]/40 transition-all flex flex-col justify-between space-y-4"
+            className="p-5 rounded-2xl bg-[#14141A] border border-[#2A2A35] hover:border-[#CC5500]/40 transition-all flex flex-col justify-between space-y-4"
           >
             <div className="space-y-2.5">
               <div className="flex items-center justify-between">
@@ -146,7 +146,7 @@ export const ServicesPage: React.FC = () => {
                   {srv.category}
                 </span>
                 <span className="text-xs text-[#A1A1AA] flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5 text-[#FF6B00]" /> {srv.duration}
+                  <Clock className="w-3.5 h-3.5 text-[#FF8A3D]" /> {srv.duration}
                 </span>
               </div>
 
@@ -165,7 +165,7 @@ export const ServicesPage: React.FC = () => {
 
             <div className="pt-3 border-t border-[#2A2A35] flex items-center justify-between">
               <div>
-                <span className="text-base font-bold text-[#FF6B00]">
+                <span className="text-base font-bold text-[#FF8A3D]">
                   {formatINR(srv.price)}
                 </span>
                 <span className="text-[10px] text-[#A1A1AA] block">incl. taxes</span>

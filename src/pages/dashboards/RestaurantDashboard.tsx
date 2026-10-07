@@ -133,7 +133,7 @@ export const RestaurantDashboard: React.FC = () => {
                 }}
                 formatter={(val: number) => [formatINR(val), 'Sales']}
               />
-              <Bar dataKey="sales" name="Sales Revenue" fill="#FF6B00" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="sales" name="Sales Revenue" fill="#FF8A3D" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ChartCard>
         </div>
@@ -150,7 +150,7 @@ export const RestaurantDashboard: React.FC = () => {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <h3 className="text-base font-semibold text-[#F5F5F7] flex items-center gap-2">
-            <Flame className="w-4 h-4 text-[#FF6B00]" />
+            <Flame className="w-4 h-4 text-[#FF8A3D]" />
             <span>Active KOT Orders (Kitchen Display)</span>
           </h3>
           <Button variant="ghost" size="sm" onClick={() => navigate('/restaurant')}>
@@ -167,9 +167,9 @@ export const RestaurantDashboard: React.FC = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <span className="font-bold text-sm text-[#F5F5F7]">{ord.id}</span>
-                  <p className="text-xs text-[#FF6B00] font-medium">{ord.table}</p>
+                  <p className="text-xs text-[#FF8A3D] font-medium">{ord.table}</p>
                 </div>
-                <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#FF6B00]/15 text-[#FF6B00] font-semibold border border-[#FF6B00]/30">
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#CC5500]/18 text-[#FF8A3D] font-semibold border border-[#CC5500]/30">
                   {ord.status}
                 </span>
               </div>

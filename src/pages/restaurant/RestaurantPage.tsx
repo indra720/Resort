@@ -216,7 +216,7 @@ export const RestaurantPage: React.FC = () => {
           onClick={() => setActiveTab('orders')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'orders'
-              ? 'border-[#FF6B00] text-[#FF6B00]'
+              ? 'border-[#CC5500] text-[#FF8A3D]'
               : 'border-transparent text-[#A1A1AA] hover:text-[#F5F5F7]'
           }`}
         >
@@ -228,7 +228,7 @@ export const RestaurantPage: React.FC = () => {
           onClick={() => setActiveTab('menu')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'menu'
-              ? 'border-[#FF6B00] text-[#FF6B00]'
+              ? 'border-[#CC5500] text-[#FF8A3D]'
               : 'border-transparent text-[#A1A1AA] hover:text-[#F5F5F7]'
           }`}
         >
@@ -240,7 +240,7 @@ export const RestaurantPage: React.FC = () => {
           onClick={() => setActiveTab('tables')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'tables'
-              ? 'border-[#FF6B00] text-[#FF6B00]'
+              ? 'border-[#CC5500] text-[#FF8A3D]'
               : 'border-transparent text-[#A1A1AA] hover:text-[#F5F5F7]'
           }`}
         >
@@ -257,7 +257,7 @@ export const RestaurantPage: React.FC = () => {
               const columnOrders = orders.filter((o) => o.status === st);
               const headerColors: Record<string, string> = {
                 New: 'bg-[#3B82F6]',
-                Preparing: 'bg-[#FF6B00]',
+                Preparing: 'bg-[#B84C00]',
                 Ready: 'bg-[#F59E0B]',
                 Served: 'bg-[#22C55E]',
               };
@@ -286,7 +286,7 @@ export const RestaurantPage: React.FC = () => {
                         <div className="flex justify-between items-start">
                           <div>
                             <span className="font-bold text-sm text-[#F5F5F7]">{ord.id}</span>
-                            <p className="text-xs text-[#FF6B00] font-semibold">{ord.table}</p>
+                            <p className="text-xs text-[#FF8A3D] font-semibold">{ord.table}</p>
                           </div>
                           <span className="text-[10px] text-[#A1A1AA]">{ord.time}</span>
                         </div>
@@ -373,7 +373,7 @@ export const RestaurantPage: React.FC = () => {
               </div>
 
               <div className="flex items-center justify-between pt-3 border-t border-[#2A2A35]">
-                <span className="text-base font-bold text-[#FF6B00]">
+                <span className="text-base font-bold text-[#FF8A3D]">
                   {formatINR(item.price)}
                 </span>
                 <span className="text-[11px] text-[#A1A1AA]">+ 5% GST</span>
@@ -389,7 +389,7 @@ export const RestaurantPage: React.FC = () => {
           {tables.map((tbl) => {
             const statusColors: Record<string, string> = {
               Vacant: 'border-[#22C55E]/40 text-[#22C55E] bg-[#22C55E]/5',
-              Occupied: 'border-[#FF6B00]/40 text-[#FF6B00] bg-[#FF6B00]/5',
+              Occupied: 'border-[#CC5500]/40 text-[#FF8A3D] bg-[#CC5500]/10',
               Reserved: 'border-[#3B82F6]/40 text-[#3B82F6] bg-[#3B82F6]/5',
             };
 

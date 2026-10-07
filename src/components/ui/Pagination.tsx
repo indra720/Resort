@@ -59,7 +59,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         <div className="text-center sm:text-left">
           Showing <span className="font-semibold text-[#F5F5F7]">{startItem}</span> to{' '}
           <span className="font-semibold text-[#F5F5F7]">{endItem}</span> of{' '}
-          <span className="font-semibold text-[#FF6B00]">{totalItems}</span> records
+          <span className="font-semibold text-[#FF8A3D]">{totalItems}</span> records
         </div>
       )}
 
@@ -70,7 +70,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           type="button"
           disabled={currentPage === 1}
           onClick={() => onPageChange(1)}
-          className="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg bg-[#14141A] border border-[#2A2A35] text-[#F5F5F7] disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#FF6B00] hover:text-[#FF6B00] transition-colors"
+          className="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg bg-[#14141A] border border-[#2A2A35] text-[#F5F5F7] disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#CC5500] hover:text-[#FF8A3D] transition-colors"
           aria-label="First page"
         >
           <ChevronsLeft className="w-4 h-4" />
@@ -81,7 +81,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           type="button"
           disabled={currentPage === 1}
           onClick={() => onPageChange(currentPage - 1)}
-          className="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg bg-[#14141A] border border-[#2A2A35] text-[#F5F5F7] disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#FF6B00] hover:text-[#FF6B00] transition-colors"
+          className="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg bg-[#14141A] border border-[#2A2A35] text-[#F5F5F7] disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#CC5500] hover:text-[#FF8A3D] transition-colors"
           aria-label="Previous page"
         >
           <ChevronLeft className="w-4 h-4" />
@@ -107,8 +107,8 @@ export const Pagination: React.FC<PaginationProps> = ({
                 className={cn(
                   'w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg text-xs font-medium transition-colors',
                   isActive
-                    ? 'bg-[#FF6B00] text-white font-semibold'
-                    : 'bg-[#14141A] border border-[#2A2A35] text-[#F5F5F7] hover:border-[#FF6B00] hover:text-[#FF6B00]'
+                    ? 'bg-[#B84C00] text-white font-semibold'
+                    : 'bg-[#14141A] border border-[#2A2A35] text-[#F5F5F7] hover:border-[#CC5500] hover:text-[#FF8A3D]'
                 )}
               >
                 {pageNum}
@@ -122,7 +122,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           type="button"
           disabled={currentPage === totalPages || totalPages === 0}
           onClick={() => onPageChange(currentPage + 1)}
-          className="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg bg-[#14141A] border border-[#2A2A35] text-[#F5F5F7] disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#FF6B00] hover:text-[#FF6B00] transition-colors"
+          className="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg bg-[#14141A] border border-[#2A2A35] text-[#F5F5F7] disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#CC5500] hover:text-[#FF8A3D] transition-colors"
           aria-label="Next page"
         >
           <ChevronRight className="w-4 h-4" />
@@ -133,7 +133,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           type="button"
           disabled={currentPage === totalPages || totalPages === 0}
           onClick={() => onPageChange(totalPages)}
-          className="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg bg-[#14141A] border border-[#2A2A35] text-[#F5F5F7] disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#FF6B00] hover:text-[#FF6B00] transition-colors"
+          className="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg bg-[#14141A] border border-[#2A2A35] text-[#F5F5F7] disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#CC5500] hover:text-[#FF8A3D] transition-colors"
           aria-label="Last page"
         >
           <ChevronsRight className="w-4 h-4" />

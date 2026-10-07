@@ -41,14 +41,14 @@ export const ProfilePage: React.FC = () => {
 
       {/* User Header Summary Card */}
       <div className="p-6 rounded-2xl bg-[#14141A] border border-[#2A2A35] flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
-        <div className="w-16 h-16 rounded-full bg-[#1C1C24] border-2 border-[#FF6B00] flex items-center justify-center font-bold text-xl text-[#FF6B00] shrink-0">
+        <div className="w-16 h-16 rounded-full bg-[#1C1C24] border-2 border-[#CC5500] flex items-center justify-center font-bold text-xl text-[#FF8A3D] shrink-0">
           {name.slice(0, 2).toUpperCase()}
         </div>
 
         <div className="space-y-1 flex-1">
           <div className="flex flex-col sm:flex-row sm:items-center gap-2">
             <h2 className="text-lg font-bold text-[#F5F5F7]">{name}</h2>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FF6B00]/15 text-[#FF6B00] text-xs font-semibold border border-[#FF6B00]/30 w-fit mx-auto sm:mx-0">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#CC5500]/18 text-[#FF8A3D] text-xs font-semibold border border-[#CC5500]/30 w-fit mx-auto sm:mx-0">
               <Shield className="w-3.5 h-3.5" /> {role}
             </span>
           </div>

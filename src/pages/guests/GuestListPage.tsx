@@ -42,7 +42,7 @@ export const GuestListPage: React.FC = () => {
       key: 'role',
       header: 'Category',
       accessor: (u) => (
-        <span className="text-xs px-2 py-0.5 rounded-full bg-[#FF6B00]/10 text-[#FF6B00] border border-[#FF6B00]/30 font-medium">
+        <span className="text-xs px-2 py-0.5 rounded-full bg-[#CC5500]/18 text-[#FF8A3D] border border-[#CC5500]/30 font-medium">
           {u.role === 'Guest' ? 'Registered Guest' : 'Staff Profile'}
         </span>
       ),
@@ -111,7 +111,7 @@ export const GuestListPage: React.FC = () => {
         >
           <div className="space-y-4 text-left">
             <div className="p-4 rounded-xl bg-[#1C1C24] border border-[#2A2A35] flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#14141A] border-2 border-[#FF6B00] flex items-center justify-center font-bold text-base text-[#FF6B00]">
+              <div className="w-12 h-12 rounded-full bg-[#14141A] border-2 border-[#CC5500] flex items-center justify-center font-bold text-base text-[#FF8A3D]">
                 {selectedGuest.name.slice(0, 2).toUpperCase()}
               </div>
               <div className="space-y-0.5">
@@ -139,7 +139,7 @@ export const GuestListPage: React.FC = () => {
                         {b.checkIn} to {b.checkOut}
                       </span>
                     </div>
-                    <span className="font-bold text-[#FF6B00]">{formatINR(b.totalAmount)}</span>
+                    <span className="font-bold text-[#FF8A3D]">{formatINR(b.totalAmount)}</span>
                   </div>
                 ))}
               </div>
@@ -148,7 +148,7 @@ export const GuestListPage: React.FC = () => {
             {/* Government ID Document Upload UI */}
             <div className="space-y-2 pt-2 border-t border-[#2A2A35]">
               <h4 className="text-xs font-semibold uppercase text-[#A1A1AA] flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-[#FF6B00]" />
+                <ShieldCheck className="w-4 h-4 text-[#FF8A3D]" />
                 <span>KYC Identity Verification Document (Aadhaar / Passport)</span>
               </h4>
 
@@ -170,8 +170,8 @@ export const GuestListPage: React.FC = () => {
                   </Button>
                 </div>
               ) : (
-                <label className="border-2 border-dashed border-[#2A2A35] hover:border-[#FF6B00] rounded-xl p-5 flex flex-col items-center justify-center cursor-pointer transition-colors bg-[#14141A]/60">
-                  <UploadCloud className="w-8 h-8 text-[#FF6B00] mb-2" />
+                <label className="border-2 border-dashed border-[#2A2A35] hover:border-[#CC5500] rounded-xl p-5 flex flex-col items-center justify-center cursor-pointer transition-colors bg-[#14141A]/60">
+                  <UploadCloud className="w-8 h-8 text-[#FF8A3D] mb-2" />
                   <span className="text-xs font-semibold text-[#F5F5F7]">
                     Upload Scanned ID (PDF, PNG, JPG)
                   </span>

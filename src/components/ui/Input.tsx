@@ -57,7 +57,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               // Dark background & borders
               'bg-[#14141A] text-[#F5F5F7] placeholder:text-[#A1A1AA]/60 border border-[#2A2A35]',
               // Orange focus ring
-              'focus:outline-none focus:border-[#FF6B00] focus:ring-2 focus:ring-[#FF6B00]/25',
+              'focus:outline-none focus:border-[#CC5500] focus:ring-2 focus:ring-[#CC5500]/25',
               // Disabled state
               'disabled:bg-[#1C1C24] disabled:text-[#A1A1AA]/50 disabled:cursor-not-allowed',
               // Padding adjustments for left and right icons

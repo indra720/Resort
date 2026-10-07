@@ -80,7 +80,7 @@ export const ReportsPage: React.FC = () => {
                 onClick={() => setReportType(tab.id as typeof reportType)}
                 className={`px-3 py-2 text-xs rounded-lg flex items-center gap-1.5 transition-all ${
                   isSelected
-                    ? 'bg-[#FF6B00] text-white font-semibold'
+                    ? 'bg-[#B84C00] text-white font-semibold'
                     : 'bg-[#1C1C24] text-[#A1A1AA] hover:text-[#F5F5F7]'
                 }`}
               >
@@ -92,11 +92,11 @@ export const ReportsPage: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2 text-xs">
-          <Calendar className="w-4 h-4 text-[#FF6B00]" />
+          <Calendar className="w-4 h-4 text-[#FF8A3D]" />
           <select
             value={dateRange}
             onChange={(e) => setDateRange(e.target.value)}
-            className="bg-[#1C1C24] text-[#F5F5F7] border border-[#2A2A35] rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-[#FF6B00]"
+            className="bg-[#1C1C24] text-[#F5F5F7] border border-[#2A2A35] rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-[#CC5500]"
           >
             <option value="This Month (Oct 2026)">This Month (Oct 2026)</option>
             <option value="Last 30 Days">Last 30 Days</option>
@@ -169,7 +169,7 @@ export const ReportsPage: React.FC = () => {
                 formatter={(val: number) => [formatINR(val), 'Revenue']}
               />
               <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }} />
-              <Bar dataKey="rooms" name="Room Tariff" fill="#FF6B00" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="rooms" name="Room Tariff" fill="#FF8A3D" radius={[4, 4, 0, 0]} />
               <Bar dataKey="fnb" name="Dining & Bar" fill="#3B82F6" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ChartCard>
@@ -184,7 +184,7 @@ export const ReportsPage: React.FC = () => {
               <CardTitle>Pool Villas (Premium)</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-sm">
-              <div className="text-3xl font-bold text-[#FF6B00]">94.2%</div>
+              <div className="text-3xl font-bold text-[#FF8A3D]">94.2%</div>
               <p className="text-xs text-[#A1A1AA]">Average Length of Stay: 3.4 nights</p>
               <div className="text-xs text-[#22C55E]">Zero vacancy over weekends</div>
             </CardContent>
@@ -254,7 +254,7 @@ export const ReportsPage: React.FC = () => {
         <Card className="text-left">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Receipt className="w-5 h-5 text-[#FF6B00]" />
+              <Receipt className="w-5 h-5 text-[#FF8A3D]" />
               <span>GSTR-3B Tax Liability Statement (State 30 - Goa)</span>
             </CardTitle>
           </CardHeader>
@@ -266,11 +266,11 @@ export const ReportsPage: React.FC = () => {
               </div>
               <div className="p-4 rounded-xl bg-[#1C1C24] border border-[#2A2A35]">
                 <span className="text-xs text-[#A1A1AA] block">CGST 9% (Central Tax)</span>
-                <span className="text-xl font-bold text-[#FF6B00]">{formatINR(435000)}</span>
+                <span className="text-xl font-bold text-[#FF8A3D]">{formatINR(435000)}</span>
               </div>
               <div className="p-4 rounded-xl bg-[#1C1C24] border border-[#2A2A35]">
                 <span className="text-xs text-[#A1A1AA] block">SGST 9% (State Tax)</span>
-                <span className="text-xl font-bold text-[#FF6B00]">{formatINR(435000)}</span>
+                <span className="text-xl font-bold text-[#FF8A3D]">{formatINR(435000)}</span>
               </div>
             </div>
 
