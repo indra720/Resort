@@ -31,18 +31,18 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    // Base styles: rounded, transition, focus ring, font weight, min touch target, no shrink
+    // Base styles: rounded, transition, focus ring, font weight, min touch target
     const baseStyles =
-      'inline-flex items-center justify-center font-medium rounded-lg transition-colors duration-150 select-none whitespace-nowrap shrink-0 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC5500] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B0F] active:scale-[0.98]';
+      'inline-flex items-center justify-center font-medium rounded-lg transition-colors duration-150 select-none whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B84C00] focus-visible:ring-offset-2 focus-visible:ring-offset-white active:scale-[0.98]';
 
-    // Variants according to Dark + Orange Design System
+    // Variants according to White + Dark Orange Design System
     const variantStyles = {
-      primary: 'bg-[#B84C00] text-white hover:bg-[#E06A10] shadow-sm',
-      secondary: 'bg-[#1C1C24] text-[#F5F5F7] border border-[#2A2A35] hover:bg-[#2A2A35] hover:border-[#3E3E4E]',
-      outline: 'bg-transparent text-[#F5F5F7] border border-[#2A2A35] hover:border-[#CC5500] hover:text-[#FF8A3D]',
-      ghost: 'bg-transparent text-[#A1A1AA] hover:bg-[#1C1C24] hover:text-[#F5F5F7]',
-      danger: 'bg-[#EF4444]/15 text-[#EF4444] border border-[#EF4444]/30 hover:bg-[#EF4444] hover:text-white',
-      success: 'bg-[#22C55E]/15 text-[#22C55E] border border-[#22C55E]/30 hover:bg-[#22C55E] hover:text-white',
+      primary: 'bg-[#B84C00] text-white hover:bg-[#9C3800] active:bg-[#8F3800] shadow-sm',
+      secondary: 'bg-white text-[#0F172A] border border-[#E2E8F0] hover:bg-[#F8FAFC] hover:border-[#CBD5E1]',
+      outline: 'bg-transparent text-[#B84C00] border border-[#B84C00] hover:bg-[#B84C00] hover:text-white',
+      ghost: 'bg-transparent text-[#64748B] hover:bg-[#F1F5F9] hover:text-[#0F172A]',
+      danger: 'bg-rose-50 text-[#DC2626] border border-rose-200 hover:bg-[#DC2626] hover:text-white',
+      success: 'bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-600 hover:text-white',
     };
 
     // Sizes ensuring at least 44px touch height on mobile

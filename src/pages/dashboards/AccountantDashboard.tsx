@@ -63,14 +63,14 @@ export const AccountantDashboard: React.FC = () => {
     {
       key: 'invoiceNumber',
       header: 'Invoice #',
-      accessor: (i) => <span className="font-semibold text-[#FF8A3D]">{i.invoiceNumber}</span>,
+      accessor: (i) => <span className="font-semibold text-[#B84C00]">{i.invoiceNumber}</span>,
       sortable: true,
       sortValue: (i) => i.invoiceNumber,
     },
     {
       key: 'guestName',
       header: 'Billed To',
-      accessor: (i) => <span className="font-medium text-[#F5F5F7]">{i.guestName}</span>,
+      accessor: (i) => <span className="font-medium text-[#0F172A]">{i.guestName}</span>,
       sortable: true,
       sortValue: (i) => i.guestName,
     },
@@ -83,7 +83,7 @@ export const AccountantDashboard: React.FC = () => {
       key: 'gstAmount',
       header: 'GST Breakup',
       accessor: (i) => (
-        <span className="text-xs text-[#A1A1AA]">
+        <span className="text-xs text-[#64748B]">
           {formatINR(i.gstAmount)} ({i.gstRate}%)
         </span>
       ),
@@ -92,7 +92,7 @@ export const AccountantDashboard: React.FC = () => {
       key: 'grandTotal',
       header: 'Grand Total',
       accessor: (i) => (
-        <span className="font-bold text-[#F5F5F7]">{formatINR(i.grandTotal)}</span>
+        <span className="font-bold text-[#0F172A]">{formatINR(i.grandTotal)}</span>
       ),
       sortable: true,
       sortValue: (i) => i.grandTotal,
@@ -109,10 +109,10 @@ export const AccountantDashboard: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
             Finance & Tax Accounting Terminal
           </h1>
-          <p className="text-xs sm:text-sm text-[#A1A1AA]">
+          <p className="text-xs sm:text-sm text-[#64748B]">
             GST reconciliation (12% & 18%), payments ledger, and profit-and-loss balances.
           </p>
         </div>
@@ -122,7 +122,7 @@ export const AccountantDashboard: React.FC = () => {
             variant="outline"
             size="md"
             onClick={() => navigate('/reports')}
-            leftIcon={<FileSpreadsheet className="w-4 h-4 text-[#FF8A3D]" />}
+            leftIcon={<FileSpreadsheet className="w-4 h-4 text-[#B84C00]" />}
           >
             GST Audit Report
           </Button>
@@ -182,20 +182,21 @@ export const AccountantDashboard: React.FC = () => {
           data={FINANCE_PNL_DATA}
           margin={{ top: 10, right: 10, left: -10, bottom: 0 }}
         >
-          <XAxis dataKey="month" stroke="#A1A1AA" fontSize={11} tickLine={false} />
+          <XAxis dataKey="month" stroke="#64748B" fontSize={11} tickLine={false} />
           <YAxis
-            stroke="#A1A1AA"
+            stroke="#64748B"
             fontSize={11}
             tickFormatter={(v) => `₹${v / 100000}L`}
             tickLine={false}
           />
           <Tooltip
             contentStyle={{
-              backgroundColor: '#14141A',
-              borderColor: '#2A2A35',
+              backgroundColor: '#FFFFFF',
+              borderColor: '#E2E8F0',
               borderRadius: '8px',
-              color: '#F5F5F7',
+              color: '#0F172A',
               fontSize: '12px',
+              boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
             }}
             formatter={(val: number) => [formatINR(val), 'Amount']}
           />
@@ -209,8 +210,8 @@ export const AccountantDashboard: React.FC = () => {
       {/* Recent Tax Invoices Table */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h3 className="text-base font-semibold text-[#F5F5F7] flex items-center gap-2">
-            <Receipt className="w-4 h-4 text-[#FF8A3D]" />
+          <h3 className="text-base font-semibold text-[#B84C00] flex items-center gap-2">
+            <Receipt className="w-4 h-4 text-[#B84C00]" />
             <span>Recent GST Tax Invoices</span>
           </h3>
           <Button variant="ghost" size="sm" onClick={() => navigate('/billing')}>

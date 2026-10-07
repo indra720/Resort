@@ -16,7 +16,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenMore }) => {
   return (
     <nav
       aria-label="Mobile Bottom Navigation"
-      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0B0B0F]/95 backdrop-blur-lg border-t border-[#2A2A35] px-2 py-1 pb-[max(0.5rem,env(safe-area-inset-bottom))]"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-[#E2E8F0] shadow-lg px-2 py-1 pb-[max(0.5rem,env(safe-area-inset-bottom))]"
     >
       <div className="flex items-center justify-around h-14">
         {primaryItems.map((item) => {
@@ -29,8 +29,8 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenMore }) => {
                 cn(
                   'flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 px-2 rounded-xl transition-all duration-150',
                   isActive
-                    ? 'text-[#FF8A3D] font-semibold'
-                    : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
+                    ? 'text-[#B84C00] font-bold'
+                    : 'text-[#64748B] hover:text-[#0F172A]'
                 )
               }
             >
@@ -39,7 +39,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenMore }) => {
                   <Icon
                     className={cn(
                       'w-5 h-5 transition-transform duration-150',
-                      isActive ? 'text-[#FF8A3D] scale-110' : 'text-[#A1A1AA]'
+                      isActive ? 'text-[#B84C00] scale-110' : 'text-[#64748B]'
                     )}
                   />
                   <span className="text-[10px] mt-1 tracking-tight truncate max-w-[64px]">
@@ -55,11 +55,11 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenMore }) => {
         <button
           type="button"
           onClick={onOpenMore}
-          className="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 px-2 rounded-xl text-[#A1A1AA] hover:text-[#F5F5F7] transition-all"
+          className="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 px-2 rounded-xl text-[#64748B] hover:text-[#0F172A] transition-all"
           aria-label="Open full resort navigation menu"
         >
           <MoreHorizontal className="w-5 h-5" />
-          <span className="text-[10px] mt-1 tracking-tight">More</span>
+          <span className="text-[10px] mt-1 tracking-tight font-medium">More</span>
         </button>
       </div>
     </nav>

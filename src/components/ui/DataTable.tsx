@@ -173,10 +173,10 @@ export function DataTable<T>({
   return (
     <div className="space-y-4 w-full">
       {/* Table Toolbar (Search, Filter, Column Visibility) */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-[#14141A] border border-[#2A2A35] p-3.5 rounded-xl">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white border border-slate-200/90 p-3 sm:p-3.5 rounded-2xl shadow-sm">
         {/* Search Input */}
         <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A1A1AA]" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#64748B]" />
           <input
             type="text"
             value={searchQuery}
@@ -185,7 +185,7 @@ export function DataTable<T>({
               setCurrentPage(1);
             }}
             placeholder={searchPlaceholder}
-            className="w-full min-h-[44px] pl-10 pr-4 text-xs sm:text-sm bg-[#1C1C24] text-[#F5F5F7] placeholder:text-[#A1A1AA] border border-[#2A2A35] rounded-lg focus:outline-none focus:border-[#CC5500] focus:ring-1 focus:ring-[#CC5500]"
+            className="w-full min-h-[44px] pl-10 pr-4 text-xs sm:text-sm bg-slate-50 text-[#0F172A] placeholder:text-slate-400 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:border-[#B84C00] focus:ring-2 focus:ring-[#B84C00]/20 transition-all"
           />
         </div>
 
@@ -198,7 +198,7 @@ export function DataTable<T>({
                 setActiveFilter(e.target.value);
                 setCurrentPage(1);
               }}
-              className="min-h-[44px] px-3 text-xs bg-[#1C1C24] text-[#F5F5F7] border border-[#2A2A35] rounded-lg focus:outline-none focus:border-[#CC5500] shrink-0"
+              className="min-h-[44px] px-3 text-xs bg-slate-50 text-[#0F172A] border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:border-[#B84C00] shrink-0"
             >
               <option value="ALL">All {filterOptions.label}</option>
               {filterOptions.options.map((opt) => (
@@ -210,15 +210,15 @@ export function DataTable<T>({
           )}
 
           {/* View Mode Switcher (Table [Full LG scrollable] vs Cards) */}
-          <div className="flex items-center rounded-lg bg-[#1C1C24] border border-[#2A2A35] p-0.5 shrink-0">
+          <div className="flex items-center rounded-xl bg-slate-100 border border-slate-200 p-1 shrink-0">
             <button
               type="button"
               onClick={() => setViewMode('table')}
               className={cn(
                 'min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-md flex items-center gap-1.5 transition-colors',
                 viewMode === 'table'
-                  ? 'bg-[#B84C00] text-white shadow-sm'
-                  : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
+                  ? 'bg-[#B84C00] text-white shadow-xs'
+                  : 'text-[#64748B] hover:text-[#0F172A]'
               )}
               title="Table View (Full LG multi-column with clear smooth scroll)"
             >
@@ -231,8 +231,8 @@ export function DataTable<T>({
               className={cn(
                 'min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-md flex items-center gap-1.5 transition-colors',
                 viewMode === 'cards'
-                  ? 'bg-[#B84C00] text-white shadow-sm'
-                  : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
+                  ? 'bg-[#B84C00] text-white shadow-xs'
+                  : 'text-[#64748B] hover:text-[#0F172A]'
               )}
               title="Card View (Stacked cards)"
             >
@@ -246,10 +246,10 @@ export function DataTable<T>({
             <button
               type="button"
               onClick={() => setIsColumnDropdownOpen((prev) => !prev)}
-              className="min-h-[44px] px-3 flex items-center gap-1.5 text-xs font-medium bg-[#1C1C24] text-[#F5F5F7] border border-[#2A2A35] rounded-lg hover:border-[#CC5500] transition-colors shrink-0 whitespace-nowrap"
+              className="min-h-[44px] px-3 flex items-center gap-1.5 text-xs font-semibold bg-white text-[#0F172A] border border-[#E2E8F0] rounded-lg hover:border-[#B84C00] transition-colors shrink-0 whitespace-nowrap"
               title="Show or hide table columns"
             >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-[#FF8A3D] shrink-0" />
+              <SlidersHorizontal className="w-3.5 h-3.5 text-[#B84C00] shrink-0" />
               <span>Columns</span>
             </button>
 
@@ -261,8 +261,8 @@ export function DataTable<T>({
                   onClick={() => setIsColumnDropdownOpen(false)}
                 />
 
-                <div className="absolute right-0 mt-2 w-48 sm:w-52 max-w-[calc(100vw-32px)] rounded-xl bg-[#1C1C24] border border-[#2A2A35] shadow-2xl p-2 z-50 space-y-1">
-                  <p className="text-[10px] font-semibold uppercase text-[#A1A1AA] px-2 py-1">
+                <div className="absolute right-0 mt-2 w-48 sm:w-52 max-w-[calc(100vw-32px)] rounded-xl bg-white border border-[#E2E8F0] shadow-xl p-2 z-50 space-y-1">
+                  <p className="text-[10px] font-semibold uppercase text-[#64748B] px-2 py-1">
                     Toggle Columns
                   </p>
                   {columns.map((col) => (
@@ -270,11 +270,11 @@ export function DataTable<T>({
                       key={col.key}
                       type="button"
                       onClick={() => toggleColumn(col.key)}
-                      className="w-full flex items-center justify-between px-2.5 py-1.5 rounded text-xs text-[#F5F5F7] hover:bg-[#14141A] transition-colors text-left"
+                      className="w-full flex items-center justify-between px-2.5 py-1.5 rounded text-xs text-[#0F172A] hover:bg-[#F8FAFC] transition-colors text-left"
                     >
                       <span className="truncate pr-2">{col.header}</span>
                       {visibleColumns[col.key] && (
-                        <Check className="w-3.5 h-3.5 text-[#FF8A3D] shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-[#B84C00] shrink-0" />
                       )}
                     </button>
                   ))}
@@ -317,20 +317,20 @@ export function DataTable<T>({
           {viewMode === 'table' ? (
             <div className="space-y-2">
               {/* Mobile Swipe Guidance Banner */}
-              <div className="sm:hidden flex items-center justify-between px-3 py-2 rounded-xl bg-[#1C1C24] border border-[#2A2A35] text-xs text-[#A1A1AA]">
+              <div className="sm:hidden flex items-center justify-between px-3 py-2 rounded-xl bg-orange-50 border border-orange-200 text-xs text-[#64748B]">
                 <div className="flex items-center gap-2">
-                  <ArrowLeftRight className="w-4 h-4 text-[#FF8A3D] animate-pulse shrink-0" />
-                  <span className="font-medium text-[#F5F5F7]">Scroll horizontally for all columns</span>
+                  <ArrowLeftRight className="w-4 h-4 text-[#B84C00] animate-pulse shrink-0" />
+                  <span className="font-semibold text-[#0F172A]">Scroll horizontally for all columns</span>
                 </div>
-                <span className="text-[10px] uppercase font-bold tracking-wider text-[#FF8A3D] bg-[#CC5500]/18 border border-[#CC5500]/30 px-2 py-0.5 rounded shrink-0">
+                <span className="text-[10px] uppercase font-bold tracking-wider text-[#B84C00] bg-orange-100 border border-orange-200 px-2 py-0.5 rounded shrink-0">
                   Full Table
                 </span>
               </div>
 
               {/* Table View (Displays with full desktop clarity; smooth horizontal scroll on smaller screens) */}
-              <div className="overflow-x-auto rounded-xl border border-[#2A2A35] bg-[#14141A] pb-1">
-                <table className="w-full min-w-[840px] text-left text-sm text-[#F5F5F7] border-collapse">
-                  <thead className="bg-[#1C1C24] text-xs text-[#A1A1AA] uppercase border-b border-[#2A2A35]">
+              <div className="overflow-x-auto rounded-2xl border border-slate-200/90 bg-white pb-1 shadow-sm">
+                <table className="w-full min-w-[840px] text-left text-sm text-[#0F172A] border-collapse">
+                  <thead className="bg-slate-50/80 text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200">
                     <tr>
                       {activeColumns.map((col) => {
                         const isSorted = sortKey === col.key;
@@ -343,17 +343,17 @@ export function DataTable<T>({
                               <button
                                 type="button"
                                 onClick={() => handleSort(col.key)}
-                                className="flex items-center gap-1.5 hover:text-[#FF8A3D] transition-colors whitespace-nowrap"
+                                className="flex items-center gap-1.5 hover:text-[#B84C00] transition-colors whitespace-nowrap"
                               >
                                 <span>{col.header}</span>
                                 {isSorted ? (
                                   sortOrder === 'asc' ? (
-                                    <ArrowUp className="w-3.5 h-3.5 text-[#FF8A3D]" />
+                                    <ArrowUp className="w-3.5 h-3.5 text-[#B84C00]" />
                                   ) : (
-                                    <ArrowDown className="w-3.5 h-3.5 text-[#FF8A3D]" />
+                                    <ArrowDown className="w-3.5 h-3.5 text-[#B84C00]" />
                                   )
                                 ) : (
-                                  <ArrowUpDown className="w-3.5 h-3.5 text-[#A1A1AA]/50" />
+                                  <ArrowUpDown className="w-3.5 h-3.5 text-[#94A3B8]" />
                                 )}
                               </button>
                             ) : (
@@ -367,11 +367,11 @@ export function DataTable<T>({
                       )}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#2A2A35]">
+                  <tbody className="divide-y divide-slate-100">
                     {paginatedData.map((item) => (
                       <tr
                         key={keyExtractor(item)}
-                        className="hover:bg-[#1C1C24]/50 transition-colors"
+                        className="hover:bg-[#FFF7ED]/50 transition-colors"
                       >
                         {activeColumns.map((col) => (
                           <td key={col.key} className={cn('py-3.5 px-4 text-sm whitespace-nowrap', col.className)}>
@@ -393,23 +393,23 @@ export function DataTable<T>({
               {paginatedData.map((item) => (
                 <div
                   key={keyExtractor(item)}
-                  className="p-4 rounded-2xl bg-[#14141A] border border-[#2A2A35] space-y-3 text-left shadow-lg"
+                  className="p-4 rounded-2xl bg-white border border-[#E2E8F0] space-y-3 text-left shadow-sm"
                 >
                   {activeColumns.map((col) => (
                     <div
                       key={col.key}
-                      className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 py-1.5 border-b border-[#2A2A35]/50 last:border-b-0"
+                      className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 py-1.5 border-b border-[#E2E8F0] last:border-b-0"
                     >
-                      <span className="text-[11px] font-medium text-[#A1A1AA] uppercase tracking-wider shrink-0">
+                      <span className="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider shrink-0">
                         {col.header}:
                       </span>
-                      <div className="text-xs sm:text-sm font-semibold text-[#F5F5F7]">
+                      <div className="text-xs sm:text-sm font-semibold text-[#0F172A]">
                         {col.accessor(item)}
                       </div>
                     </div>
                   ))}
                   {actions && (
-                    <div className="pt-2.5 border-t border-[#2A2A35] flex items-center justify-end gap-2">
+                    <div className="pt-2.5 border-t border-[#E2E8F0] flex items-center justify-end gap-2">
                       {actions(item)}
                     </div>
                   )}

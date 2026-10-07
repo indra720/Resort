@@ -25,6 +25,8 @@ import {
   CalendarCheck,
 } from 'lucide-react';
 import {
+  AreaChart,
+  Area,
   LineChart,
   Line,
   XAxis,
@@ -44,34 +46,34 @@ export const SuperAdminDashboard: React.FC = () => {
     {
       key: 'bookingCode',
       header: 'Booking #',
-      accessor: (b) => <span className="font-semibold text-[#FF8A3D]">{b.bookingCode}</span>,
+      accessor: (b) => <span className="font-semibold text-[#B84C00]">{b.bookingCode}</span>,
       sortable: true,
       sortValue: (b) => b.bookingCode,
     },
     {
       key: 'guestName',
       header: 'Guest Name',
-      accessor: (b) => <span className="font-medium text-[#F5F5F7]">{b.guestName}</span>,
+      accessor: (b) => <span className="font-medium text-[#0F172A]">{b.guestName}</span>,
       sortable: true,
       sortValue: (b) => b.guestName,
     },
     {
       key: 'roomNumber',
       header: 'Room',
-      accessor: (b) => <span>Room #{b.roomNumber}</span>,
+      accessor: (b) => <span className="text-[#0F172A]">Room #{b.roomNumber}</span>,
       sortable: true,
       sortValue: (b) => b.roomNumber,
     },
     {
       key: 'checkIn',
       header: 'Check-In',
-      accessor: (b) => <span>{formatDate(b.checkIn)}</span>,
+      accessor: (b) => <span className="text-[#64748B]">{formatDate(b.checkIn)}</span>,
     },
     {
       key: 'totalAmount',
       header: 'Tariff + GST',
       accessor: (b) => (
-        <span className="font-semibold text-[#F5F5F7]">{formatINR(b.totalAmount)}</span>
+        <span className="font-semibold text-[#0F172A]">{formatINR(b.totalAmount)}</span>
       ),
       sortable: true,
       sortValue: (b) => b.totalAmount,
@@ -84,14 +86,14 @@ export const SuperAdminDashboard: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-3.5 sm:space-y-4">
       {/* Top Banner / Quick Actions */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
             Super Admin Executive Command
           </h1>
-          <p className="text-xs sm:text-sm text-[#A1A1AA]">
+          <p className="text-xs sm:text-sm text-[#64748B]">
             Resort-wide operational intelligence, revenue analytics, and occupancy.
           </p>
         </div>
@@ -101,7 +103,7 @@ export const SuperAdminDashboard: React.FC = () => {
             variant="outline"
             size="md"
             onClick={() => navigate('/reports')}
-            leftIcon={<FileSpreadsheet className="w-4 h-4 text-[#FF8A3D]" />}
+            leftIcon={<FileSpreadsheet className="w-4 h-4 text-[#B84C00]" />}
           >
             Export GSTR & PnL
           </Button>
@@ -165,24 +167,35 @@ export const SuperAdminDashboard: React.FC = () => {
             description="Room reservations vs Food & Beverage earnings"
             height={280}
           >
-            <LineChart
+            <AreaChart
               data={MONTHLY_REVENUE_DATA}
               margin={{ top: 10, right: 10, left: -15, bottom: 0 }}
             >
-              <XAxis dataKey="month" stroke="#A1A1AA" fontSize={11} tickLine={false} />
+              <defs>
+                <linearGradient id="roomsRevenueGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#B84C00" stopOpacity={0.22} />
+                  <stop offset="95%" stopColor="#B84C00" stopOpacity={0.0} />
+                </linearGradient>
+                <linearGradient id="fnbDiningGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#2563EB" stopOpacity={0.18} />
+                  <stop offset="95%" stopColor="#2563EB" stopOpacity={0.0} />
+                </linearGradient>
+              </defs>
+              <XAxis dataKey="month" stroke="#94A3B8" fontSize={11} tickLine={false} />
               <YAxis
-                stroke="#A1A1AA"
+                stroke="#94A3B8"
                 fontSize={11}
                 tickFormatter={(val) => `₹${val / 100000}L`}
                 tickLine={false}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#14141A',
-                  borderColor: '#2A2A35',
-                  borderRadius: '8px',
-                  color: '#F5F5F7',
+                  backgroundColor: '#FFFFFF',
+                  borderColor: '#E2E8F0',
+                  borderRadius: '12px',
+                  color: '#0F172A',
                   fontSize: '12px',
+                  boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
                 }}
                 formatter={(value: number) => [formatINR(value), 'Revenue']}
               />
@@ -190,23 +203,29 @@ export const SuperAdminDashboard: React.FC = () => {
                 wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }}
                 iconType="circle"
               />
-              <Line
+              <Area
                 type="monotone"
                 dataKey="rooms"
                 name="Rooms Revenue"
-                stroke="#CC5500"
+                stroke="#B84C00"
                 strokeWidth={3}
-                dot={{ r: 4, fill: '#CC5500' }}
+                fillOpacity={1}
+                fill="url(#roomsRevenueGrad)"
+                dot={{ r: 4, fill: '#B84C00', stroke: '#FFFFFF', strokeWidth: 2 }}
+                activeDot={{ r: 6, fill: '#B84C00', stroke: '#FFFFFF', strokeWidth: 2 }}
               />
-              <Line
+              <Area
                 type="monotone"
                 dataKey="fnb"
                 name="F&B Dining"
-                stroke="#3B82F6"
+                stroke="#2563EB"
                 strokeWidth={2}
-                dot={{ r: 3, fill: '#3B82F6' }}
+                fillOpacity={1}
+                fill="url(#fnbDiningGrad)"
+                dot={{ r: 3, fill: '#2563EB', stroke: '#FFFFFF', strokeWidth: 2 }}
+                activeDot={{ r: 5, fill: '#2563EB', stroke: '#FFFFFF', strokeWidth: 2 }}
               />
-            </LineChart>
+            </AreaChart>
           </ChartCard>
         </div>
 
@@ -233,11 +252,12 @@ export const SuperAdminDashboard: React.FC = () => {
               </Pie>
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#14141A',
-                  borderColor: '#2A2A35',
+                  backgroundColor: '#FFFFFF',
+                  borderColor: '#E2E8F0',
                   borderRadius: '8px',
-                  color: '#F5F5F7',
+                  color: '#0F172A',
                   fontSize: '12px',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                 }}
                 formatter={(val: number) => [`${val} Units`, 'Quantity']}
               />
@@ -255,8 +275,8 @@ export const SuperAdminDashboard: React.FC = () => {
         {/* Recent Bookings (2-cols on desktop) */}
         <div className="lg:col-span-2 space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="text-base font-semibold text-[#F5F5F7] flex items-center gap-2">
-              <CalendarCheck className="w-4 h-4 text-[#FF8A3D]" />
+            <h3 className="text-base font-bold text-[#B84C00] flex items-center gap-2">
+              <CalendarCheck className="w-4 h-4 text-[#B84C00]" />
               <span>Recent Guest Bookings</span>
             </h3>
             <Button

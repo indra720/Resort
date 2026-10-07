@@ -26,8 +26,8 @@ export const GuestListPage: React.FC = () => {
       header: 'Guest Name',
       accessor: (u) => (
         <div>
-          <span className="font-semibold text-[#F5F5F7] block">{u.name}</span>
-          <span className="text-[11px] text-[#A1A1AA]">{u.email}</span>
+          <span className="font-semibold text-[#0F172A] block">{u.name}</span>
+          <span className="text-[11px] text-[#64748B]">{u.email}</span>
         </div>
       ),
       sortable: true,
@@ -42,7 +42,7 @@ export const GuestListPage: React.FC = () => {
       key: 'role',
       header: 'Category',
       accessor: (u) => (
-        <span className="text-xs px-2 py-0.5 rounded-full bg-[#CC5500]/18 text-[#FF8A3D] border border-[#CC5500]/30 font-medium">
+        <span className="text-xs px-2 py-0.5 rounded-full bg-[#FFF7ED] text-[#B84C00] border border-[#FFEDD5] font-medium">
           {u.role === 'Guest' ? 'Registered Guest' : 'Staff Profile'}
         </span>
       ),
@@ -51,7 +51,7 @@ export const GuestListPage: React.FC = () => {
       key: 'department',
       header: 'Loyalty / Notes',
       accessor: (u) => (
-        <span className="text-xs text-[#A1A1AA]">
+        <span className="text-xs text-[#64748B]">
           {u.department || 'Aura Club Gold Member'}
         </span>
       ),
@@ -59,12 +59,12 @@ export const GuestListPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-6 text-left">
+    <div className="space-y-4 sm:space-y-5 text-left">
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7]">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
           Resort Guest Directory
         </h1>
-        <p className="text-xs sm:text-sm text-[#A1A1AA]">
+        <p className="text-xs sm:text-sm text-[#64748B]">
           Guest profiles, stay history audits, and KYC Aadhaar/Passport verification.
         </p>
       </div>
@@ -110,55 +110,55 @@ export const GuestListPage: React.FC = () => {
           }
         >
           <div className="space-y-4 text-left">
-            <div className="p-4 rounded-xl bg-[#1C1C24] border border-[#2A2A35] flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#14141A] border-2 border-[#CC5500] flex items-center justify-center font-bold text-base text-[#FF8A3D]">
+            <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-white border-2 border-[#B84C00] flex items-center justify-center font-bold text-base text-[#B84C00] shadow-sm">
                 {selectedGuest.name.slice(0, 2).toUpperCase()}
               </div>
               <div className="space-y-0.5">
-                <p className="text-base font-bold text-[#F5F5F7]">{selectedGuest.name}</p>
-                <p className="text-xs text-[#A1A1AA]">{selectedGuest.email} • {selectedGuest.phone}</p>
+                <p className="text-base font-bold text-[#0F172A]">{selectedGuest.name}</p>
+                <p className="text-xs text-[#64748B]">{selectedGuest.email} • {selectedGuest.phone}</p>
               </div>
             </div>
 
             {/* Stay History */}
             <div className="space-y-2">
-              <h4 className="text-xs font-semibold uppercase text-[#A1A1AA]">
+              <h4 className="text-xs font-semibold uppercase text-[#64748B]">
                 Resort Stay History (Last Visits)
               </h4>
               <div className="space-y-2">
                 {MOCK_BOOKINGS.slice(0, 2).map((b) => (
                   <div
                     key={b.id}
-                    className="p-3 rounded-lg bg-[#14141A] border border-[#2A2A35] flex items-center justify-between text-xs"
+                    className="p-3 rounded-lg bg-white border border-[#E2E8F0] shadow-sm flex items-center justify-between text-xs"
                   >
                     <div>
-                      <span className="font-semibold text-[#F5F5F7] block">
+                      <span className="font-semibold text-[#0F172A] block">
                         Room #{b.roomNumber} ({b.bookingCode})
                       </span>
-                      <span className="text-[#A1A1AA]">
+                      <span className="text-[#64748B]">
                         {b.checkIn} to {b.checkOut}
                       </span>
                     </div>
-                    <span className="font-bold text-[#FF8A3D]">{formatINR(b.totalAmount)}</span>
+                    <span className="font-bold text-[#B84C00]">{formatINR(b.totalAmount)}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Government ID Document Upload UI */}
-            <div className="space-y-2 pt-2 border-t border-[#2A2A35]">
-              <h4 className="text-xs font-semibold uppercase text-[#A1A1AA] flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-[#FF8A3D]" />
+            <div className="space-y-2 pt-2 border-t border-[#E2E8F0]">
+              <h4 className="text-xs font-semibold uppercase text-[#64748B] flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-[#B84C00]" />
                 <span>KYC Identity Verification Document (Aadhaar / Passport)</span>
               </h4>
 
               {uploadedDocName ? (
-                <div className="p-3.5 rounded-xl bg-[#22C55E]/10 border border-[#22C55E]/30 flex items-center justify-between">
-                  <div className="flex items-center gap-2.5 text-xs text-[#22C55E]">
-                    <FileCheck className="w-5 h-5 shrink-0" />
+                <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between">
+                  <div className="flex items-center gap-2.5 text-xs text-emerald-800">
+                    <FileCheck className="w-5 h-5 shrink-0 text-emerald-600" />
                     <div>
                       <span className="font-semibold block">{uploadedDocName}</span>
-                      <span className="text-[11px] text-[#A1A1AA]">Verified digitally</span>
+                      <span className="text-[11px] text-[#64748B]">Verified digitally</span>
                     </div>
                   </div>
                   <Button
@@ -170,12 +170,12 @@ export const GuestListPage: React.FC = () => {
                   </Button>
                 </div>
               ) : (
-                <label className="border-2 border-dashed border-[#2A2A35] hover:border-[#CC5500] rounded-xl p-5 flex flex-col items-center justify-center cursor-pointer transition-colors bg-[#14141A]/60">
-                  <UploadCloud className="w-8 h-8 text-[#FF8A3D] mb-2" />
-                  <span className="text-xs font-semibold text-[#F5F5F7]">
+                <label className="border-2 border-dashed border-[#E2E8F0] hover:border-[#B84C00] rounded-xl p-5 flex flex-col items-center justify-center cursor-pointer transition-colors bg-[#F8FAFC]">
+                  <UploadCloud className="w-8 h-8 text-[#B84C00] mb-2" />
+                  <span className="text-xs font-semibold text-[#0F172A]">
                     Upload Scanned ID (PDF, PNG, JPG)
                   </span>
-                  <span className="text-[11px] text-[#A1A1AA] mt-0.5">
+                  <span className="text-[11px] text-[#64748B] mt-0.5">
                     Maximum file size: 5MB
                   </span>
                   <input

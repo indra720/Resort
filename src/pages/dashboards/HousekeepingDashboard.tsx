@@ -38,10 +38,10 @@ export const HousekeepingDashboard: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
             Housekeeping Management Board
           </h1>
-          <p className="text-xs sm:text-sm text-[#A1A1AA]">
+          <p className="text-xs sm:text-sm text-[#64748B]">
             Room turnovers, linen changes, sanitation audit, and maintenance tickets.
           </p>
         </div>
@@ -51,7 +51,7 @@ export const HousekeepingDashboard: React.FC = () => {
             variant="outline"
             size="md"
             onClick={() => navigate('/housekeeping')}
-            leftIcon={<RotateCcw className="w-4 h-4 text-[#FF8A3D]" />}
+            leftIcon={<RotateCcw className="w-4 h-4 text-[#B84C00]" />}
           >
             Kanban Task View
           </Button>
@@ -96,7 +96,7 @@ export const HousekeepingDashboard: React.FC = () => {
       {/* Quick Action Room Turnover Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-4">
-          <h3 className="text-base font-semibold text-[#F5F5F7]">
+          <h3 className="text-base font-bold text-[#B84C00]">
             Direct Room Turnover Quick-Board
           </h3>
 
@@ -104,14 +104,14 @@ export const HousekeepingDashboard: React.FC = () => {
             {rooms.map((room) => (
               <div
                 key={room.id}
-                className="p-4 rounded-xl bg-[#14141A] border border-[#2A2A35] space-y-3 text-left hover:border-[#2A2A35]/80 transition-all"
+                className="p-4 rounded-xl bg-white border border-[#E2E8F0] space-y-3 text-left hover:border-[#B84C00]/40 shadow-xs transition-all"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-base font-bold text-[#F5F5F7]">
+                    <span className="text-base font-bold text-[#0F172A]">
                       Room #{room.roomNumber}
                     </span>
-                    <p className="text-xs text-[#A1A1AA]">{room.category} • Floor {room.floor}</p>
+                    <p className="text-xs text-[#64748B]">{room.category} • Floor {room.floor}</p>
                   </div>
                   <StatusBadge status={room.status} size="sm" />
                 </div>
@@ -120,7 +120,7 @@ export const HousekeepingDashboard: React.FC = () => {
                   {room.amenities.slice(0, 2).map((a) => (
                     <span
                       key={a}
-                      className="text-[10px] px-2 py-0.5 rounded bg-[#1C1C24] text-[#A1A1AA] border border-[#2A2A35]"
+                      className="text-[10px] px-2 py-0.5 rounded bg-[#F1F5F9] text-[#64748B] border border-[#E2E8F0]"
                     >
                       {a}
                     </span>
@@ -128,13 +128,13 @@ export const HousekeepingDashboard: React.FC = () => {
                 </div>
 
                 {/* Instant Action Button per Room */}
-                <div className="pt-2 border-t border-[#2A2A35]/60 flex items-center justify-between gap-2">
-                  <span className="text-[11px] text-[#A1A1AA]">Change Status:</span>
+                <div className="pt-2 border-t border-[#E2E8F0] flex items-center justify-between gap-2">
+                  <span className="text-[11px] text-[#64748B]">Change Status:</span>
                   <div className="flex items-center gap-1.5">
                     {room.status !== 'Cleaning' && (
                       <button
                         onClick={() => handleUpdateStatus(room.id, 'Cleaning')}
-                        className="px-2.5 py-1 text-xs rounded bg-[#F59E0B]/10 hover:bg-[#F59E0B] text-[#F59E0B] hover:text-black font-medium transition-colors"
+                        className="px-2.5 py-1 text-xs rounded bg-amber-50 hover:bg-amber-500 text-amber-700 hover:text-white font-semibold border border-amber-200 transition-colors"
                       >
                         Cleaning
                       </button>
@@ -142,7 +142,7 @@ export const HousekeepingDashboard: React.FC = () => {
                     {room.status !== 'Available' && (
                       <button
                         onClick={() => handleUpdateStatus(room.id, 'Available')}
-                        className="px-2.5 py-1 text-xs rounded bg-[#22C55E]/10 hover:bg-[#22C55E] text-[#22C55E] hover:text-white font-medium transition-colors"
+                        className="px-2.5 py-1 text-xs rounded bg-emerald-50 hover:bg-emerald-600 text-emerald-700 hover:text-white font-semibold border border-emerald-200 transition-colors"
                       >
                         Mark Clean
                       </button>
@@ -150,7 +150,7 @@ export const HousekeepingDashboard: React.FC = () => {
                     {room.status !== 'Maintenance' && (
                       <button
                         onClick={() => handleUpdateStatus(room.id, 'Maintenance')}
-                        className="px-2.5 py-1 text-xs rounded bg-[#EF4444]/10 hover:bg-[#EF4444] text-[#EF4444] hover:text-white font-medium transition-colors"
+                        className="px-2.5 py-1 text-xs rounded bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white font-semibold border border-rose-200 transition-colors"
                       >
                         Repair
                       </button>

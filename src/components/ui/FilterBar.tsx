@@ -23,22 +23,22 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   hasActiveFilters = false,
 }) => {
   return (
-    <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3.5 bg-[#14141A] border border-[#2A2A35] rounded-xl text-left">
+    <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3.5 bg-white border border-[#E2E8F0] rounded-xl text-left shadow-xs">
       {/* Search Input (44px touch target) */}
       <div className="relative flex-1 max-w-md">
-        <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A1A1AA]" />
+        <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#64748B]" />
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder={searchPlaceholder}
-          className="w-full min-h-[44px] pl-10 pr-9 text-xs sm:text-sm bg-[#1C1C24] text-[#F5F5F7] placeholder:text-[#A1A1AA] border border-[#2A2A35] rounded-lg focus:outline-none focus:border-[#CC5500] focus:ring-1 focus:ring-[#CC5500]"
+          className="w-full min-h-[44px] pl-10 pr-9 text-xs sm:text-sm bg-[#F8FAFC] text-[#0F172A] placeholder:text-[#94A3B8] border border-[#E2E8F0] rounded-lg focus:outline-none focus:border-[#B84C00] focus:ring-1 focus:ring-[#B84C00]"
         />
         {searchQuery && (
           <button
             type="button"
             onClick={() => onSearchChange('')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[#A1A1AA] hover:text-[#F5F5F7]"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[#64748B] hover:text-[#0F172A]"
             aria-label="Clear search"
           >
             <X className="w-3.5 h-3.5" />

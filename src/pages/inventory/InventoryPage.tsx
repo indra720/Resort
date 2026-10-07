@@ -91,7 +91,7 @@ export const InventoryPage: React.FC = () => {
     {
       key: 'itemCode',
       header: 'Item SKU',
-      accessor: (s) => <span className="font-bold text-[#FF8A3D]">{s.itemCode}</span>,
+      accessor: (s) => <span className="font-bold text-[#B84C00]">{s.itemCode}</span>,
       sortable: true,
       sortValue: (s) => s.itemCode,
     },
@@ -100,8 +100,8 @@ export const InventoryPage: React.FC = () => {
       header: 'Stock Description',
       accessor: (s) => (
         <div>
-          <span className="font-semibold text-[#F5F5F7] block">{s.name}</span>
-          <span className="text-[11px] text-[#A1A1AA]">{s.location}</span>
+          <span className="font-semibold text-[#0F172A] block">{s.name}</span>
+          <span className="text-[11px] text-[#64748B]">{s.location}</span>
         </div>
       ),
       sortable: true,
@@ -129,7 +129,7 @@ export const InventoryPage: React.FC = () => {
               {s.quantity} {s.unit}
             </span>
             {isLow && (
-              <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#EF4444]/15 text-[#EF4444] font-medium border border-[#EF4444]/30 flex items-center gap-1">
+              <span className="text-[10px] px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 font-medium border border-rose-200 flex items-center gap-1">
                 <AlertTriangle className="w-3 h-3" /> Low
               </span>
             )}
@@ -143,19 +143,19 @@ export const InventoryPage: React.FC = () => {
       key: 'minThreshold',
       header: 'Threshold Limit',
       accessor: (s) => (
-        <span className="text-xs text-[#A1A1AA]">Min: {s.minThreshold} {s.unit}</span>
+        <span className="text-xs text-[#64748B]">Min: {s.minThreshold} {s.unit}</span>
       ),
     },
   ];
 
   return (
-    <div className="space-y-6 text-left">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div className="space-y-4 sm:space-y-5 text-left">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
             Resort Inventory & Store Procurement
           </h1>
-          <p className="text-xs sm:text-sm text-[#A1A1AA]">
+          <p className="text-xs sm:text-sm text-[#64748B]">
             Linen stock, organic toiletries, kitchen supplies, and purchase orders.
           </p>
         </div>

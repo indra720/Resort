@@ -8,49 +8,58 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Theme Colors
-        background: '#0B0B0F',
-        card: '#14141A',
-        elevated: '#1C1C24',
-        border: '#2A2A35',
+        // Theme Colors (Clean White Light Theme with Soft Slate Canvas)
+        background: '#F1F5F9',
+        card: '#FFFFFF',
+        elevated: '#FFFFFF',
+        border: '#E2E8F0',
         
         // Brand Primary & Hover Dark Orange
         primary: {
-          DEFAULT: '#CC5500',
-          hover: '#E06A10',
+          DEFAULT: '#B84C00',
+          hover: '#9C3800',
           button: '#B84C00',
-          accent: '#FF8A3D',
-          soft: 'rgba(204, 85, 0, 0.18)',
+          accent: '#CC5500',
+          soft: 'rgba(184, 76, 0, 0.10)',
           foreground: '#FFFFFF',
         },
 
+        // Sidebar Theme Colors (Dark Orange Sidebar)
+        sidebar: {
+          DEFAULT: '#B84C00',
+          hover: '#A33E00',
+          active: '#8F3800',
+          foreground: '#FFFFFF',
+          muted: '#FED7AA',
+        },
+
         // Text Colors
-        foreground: '#F5F5F7',
+        foreground: '#0F172A',
         muted: {
-          DEFAULT: '#1C1C24',
-          foreground: '#A1A1AA',
+          DEFAULT: '#F1F5F9',
+          foreground: '#64748B',
         },
 
         // Status Colors
         success: {
-          DEFAULT: '#22C55E',
+          DEFAULT: '#16A34A',
           foreground: '#FFFFFF',
-          bg: 'rgba(34, 197, 94, 0.12)',
+          bg: 'rgba(22, 163, 74, 0.10)',
         },
         warning: {
-          DEFAULT: '#F59E0B',
+          DEFAULT: '#D97706',
           foreground: '#FFFFFF',
-          bg: 'rgba(245, 158, 11, 0.12)',
+          bg: 'rgba(217, 119, 6, 0.10)',
         },
         danger: {
-          DEFAULT: '#EF4444',
+          DEFAULT: '#DC2626',
           foreground: '#FFFFFF',
-          bg: 'rgba(239, 68, 68, 0.12)',
+          bg: 'rgba(220, 38, 38, 0.10)',
         },
         info: {
-          DEFAULT: '#3B82F6',
+          DEFAULT: '#2563EB',
           foreground: '#FFFFFF',
-          bg: 'rgba(59, 130, 246, 0.12)',
+          bg: 'rgba(37, 99, 235, 0.10)',
         },
       },
       fontFamily: {
@@ -62,7 +71,7 @@ export default {
         sm: '6px',
       },
       boxShadow: {
-        glow: '0 0 20px -5px rgba(255, 107, 0, 0.3)',
+        glow: '0 0 20px -5px rgba(184, 76, 0, 0.25)',
       },
     },
   },

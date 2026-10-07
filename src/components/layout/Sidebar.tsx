@@ -15,7 +15,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
   return (
     <aside
       className={cn(
-        'hidden md:flex flex-col shrink-0 border-r border-[#2A2A35] bg-[#0B0B0F] transition-all duration-300 ease-in-out h-full overflow-hidden',
+        'hidden lg:flex flex-col shrink-0 border-r border-[#9C3800] bg-[#B84C00] text-white transition-all duration-300 ease-in-out h-full overflow-hidden shadow-md',
         isCollapsed ? 'w-[76px]' : 'w-[250px]'
       )}
     >
@@ -33,8 +33,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
                   'group flex items-center rounded-xl transition-all duration-150 min-h-[44px]',
                   isCollapsed ? 'justify-center px-0 w-12 mx-auto' : 'px-3.5 gap-3 w-full',
                   isActive
-                    ? 'bg-[#CC5500] text-white shadow-[0_0_15px_rgba(204,85,0,0.3)] font-semibold'
-                    : 'text-[#A1A1AA] hover:text-[#F5F5F7] hover:bg-[#14141A]'
+                    ? 'bg-[#8F3800] text-white shadow-sm font-semibold ring-1 ring-white/10'
+                    : 'text-orange-100 hover:text-white hover:bg-[#A33E00]'
                 )
               }
             >
@@ -43,12 +43,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
                   <Icon
                     className={cn(
                       'w-5 h-5 shrink-0 transition-colors',
-                      isActive ? 'text-white' : 'text-[#A1A1AA] group-hover:text-[#FF8A3D]'
+                      isActive ? 'text-white' : 'text-orange-200 group-hover:text-white'
                     )}
                   />
 
                   {!isCollapsed && (
-                    <span className="text-sm tracking-tight truncate flex-1 text-left">
+                    <span className="text-sm tracking-tight truncate flex-1 text-left font-medium">
                       {item.label}
                     </span>
                   )}
@@ -56,10 +56,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
                   {!isCollapsed && item.badge && (
                     <span
                       className={cn(
-                        'text-[10px] px-1.5 py-0.5 rounded-full font-medium',
+                        'text-[10px] px-1.5 py-0.5 rounded-full font-semibold',
                         isActive
-                          ? 'bg-black/30 text-white'
-                          : 'bg-[#CC5500]/20 text-[#FF8A3D]'
+                          ? 'bg-black/35 text-white'
+                          : 'bg-black/20 text-orange-100'
                       )}
                     >
                       {item.badge}
@@ -74,11 +74,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
 
       {/* Role Indicator Footer in Sidebar */}
       {!isCollapsed && (
-        <div className="p-3.5 m-3 rounded-xl bg-[#14141A] border border-[#2A2A35] text-left">
-          <p className="text-[11px] text-[#A1A1AA] uppercase tracking-wider font-semibold">
+        <div className="p-3.5 m-3 rounded-xl bg-[#8F3800] border border-[#7A2E00] text-left shadow-sm">
+          <p className="text-[11px] text-orange-200 uppercase tracking-wider font-semibold">
             Role Workspace
           </p>
-          <p className="text-xs font-semibold text-[#FF8A3D] mt-0.5 truncate">{role}</p>
+          <p className="text-xs font-bold text-white mt-0.5 truncate">{role}</p>
         </div>
       )}
     </aside>

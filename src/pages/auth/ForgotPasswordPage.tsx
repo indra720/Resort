@@ -22,31 +22,31 @@ export const ForgotPasswordPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0B0F] text-[#F5F5F7] flex flex-col justify-center items-center p-4 sm:p-6 font-sans">
+    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] flex flex-col justify-center items-center p-4 sm:p-6 font-sans">
       <div className="w-full max-w-md space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="inline-flex w-12 h-12 rounded-2xl bg-[#CC5500]/18 border border-[#CC5500]/30 items-center justify-center text-[#FF8A3D] mb-1">
+          <div className="inline-flex w-12 h-12 rounded-2xl bg-[#FFF7ED] border border-[#B84C00]/30 items-center justify-center text-[#B84C00] mb-1">
             <KeyRound className="w-6 h-6" />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-[#F5F5F7]">
+          <h1 className="text-2xl font-bold tracking-tight text-[#B84C00]">
             Reset Password
           </h1>
-          <p className="text-xs sm:text-sm text-[#A1A1AA]">
+          <p className="text-xs sm:text-sm text-[#64748B]">
             Enter your resort employee or guest email to recover access
           </p>
         </div>
 
         {/* Card */}
-        <div className="bg-[#14141A] border border-[#2A2A35] rounded-2xl p-6 sm:p-8 shadow-2xl">
+        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 shadow-xl">
           {isSubmitted ? (
             <div className="text-center space-y-4 py-4">
-              <div className="w-12 h-12 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 flex items-center justify-center text-[#22C55E] mx-auto">
+              <div className="w-12 h-12 rounded-full bg-[#F0FDF4] border border-[#22C55E]/30 flex items-center justify-center text-[#16A34A] mx-auto">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <h3 className="text-base font-semibold text-[#F5F5F7]">Email Dispatched</h3>
-              <p className="text-xs text-[#A1A1AA] leading-relaxed">
-                We have sent an authentication reset link to <strong className="text-white">{email}</strong>. Please check your inbox or spam folder.
+              <h3 className="text-base font-semibold text-[#0F172A]">Email Dispatched</h3>
+              <p className="text-xs text-[#64748B] leading-relaxed">
+                We have sent an authentication reset link to <strong className="text-[#0F172A]">{email}</strong>. Please check your inbox or spam folder.
               </p>
               <div className="pt-2">
                 <Link to="/login">
@@ -81,7 +81,7 @@ export const ForgotPasswordPage: React.FC = () => {
               <div className="pt-2 text-center">
                 <Link
                   to="/login"
-                  className="inline-flex items-center gap-1.5 text-xs text-[#A1A1AA] hover:text-[#FF8A3D] transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#64748B] hover:text-[#B84C00] transition-colors"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" /> Back to Sign In
                 </Link>

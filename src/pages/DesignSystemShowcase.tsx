@@ -351,20 +351,20 @@ export const DesignSystemShowcase: React.FC = () => {
         </div>
 
         {/* Mobile Swipe Guidance Banner */}
-        <div className="sm:hidden flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#1C1C24] border border-[#2A2A35] text-[11px] text-[#A1A1AA]">
+        <div className="sm:hidden flex items-center justify-between px-3 py-1.5 rounded-lg bg-orange-50 border border-orange-200 text-[11px] text-[#64748B]">
           <span className="flex items-center gap-1.5">
-            <ArrowLeftRight className="w-3.5 h-3.5 text-[#FF8A3D] animate-pulse shrink-0" />
+            <ArrowLeftRight className="w-3.5 h-3.5 text-[#B84C00] animate-pulse shrink-0" />
             <span>Swipe horizontally to view full table columns</span>
           </span>
-          <span className="text-[10px] text-[#FF8A3D] font-medium bg-[#CC5500]/18 px-1.5 py-0.5 rounded">
+          <span className="text-[10px] text-[#B84C00] font-medium bg-orange-100 px-1.5 py-0.5 rounded">
             Full Table
           </span>
         </div>
 
         {/* Full Scrollable Table */}
-        <div className="overflow-x-auto rounded-xl border border-[#2A2A35] bg-[#14141A] pb-1">
-          <table className="w-full min-w-[760px] text-left text-sm text-[#F5F5F7] border-collapse">
-            <thead className="bg-[#1C1C24] text-xs text-[#A1A1AA] uppercase border-b border-[#2A2A35]">
+        <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white pb-1 shadow-sm">
+          <table className="w-full min-w-[760px] text-left text-sm text-[#0F172A] border-collapse">
+            <thead className="bg-[#F8FAFC] text-xs text-[#64748B] uppercase border-b border-slate-200">
               <tr>
                 <th className="py-3.5 px-4 font-semibold whitespace-nowrap">Room</th>
                 <th className="py-3.5 px-4 font-semibold whitespace-nowrap">Category</th>
@@ -374,20 +374,20 @@ export const DesignSystemShowcase: React.FC = () => {
                 <th className="py-3.5 px-4 font-semibold text-right whitespace-nowrap">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#2A2A35]">
+            <tbody className="divide-y divide-slate-100">
               {MOCK_ROOMS.map((room) => (
-                <tr key={room.id} className="hover:bg-[#1C1C24]/50 transition-colors">
-                  <td className="py-3.5 px-4 font-semibold text-[#F5F5F7] whitespace-nowrap">
+                <tr key={room.id} className="hover:bg-orange-50/40 transition-colors">
+                  <td className="py-3.5 px-4 font-semibold text-[#0F172A] whitespace-nowrap">
                     #{room.roomNumber}
                   </td>
-                  <td className="py-3.5 px-4 text-[#A1A1AA] whitespace-nowrap">{room.category}</td>
+                  <td className="py-3.5 px-4 text-[#64748B] whitespace-nowrap">{room.category}</td>
                   <td className="py-3.5 px-4 whitespace-nowrap">
                     <StatusBadge status={room.status} size="sm" />
                   </td>
-                  <td className="py-3.5 px-4 font-medium text-[#F5F5F7] whitespace-nowrap">
+                  <td className="py-3.5 px-4 font-medium text-[#0F172A] whitespace-nowrap">
                     {formatINR(room.ratePerNight)}
                   </td>
-                  <td className="py-3.5 px-4 text-[#A1A1AA] whitespace-nowrap">{room.maxGuests} Guests</td>
+                  <td className="py-3.5 px-4 text-[#64748B] whitespace-nowrap">{room.maxGuests} Guests</td>
                   <td className="py-3.5 px-4 text-right whitespace-nowrap">
                     <Button
                       size="sm"
@@ -410,28 +410,28 @@ export const DesignSystemShowcase: React.FC = () => {
           {MOCK_ROOMS.map((room) => (
             <div
               key={room.id}
-              className="p-4 rounded-xl bg-[#14141A] border border-[#2A2A35] space-y-3"
+              className="p-4 rounded-2xl bg-white border border-slate-200 space-y-3 shadow-sm"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-base font-semibold text-[#F5F5F7]">
+                  <span className="text-base font-semibold text-[#0F172A]">
                     Room #{room.roomNumber}
                   </span>
-                  <p className="text-xs text-[#A1A1AA]">{room.category}</p>
+                  <p className="text-xs text-[#64748B]">{room.category}</p>
                 </div>
                 <StatusBadge status={room.status} size="sm" />
               </div>
 
-              <div className="flex items-center justify-between text-xs pt-2 border-t border-[#2A2A35]/50">
-                <span className="text-[#A1A1AA]">Tariff:</span>
-                <span className="font-semibold text-[#FF8A3D] text-sm">
+              <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100">
+                <span className="text-[#64748B]">Tariff:</span>
+                <span className="font-semibold text-[#B84C00] text-sm">
                   {formatINR(room.ratePerNight)} / night
                 </span>
               </div>
 
               <div className="flex items-center justify-between text-xs">
-                <span className="text-[#A1A1AA]">Capacity:</span>
-                <span className="text-[#F5F5F7]">{room.maxGuests} Guests</span>
+                <span className="text-[#64748B]">Capacity:</span>
+                <span className="text-[#0F172A]">{room.maxGuests} Guests</span>
               </div>
 
               <Button
@@ -537,8 +537,8 @@ export const DesignSystemShowcase: React.FC = () => {
       {/* 9. Roles Architecture & Resort Staff Preview */}
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <Shield className="w-5 h-5 text-[#FF8A3D]" />
-          <h3 className="text-lg font-semibold text-[#F5F5F7]">
+          <Shield className="w-5 h-5 text-[#B84C00]" />
+          <h3 className="text-lg font-semibold text-[#0F172A]">
             User Roles Architecture (7 Supported Roles)
           </h3>
         </div>
@@ -548,33 +548,33 @@ export const DesignSystemShowcase: React.FC = () => {
           {allRoles.map((role) => (
             <div
               key={role}
-              className="p-3 rounded-lg bg-[#14141A] border border-[#2A2A35] text-center flex flex-col items-center justify-center gap-1.5"
+              className="p-3 rounded-xl bg-white border border-slate-200 text-center flex flex-col items-center justify-center gap-1.5 shadow-xs"
             >
-              <div className="w-8 h-8 rounded-full bg-[#1C1C24] flex items-center justify-center text-[#FF8A3D]">
+              <div className="w-8 h-8 rounded-full bg-orange-50 border border-orange-200/60 flex items-center justify-center text-[#B84C00]">
                 <Shield className="w-4 h-4" />
               </div>
-              <span className="text-xs font-medium text-[#F5F5F7] line-clamp-1">{role}</span>
+              <span className="text-xs font-semibold text-[#0F172A] line-clamp-1">{role}</span>
             </div>
           ))}
         </div>
 
         {/* Personnel with Real Indian Mock Data */}
         <div className="pt-2">
-          <p className="text-xs text-[#A1A1AA] mb-3">Assigned Staff Directory (Indian Mock Profiles):</p>
+          <p className="text-xs text-[#64748B] mb-3">Assigned Staff Directory (Indian Mock Profiles):</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {MOCK_USERS.map((usr) => (
               <div
                 key={usr.id}
-                className="p-3.5 rounded-xl bg-[#14141A] border border-[#2A2A35] flex items-center gap-3"
+                className="p-3.5 rounded-xl bg-white border border-slate-200 flex items-center gap-3 shadow-xs"
               >
-                <div className="w-10 h-10 rounded-full bg-[#1C1C24] border border-[#2A2A35] flex items-center justify-center text-[#FF8A3D] shrink-0 font-semibold text-sm">
+                <div className="w-10 h-10 rounded-full bg-orange-50 border border-orange-200 flex items-center justify-center text-[#B84C00] shrink-0 font-semibold text-sm">
                   {usr.name.slice(0, 2).toUpperCase()}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-semibold text-[#F5F5F7] truncate">{usr.name}</p>
+                  <p className="text-sm font-semibold text-[#0F172A] truncate">{usr.name}</p>
                   <div className="flex items-center gap-2 mt-0.5">
-                    <span className="text-xs text-[#FF8A3D] font-medium truncate">{usr.role}</span>
-                    <span className="text-[11px] text-[#A1A1AA] truncate">{usr.phone}</span>
+                    <span className="text-xs text-[#B84C00] font-medium truncate">{usr.role}</span>
+                    <span className="text-[11px] text-[#64748B] truncate">{usr.phone}</span>
                   </div>
                 </div>
               </div>
@@ -644,18 +644,18 @@ export const DesignSystemShowcase: React.FC = () => {
             ]}
           />
 
-          <div className="p-3.5 rounded-lg bg-[#1C1C24] border border-[#2A2A35] text-xs space-y-1.5">
-            <div className="flex justify-between text-[#A1A1AA]">
+          <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
+            <div className="flex justify-between text-[#64748B]">
               <span>Base Rate (1 Night):</span>
               <span>{formatINR(11500)}</span>
             </div>
-            <div className="flex justify-between text-[#A1A1AA]">
+            <div className="flex justify-between text-[#64748B]">
               <span>GST (18% for Suite):</span>
               <span>{formatINR(2070)}</span>
             </div>
-            <div className="flex justify-between font-semibold text-[#F5F5F7] pt-1 border-t border-[#2A2A35]">
+            <div className="flex justify-between font-semibold text-[#0F172A] pt-1 border-t border-slate-200">
               <span>Total Payable:</span>
-              <span className="text-[#FF8A3D]">{formatINR(13570)}</span>
+              <span className="text-[#B84C00]">{formatINR(13570)}</span>
             </div>
           </div>
         </div>

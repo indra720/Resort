@@ -31,7 +31,7 @@ export const BookingsPage: React.FC = () => {
     {
       key: 'bookingCode',
       header: 'Reservation Code',
-      accessor: (b) => <span className="font-bold text-[#FF8A3D]">{b.bookingCode}</span>,
+      accessor: (b) => <span className="font-bold text-[#B84C00]">{b.bookingCode}</span>,
       sortable: true,
       sortValue: (b) => b.bookingCode,
     },
@@ -40,8 +40,8 @@ export const BookingsPage: React.FC = () => {
       header: 'Guest Details',
       accessor: (b) => (
         <div>
-          <span className="font-semibold text-[#F5F5F7] block">{b.guestName}</span>
-          <span className="text-[11px] text-[#A1A1AA]">{b.guestPhone}</span>
+          <span className="font-semibold text-[#0F172A] block">{b.guestName}</span>
+          <span className="text-[11px] text-[#64748B]">{b.guestPhone}</span>
         </div>
       ),
       sortable: true,
@@ -67,7 +67,7 @@ export const BookingsPage: React.FC = () => {
       key: 'totalAmount',
       header: 'Tariff + GST',
       accessor: (b) => (
-        <span className="font-semibold text-[#F5F5F7]">{formatINR(b.totalAmount)}</span>
+        <span className="font-semibold text-[#0F172A]">{formatINR(b.totalAmount)}</span>
       ),
       sortable: true,
       sortValue: (b) => b.totalAmount,
@@ -80,14 +80,14 @@ export const BookingsPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-6 text-left">
+    <div className="space-y-4 sm:space-y-5 text-left">
       {/* Top Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
             Guest Reservations & Bookings
           </h1>
-          <p className="text-xs sm:text-sm text-[#A1A1AA]">
+          <p className="text-xs sm:text-sm text-[#64748B]">
             Full reservation lifecycle, Indian tax invoices, and check-in management.
           </p>
         </div>

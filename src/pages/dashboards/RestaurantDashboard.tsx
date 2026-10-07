@@ -52,10 +52,10 @@ export const RestaurantDashboard: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
             Spice & Palm Culinary & F&B Desk
           </h1>
-          <p className="text-xs sm:text-sm text-[#A1A1AA]">
+          <p className="text-xs sm:text-sm text-[#64748B]">
             Kitchen Order Tickets (KOT), Table reservations, and in-room dining billing.
           </p>
         </div>
@@ -116,24 +116,25 @@ export const RestaurantDashboard: React.FC = () => {
               data={RESTAURANT_SALES_DATA}
               margin={{ top: 10, right: 10, left: -10, bottom: 0 }}
             >
-              <XAxis dataKey="meal" stroke="#A1A1AA" fontSize={11} tickLine={false} />
+              <XAxis dataKey="meal" stroke="#64748B" fontSize={11} tickLine={false} />
               <YAxis
-                stroke="#A1A1AA"
+                stroke="#64748B"
                 fontSize={11}
                 tickFormatter={(v) => `₹${v / 1000}k`}
                 tickLine={false}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#14141A',
-                  borderColor: '#2A2A35',
+                  backgroundColor: '#FFFFFF',
+                  borderColor: '#E2E8F0',
                   borderRadius: '8px',
-                  color: '#F5F5F7',
+                  color: '#0F172A',
                   fontSize: '12px',
+                  boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
                 }}
                 formatter={(val: number) => [formatINR(val), 'Sales']}
               />
-              <Bar dataKey="sales" name="Sales Revenue" fill="#FF8A3D" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="sales" name="Sales Revenue" fill="#B84C00" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ChartCard>
         </div>
@@ -149,8 +150,8 @@ export const RestaurantDashboard: React.FC = () => {
       {/* Live Kitchen Order Tickets Table */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h3 className="text-base font-semibold text-[#F5F5F7] flex items-center gap-2">
-            <Flame className="w-4 h-4 text-[#FF8A3D]" />
+          <h3 className="text-base font-semibold text-[#B84C00] flex items-center gap-2">
+            <Flame className="w-4 h-4 text-[#B84C00]" />
             <span>Active KOT Orders (Kitchen Display)</span>
           </h3>
           <Button variant="ghost" size="sm" onClick={() => navigate('/restaurant')}>
@@ -162,25 +163,25 @@ export const RestaurantDashboard: React.FC = () => {
           {activeOrders.map((ord) => (
             <div
               key={ord.id}
-              className="p-4 rounded-xl bg-[#14141A] border border-[#2A2A35] space-y-3 text-left"
+              className="p-4 rounded-xl bg-white border border-[#E2E8F0] shadow-sm space-y-3 text-left"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="font-bold text-sm text-[#F5F5F7]">{ord.id}</span>
-                  <p className="text-xs text-[#FF8A3D] font-medium">{ord.table}</p>
+                  <span className="font-bold text-sm text-[#0F172A]">{ord.id}</span>
+                  <p className="text-xs text-[#B84C00] font-medium">{ord.table}</p>
                 </div>
-                <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#CC5500]/18 text-[#FF8A3D] font-semibold border border-[#CC5500]/30">
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#FFF7ED] text-[#B84C00] font-semibold border border-[#FFEDD5]">
                   {ord.status}
                 </span>
               </div>
 
-              <p className="text-xs text-[#A1A1AA] bg-[#1C1C24] p-2.5 rounded-lg border border-[#2A2A35]">
+              <p className="text-xs text-[#475569] bg-[#F8FAFC] p-2.5 rounded-lg border border-[#E2E8F0]">
                 {ord.items}
               </p>
 
-              <div className="flex items-center justify-between text-xs pt-1 border-t border-[#2A2A35]/50">
-                <span className="text-[#A1A1AA]">Order Value:</span>
-                <span className="font-bold text-[#F5F5F7]">{formatINR(ord.amount)}</span>
+              <div className="flex items-center justify-between text-xs pt-1 border-t border-[#E2E8F0]">
+                <span className="text-[#64748B]">Order Value:</span>
+                <span className="font-bold text-[#0F172A]">{formatINR(ord.amount)}</span>
               </div>
             </div>
           ))}

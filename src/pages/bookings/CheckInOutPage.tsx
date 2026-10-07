@@ -42,22 +42,22 @@ export const CheckInOutPage: React.FC = () => {
     <div className="space-y-6 text-left">
       {/* Header */}
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7]">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
           Front Desk Check-In & Check-Out Terminal
         </h1>
-        <p className="text-xs sm:text-sm text-[#A1A1AA]">
+        <p className="text-xs sm:text-sm text-[#64748B]">
           Guest arrivals, identity document capture, and key issuance.
         </p>
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-[#2A2A35] gap-4">
+      <div className="flex border-b border-[#E2E8F0] gap-4">
         <button
           onClick={() => setActiveTab('checkin')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'checkin'
-              ? 'border-[#CC5500] text-[#FF8A3D]'
-              : 'border-transparent text-[#A1A1AA] hover:text-[#F5F5F7]'
+              ? 'border-[#B84C00] text-[#B84C00]'
+              : 'border-transparent text-[#64748B] hover:text-[#0F172A]'
           }`}
         >
           <UserCheck className="w-4 h-4" />
@@ -68,8 +68,8 @@ export const CheckInOutPage: React.FC = () => {
           onClick={() => setActiveTab('checkout')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'checkout'
-              ? 'border-[#CC5500] text-[#FF8A3D]'
-              : 'border-transparent text-[#A1A1AA] hover:text-[#F5F5F7]'
+              ? 'border-[#B84C00] text-[#B84C00]'
+              : 'border-transparent text-[#64748B] hover:text-[#0F172A]'
           }`}
         >
           <UserX className="w-4 h-4" />
@@ -83,41 +83,41 @@ export const CheckInOutPage: React.FC = () => {
           {checkInList.map((b) => (
             <div
               key={b.id}
-              className="p-5 rounded-2xl bg-[#14141A] border border-[#2A2A35] space-y-4 flex flex-col justify-between"
+              className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm space-y-4 flex flex-col justify-between"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-base font-bold text-[#F5F5F7]">{b.guestName}</span>
+                  <span className="text-base font-bold text-[#0F172A]">{b.guestName}</span>
                   <StatusBadge status={b.paymentStatus} size="sm" />
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 text-xs text-[#A1A1AA] pt-1">
+                <div className="grid grid-cols-2 gap-2 text-xs text-[#64748B] pt-1">
                   <div>
                     <span className="block text-[11px]">Room Assigned:</span>
-                    <span className="font-semibold text-[#FF8A3D] text-sm">
+                    <span className="font-semibold text-[#B84C00] text-sm">
                       Room #{b.roomNumber}
                     </span>
                   </div>
                   <div>
                     <span className="block text-[11px]">Booking ID:</span>
-                    <span className="font-semibold text-[#F5F5F7]">{b.bookingCode}</span>
+                    <span className="font-semibold text-[#0F172A]">{b.bookingCode}</span>
                   </div>
                 </div>
 
-                <div className="text-xs text-[#A1A1AA] pt-1">
+                <div className="text-xs text-[#64748B] pt-1">
                   <span>Stay Window: </span>
-                  <span className="text-[#F5F5F7] font-medium">
+                  <span className="text-[#0F172A] font-medium">
                     {formatDate(b.checkIn)} → {formatDate(b.checkOut)}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-2 text-xs text-[#22C55E] bg-[#22C55E]/10 border border-[#22C55E]/20 p-2 rounded-lg mt-2">
-                  <ShieldCheck className="w-4 h-4 shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-emerald-800 bg-emerald-50 border border-emerald-200 p-2 rounded-lg mt-2">
+                  <ShieldCheck className="w-4 h-4 shrink-0 text-emerald-600" />
                   <span>Aadhaar verified • {formatINR(b.totalAmount)} total bill</span>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#2A2A35]">
+              <div className="pt-3 border-t border-[#E2E8F0]">
                 <Button
                   variant="primary"
                   fullWidth
@@ -138,33 +138,33 @@ export const CheckInOutPage: React.FC = () => {
           {checkOutList.map((b) => (
             <div
               key={b.id}
-              className="p-5 rounded-2xl bg-[#14141A] border border-[#2A2A35] space-y-4 flex flex-col justify-between"
+              className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm space-y-4 flex flex-col justify-between"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-base font-bold text-[#F5F5F7]">{b.guestName}</span>
-                  <span className="text-xs font-semibold text-[#22C55E] bg-[#22C55E]/10 px-2.5 py-0.5 rounded-full border border-[#22C55E]/20">
+                  <span className="text-base font-bold text-[#0F172A]">{b.guestName}</span>
+                  <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
                     Folio Settled
                   </span>
                 </div>
 
-                <div className="text-xs text-[#A1A1AA]">
+                <div className="text-xs text-[#64748B]">
                   <span>Occupying: </span>
-                  <span className="font-bold text-[#FF8A3D]">Room #{b.roomNumber}</span>
+                  <span className="font-bold text-[#B84C00]">Room #{b.roomNumber}</span>
                 </div>
 
-                <div className="text-xs text-[#A1A1AA]">
+                <div className="text-xs text-[#64748B]">
                   <span>Total Settled Tariff: </span>
-                  <span className="font-bold text-[#F5F5F7]">{formatINR(b.totalAmount)}</span>
+                  <span className="font-bold text-[#0F172A]">{formatINR(b.totalAmount)}</span>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-[#1C1C24] border border-[#2A2A35] text-xs text-[#A1A1AA] flex items-center gap-2">
-                  <CreditCard className="w-4 h-4 text-[#FF8A3D]" />
+                <div className="p-2.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#64748B] flex items-center gap-2">
+                  <CreditCard className="w-4 h-4 text-[#B84C00]" />
                   <span>Mini-bar and room service charges cleared.</span>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#2A2A35]">
+              <div className="pt-3 border-t border-[#E2E8F0]">
                 <Button
                   variant="danger"
                   fullWidth

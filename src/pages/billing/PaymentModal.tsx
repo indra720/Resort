@@ -83,8 +83,8 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                 onClick={() => setMethod(item.id as typeof method)}
                 className={`p-2.5 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all text-xs ${
                   isSelected
-                    ? 'bg-[#CC5500]/18 border-[#CC5500] text-[#FF8A3D] font-semibold'
-                    : 'bg-[#1C1C24] border-[#2A2A35] text-[#A1A1AA] hover:text-[#F5F5F7]'
+                    ? 'bg-[#FFF7ED] border-[#B84C00] text-[#B84C00] font-semibold'
+                    : 'bg-white border-[#E2E8F0] text-[#64748B] hover:text-[#0F172A]'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -96,8 +96,8 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
 
         {/* 1. UPI Tab */}
         {method === 'upi' && (
-          <div className="p-4 rounded-xl bg-[#1C1C24] border border-[#2A2A35] space-y-4 text-center">
-            <div className="w-36 h-36 bg-white p-2 rounded-xl mx-auto flex items-center justify-center shadow-lg">
+          <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-4 text-center">
+            <div className="w-36 h-36 bg-white p-2 rounded-xl mx-auto flex items-center justify-center shadow-lg border border-[#E2E8F0]">
               {/* Simulated QR Code SVG pattern */}
               <div className="w-full h-full border-4 border-black p-2 flex flex-col justify-between">
                 <div className="flex justify-between">
@@ -113,7 +113,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                 </div>
               </div>
             </div>
-            <p className="text-xs text-[#A1A1AA]">
+            <p className="text-xs text-[#64748B]">
               Scan using any Indian UPI App (Google Pay, PhonePe, Paytm, BHIM)
             </p>
 
@@ -145,13 +145,13 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
 
         {/* 3. Cash Tab */}
         {method === 'cash' && (
-          <div className="p-4 rounded-xl bg-[#1C1C24] border border-[#2A2A35] space-y-3">
+          <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-3">
             <Input
               label="Amount Received (₹)"
               type="number"
               defaultValue={amount}
             />
-            <div className="p-3 rounded-lg bg-[#14141A] text-xs text-[#A1A1AA] flex justify-between">
+            <div className="p-3 rounded-lg bg-white border border-[#E2E8F0] text-xs text-[#64748B] flex justify-between">
               <span>Change to return to guest:</span>
               <span className="font-bold text-[#22C55E]">{formatINR(0)}</span>
             </div>

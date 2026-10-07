@@ -30,9 +30,9 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
   isLoading = false,
 }) => {
   const icons = {
-    danger: <AlertCircle className="w-6 h-6 text-[#EF4444]" />,
-    warning: <AlertTriangle className="w-6 h-6 text-[#F59E0B]" />,
-    primary: <HelpCircle className="w-6 h-6 text-[#FF8A3D]" />,
+    danger: <AlertCircle className="w-6 h-6 text-[#DC2626]" />,
+    warning: <AlertTriangle className="w-6 h-6 text-[#D97706]" />,
+    primary: <HelpCircle className="w-6 h-6 text-[#B84C00]" />,
   };
 
   const buttonVariants: Record<'danger' | 'warning' | 'primary', 'danger' | 'primary'> = {
@@ -71,10 +71,10 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
       }
     >
       <div className="flex items-start gap-4 text-left">
-        <div className="p-2.5 rounded-xl bg-[#1C1C24] border border-[#2A2A35] shrink-0">
+        <div className="p-2.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] shrink-0">
           {icons[variant]}
         </div>
-        <p className="text-sm text-[#A1A1AA] leading-relaxed pt-1">
+        <p className="text-sm text-[#64748B] leading-relaxed pt-1">
           {description}
         </p>
       </div>

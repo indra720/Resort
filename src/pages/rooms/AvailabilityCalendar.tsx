@@ -25,60 +25,60 @@ export const AvailabilityCalendar: React.FC = () => {
   return (
     <div className="space-y-4 text-left">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <h3 className="text-base font-semibold text-[#F5F5F7]">
+        <h3 className="text-base font-semibold text-[#B84C00]">
           7-Day Occupancy Timeline Grid
         </h3>
-        <p className="text-xs text-[#A1A1AA]">
+        <p className="text-xs text-[#64748B]">
           Live room availability and housekeeping occupancy status
         </p>
       </div>
 
       {/* Mobile Swipe Banner */}
-      <div className="sm:hidden flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#1C1C24] border border-[#2A2A35] text-[11px] text-[#A1A1AA]">
+      <div className="sm:hidden flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-[11px] text-[#64748B]">
         <span className="flex items-center gap-1.5">
-          <ArrowLeftRight className="w-3.5 h-3.5 text-[#FF8A3D] animate-pulse shrink-0" />
+          <ArrowLeftRight className="w-3.5 h-3.5 text-[#B84C00] animate-pulse shrink-0" />
           <span>Swipe horizontally to view full 7-day schedule</span>
         </span>
-        <span className="text-[10px] text-[#FF8A3D] font-medium bg-[#CC5500]/18 px-1.5 py-0.5 rounded">
+        <span className="text-[10px] text-[#B84C00] font-medium bg-[#FFF7ED] px-1.5 py-0.5 rounded border border-[#FFEDD5]">
           7 Days
         </span>
       </div>
 
       {/* Horizontally scrollable container */}
-      <div className="overflow-x-auto rounded-xl border border-[#2A2A35] bg-[#14141A] pb-1">
+      <div className="overflow-x-auto rounded-xl border border-[#E2E8F0] bg-white shadow-sm pb-1">
         <table className="w-full text-xs text-left border-collapse min-w-[780px]">
-          <thead className="bg-[#1C1C24] text-[#A1A1AA] border-b border-[#2A2A35]">
+          <thead className="bg-[#F8FAFC] text-[#64748B] border-b border-[#E2E8F0]">
             <tr>
-              <th className="py-3.5 px-4 font-semibold sticky left-0 bg-[#1C1C24] z-10 w-44 shadow-sm whitespace-nowrap">
+              <th className="py-3.5 px-4 font-semibold sticky left-0 bg-[#F8FAFC] z-10 w-44 shadow-sm whitespace-nowrap">
                 Room & Category
               </th>
               {days.map((d, i) => (
                 <th key={i} className="py-3 px-3 text-center min-w-[85px] whitespace-nowrap">
-                  <span className="font-semibold text-[#F5F5F7] block">
+                  <span className="font-semibold text-[#0F172A] block">
                     {format(d, 'dd MMM')}
                   </span>
-                  <span className="text-[10px] text-[#A1A1AA]">{format(d, 'EEE')}</span>
+                  <span className="text-[10px] text-[#64748B]">{format(d, 'EEE')}</span>
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#2A2A35]">
+          <tbody className="divide-y divide-[#E2E8F0]">
             {MOCK_ROOMS.map((room, rIdx) => (
-              <tr key={room.id} className="hover:bg-[#1C1C24]/30 transition-colors">
-                <td className="py-3.5 px-4 sticky left-0 bg-[#14141A] z-10 border-r border-[#2A2A35] whitespace-nowrap">
-                  <span className="font-bold text-[#F5F5F7] block">#{room.roomNumber}</span>
-                  <span className="text-[11px] text-[#A1A1AA] truncate block max-w-[140px]">
+              <tr key={room.id} className="hover:bg-[#F8FAFC]/60 transition-colors">
+                <td className="py-3.5 px-4 sticky left-0 bg-white z-10 border-r border-[#E2E8F0] whitespace-nowrap">
+                  <span className="font-bold text-[#0F172A] block">#{room.roomNumber}</span>
+                  <span className="text-[11px] text-[#64748B] truncate block max-w-[140px]">
                     {room.category}
                   </span>
                 </td>
                 {days.map((_, dIdx) => {
                   const status = getDayStatus(rIdx, dIdx);
                   const colors: Record<string, string> = {
-                    Available: 'bg-[#22C55E]/15 text-[#22C55E] border-[#22C55E]/30',
-                    Occupied: 'bg-[#CC5500]/18 text-[#FF8A3D] border-[#CC5500]/30',
-                    Reserved: 'bg-[#3B82F6]/15 text-[#3B82F6] border-[#3B82F6]/30',
-                    Cleaning: 'bg-[#F59E0B]/15 text-[#F59E0B] border-[#F59E0B]/30',
-                    Maintenance: 'bg-[#EF4444]/15 text-[#EF4444] border-[#EF4444]/30',
+                    Available: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+                    Occupied: 'bg-[#FFF7ED] text-[#B84C00] border-[#FFEDD5]',
+                    Reserved: 'bg-blue-50 text-blue-700 border-blue-200',
+                    Cleaning: 'bg-amber-50 text-amber-700 border-amber-200',
+                    Maintenance: 'bg-rose-50 text-rose-700 border-rose-200',
                   };
                   return (
                     <td key={dIdx} className="py-2 px-2 text-center">
@@ -97,7 +97,7 @@ export const AvailabilityCalendar: React.FC = () => {
       </div>
 
       {/* Calendar Status Legend */}
-      <div className="flex flex-wrap items-center gap-3 pt-2 text-xs text-[#A1A1AA]">
+      <div className="flex flex-wrap items-center gap-3 pt-2 text-xs text-[#64748B]">
         <span>Legend:</span>
         <StatusBadge status="Available" size="sm" />
         <StatusBadge status="Occupied" size="sm" />

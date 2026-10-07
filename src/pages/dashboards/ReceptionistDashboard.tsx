@@ -31,7 +31,7 @@ export const ReceptionistDashboard: React.FC = () => {
     {
       key: 'bookingCode',
       header: 'Reservation',
-      accessor: (b) => <span className="font-semibold text-[#FF8A3D]">{b.bookingCode}</span>,
+      accessor: (b) => <span className="font-semibold text-[#B84C00]">{b.bookingCode}</span>,
       sortable: true,
       sortValue: (b) => b.bookingCode,
     },
@@ -40,8 +40,8 @@ export const ReceptionistDashboard: React.FC = () => {
       header: 'Guest Name',
       accessor: (b) => (
         <div>
-          <span className="font-medium text-[#F5F5F7] block">{b.guestName}</span>
-          <span className="text-[11px] text-[#A1A1AA]">{b.guestPhone}</span>
+          <span className="font-semibold text-[#0F172A] block">{b.guestName}</span>
+          <span className="text-[11px] text-[#64748B]">{b.guestPhone}</span>
         </div>
       ),
       sortable: true,
@@ -50,13 +50,13 @@ export const ReceptionistDashboard: React.FC = () => {
     {
       key: 'roomNumber',
       header: 'Room',
-      accessor: (b) => <span className="font-medium">Room #{b.roomNumber}</span>,
+      accessor: (b) => <span className="font-medium text-[#0F172A]">Room #{b.roomNumber}</span>,
     },
     {
       key: 'checkIn',
       header: 'Dates',
       accessor: (b) => (
-        <span className="text-xs">
+        <span className="text-xs text-[#64748B]">
           {formatDate(b.checkIn)} → {formatDate(b.checkOut)}
         </span>
       ),
@@ -64,7 +64,7 @@ export const ReceptionistDashboard: React.FC = () => {
     {
       key: 'totalAmount',
       header: 'Total Bill',
-      accessor: (b) => <span className="font-semibold">{formatINR(b.totalAmount)}</span>,
+      accessor: (b) => <span className="font-semibold text-[#0F172A]">{formatINR(b.totalAmount)}</span>,
       sortable: true,
       sortValue: (b) => b.totalAmount,
     },
@@ -80,10 +80,10 @@ export const ReceptionistDashboard: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
             Front Desk Reception
           </h1>
-          <p className="text-xs sm:text-sm text-[#A1A1AA]">
+          <p className="text-xs sm:text-sm text-[#64748B]">
             Instant check-in/out processing, ID verification, and guest key assignments.
           </p>
         </div>
@@ -93,7 +93,7 @@ export const ReceptionistDashboard: React.FC = () => {
             variant="outline"
             size="md"
             onClick={() => navigate('/check-in-out')}
-            leftIcon={<Key className="w-4 h-4 text-[#FF8A3D]" />}
+            leftIcon={<Key className="w-4 h-4 text-[#B84C00]" />}
           >
             Check-In Terminal
           </Button>
@@ -146,8 +146,8 @@ export const ReceptionistDashboard: React.FC = () => {
       {/* Active Guest Arrivals Table */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h3 className="text-base font-semibold text-[#F5F5F7] flex items-center gap-2">
-            <Search className="w-4 h-4 text-[#FF8A3D]" />
+          <h3 className="text-base font-bold text-[#B84C00] flex items-center gap-2">
+            <Search className="w-4 h-4 text-[#B84C00]" />
             <span>Today's Arrival Queue</span>
           </h3>
           <Button variant="ghost" size="sm" onClick={() => navigate('/bookings')}>
@@ -212,16 +212,16 @@ export const ReceptionistDashboard: React.FC = () => {
         }
       >
         <div className="space-y-4 text-left">
-          <div className="p-3.5 rounded-xl bg-[#1C1C24] border border-[#2A2A35] flex items-center justify-between">
+          <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-between">
             <div>
-              <p className="text-sm font-semibold text-[#F5F5F7]">
+              <p className="text-sm font-semibold text-[#0F172A]">
                 {selectedBooking?.guestName || 'Kavita Iyer'}
               </p>
-              <p className="text-xs text-[#A1A1AA]">
+              <p className="text-xs text-[#64748B]">
                 Reservation #{selectedBooking?.bookingCode || 'RES-8822'}
               </p>
             </div>
-            <span className="text-xs font-semibold text-[#FF8A3D] bg-[#CC5500]/18 px-2 py-1 rounded">
+            <span className="text-xs font-semibold text-[#B84C00] bg-orange-50 border border-orange-200 px-2 py-1 rounded">
               Room #{selectedBooking?.roomNumber || '201'}
             </span>
           </div>
@@ -258,7 +258,7 @@ export const ReceptionistDashboard: React.FC = () => {
             />
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-[#22C55E] bg-[#22C55E]/10 border border-[#22C55E]/20 p-2.5 rounded-lg">
+          <div className="flex items-center gap-2 text-xs text-[#16A34A] bg-emerald-50 border border-emerald-200 p-2.5 rounded-lg">
             <ShieldCheck className="w-4 h-4 shrink-0" />
             <span>ID proof physically inspected & guest registration card signed.</span>
           </div>

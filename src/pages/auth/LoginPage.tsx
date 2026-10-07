@@ -61,11 +61,11 @@ export const LoginPage: React.FC = () => {
   ];
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-[#0B0B0F] text-[#F5F5F7] flex flex-col lg:flex-row font-sans selection:bg-[#CC5500] selection:text-white">
+    <div className="h-screen w-screen overflow-hidden bg-[#F8FAFC] text-[#0F172A] flex flex-col lg:flex-row font-sans selection:bg-[#B84C00] selection:text-white">
       {/* =========================================================================
           LEFT SIDE: LUXURY RESORT VISUAL SHOWCASE (Hidden on small mobile if needed, or compact)
           ========================================================================= */}
-      <div className="hidden lg:flex lg:w-1/2 relative h-full flex-col justify-between p-10 xl:p-14 overflow-hidden border-r border-[#2A2A35]">
+      <div className="hidden lg:flex lg:w-1/2 relative h-full flex-col justify-between p-10 xl:p-14 overflow-hidden border-r border-[#E2E8F0]">
         {/* Background Resort Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -73,8 +73,7 @@ export const LoginPage: React.FC = () => {
             alt="Aura Palms Resort Goa"
             className="w-full h-full object-cover object-center scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0F] via-[#0B0B0F]/70 to-[#0B0B0F]/40" />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0B0B0F]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
         </div>
 
         {/* Top Header: Brand & Back Link */}
@@ -83,14 +82,14 @@ export const LoginPage: React.FC = () => {
             to="/"
             className="flex items-center gap-3 group text-left select-none"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#CC5500] to-[#E06A10] flex items-center justify-center text-white shadow-lg shadow-[#CC5500]/30 group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#B84C00] to-[#E06A10] flex items-center justify-center text-white shadow-lg shadow-[#B84C00]/30 group-hover:scale-105 transition-transform">
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <span className="text-lg font-bold tracking-tight text-[#F5F5F7]">
+              <span className="text-lg font-bold tracking-tight text-white">
                 Aura Palms <span className="text-[#FF8A3D]">Resort</span>
               </span>
-              <span className="block text-[10px] text-[#A1A1AA] uppercase tracking-widest font-medium">
+              <span className="block text-[10px] text-white/80 uppercase tracking-widest font-medium">
                 Luxury Coastal Sanctuary • Goa
               </span>
             </div>
@@ -98,7 +97,7 @@ export const LoginPage: React.FC = () => {
 
           <Link
             to="/"
-            className="px-3.5 py-1.5 rounded-xl bg-[#14141A]/80 border border-[#2A2A35] hover:border-[#CC5500] text-xs text-[#A1A1AA] hover:text-[#F5F5F7] transition-all flex items-center gap-1.5 backdrop-blur-md"
+            className="px-3.5 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 border border-white/30 hover:border-white text-xs text-white transition-all flex items-center gap-1.5 backdrop-blur-md"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Website</span>
@@ -107,66 +106,66 @@ export const LoginPage: React.FC = () => {
 
         {/* Middle Feature Highlights */}
         <div className="relative z-10 space-y-4 max-w-lg text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#CC5500]/18 border border-[#CC5500]/30 text-[#FF8A3D] text-xs font-semibold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B84C00] text-white text-xs font-semibold shadow-md">
             <Building className="w-3.5 h-3.5" />
             <span>5-Star Hospitality Operations Suite</span>
           </div>
 
-          <h2 className="text-3xl xl:text-4xl font-extrabold text-[#F5F5F7] leading-tight">
+          <h2 className="text-3xl xl:text-4xl font-extrabold text-white leading-tight">
             Seamless Resort Operations & Guest Concierge
           </h2>
 
-          <p className="text-xs xl:text-sm text-[#A1A1AA] leading-relaxed">
+          <p className="text-xs xl:text-sm text-white/90 leading-relaxed">
             Manage luxury villa reservations, housekeeping workflows, coastal dining orders, and GST billing with real-time role-based access.
           </p>
 
-          {/* Floating Testimonial Quote Card */}
-          <div className="p-4 rounded-2xl bg-[#14141A]/90 border border-[#2A2A35] backdrop-blur-md shadow-2xl space-y-2">
+          {/* Floating Testimonial Quote Card (White Theme) */}
+          <div className="p-4 rounded-2xl bg-white/95 border border-white text-[#0F172A] backdrop-blur-md shadow-2xl space-y-2">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1 text-[#FF8A3D]">
+              <div className="flex items-center gap-1 text-[#B84C00]">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-3.5 h-3.5 fill-current" />
                 ))}
               </div>
-              <span className="text-[10px] text-[#22C55E] flex items-center gap-1 font-semibold">
+              <span className="text-[10px] text-[#16A34A] flex items-center gap-1 font-semibold">
                 <CheckCircle2 className="w-3 h-3" /> Verified 4.9/5 Rating
               </span>
             </div>
-            <p className="text-xs text-[#F5F5F7] italic">
+            <p className="text-xs text-[#0F172A] italic">
               "The plunge pool villa was immaculate and check-in was instantaneous. World-class coastal experience!"
             </p>
-            <span className="text-[10px] text-[#A1A1AA] block">
+            <span className="text-[10px] text-[#64748B] block">
               — Pooja Hegde, Grand Pool Villa (Candolim Beach)
             </span>
           </div>
         </div>
 
         {/* Bottom Trust Strip */}
-        <div className="relative z-10 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-[#A1A1AA]">
+        <div className="relative z-10 pt-4 border-t border-white/20 flex items-center justify-between text-[11px] text-white/80">
           <span>© 2026 Aura Palms Resort & Spa</span>
           <span>256-bit SSL Security • GST Compliant</span>
         </div>
       </div>
 
       {/* =========================================================================
-          RIGHT SIDE: ELEGANT COMPACT AUTH CARD (FITS 100vh WITHOUT PAGE SCROLL)
+          RIGHT SIDE: ELEGANT COMPACT AUTH CARD (WHITE THEME)
           ========================================================================= */}
-      <div className="flex-1 h-full flex flex-col justify-center items-center p-4 sm:p-8 lg:p-12 overflow-y-auto">
+      <div className="flex-1 h-full flex flex-col justify-center items-center p-4 sm:p-8 lg:p-12 overflow-y-auto bg-[#F8FAFC]">
         <div className="w-full max-w-md space-y-5 my-auto">
           {/* Mobile Top Brand Bar (Visible on mobile only) */}
           <div className="lg:hidden flex items-center justify-between mb-2">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#CC5500] to-[#E06A10] flex items-center justify-center text-white">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#B84C00] to-[#E06A10] flex items-center justify-center text-white">
                 <Sparkles className="w-4 h-4" />
               </div>
-              <span className="text-base font-bold text-[#F5F5F7]">
-                Aura Palms <span className="text-[#FF8A3D]">Resort</span>
+              <span className="text-base font-bold text-[#0F172A]">
+                Aura Palms <span className="text-[#B84C00]">Resort</span>
               </span>
             </Link>
 
             <Link
               to="/"
-              className="text-xs text-[#A1A1AA] hover:text-[#FF8A3D] flex items-center gap-1"
+              className="text-xs text-[#64748B] hover:text-[#B84C00] flex items-center gap-1"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Website</span>
@@ -175,17 +174,17 @@ export const LoginPage: React.FC = () => {
 
           {/* Form Header */}
           <div className="text-left space-y-1">
-            <h1 className="text-2xl font-bold tracking-tight text-[#F5F5F7] flex items-center gap-2">
-              <KeyRound className="w-5 h-5 text-[#FF8A3D]" />
+            <h1 className="text-2xl font-bold tracking-tight text-[#B84C00] flex items-center gap-2">
+              <KeyRound className="w-5 h-5 text-[#B84C00]" />
               <span>Sign In to System</span>
             </h1>
-            <p className="text-xs text-[#A1A1AA]">
+            <p className="text-xs text-[#64748B]">
               Enter employee credentials or select a 1-click test role below.
             </p>
           </div>
 
-          {/* Glassmorphic Form Card */}
-          <div className="bg-[#14141A] border border-[#2A2A35] rounded-2xl p-5 sm:p-6 shadow-2xl space-y-4">
+          {/* White Theme Form Card */}
+          <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 sm:p-6 shadow-xl space-y-4">
             <form onSubmit={handleSubmit} className="space-y-3.5 text-left">
               <Input
                 label="Staff / Guest Email"
@@ -210,7 +209,7 @@ export const LoginPage: React.FC = () => {
                 <div className="flex justify-end pt-0.5">
                   <Link
                     to="/forgot-password"
-                    className="text-[11px] text-[#A1A1AA] hover:text-[#FF8A3D] transition-colors"
+                    className="text-[11px] text-[#64748B] hover:text-[#B84C00] transition-colors"
                   >
                     Forgot password?
                   </Link>
@@ -230,9 +229,9 @@ export const LoginPage: React.FC = () => {
             </form>
 
             {/* Quick 1-Click Demo Role Selector (Prominently testing RBAC) */}
-            <div className="pt-3 border-t border-[#2A2A35] space-y-2">
-              <div className="flex items-center justify-between text-[11px] text-[#A1A1AA]">
-                <span className="flex items-center gap-1 text-[#FF8A3D] font-semibold">
+            <div className="pt-3 border-t border-[#E2E8F0] space-y-2">
+              <div className="flex items-center justify-between text-[11px] text-[#64748B]">
+                <span className="flex items-center gap-1 text-[#B84C00] font-semibold">
                   <ShieldCheck className="w-3.5 h-3.5" /> Quick Demo Role Login:
                 </span>
                 <span>Click to switch</span>
@@ -244,12 +243,12 @@ export const LoginPage: React.FC = () => {
                     key={r}
                     type="button"
                     onClick={() => handleQuickRoleSelect(r)}
-                    className="p-1.5 text-left rounded-lg bg-[#1C1C24] border border-[#2A2A35] hover:border-[#CC5500] hover:text-[#FF8A3D] text-[#F5F5F7] transition-all truncate select-none active:scale-95 group"
+                    className="p-1.5 text-left rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#B84C00] hover:bg-[#FFF7ED] text-[#0F172A] hover:text-[#B84C00] transition-all truncate select-none active:scale-95 group shadow-xs"
                   >
-                    <span className="text-[11px] font-semibold block truncate group-hover:text-[#FF8A3D]">
+                    <span className="text-[11px] font-semibold block truncate group-hover:text-[#B84C00]">
                       {r}
                     </span>
-                    <span className="text-[9px] text-[#A1A1AA] block truncate">
+                    <span className="text-[9px] text-[#64748B] block truncate">
                       Instant Access
                     </span>
                   </button>
@@ -258,11 +257,11 @@ export const LoginPage: React.FC = () => {
             </div>
 
             {/* Link to Guest Registration */}
-            <div className="pt-3 border-t border-[#2A2A35] flex items-center justify-between text-xs">
-              <span className="text-[#A1A1AA]">New guest booking?</span>
+            <div className="pt-3 border-t border-[#E2E8F0] flex items-center justify-between text-xs">
+              <span className="text-[#64748B]">New guest booking?</span>
               <Link
                 to="/signup"
-                className="text-xs font-semibold text-[#FF8A3D] hover:text-[#E06A10] transition-colors flex items-center gap-1"
+                className="text-xs font-semibold text-[#B84C00] hover:text-[#9C3800] transition-colors flex items-center gap-1"
               >
                 <span>Register Guest Account</span>
                 <ArrowRight className="w-3 h-3" />
@@ -271,8 +270,8 @@ export const LoginPage: React.FC = () => {
           </div>
 
           {/* Footer note */}
-          <div className="flex items-center justify-between text-[11px] text-[#A1A1AA] px-1">
-            <Link to="/" className="hover:text-[#F5F5F7] flex items-center gap-1">
+          <div className="flex items-center justify-between text-[11px] text-[#64748B] px-1">
+            <Link to="/" className="hover:text-[#0F172A] flex items-center gap-1">
               <ArrowLeft className="w-3 h-3" /> Aura Palms Website
             </Link>
             <span>Role-Based Auth Matrix</span>

@@ -15,14 +15,14 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       'inline-flex items-center justify-center font-medium rounded-full border transition-colors select-none tracking-wide';
 
     const variantStyles = {
-      default: 'bg-[#1C1C24] text-[#F5F5F7] border-[#2A2A35]',
-      primary: 'bg-[#CC5500]/18 text-[#FF8A3D] border-[#CC5500]/30',
-      secondary: 'bg-[#14141A] text-[#A1A1AA] border-[#2A2A35]',
-      outline: 'bg-transparent text-[#F5F5F7] border-[#2A2A35]',
-      success: 'bg-[#22C55E]/15 text-[#22C55E] border-[#22C55E]/30',
-      warning: 'bg-[#F59E0B]/15 text-[#F59E0B] border-[#F59E0B]/30',
-      danger: 'bg-[#EF4444]/15 text-[#EF4444] border-[#EF4444]/30',
-      info: 'bg-[#3B82F6]/15 text-[#3B82F6] border-[#3B82F6]/30',
+      default: 'bg-[#F1F5F9] text-[#0F172A] border-[#E2E8F0]',
+      primary: 'bg-orange-50 text-[#B84C00] border-orange-200 font-semibold',
+      secondary: 'bg-white text-[#64748B] border-[#E2E8F0]',
+      outline: 'bg-transparent text-[#0F172A] border-[#E2E8F0]',
+      success: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      warning: 'bg-amber-50 text-amber-700 border-amber-200',
+      danger: 'bg-rose-50 text-rose-700 border-rose-200',
+      info: 'bg-blue-50 text-blue-700 border-blue-200',
     };
 
     const sizeStyles = {

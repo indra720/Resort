@@ -90,14 +90,14 @@ export const BillingPage: React.FC = () => {
     {
       key: 'invoiceNumber',
       header: 'Tax Invoice #',
-      accessor: (i) => <span className="font-bold text-[#FF8A3D]">{i.invoiceNumber}</span>,
+      accessor: (i) => <span className="font-bold text-[#B84C00]">{i.invoiceNumber}</span>,
       sortable: true,
       sortValue: (i) => i.invoiceNumber,
     },
     {
       key: 'guestName',
       header: 'Guest Name',
-      accessor: (i) => <span className="font-semibold text-[#F5F5F7]">{i.guestName}</span>,
+      accessor: (i) => <span className="font-semibold text-[#0F172A]">{i.guestName}</span>,
       sortable: true,
       sortValue: (i) => i.guestName,
     },
@@ -110,7 +110,7 @@ export const BillingPage: React.FC = () => {
       key: 'gstAmount',
       header: 'GST Breakup',
       accessor: (i) => (
-        <span className="text-xs text-[#A1A1AA]">
+        <span className="text-xs text-[#64748B]">
           {formatINR(i.gstAmount)} ({i.gstRate}%)
         </span>
       ),
@@ -119,7 +119,7 @@ export const BillingPage: React.FC = () => {
       key: 'grandTotal',
       header: 'Total Bill (₹)',
       accessor: (i) => (
-        <span className="font-bold text-[#F5F5F7]">{formatINR(i.grandTotal)}</span>
+        <span className="font-bold text-[#0F172A]">{formatINR(i.grandTotal)}</span>
       ),
       sortable: true,
       sortValue: (i) => i.grandTotal,
@@ -132,12 +132,12 @@ export const BillingPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-6 text-left">
+    <div className="space-y-4 sm:space-y-5 text-left">
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7]">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
           Billing & GST Tax Invoices
         </h1>
-        <p className="text-xs sm:text-sm text-[#A1A1AA]">
+        <p className="text-xs sm:text-sm text-[#64748B]">
           Compliant GST invoices, UPI payments, and hospitality refunds.
         </p>
       </div>

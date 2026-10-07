@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TopBar } from '@/components/layout/TopBar';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { BottomNav } from '@/components/layout/BottomNav';
@@ -13,11 +13,30 @@ export interface StaffLayoutProps {
 
 export const StaffLayout: React.FC<StaffLayoutProps> = ({ children }) => {
   const { role, user } = useAuthStore();
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  // On md/tablet screens (<1024px), sidebar defaults to collapsed; only expands when user clicks toggle
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 1024;
+    }
+    return false;
+  });
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
 
+  useEffect(() => {
+    let prevWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
+    const handleResize = () => {
+      const currentWidth = window.innerWidth;
+      if (currentWidth < 1024 && prevWidth >= 1024) {
+        setIsSidebarCollapsed(true);
+      }
+      prevWidth = currentWidth;
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className="h-screen w-full bg-[#0B0B0F] text-[#F5F5F7] flex flex-col font-sans selection:bg-[#CC5500] selection:text-white overflow-hidden">
+    <div className="h-screen w-full bg-[#F1F5F9] text-[#0F172A] flex flex-col font-sans selection:bg-[#B84C00] selection:text-white overflow-hidden">
       {/* Top Bar with glass blur - Fixed */}
       <TopBar
         isSidebarCollapsed={isSidebarCollapsed}
@@ -26,14 +45,14 @@ export const StaffLayout: React.FC<StaffLayoutProps> = ({ children }) => {
       />
 
       {/* Staff Operations Sub-header Banner - Fixed */}
-      <div className="shrink-0 bg-[#14141A] border-b border-[#2A2A35] px-4 sm:px-6 py-2 flex items-center justify-between text-xs z-10">
-        <div className="flex items-center gap-2 text-[#A1A1AA]">
-          <Briefcase className="w-3.5 h-3.5 text-[#FF8A3D]" />
-          <span>Staff Operations Desk</span>
+      <div className="shrink-0 bg-white border-b border-[#E2E8F0] px-4 sm:px-6 py-2 flex items-center justify-between text-xs z-10 shadow-xs">
+        <div className="flex items-center gap-2 text-[#64748B]">
+          <Briefcase className="w-3.5 h-3.5 text-[#B84C00]" />
+          <span className="font-medium text-[#0F172A]">Staff Operations Desk</span>
           <span className="hidden sm:inline">•</span>
-          <span className="hidden sm:inline text-[#F5F5F7] font-medium">{role}</span>
+          <span className="hidden sm:inline text-[#B84C00] font-semibold">{role}</span>
         </div>
-        <div className="text-[11px] text-[#A1A1AA]">
+        <div className="text-[11px] text-[#64748B] font-medium bg-[#F1F5F9] px-2 py-0.5 rounded-full border border-[#E2E8F0]">
           {user?.shift ? `Shift: ${user.shift}` : 'On Duty'}
         </div>
       </div>
@@ -43,7 +62,7 @@ export const StaffLayout: React.FC<StaffLayoutProps> = ({ children }) => {
         <Sidebar isCollapsed={isSidebarCollapsed} />
 
         {/* Main Content Area - Fluid full width */}
-        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden w-full px-4 sm:px-6 lg:px-8 py-6 pb-28 md:pb-8 flex flex-col">
+        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden w-full px-2.5 sm:px-4 lg:px-5 py-2.5 sm:py-3.5 pb-20 md:pb-4 flex flex-col">
           <PageTransition>{children}</PageTransition>
         </main>
       </div>

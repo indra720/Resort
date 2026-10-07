@@ -136,13 +136,13 @@ export const NewBookingModal: React.FC<NewBookingModalProps> = ({
                     isCompleted
                       ? 'bg-[#22C55E] text-white'
                       : isCurrent
-                      ? 'bg-[#B84C00] text-white ring-2 ring-[#CC5500]/40'
-                      : 'bg-[#1C1C24] text-[#A1A1AA] border border-[#2A2A35]'
+                      ? 'bg-[#B84C00] text-white ring-2 ring-[#B84C00]/30'
+                      : 'bg-[#F1F5F9] text-[#64748B] border border-[#E2E8F0]'
                   }`}
                 >
                   {isCompleted ? <Check className="w-4 h-4" /> : stepNum}
                 </div>
-                <span className="text-[10px] text-[#A1A1AA] text-center hidden sm:block truncate">
+                <span className="text-[10px] text-[#64748B] text-center hidden sm:block truncate">
                   {label}
                 </span>
               </div>
@@ -216,42 +216,42 @@ export const NewBookingModal: React.FC<NewBookingModalProps> = ({
         {/* Step 3: Add-on Services */}
         {currentStep === 3 && (
           <div className="space-y-3">
-            <p className="text-xs text-[#A1A1AA]">
+            <p className="text-xs text-[#64748B]">
               Select luxury concierge add-ons for the guest stay:
             </p>
 
-            <label className="flex items-center justify-between p-3.5 rounded-xl bg-[#1C1C24] border border-[#2A2A35] cursor-pointer hover:border-[#CC5500]/40 transition-colors">
+            <label className="flex items-center justify-between p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] cursor-pointer hover:border-[#B84C00]/40 transition-colors">
               <div>
-                <span className="text-sm font-semibold text-[#F5F5F7] block">
+                <span className="text-sm font-semibold text-[#0F172A] block">
                   Private Airport Transfer (AC Sedan)
                 </span>
-                <span className="text-xs text-[#A1A1AA]">Pick-up from Goa Dabolim Airport</span>
+                <span className="text-xs text-[#64748B]">Pick-up from Goa Dabolim Airport</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-xs font-semibold text-[#FF8A3D]">{formatINR(2500)}</span>
+                <span className="text-xs font-semibold text-[#B84C00]">{formatINR(2500)}</span>
                 <input
                   type="checkbox"
                   checked={includeAirportPickup}
                   onChange={(e) => setIncludeAirportPickup(e.target.checked)}
-                  className="w-5 h-5 rounded accent-[#CC5500]"
+                  className="w-5 h-5 rounded accent-[#B84C00]"
                 />
               </div>
             </label>
 
-            <label className="flex items-center justify-between p-3.5 rounded-xl bg-[#1C1C24] border border-[#2A2A35] cursor-pointer hover:border-[#CC5500]/40 transition-colors">
+            <label className="flex items-center justify-between p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] cursor-pointer hover:border-[#B84C00]/40 transition-colors">
               <div>
-                <span className="text-sm font-semibold text-[#F5F5F7] block">
+                <span className="text-sm font-semibold text-[#0F172A] block">
                   Ayurvedic Spa Couple Package
                 </span>
-                <span className="text-xs text-[#A1A1AA]">60-minute therapeutic massage</span>
+                <span className="text-xs text-[#64748B]">60-minute therapeutic massage</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-xs font-semibold text-[#FF8A3D]">{formatINR(3800)}</span>
+                <span className="text-xs font-semibold text-[#B84C00]">{formatINR(3800)}</span>
                 <input
                   type="checkbox"
                   checked={includeSpaPackage}
                   onChange={(e) => setIncludeSpaPackage(e.target.checked)}
-                  className="w-5 h-5 rounded accent-[#CC5500]"
+                  className="w-5 h-5 rounded accent-[#B84C00]"
                 />
               </div>
             </label>
@@ -274,32 +274,32 @@ export const NewBookingModal: React.FC<NewBookingModalProps> = ({
             />
 
             {/* GST Tax Breakdown Card */}
-            <div className="p-4 rounded-xl bg-[#1C1C24] border border-[#2A2A35] space-y-2 text-xs">
-              <div className="flex justify-between text-[#A1A1AA]">
+            <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-2 text-xs">
+              <div className="flex justify-between text-[#64748B]">
                 <span>Room Charges ({nights} Nights):</span>
                 <span>{formatINR(roomBase)}</span>
               </div>
 
               {serviceExtras > 0 && (
-                <div className="flex justify-between text-[#A1A1AA]">
+                <div className="flex justify-between text-[#64748B]">
                   <span>Add-on Services:</span>
                   <span>{formatINR(serviceExtras)}</span>
                 </div>
               )}
 
-              <div className="flex justify-between text-[#A1A1AA]">
+              <div className="flex justify-between text-[#64748B]">
                 <span>Sub-Total:</span>
                 <span>{formatINR(totalBase)}</span>
               </div>
 
-              <div className="flex justify-between text-[#A1A1AA]">
+              <div className="flex justify-between text-[#64748B]">
                 <span>GST Tax ({gstBreakup.gstRate}%):</span>
                 <span>{formatINR(gstBreakup.totalGst)}</span>
               </div>
 
-              <div className="flex justify-between items-center pt-2 border-t border-[#2A2A35] font-bold text-sm text-[#F5F5F7]">
+              <div className="flex justify-between items-center pt-2 border-t border-[#E2E8F0] font-bold text-sm text-[#0F172A]">
                 <span>Total Amount Payable:</span>
-                <span className="text-[#FF8A3D] text-base">
+                <span className="text-[#B84C00] text-base">
                   {formatINR(gstBreakup.totalWithGst)}
                 </span>
               </div>

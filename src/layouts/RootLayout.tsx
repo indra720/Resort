@@ -11,20 +11,20 @@ export interface RootLayoutProps {
  */
 export const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen bg-[#0B0B0F] text-[#F5F5F7] flex flex-col font-sans selection:bg-[#CC5500] selection:text-white">
+    <div className="min-h-screen bg-[#F1F5F9] text-[#0F172A] flex flex-col font-sans selection:bg-[#B84C00] selection:text-white">
       {/* Top Navigation Bar */}
-      <header className="sticky top-0 z-40 w-full border-b border-[#2A2A35] bg-[#0B0B0F]/90 backdrop-blur-md">
+      <header className="sticky top-0 z-40 w-full border-b border-[#E2E8F0] bg-white/95 backdrop-blur-md shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           {/* Logo & Brand Name */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#CC5500] to-[#E06A10] flex items-center justify-center text-white shadow-[0_0_15px_rgba(204,85,0,0.3)]">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#B84C00] to-[#E06A10] flex items-center justify-center text-white shadow-md shadow-[#B84C00]/25">
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-base sm:text-lg font-semibold tracking-tight text-[#F5F5F7]">
-                Aura Palms <span className="text-[#FF8A3D]">Resort</span>
+              <h1 className="text-base sm:text-lg font-semibold tracking-tight text-[#0F172A]">
+                Aura Palms <span className="text-[#B84C00]">Resort</span>
               </h1>
-              <p className="text-[11px] text-[#A1A1AA] hidden sm:block">
+              <p className="text-[11px] text-[#64748B] hidden sm:block">
                 Hospitality & Property Management System
               </p>
             </div>
@@ -32,10 +32,10 @@ export const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
 
           {/* Role Status Tag */}
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#14141A] border border-[#2A2A35] text-xs text-[#F5F5F7]">
-              <ShieldCheck className="w-4 h-4 text-[#FF8A3D]" />
-              <span className="hidden sm:inline text-[#A1A1AA]">Role:</span>
-              <span className="font-medium text-[#FF8A3D]">Super Admin</span>
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-orange-50 border border-orange-200 text-xs text-[#0F172A]">
+              <ShieldCheck className="w-4 h-4 text-[#B84C00]" />
+              <span className="hidden sm:inline text-[#64748B]">Role:</span>
+              <span className="font-semibold text-[#B84C00]">Super Admin</span>
             </div>
           </div>
         </div>
@@ -47,9 +47,9 @@ export const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
       </main>
 
       {/* Footer */}
-      <footer className="w-full border-t border-[#2A2A35] bg-[#0B0B0F] py-4 text-center text-xs text-[#A1A1AA]">
+      <footer className="w-full border-t border-[#E2E8F0] bg-white py-4 text-center text-xs text-[#64748B]">
         <div className="max-w-7xl mx-auto px-4">
-          Resort Management System • Dark & Orange Theme • All Currency in INR (₹)
+          Resort Management System • Luxury White Theme • All Currency in INR (₹)
         </div>
       </footer>
 

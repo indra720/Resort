@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TopBar } from '@/components/layout/TopBar';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { BottomNav } from '@/components/layout/BottomNav';
@@ -12,11 +12,30 @@ export interface GuestLayoutProps {
 }
 
 export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  // On md/tablet screens (<1024px), sidebar defaults to collapsed; only expands when user clicks toggle
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 1024;
+    }
+    return false;
+  });
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
 
+  useEffect(() => {
+    let prevWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
+    const handleResize = () => {
+      const currentWidth = window.innerWidth;
+      if (currentWidth < 1024 && prevWidth >= 1024) {
+        setIsSidebarCollapsed(true);
+      }
+      prevWidth = currentWidth;
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className="h-screen w-full bg-[#0B0B0F] text-[#F5F5F7] flex flex-col font-sans selection:bg-[#CC5500] selection:text-white overflow-hidden">
+    <div className="h-screen w-full bg-[#F1F5F9] text-[#0F172A] flex flex-col font-sans selection:bg-[#B84C00] selection:text-white overflow-hidden">
       {/* Top Bar with Glass Blur - Fixed */}
       <TopBar
         isSidebarCollapsed={isSidebarCollapsed}
@@ -25,11 +44,11 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
       />
 
       {/* Guest Hospitality Welcome Banner - Fixed */}
-      <div className="shrink-0 bg-gradient-to-r from-[#14141A] via-[#1C1C24] to-[#14141A] border-b border-[#2A2A35] px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between text-xs gap-2 z-10">
-        <div className="flex items-center gap-2 text-[#F5F5F7]">
-          <Sparkles className="w-4 h-4 text-[#FF8A3D]" />
-          <span>Guest Experience Portal</span>
-          <span className="text-[#A1A1AA] hidden sm:inline">| Complimentary Wi-Fi Active</span>
+      <div className="shrink-0 bg-white border-b border-[#E2E8F0] px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between text-xs gap-2 z-10 shadow-xs">
+        <div className="flex items-center gap-2 text-[#0F172A]">
+          <Sparkles className="w-4 h-4 text-[#B84C00]" />
+          <span className="font-semibold text-[#0F172A]">Guest Experience Portal</span>
+          <span className="text-[#64748B] hidden sm:inline">| Complimentary Wi-Fi Active</span>
         </div>
 
         <div className="flex items-center gap-3">
@@ -37,17 +56,17 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
             onClick={() =>
               toast.info('Resort Wi-Fi', 'SSID: AuraPalms_Guest | Passcode: luxury@stay26')
             }
-            className="flex items-center gap-1.5 text-[#A1A1AA] hover:text-[#FF8A3D] transition-colors"
+            className="flex items-center gap-1.5 text-[#64748B] hover:text-[#B84C00] transition-colors"
           >
             <Wifi className="w-3.5 h-3.5" />
-            <span className="text-[11px]">Wi-Fi Info</span>
+            <span className="text-[11px] font-medium">Wi-Fi Info</span>
           </button>
 
           <button
             onClick={() =>
               toast.success('Front Desk Call', 'Front desk notified. An attendant is contacting you.')
             }
-            className="flex items-center gap-1.5 text-[#FF8A3D] hover:text-[#E06A10] transition-colors font-medium"
+            className="flex items-center gap-1.5 text-[#B84C00] hover:text-[#9C3800] transition-colors font-semibold bg-orange-50 px-2.5 py-1 rounded-lg border border-orange-200"
           >
             <PhoneCall className="w-3.5 h-3.5" />
             <span className="text-[11px]">Dial Concierge (Ext. 0)</span>
@@ -60,7 +79,7 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
         <Sidebar isCollapsed={isSidebarCollapsed} />
 
         {/* Main Content - Fluid full width */}
-        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden w-full px-4 sm:px-6 lg:px-8 py-6 pb-28 md:pb-8 flex flex-col">
+        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden w-full px-2.5 sm:px-4 lg:px-5 py-2.5 sm:py-3.5 pb-20 md:pb-4 flex flex-col">
           <PageTransition>{children}</PageTransition>
         </main>
       </div>

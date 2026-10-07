@@ -188,14 +188,14 @@ export const RestaurantPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-6 text-left">
+    <div className="space-y-4 sm:space-y-5 text-left">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
             Spice & Palm Culinary & Restaurant
           </h1>
-          <p className="text-xs sm:text-sm text-[#A1A1AA]">
+          <p className="text-xs sm:text-sm text-[#64748B]">
             Kitchen display system (KDS), menu catalog in ₹, and dining table management.
           </p>
         </div>
@@ -211,13 +211,13 @@ export const RestaurantPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-[#2A2A35] gap-4">
+      <div className="flex border-b border-[#E2E8F0] gap-4">
         <button
           onClick={() => setActiveTab('orders')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'orders'
-              ? 'border-[#CC5500] text-[#FF8A3D]'
-              : 'border-transparent text-[#A1A1AA] hover:text-[#F5F5F7]'
+              ? 'border-[#B84C00] text-[#B84C00]'
+              : 'border-transparent text-[#64748B] hover:text-[#0F172A]'
           }`}
         >
           <Flame className="w-4 h-4" />
@@ -228,8 +228,8 @@ export const RestaurantPage: React.FC = () => {
           onClick={() => setActiveTab('menu')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'menu'
-              ? 'border-[#CC5500] text-[#FF8A3D]'
-              : 'border-transparent text-[#A1A1AA] hover:text-[#F5F5F7]'
+              ? 'border-[#B84C00] text-[#B84C00]'
+              : 'border-transparent text-[#64748B] hover:text-[#0F172A]'
           }`}
         >
           <Utensils className="w-4 h-4" />
@@ -240,8 +240,8 @@ export const RestaurantPage: React.FC = () => {
           onClick={() => setActiveTab('tables')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'tables'
-              ? 'border-[#CC5500] text-[#FF8A3D]'
-              : 'border-transparent text-[#A1A1AA] hover:text-[#F5F5F7]'
+              ? 'border-[#B84C00] text-[#B84C00]'
+              : 'border-transparent text-[#64748B] hover:text-[#0F172A]'
           }`}
         >
           <Coffee className="w-4 h-4" />
@@ -265,14 +265,14 @@ export const RestaurantPage: React.FC = () => {
               return (
                 <div
                   key={st}
-                  className="flex-1 rounded-2xl bg-[#14141A] border border-[#2A2A35] p-3.5 flex flex-col space-y-3"
+                  className="flex-1 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm p-3.5 flex flex-col space-y-3"
                 >
-                  <div className="flex items-center justify-between pb-2 border-b border-[#2A2A35]">
+                  <div className="flex items-center justify-between pb-2 border-b border-[#E2E8F0]">
                     <div className="flex items-center gap-2">
                       <div className={`w-2.5 h-2.5 rounded-full ${headerColors[st]}`} />
-                      <h3 className="text-sm font-bold text-[#F5F5F7]">{st}</h3>
+                      <h3 className="text-sm font-bold text-[#0F172A]">{st}</h3>
                     </div>
-                    <span className="text-xs px-2 py-0.5 rounded-full bg-[#1C1C24] text-[#A1A1AA] font-bold">
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-[#F1F5F9] text-[#64748B] font-bold">
                       {columnOrders.length}
                     </span>
                   </div>
@@ -281,22 +281,22 @@ export const RestaurantPage: React.FC = () => {
                     {columnOrders.map((ord) => (
                       <div
                         key={ord.id}
-                        className="p-3.5 rounded-xl bg-[#1C1C24] border border-[#2A2A35] space-y-2 text-left"
+                        className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-2 text-left"
                       >
                         <div className="flex justify-between items-start">
                           <div>
-                            <span className="font-bold text-sm text-[#F5F5F7]">{ord.id}</span>
-                            <p className="text-xs text-[#FF8A3D] font-semibold">{ord.table}</p>
+                            <span className="font-bold text-sm text-[#0F172A]">{ord.id}</span>
+                            <p className="text-xs text-[#B84C00] font-semibold">{ord.table}</p>
                           </div>
-                          <span className="text-[10px] text-[#A1A1AA]">{ord.time}</span>
+                          <span className="text-[10px] text-[#64748B]">{ord.time}</span>
                         </div>
 
-                        <p className="text-xs text-[#A1A1AA] bg-[#14141A] p-2.5 rounded-lg border border-[#2A2A35]">
+                        <p className="text-xs text-[#475569] bg-white p-2.5 rounded-lg border border-[#E2E8F0]">
                           {ord.items}
                         </p>
 
-                        <div className="flex items-center justify-between text-xs pt-1 border-t border-[#2A2A35]/50">
-                          <span className="font-bold text-[#F5F5F7]">{formatINR(ord.total)}</span>
+                        <div className="flex items-center justify-between text-xs pt-1 border-t border-[#E2E8F0]">
+                          <span className="font-bold text-[#0F172A]">{formatINR(ord.total)}</span>
 
                           {/* "Move to" Buttons */}
                           <div className="flex items-center gap-1">
@@ -350,33 +350,33 @@ export const RestaurantPage: React.FC = () => {
           {menuItems.map((item) => (
             <div
               key={item.id}
-              className="p-5 rounded-2xl bg-[#14141A] border border-[#2A2A35] flex flex-col justify-between space-y-3"
+              className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm flex flex-col justify-between space-y-3"
             >
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#1C1C24] text-[#A1A1AA] border border-[#2A2A35]">
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#F8FAFC] text-[#64748B] border border-[#E2E8F0]">
                     {item.category}
                   </span>
                   <span
                     className={`text-[10px] font-bold px-2 py-0.5 rounded ${
                       item.isVeg
-                        ? 'bg-[#22C55E]/15 text-[#22C55E]'
-                        : 'bg-[#EF4444]/15 text-[#EF4444]'
+                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                        : 'bg-rose-50 text-rose-700 border border-rose-200'
                     }`}
                   >
                     {item.isVeg ? '🟢 VEG' : '🔴 NON-VEG'}
                   </span>
                 </div>
 
-                <h3 className="text-base font-bold text-[#F5F5F7] pt-1">{item.name}</h3>
-                <p className="text-xs text-[#A1A1AA] leading-relaxed">{item.description}</p>
+                <h3 className="text-base font-bold text-[#0F172A] pt-1">{item.name}</h3>
+                <p className="text-xs text-[#64748B] leading-relaxed">{item.description}</p>
               </div>
 
-              <div className="flex items-center justify-between pt-3 border-t border-[#2A2A35]">
-                <span className="text-base font-bold text-[#FF8A3D]">
+              <div className="flex items-center justify-between pt-3 border-t border-[#E2E8F0]">
+                <span className="text-base font-bold text-[#B84C00]">
                   {formatINR(item.price)}
                 </span>
-                <span className="text-[11px] text-[#A1A1AA]">+ 5% GST</span>
+                <span className="text-[11px] text-[#64748B]">+ 5% GST</span>
               </div>
             </div>
           ))}
@@ -388,25 +388,25 @@ export const RestaurantPage: React.FC = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {tables.map((tbl) => {
             const statusColors: Record<string, string> = {
-              Vacant: 'border-[#22C55E]/40 text-[#22C55E] bg-[#22C55E]/5',
-              Occupied: 'border-[#CC5500]/40 text-[#FF8A3D] bg-[#CC5500]/10',
-              Reserved: 'border-[#3B82F6]/40 text-[#3B82F6] bg-[#3B82F6]/5',
+              Vacant: 'border-emerald-200 text-emerald-700 bg-emerald-50/50',
+              Occupied: 'border-[#FFEDD5] text-[#B84C00] bg-[#FFF7ED]',
+              Reserved: 'border-blue-200 text-blue-700 bg-blue-50/50',
             };
 
             return (
               <div
                 key={tbl.id}
-                className={`p-4 rounded-2xl bg-[#14141A] border ${statusColors[tbl.status]} space-y-2 text-center`}
+                className={`p-4 rounded-2xl bg-white border ${statusColors[tbl.status]} shadow-sm space-y-2 text-center`}
               >
-                <div className="w-10 h-10 rounded-full bg-[#1C1C24] mx-auto flex items-center justify-center font-bold text-sm text-[#F5F5F7]">
+                <div className="w-10 h-10 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] mx-auto flex items-center justify-center font-bold text-sm text-[#0F172A]">
                   {tbl.number}
                 </div>
-                <span className="font-bold text-sm block text-[#F5F5F7]">
+                <span className="font-bold text-sm block text-[#0F172A]">
                   Seats {tbl.capacity}
                 </span>
                 <span className="text-xs font-semibold block">{tbl.status}</span>
                 {tbl.currentKOT && (
-                  <span className="text-[10px] text-[#A1A1AA] block">{tbl.currentKOT}</span>
+                  <span className="text-[10px] text-[#64748B] block">{tbl.currentKOT}</span>
                 )}
               </div>
             );

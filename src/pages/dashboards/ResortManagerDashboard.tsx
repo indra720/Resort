@@ -27,14 +27,14 @@ export const ResortManagerDashboard: React.FC = () => {
     {
       key: 'roomNumber',
       header: 'Room',
-      accessor: (r) => <span className="font-bold text-[#F5F5F7]">#{r.roomNumber}</span>,
+      accessor: (r) => <span className="font-bold text-[#0F172A]">#{r.roomNumber}</span>,
       sortable: true,
       sortValue: (r) => r.roomNumber,
     },
     {
       key: 'category',
       header: 'Category',
-      accessor: (r) => <span className="text-[#A1A1AA]">{r.category}</span>,
+      accessor: (r) => <span className="text-[#64748B]">{r.category}</span>,
     },
     {
       key: 'status',
@@ -45,7 +45,7 @@ export const ResortManagerDashboard: React.FC = () => {
       key: 'ratePerNight',
       header: 'Rate/Night',
       accessor: (r) => (
-        <span className="font-semibold text-[#FF8A3D]">{formatINR(r.ratePerNight)}</span>
+        <span className="font-semibold text-[#B84C00]">{formatINR(r.ratePerNight)}</span>
       ),
       sortable: true,
       sortValue: (r) => r.ratePerNight,
@@ -55,12 +55,12 @@ export const ResortManagerDashboard: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
             Operations Command Center
           </h1>
-          <p className="text-xs sm:text-sm text-[#A1A1AA]">
+          <p className="text-xs sm:text-sm text-[#64748B]">
             Resort Manager daily briefing, property turnover, and guest logistics.
           </p>
         </div>
@@ -131,20 +131,21 @@ export const ResortManagerDashboard: React.FC = () => {
               data={WEEKLY_MOVEMENT_DATA}
               margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
             >
-              <XAxis dataKey="day" stroke="#A1A1AA" fontSize={11} tickLine={false} />
-              <YAxis stroke="#A1A1AA" fontSize={11} tickLine={false} />
+              <XAxis dataKey="day" stroke="#64748B" fontSize={11} tickLine={false} />
+              <YAxis stroke="#64748B" fontSize={11} tickLine={false} />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#14141A',
-                  borderColor: '#2A2A35',
+                  backgroundColor: '#FFFFFF',
+                  borderColor: '#E2E8F0',
                   borderRadius: '8px',
-                  color: '#F5F5F7',
+                  color: '#0F172A',
                   fontSize: '12px',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                 }}
               />
               <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }} />
-              <Bar dataKey="arrivals" name="Arrivals" fill="#FF8A3D" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="departures" name="Departures" fill="#3B82F6" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="arrivals" name="Arrivals" fill="#B84C00" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="departures" name="Departures" fill="#2563EB" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ChartCard>
         </div>
@@ -160,7 +161,7 @@ export const ResortManagerDashboard: React.FC = () => {
       {/* Room Inventory Overview */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h3 className="text-base font-semibold text-[#F5F5F7]">Room Turnaround Monitor</h3>
+          <h3 className="text-base font-bold text-[#B84C00]">Room Turnaround Monitor</h3>
           <Button variant="ghost" size="sm" onClick={() => navigate('/rooms')}>
             Open Full Grid
           </Button>

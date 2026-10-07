@@ -34,7 +34,7 @@ export const NotificationsPage: React.FC = () => {
   const getIcon = (type: string) => {
     switch (type) {
       case 'booking':
-        return <CalendarCheck className="w-4 h-4 text-[#FF8A3D]" />;
+        return <CalendarCheck className="w-4 h-4 text-[#B84C00]" />;
       case 'alert':
         return <AlertTriangle className="w-4 h-4 text-[#F59E0B]" />;
       case 'service':
@@ -42,7 +42,7 @@ export const NotificationsPage: React.FC = () => {
       case 'payment':
         return <CreditCard className="w-4 h-4 text-[#22C55E]" />;
       default:
-        return <Bell className="w-4 h-4 text-[#FF8A3D]" />;
+        return <Bell className="w-4 h-4 text-[#B84C00]" />;
     }
   };
 
@@ -50,11 +50,11 @@ export const NotificationsPage: React.FC = () => {
     <div className="w-full space-y-6 text-left">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F5F5F7] flex items-center gap-2">
-            <Bell className="w-6 h-6 text-[#FF8A3D]" />
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00] flex items-center gap-2">
+            <Bell className="w-6 h-6 text-[#B84C00]" />
             <span>Resort Notifications Center</span>
           </h1>
-          <p className="text-xs sm:text-sm text-[#A1A1AA]">
+          <p className="text-xs sm:text-sm text-[#64748B]">
             Real-time updates regarding guest bookings, turnovers, and dining orders.
           </p>
         </div>
@@ -80,13 +80,13 @@ export const NotificationsPage: React.FC = () => {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex gap-2 border-b border-[#2A2A35] pb-2 text-xs">
+      <div className="flex gap-2 border-b border-[#E2E8F0] pb-2 text-xs">
         <button
           onClick={() => setFilter('all')}
           className={`px-3 py-1.5 rounded-lg transition-colors font-medium ${
             filter === 'all'
               ? 'bg-[#B84C00] text-white'
-              : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
+              : 'text-[#64748B] hover:text-[#0F172A]'
           }`}
         >
           All Notifications ({notifications.length})
@@ -96,7 +96,7 @@ export const NotificationsPage: React.FC = () => {
           className={`px-3 py-1.5 rounded-lg transition-colors font-medium ${
             filter === 'unread'
               ? 'bg-[#B84C00] text-white'
-              : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
+              : 'text-[#64748B] hover:text-[#0F172A]'
           }`}
         >
           Unread Only ({notifications.filter((n) => !n.read).length})
@@ -106,7 +106,7 @@ export const NotificationsPage: React.FC = () => {
       {/* Notifications List */}
       <div className="space-y-3">
         {filteredNotifs.length === 0 ? (
-          <div className="p-8 text-center rounded-2xl bg-[#14141A] border border-[#2A2A35] text-xs text-[#A1A1AA]">
+          <div className="p-8 text-center rounded-2xl bg-white border border-[#E2E8F0] shadow-sm text-xs text-[#64748B]">
             No notifications found in this view.
           </div>
         ) : (
@@ -115,20 +115,20 @@ export const NotificationsPage: React.FC = () => {
               key={item.id}
               className={`p-4 rounded-xl border transition-all flex items-start gap-3.5 ${
                 !item.read
-                  ? 'bg-[#1C1C24] border-[#CC5500]/40 shadow-sm'
-                  : 'bg-[#14141A] border-[#2A2A35]'
+                  ? 'bg-[#FFF7ED] border-[#FFEDD5] shadow-sm'
+                  : 'bg-white border-[#E2E8F0] shadow-sm'
               }`}
             >
-              <div className="p-2 rounded-lg bg-[#14141A] border border-[#2A2A35] shrink-0">
+              <div className="p-2 rounded-lg bg-white border border-[#E2E8F0] shrink-0">
                 {getIcon(item.type)}
               </div>
 
               <div className="flex-1 space-y-0.5">
                 <div className="flex items-center justify-between gap-2">
-                  <h4 className="text-sm font-semibold text-[#F5F5F7]">{item.title}</h4>
-                  <span className="text-[10px] text-[#A1A1AA]">{item.time}</span>
+                  <h4 className="text-sm font-semibold text-[#0F172A]">{item.title}</h4>
+                  <span className="text-[10px] text-[#64748B]">{item.time}</span>
                 </div>
-                <p className="text-xs text-[#A1A1AA] leading-relaxed">{item.message}</p>
+                <p className="text-xs text-[#64748B] leading-relaxed">{item.message}</p>
               </div>
 
               {!item.read && (

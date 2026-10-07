@@ -24,17 +24,17 @@ interface ToastCardProps {
 
 const ToastCard: React.FC<ToastCardProps> = ({ toast, onDismiss }) => {
   const icons = {
-    success: <CheckCircle2 className="w-5 h-5 text-[#22C55E] shrink-0" />,
-    error: <AlertCircle className="w-5 h-5 text-[#EF4444] shrink-0" />,
-    warning: <AlertTriangle className="w-5 h-5 text-[#F59E0B] shrink-0" />,
-    info: <Info className="w-5 h-5 text-[#3B82F6] shrink-0" />,
+    success: <CheckCircle2 className="w-5 h-5 text-[#16A34A] shrink-0" />,
+    error: <AlertCircle className="w-5 h-5 text-[#DC2626] shrink-0" />,
+    warning: <AlertTriangle className="w-5 h-5 text-[#D97706] shrink-0" />,
+    info: <Info className="w-5 h-5 text-[#2563EB] shrink-0" />,
   };
 
   const borders = {
-    success: 'border-[#22C55E]/40',
-    error: 'border-[#EF4444]/40',
-    warning: 'border-[#F59E0B]/40',
-    info: 'border-[#3B82F6]/40',
+    success: 'border-emerald-200',
+    error: 'border-rose-200',
+    warning: 'border-amber-200',
+    info: 'border-blue-200',
   };
 
   return (
@@ -42,14 +42,14 @@ const ToastCard: React.FC<ToastCardProps> = ({ toast, onDismiss }) => {
       initial={{ opacity: 0, y: -20, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.15 } }}
-      className={`pointer-events-auto flex items-start gap-3 p-4 rounded-xl bg-[#14141A] border ${borders[toast.type]} shadow-xl text-[#F5F5F7]`}
+      className={`pointer-events-auto flex items-start gap-3 p-4 rounded-xl bg-white border ${borders[toast.type]} shadow-xl text-[#0F172A]`}
     >
       {icons[toast.type]}
 
       <div className="flex-1 text-left min-w-0">
-        <h4 className="text-sm font-semibold">{toast.title}</h4>
+        <h4 className="text-sm font-semibold text-[#0F172A]">{toast.title}</h4>
         {toast.description && (
-          <p className="text-xs text-[#A1A1AA] mt-0.5 leading-relaxed break-words">
+          <p className="text-xs text-[#64748B] mt-0.5 leading-relaxed break-words">
             {toast.description}
           </p>
         )}
@@ -57,7 +57,7 @@ const ToastCard: React.FC<ToastCardProps> = ({ toast, onDismiss }) => {
 
       <button
         onClick={onDismiss}
-        className="w-8 h-8 -mr-1 -mt-1 flex items-center justify-center rounded-lg text-[#A1A1AA] hover:text-[#F5F5F7] hover:bg-[#1C1C24] transition-colors"
+        className="w-8 h-8 -mr-1 -mt-1 flex items-center justify-center rounded-lg text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition-colors"
         aria-label="Close notification"
       >
         <X className="w-4 h-4" />
