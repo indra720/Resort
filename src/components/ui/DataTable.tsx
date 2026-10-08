@@ -176,7 +176,7 @@ export function DataTable<T>({
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white border border-slate-200/90 p-3 sm:p-3.5 rounded-2xl shadow-sm">
         {/* Search Input */}
         <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#64748B]" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7280]" />
           <input
             type="text"
             value={searchQuery}
@@ -185,7 +185,7 @@ export function DataTable<T>({
               setCurrentPage(1);
             }}
             placeholder={searchPlaceholder}
-            className="w-full min-h-[44px] pl-10 pr-4 text-xs sm:text-sm bg-slate-50 text-[#0F172A] placeholder:text-slate-400 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:border-[#B84C00] focus:ring-2 focus:ring-[#B84C00]/20 transition-all"
+            className="w-full min-h-[44px] pl-10 pr-4 text-xs sm:text-sm bg-[#FFF8F3] text-[#1F2937] placeholder:text-[#6B7280] border border-[#E5E7EB] rounded-xl focus:bg-white focus:outline-none focus:border-[#C2410C] focus:ring-2 focus:ring-[#C2410C]/20 transition-all"
           />
         </div>
 
@@ -198,7 +198,7 @@ export function DataTable<T>({
                 setActiveFilter(e.target.value);
                 setCurrentPage(1);
               }}
-              className="min-h-[44px] px-3 text-xs bg-slate-50 text-[#0F172A] border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:border-[#B84C00] shrink-0"
+              className="min-h-[44px] px-3 text-xs bg-[#FFF8F3] text-[#1F2937] border border-[#E5E7EB] rounded-xl focus:bg-white focus:outline-none focus:border-[#C2410C] shrink-0"
             >
               <option value="ALL">All {filterOptions.label}</option>
               {filterOptions.options.map((opt) => (
@@ -210,15 +210,15 @@ export function DataTable<T>({
           )}
 
           {/* View Mode Switcher (Table [Full LG scrollable] vs Cards) */}
-          <div className="flex items-center rounded-xl bg-slate-100 border border-slate-200 p-1 shrink-0">
+          <div className="flex items-center rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] p-1 shrink-0">
             <button
               type="button"
               onClick={() => setViewMode('table')}
               className={cn(
                 'min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-md flex items-center gap-1.5 transition-colors',
                 viewMode === 'table'
-                  ? 'bg-[#B84C00] text-white shadow-xs'
-                  : 'text-[#64748B] hover:text-[#0F172A]'
+                  ? 'bg-[#C2410C] text-white shadow-xs'
+                  : 'text-[#6B7280] hover:text-[#1F2937]'
               )}
               title="Table View (Full LG multi-column with clear smooth scroll)"
             >
@@ -231,8 +231,8 @@ export function DataTable<T>({
               className={cn(
                 'min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-md flex items-center gap-1.5 transition-colors',
                 viewMode === 'cards'
-                  ? 'bg-[#B84C00] text-white shadow-xs'
-                  : 'text-[#64748B] hover:text-[#0F172A]'
+                  ? 'bg-[#C2410C] text-white shadow-xs'
+                  : 'text-[#6B7280] hover:text-[#1F2937]'
               )}
               title="Card View (Stacked cards)"
             >
@@ -246,10 +246,10 @@ export function DataTable<T>({
             <button
               type="button"
               onClick={() => setIsColumnDropdownOpen((prev) => !prev)}
-              className="min-h-[44px] px-3 flex items-center gap-1.5 text-xs font-semibold bg-white text-[#0F172A] border border-[#E2E8F0] rounded-lg hover:border-[#B84C00] transition-colors shrink-0 whitespace-nowrap"
+              className="min-h-[44px] px-3 flex items-center gap-1.5 text-xs font-semibold bg-white text-[#1F2937] border border-[#E5E7EB] rounded-lg hover:border-[#C2410C] transition-colors shrink-0 whitespace-nowrap"
               title="Show or hide table columns"
             >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-[#B84C00] shrink-0" />
+              <SlidersHorizontal className="w-3.5 h-3.5 text-[#C2410C] shrink-0" />
               <span>Columns</span>
             </button>
 
@@ -261,8 +261,8 @@ export function DataTable<T>({
                   onClick={() => setIsColumnDropdownOpen(false)}
                 />
 
-                <div className="absolute right-0 mt-2 w-48 sm:w-52 max-w-[calc(100vw-32px)] rounded-xl bg-white border border-[#E2E8F0] shadow-xl p-2 z-50 space-y-1">
-                  <p className="text-[10px] font-semibold uppercase text-[#64748B] px-2 py-1">
+                <div className="absolute right-0 mt-2 w-48 sm:w-52 max-w-[calc(100vw-32px)] rounded-xl bg-white border border-[#E5E7EB] shadow-xl p-2 z-50 space-y-1">
+                  <p className="text-[10px] font-semibold uppercase text-[#6B7280] px-2 py-1">
                     Toggle Columns
                   </p>
                   {columns.map((col) => (
@@ -270,11 +270,11 @@ export function DataTable<T>({
                       key={col.key}
                       type="button"
                       onClick={() => toggleColumn(col.key)}
-                      className="w-full flex items-center justify-between px-2.5 py-1.5 rounded text-xs text-[#0F172A] hover:bg-[#F8FAFC] transition-colors text-left"
+                      className="w-full flex items-center justify-between px-2.5 py-1.5 rounded text-xs text-[#1F2937] hover:bg-[#FFF8F3] transition-colors text-left"
                     >
                       <span className="truncate pr-2">{col.header}</span>
                       {visibleColumns[col.key] && (
-                        <Check className="w-3.5 h-3.5 text-[#B84C00] shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-[#C2410C] shrink-0" />
                       )}
                     </button>
                   ))}
@@ -305,7 +305,7 @@ export function DataTable<T>({
                   setSearchQuery('');
                   setActiveFilter('ALL');
                 }}
-                className="text-xs text-[#FF8A3D] underline font-medium hover:text-[#E06A10]"
+                className="text-xs text-[#C2410C] underline font-medium hover:text-[#9A3412]"
               >
                 Reset Search & Filters
               </button>
@@ -317,20 +317,20 @@ export function DataTable<T>({
           {viewMode === 'table' ? (
             <div className="space-y-2">
               {/* Mobile Swipe Guidance Banner */}
-              <div className="sm:hidden flex items-center justify-between px-3 py-2 rounded-xl bg-orange-50 border border-orange-200 text-xs text-[#64748B]">
+              <div className="sm:hidden flex items-center justify-between px-3 py-2 rounded-xl bg-[#FFF1E6] border border-[#FED7AA] text-xs text-[#6B7280]">
                 <div className="flex items-center gap-2">
-                  <ArrowLeftRight className="w-4 h-4 text-[#B84C00] animate-pulse shrink-0" />
-                  <span className="font-semibold text-[#0F172A]">Scroll horizontally for all columns</span>
+                  <ArrowLeftRight className="w-4 h-4 text-[#C2410C] animate-pulse shrink-0" />
+                  <span className="font-semibold text-[#1F2937]">Scroll horizontally for all columns</span>
                 </div>
-                <span className="text-[10px] uppercase font-bold tracking-wider text-[#B84C00] bg-orange-100 border border-orange-200 px-2 py-0.5 rounded shrink-0">
+                <span className="text-[10px] uppercase font-bold tracking-wider text-[#C2410C] bg-white border border-[#FED7AA] px-2 py-0.5 rounded shrink-0">
                   Full Table
                 </span>
               </div>
 
               {/* Table View (Displays with full desktop clarity; smooth horizontal scroll on smaller screens) */}
-              <div className="overflow-x-auto rounded-2xl border border-slate-200/90 bg-white pb-1 shadow-sm">
-                <table className="w-full min-w-[840px] text-left text-sm text-[#0F172A] border-collapse">
-                  <thead className="bg-slate-50/80 text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200">
+              <div className="overflow-x-auto rounded-2xl border border-[#E5E7EB] bg-white pb-1 shadow-sm">
+                <table className="w-full min-w-[840px] text-left text-sm text-[#1F2937] border-collapse">
+                  <thead className="bg-[#FFF8F3] text-xs text-[#1F2937] uppercase tracking-wider border-b border-[#E5E7EB]">
                     <tr>
                       {activeColumns.map((col) => {
                         const isSorted = sortKey === col.key;
@@ -343,17 +343,17 @@ export function DataTable<T>({
                               <button
                                 type="button"
                                 onClick={() => handleSort(col.key)}
-                                className="flex items-center gap-1.5 hover:text-[#B84C00] transition-colors whitespace-nowrap"
+                                className="flex items-center gap-1.5 hover:text-[#C2410C] transition-colors whitespace-nowrap text-[#1F2937]"
                               >
                                 <span>{col.header}</span>
                                 {isSorted ? (
                                   sortOrder === 'asc' ? (
-                                    <ArrowUp className="w-3.5 h-3.5 text-[#B84C00]" />
+                                    <ArrowUp className="w-3.5 h-3.5 text-[#C2410C]" />
                                   ) : (
-                                    <ArrowDown className="w-3.5 h-3.5 text-[#B84C00]" />
+                                    <ArrowDown className="w-3.5 h-3.5 text-[#C2410C]" />
                                   )
                                 ) : (
-                                  <ArrowUpDown className="w-3.5 h-3.5 text-[#94A3B8]" />
+                                  <ArrowUpDown className="w-3.5 h-3.5 text-[#6B7280]" />
                                 )}
                               </button>
                             ) : (
@@ -363,18 +363,18 @@ export function DataTable<T>({
                         );
                       })}
                       {actions && (
-                        <th className="py-3.5 px-4 font-semibold text-right whitespace-nowrap">Actions</th>
+                        <th className="py-3.5 px-4 font-semibold text-right whitespace-nowrap text-[#1F2937]">Actions</th>
                       )}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100">
+                  <tbody className="divide-y divide-[#E5E7EB]">
                     {paginatedData.map((item) => (
                       <tr
                         key={keyExtractor(item)}
-                        className="hover:bg-[#FFF7ED]/50 transition-colors"
+                        className="hover:bg-[#FFF8F3] transition-colors"
                       >
                         {activeColumns.map((col) => (
-                          <td key={col.key} className={cn('py-3.5 px-4 text-sm whitespace-nowrap', col.className)}>
+                          <td key={col.key} className={cn('py-3.5 px-4 text-sm whitespace-nowrap text-[#1F2937]', col.className)}>
                             {col.accessor(item)}
                           </td>
                         ))}
@@ -393,23 +393,23 @@ export function DataTable<T>({
               {paginatedData.map((item) => (
                 <div
                   key={keyExtractor(item)}
-                  className="p-4 rounded-2xl bg-white border border-[#E2E8F0] space-y-3 text-left shadow-sm"
+                  className="p-4 rounded-2xl bg-white border border-[#E5E7EB] space-y-3 text-left shadow-sm"
                 >
                   {activeColumns.map((col) => (
                     <div
                       key={col.key}
-                      className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 py-1.5 border-b border-[#E2E8F0] last:border-b-0"
+                      className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 py-1.5 border-b border-[#E5E7EB] last:border-b-0"
                     >
-                      <span className="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider shrink-0">
+                      <span className="text-[11px] font-semibold text-[#6B7280] uppercase tracking-wider shrink-0">
                         {col.header}:
                       </span>
-                      <div className="text-xs sm:text-sm font-semibold text-[#0F172A]">
+                      <div className="text-xs sm:text-sm font-semibold text-[#1F2937]">
                         {col.accessor(item)}
                       </div>
                     </div>
                   ))}
                   {actions && (
-                    <div className="pt-2.5 border-t border-[#E2E8F0] flex items-center justify-end gap-2">
+                    <div className="pt-2.5 border-t border-[#E5E7EB] flex items-center justify-end gap-2">
                       {actions(item)}
                     </div>
                   )}

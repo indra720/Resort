@@ -40,7 +40,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className="w-full flex flex-col space-y-1.5 text-left">
         {label && (
-          <label htmlFor={selectId} className="text-sm font-semibold text-[#0F172A] select-none">
+          <label htmlFor={selectId} className="text-sm font-semibold text-[#1F2937] select-none">
             {label}
           </label>
         )}
@@ -54,11 +54,11 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
               // Layout & sizing (min 44px for touch compliance)
               'w-full min-h-[44px] px-3.5 py-2.5 pr-10 text-sm rounded-lg appearance-none cursor-pointer transition-all duration-150',
               // Light background & borders
-              'bg-white text-[#0F172A] border border-[#E2E8F0]',
-              // Orange focus ring
-              'focus:outline-none focus:border-[#B84C00] focus:ring-2 focus:ring-[#B84C00]/20',
+              'bg-white text-[#1F2937] border border-[#E5E7EB]',
+              // Dark orange focus ring
+              'focus:outline-none focus:border-[#C2410C] focus:ring-2 focus:ring-[#C2410C]/20',
               // Disabled state
-              'disabled:bg-[#F1F5F9] disabled:text-[#94A3B8] disabled:cursor-not-allowed',
+              'disabled:bg-[#FFF8F3] disabled:text-[#6B7280] disabled:cursor-not-allowed',
               // Error state
               error ? 'border-[#DC2626] focus:border-[#DC2626] focus:ring-[#DC2626]/20' : '',
               className
@@ -66,7 +66,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             {...props}
           >
             {placeholder && (
-              <option value="" disabled className="bg-white text-[#94A3B8]">
+              <option value="" disabled className="bg-white text-[#6B7280]">
                 {placeholder}
               </option>
             )}
@@ -77,7 +77,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
                     key={String(opt.value)}
                     value={opt.value}
                     disabled={opt.disabled}
-                    className="bg-white text-[#0F172A] py-2"
+                    className="bg-white text-[#1F2937] py-2"
                   >
                     {opt.label}
                   </option>
@@ -86,14 +86,14 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           </select>
 
           {/* Custom Chevron icon */}
-          <div className="absolute right-3.5 flex items-center pointer-events-none text-[#64748B]">
+          <div className="absolute right-3.5 flex items-center pointer-events-none text-[#6B7280]">
             <ChevronDown className="w-4 h-4" />
           </div>
         </div>
 
         {error && <p className="text-xs text-[#DC2626] font-medium">{error}</p>}
         {!error && helperText && (
-          <p className="text-xs text-[#64748B]">{helperText}</p>
+          <p className="text-xs text-[#6B7280]">{helperText}</p>
         )}
       </div>
     );

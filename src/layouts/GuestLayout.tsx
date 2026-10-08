@@ -35,7 +35,7 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
   }, []);
 
   return (
-    <div className="h-screen w-full bg-[#F1F5F9] text-[#0F172A] flex flex-col font-sans selection:bg-[#B84C00] selection:text-white overflow-hidden">
+    <div className="h-screen w-full bg-[#FFFFFF] text-[#1F2937] flex flex-col font-sans selection:bg-[#C2410C] selection:text-white overflow-hidden">
       {/* Top Bar with Glass Blur - Fixed */}
       <TopBar
         isSidebarCollapsed={isSidebarCollapsed}
@@ -44,11 +44,11 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
       />
 
       {/* Guest Hospitality Welcome Banner - Fixed */}
-      <div className="shrink-0 bg-white border-b border-[#E2E8F0] px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between text-xs gap-2 z-10 shadow-xs">
-        <div className="flex items-center gap-2 text-[#0F172A]">
-          <Sparkles className="w-4 h-4 text-[#B84C00]" />
-          <span className="font-semibold text-[#0F172A]">Guest Experience Portal</span>
-          <span className="text-[#64748B] hidden sm:inline">| Complimentary Wi-Fi Active</span>
+      <div className="shrink-0 bg-white border-b border-[#E5E7EB] px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between text-xs gap-2 z-10 shadow-xs">
+        <div className="flex items-center gap-2 text-[#1F2937]">
+          <Sparkles className="w-4 h-4 text-[#C2410C]" />
+          <span className="font-semibold text-[#1F2937]">Guest Experience Portal</span>
+          <span className="text-[#6B7280] hidden sm:inline">| Complimentary Wi-Fi Active</span>
         </div>
 
         <div className="flex items-center gap-3">
@@ -56,7 +56,7 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
             onClick={() =>
               toast.info('Resort Wi-Fi', 'SSID: AuraPalms_Guest | Passcode: luxury@stay26')
             }
-            className="flex items-center gap-1.5 text-[#64748B] hover:text-[#B84C00] transition-colors"
+            className="flex items-center gap-1.5 text-[#6B7280] hover:text-[#C2410C] transition-colors"
           >
             <Wifi className="w-3.5 h-3.5" />
             <span className="text-[11px] font-medium">Wi-Fi Info</span>
@@ -66,7 +66,7 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
             onClick={() =>
               toast.success('Front Desk Call', 'Front desk notified. An attendant is contacting you.')
             }
-            className="flex items-center gap-1.5 text-[#B84C00] hover:text-[#9C3800] transition-colors font-semibold bg-orange-50 px-2.5 py-1 rounded-lg border border-orange-200"
+            className="flex items-center gap-1.5 text-[#C2410C] hover:text-[#9A3412] transition-colors font-semibold bg-[#FFF1E6] px-2.5 py-1 rounded-lg border border-[#FED7AA]"
           >
             <PhoneCall className="w-3.5 h-3.5" />
             <span className="text-[11px]">Dial Concierge (Ext. 0)</span>

@@ -41,12 +41,12 @@ export const FeedbackPage: React.FC = () => {
             key={star}
             type="button"
             onClick={() => setRating(star)}
-            className="p-1 text-[#CBD5E1] hover:text-[#B84C00] transition-colors focus-visible:outline-none"
+            className="p-1 text-[#CBD5E1] hover:text-[#C2410C] transition-colors focus-visible:outline-none"
             aria-label={`Rate ${star} star`}
           >
             <Star
               className={`w-6 h-6 ${
-                star <= rating ? 'fill-[#B84C00] text-[#B84C00]' : 'text-[#E2E8F0]'
+                star <= rating ? 'fill-[#C2410C] text-[#C2410C]' : 'text-[#E5E7EB]'
               }`}
             />
           </button>
@@ -85,11 +85,11 @@ export const FeedbackPage: React.FC = () => {
     <div className="w-full space-y-6 text-left">
       {/* Page Header */}
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00] flex items-center gap-2">
-          <MessageSquareHeart className="w-6 h-6 text-[#B84C00]" />
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C] flex items-center gap-2">
+          <MessageSquareHeart className="w-6 h-6 text-[#C2410C]" />
           <span>Guest Stay Review & Feedback Center</span>
         </h1>
-        <p className="text-xs sm:text-sm text-[#64748B]">
+        <p className="text-xs sm:text-sm text-[#6B7280]">
           Collect guest ratings, monitor service satisfaction, and uphold Aura Palms 5-star hospitality standards.
         </p>
       </div>
@@ -98,14 +98,14 @@ export const FeedbackPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Column: Feedback Submission Form (7 cols on lg, 8 on xl) */}
         <div className="lg:col-span-7 xl:col-span-8">
-          <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm">
+          <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm">
             {isSubmitted ? (
               <div className="text-center space-y-4 py-8">
                 <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 mx-auto">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h2 className="text-xl font-bold text-[#0F172A]">Dhanyavaad (Thank You)!</h2>
-                <p className="text-xs sm:text-sm text-[#64748B] max-w-md mx-auto leading-relaxed">
+                <h2 className="text-xl font-bold text-[#1F2937]">Dhanyavaad (Thank You)!</h2>
+                <p className="text-xs sm:text-sm text-[#6B7280] max-w-md mx-auto leading-relaxed">
                   Your feedback has been received and shared directly with General Manager Ananya Sharma. We hope to welcome you back to Goa soon!
                 </p>
                 <div className="pt-2">
@@ -117,10 +117,10 @@ export const FeedbackPage: React.FC = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <h3 className="text-base font-semibold text-[#B84C00]">
+                  <h3 className="text-base font-semibold text-[#C2410C]">
                     Rate Your Experience
                   </h3>
-                  <p className="text-xs text-[#64748B]">
+                  <p className="text-xs text-[#6B7280]">
                     Your honest impressions guide our housekeeping, culinary, and front desk teams.
                   </p>
                 </div>
@@ -141,51 +141,51 @@ export const FeedbackPage: React.FC = () => {
                 </div>
 
                 {/* Ratings Grid */}
-                <div className="space-y-4 pt-2 border-t border-[#E2E8F0]">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                <div className="space-y-4 pt-2 border-t border-[#E5E7EB]">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB]">
                     <div>
-                      <span className="text-sm font-semibold text-[#0F172A] block">
+                      <span className="text-sm font-semibold text-[#1F2937] block">
                         Overall Resort Stay
                       </span>
-                      <span className="text-xs text-[#64748B]">Ambience, amenities and comfort</span>
+                      <span className="text-xs text-[#6B7280]">Ambience, amenities and comfort</span>
                     </div>
                     {renderStars(overallRating, setOverallRating)}
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB]">
                     <div>
-                      <span className="text-sm font-semibold text-[#0F172A] block">
+                      <span className="text-sm font-semibold text-[#1F2937] block">
                         Room Cleanliness & Hygiene
                       </span>
-                      <span className="text-xs text-[#64748B]">Housekeeping and linen turnover</span>
+                      <span className="text-xs text-[#6B7280]">Housekeeping and linen turnover</span>
                     </div>
                     {renderStars(cleanlinessRating, setCleanlinessRating)}
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB]">
                     <div>
-                      <span className="text-sm font-semibold text-[#0F172A] block">
+                      <span className="text-sm font-semibold text-[#1F2937] block">
                         Dining & Food Quality
                       </span>
-                      <span className="text-xs text-[#64748B]">Flavor, freshness and dining service</span>
+                      <span className="text-xs text-[#6B7280]">Flavor, freshness and dining service</span>
                     </div>
                     {renderStars(foodRating, setFoodRating)}
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB]">
                     <div>
-                      <span className="text-sm font-semibold text-[#0F172A] block">
+                      <span className="text-sm font-semibold text-[#1F2937] block">
                         Staff Courtesy & Front Desk
                       </span>
-                      <span className="text-xs text-[#64748B]">Attentiveness and prompt response</span>
+                      <span className="text-xs text-[#6B7280]">Attentiveness and prompt response</span>
                     </div>
                     {renderStars(staffRating, setStaffRating)}
                   </div>
                 </div>
 
                 {/* Detailed Comments */}
-                <div className="space-y-1.5 pt-2 border-t border-[#E2E8F0]">
-                  <label className="text-sm font-medium text-[#0F172A]">
+                <div className="space-y-1.5 pt-2 border-t border-[#E5E7EB]">
+                  <label className="text-sm font-medium text-[#1F2937]">
                     Your Comments & Memories
                   </label>
                   <textarea
@@ -193,7 +193,7 @@ export const FeedbackPage: React.FC = () => {
                     value={comments}
                     onChange={(e) => setComments(e.target.value)}
                     placeholder="Share your stay experience or any special compliments for the staff..."
-                    className="w-full p-3.5 text-sm rounded-xl bg-white text-[#0F172A] placeholder:text-[#94A3B8] border border-[#E2E8F0] focus:outline-none focus:border-[#B84C00] focus:ring-1 focus:ring-[#B84C00]"
+                    className="w-full p-3.5 text-sm rounded-xl bg-white text-[#1F2937] placeholder:text-[#6B7280] border border-[#E5E7EB] focus:outline-none focus:border-[#C2410C] focus:ring-1 focus:ring-[#C2410C]"
                     required
                   />
                 </div>
@@ -215,10 +215,10 @@ export const FeedbackPage: React.FC = () => {
         {/* Right Column: Resort Satisfaction Index & Verified Accolades (5 cols on lg, 4 on xl) */}
         <div className="lg:col-span-5 xl:col-span-4 space-y-6">
           {/* Rating Summary Card */}
-          <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm space-y-5">
+          <div className="p-6 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm space-y-5">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#64748B] flex items-center gap-1.5">
-                <Award className="w-4 h-4 text-[#B84C00]" /> Satisfaction Scorecard
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#6B7280] flex items-center gap-1.5">
+                <Award className="w-4 h-4 text-[#C2410C]" /> Satisfaction Scorecard
               </span>
               <span className="px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-semibold">
                 Superb 4.9/5
@@ -226,28 +226,28 @@ export const FeedbackPage: React.FC = () => {
             </div>
 
             <div className="flex items-baseline gap-3">
-              <span className="text-4xl font-extrabold text-[#0F172A]">4.92</span>
+              <span className="text-4xl font-extrabold text-[#1F2937]">4.92</span>
               <div>
-                <div className="flex items-center gap-1 text-[#B84C00]">
+                <div className="flex items-center gap-1 text-[#C2410C]">
                   {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#B84C00]" />
+                    <Star key={i} className="w-4 h-4 fill-[#C2410C]" />
                   ))}
                 </div>
-                <span className="text-[11px] text-[#64748B]">342 verified guest reviews</span>
+                <span className="text-[11px] text-[#6B7280]">342 verified guest reviews</span>
               </div>
             </div>
 
             {/* Metrics Breakdown */}
-            <div className="space-y-3 pt-3 border-t border-[#E2E8F0]">
+            <div className="space-y-3 pt-3 border-t border-[#E5E7EB]">
               {satisfactionMetrics.map((m) => (
                 <div key={m.label} className="space-y-1">
                   <div className="flex justify-between text-xs">
-                    <span className="text-[#64748B]">{m.label}</span>
-                    <span className="font-semibold text-[#0F172A]">{m.score}</span>
+                    <span className="text-[#6B7280]">{m.label}</span>
+                    <span className="font-semibold text-[#1F2937]">{m.score}</span>
                   </div>
-                  <div className="w-full h-1.5 rounded-full bg-[#F1F5F9] overflow-hidden">
+                  <div className="w-full h-1.5 rounded-full bg-[#FFF1E6] overflow-hidden">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-[#B84C00] to-[#EA580C]"
+                      className="h-full rounded-full bg-[#C2410C]"
                       style={{ width: `${m.val}%` }}
                     />
                   </div>
@@ -257,31 +257,31 @@ export const FeedbackPage: React.FC = () => {
           </div>
 
           {/* Recent Guest Reviews */}
-          <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm space-y-4">
+          <div className="p-6 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm space-y-4">
             <div className="flex items-center gap-2">
-              <Quote className="w-4 h-4 text-[#B84C00]" />
-              <h3 className="text-sm font-semibold text-[#0F172A]">Recent Verified Reviews</h3>
+              <Quote className="w-4 h-4 text-[#C2410C]" />
+              <h3 className="text-sm font-semibold text-[#1F2937]">Recent Verified Reviews</h3>
             </div>
 
             <div className="space-y-3.5">
               {recentReviews.map((rev, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-2 text-xs"
+                  className="p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-2 text-xs"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <span className="font-semibold text-[#0F172A] block">{rev.guest}</span>
-                      <span className="text-[10px] text-[#64748B]">{rev.stay}</span>
+                      <span className="font-semibold text-[#1F2937] block">{rev.guest}</span>
+                      <span className="text-[10px] text-[#6B7280]">{rev.stay}</span>
                     </div>
-                    <div className="flex items-center gap-0.5 text-[#B84C00] shrink-0">
+                    <div className="flex items-center gap-0.5 text-[#C2410C] shrink-0">
                       {[...Array(rev.rating)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 fill-[#B84C00]" />
+                        <Star key={i} className="w-3 h-3 fill-[#C2410C]" />
                       ))}
                     </div>
                   </div>
-                  <p className="text-[#64748B] leading-relaxed italic">"{rev.review}"</p>
-                  <span className="text-[10px] text-[#64748B]/70 block">{rev.date}</span>
+                  <p className="text-[#6B7280] leading-relaxed italic">"{rev.review}"</p>
+                  <span className="text-[10px] text-[#6B7280]/70 block">{rev.date}</span>
                 </div>
               ))}
             </div>

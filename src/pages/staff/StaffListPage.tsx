@@ -59,12 +59,12 @@ export const StaffListPage: React.FC = () => {
       header: 'Employee Name',
       accessor: (u) => (
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-[#FFF7ED] border border-[#FFEDD5] flex items-center justify-center font-bold text-xs text-[#B84C00]">
+          <div className="w-8 h-8 rounded-full bg-[#FFF1E6] border border-[#FED7AA] flex items-center justify-center font-bold text-xs text-[#C2410C]">
             {u.name.slice(0, 2).toUpperCase()}
           </div>
           <div>
-            <span className="font-semibold text-[#0F172A] block">{u.name}</span>
-            <span className="text-[11px] text-[#64748B]">{u.email}</span>
+            <span className="font-semibold text-[#1F2937] block">{u.name}</span>
+            <span className="text-[11px] text-[#6B7280]">{u.email}</span>
           </div>
         </div>
       ),
@@ -75,7 +75,7 @@ export const StaffListPage: React.FC = () => {
       key: 'role',
       header: 'Role & Permissions',
       accessor: (u) => (
-        <span className="text-xs px-2.5 py-1 rounded-full bg-[#FFF7ED] text-[#B84C00] border border-[#FFEDD5] font-medium">
+        <span className="text-xs px-2.5 py-1 rounded-full bg-[#FFF1E6] text-[#C2410C] border border-[#FED7AA] font-medium">
           {u.role}
         </span>
       ),
@@ -91,7 +91,7 @@ export const StaffListPage: React.FC = () => {
       key: 'shift',
       header: 'Assigned Shift',
       accessor: (u) => (
-        <span className="text-xs text-[#64748B] flex items-center gap-1.5">
+        <span className="text-xs text-[#6B7280] flex items-center gap-1.5">
           <Clock className="w-3.5 h-3.5 text-[#3B82F6]" />
           {u.shift || 'General (09:00 - 18:00)'}
         </span>
@@ -112,10 +112,10 @@ export const StaffListPage: React.FC = () => {
     <div className="space-y-4 sm:space-y-5 text-left">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
             Staff Personnel & Shift Rostering
           </h1>
-          <p className="text-xs sm:text-sm text-[#64748B]">
+          <p className="text-xs sm:text-sm text-[#6B7280]">
             Resort employee directory, departmental shifts, and role administration.
           </p>
         </div>

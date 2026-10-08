@@ -38,10 +38,10 @@ export const HousekeepingDashboard: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
             Housekeeping Management Board
           </h1>
-          <p className="text-xs sm:text-sm text-[#64748B]">
+          <p className="text-xs sm:text-sm text-[#6B7280]">
             Room turnovers, linen changes, sanitation audit, and maintenance tickets.
           </p>
         </div>
@@ -51,7 +51,7 @@ export const HousekeepingDashboard: React.FC = () => {
             variant="outline"
             size="md"
             onClick={() => navigate('/housekeeping')}
-            leftIcon={<RotateCcw className="w-4 h-4 text-[#B84C00]" />}
+            leftIcon={<RotateCcw className="w-4 h-4 text-[#C2410C]" />}
           >
             Kanban Task View
           </Button>
@@ -96,7 +96,7 @@ export const HousekeepingDashboard: React.FC = () => {
       {/* Quick Action Room Turnover Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-4">
-          <h3 className="text-base font-bold text-[#B84C00]">
+          <h3 className="text-base font-bold text-[#C2410C]">
             Direct Room Turnover Quick-Board
           </h3>
 
@@ -104,14 +104,14 @@ export const HousekeepingDashboard: React.FC = () => {
             {rooms.map((room) => (
               <div
                 key={room.id}
-                className="p-4 rounded-xl bg-white border border-[#E2E8F0] space-y-3 text-left hover:border-[#B84C00]/40 shadow-xs transition-all"
+                className="p-4 rounded-xl bg-white border border-[#E5E7EB] space-y-3 text-left hover:border-[#C2410C]/40 shadow-xs transition-all"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-base font-bold text-[#0F172A]">
+                    <span className="text-base font-bold text-[#1F2937]">
                       Room #{room.roomNumber}
                     </span>
-                    <p className="text-xs text-[#64748B]">{room.category} • Floor {room.floor}</p>
+                    <p className="text-xs text-[#6B7280]">{room.category} • Floor {room.floor}</p>
                   </div>
                   <StatusBadge status={room.status} size="sm" />
                 </div>
@@ -120,7 +120,7 @@ export const HousekeepingDashboard: React.FC = () => {
                   {room.amenities.slice(0, 2).map((a) => (
                     <span
                       key={a}
-                      className="text-[10px] px-2 py-0.5 rounded bg-[#F1F5F9] text-[#64748B] border border-[#E2E8F0]"
+                      className="text-[10px] px-2 py-0.5 rounded bg-[#FFF8F3] text-[#6B7280] border border-[#E5E7EB]"
                     >
                       {a}
                     </span>
@@ -128,8 +128,8 @@ export const HousekeepingDashboard: React.FC = () => {
                 </div>
 
                 {/* Instant Action Button per Room */}
-                <div className="pt-2 border-t border-[#E2E8F0] flex items-center justify-between gap-2">
-                  <span className="text-[11px] text-[#64748B]">Change Status:</span>
+                <div className="pt-2 border-t border-[#E5E7EB] flex items-center justify-between gap-2">
+                  <span className="text-[11px] text-[#6B7280]">Change Status:</span>
                   <div className="flex items-center gap-1.5">
                     {room.status !== 'Cleaning' && (
                       <button

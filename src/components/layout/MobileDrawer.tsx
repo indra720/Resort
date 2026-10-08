@@ -57,24 +57,24 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative z-10 w-[85%] max-w-xs sm:max-w-sm h-full bg-[#B84C00] border-r border-[#9C3800] text-white flex flex-col overflow-hidden shadow-2xl"
+            className="relative z-10 w-[85%] max-w-xs sm:max-w-sm h-full bg-[#C2410C] border-r border-[#9A3412] text-white flex flex-col overflow-hidden shadow-2xl"
           >
             {/* Header */}
-            <div className="p-4 border-b border-[#9C3800] flex items-center justify-between bg-[#8F3800]">
+            <div className="p-4 border-b border-[#9A3412] flex items-center justify-between bg-[#9A3412]">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-[#A33E00] flex items-center justify-center text-white shadow-xs">
+                <div className="w-8 h-8 rounded-lg bg-[#C2410C] flex items-center justify-center text-white shadow-xs">
                   <Sparkles className="w-4 h-4" />
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-white">Aura Palms Resort</h3>
-                  <span className="text-[10px] text-orange-200">Navigation Menu</span>
+                  <span className="text-[10px] text-[#FED7AA]">Navigation Menu</span>
                 </div>
               </div>
 
               <button
                 type="button"
                 onClick={onClose}
-                className="w-11 h-11 flex items-center justify-center rounded-lg text-orange-200 hover:text-white hover:bg-[#9C3800]"
+                className="w-11 h-11 flex items-center justify-center rounded-lg text-white/80 hover:text-white hover:bg-[#7C2D12]"
                 aria-label="Close menu"
               >
                 <X className="w-5 h-5" />
@@ -82,16 +82,16 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
             </div>
 
             {/* User & Current Role Header */}
-            <div className="p-3.5 bg-[#8F3800]/50 border-b border-[#9C3800] text-left">
+            <div className="p-3.5 bg-[#9A3412]/50 border-b border-[#9A3412] text-left">
               <p className="text-xs font-semibold text-white">{user?.name}</p>
               <div className="mt-1 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/25 text-white text-[11px] font-medium border border-white/20">
-                <Shield className="w-3 h-3" /> {role}
+                <Shield className="w-3 h-3 text-[#FED7AA]" /> {role}
               </div>
             </div>
 
             {/* Navigation Links (Scrollable) */}
             <div className="flex-1 overflow-y-auto p-3 space-y-1">
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-orange-200 px-2 mb-1.5 text-left">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-[#FED7AA] px-2 mb-1.5 text-left">
                 Resort Modules
               </p>
               {navItems.map((item) => {
@@ -105,8 +105,8 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
                       cn(
                         'flex items-center justify-between px-3.5 min-h-[44px] rounded-xl transition-colors text-sm text-left',
                         isActive
-                          ? 'bg-[#8F3800] text-white font-semibold ring-1 ring-white/10'
-                          : 'text-orange-100 hover:text-white hover:bg-[#A33E00]'
+                          ? 'bg-[#FFF1E6] text-[#C2410C] font-semibold'
+                          : 'text-white hover:text-white hover:bg-[#9A3412]'
                       )
                     }
                   >
@@ -114,7 +114,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
                       <>
                         <div className="flex items-center gap-3">
                           <Icon
-                            className={cn('w-4 h-4', isActive ? 'text-white' : 'text-orange-200')}
+                            className={cn('w-4 h-4', isActive ? 'text-[#C2410C]' : 'text-white')}
                           />
                           <span>{item.label}</span>
                         </div>
@@ -130,8 +130,8 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
               })}
 
               {/* Mobile Role Switcher for RBAC testing */}
-              <div className="pt-4 border-t border-[#9C3800] text-left">
-                <p className="text-[11px] font-semibold uppercase tracking-wider text-orange-200 px-2 mb-2">
+              <div className="pt-4 border-t border-[#9A3412] text-left">
+                <p className="text-[11px] font-semibold uppercase tracking-wider text-[#FED7AA] px-2 mb-2">
                   Switch Role Demo
                 </p>
                 <div className="grid grid-cols-2 gap-1.5">
@@ -146,8 +146,8 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
                       className={cn(
                         'px-2 py-1.5 text-left text-xs rounded-lg border transition-colors truncate',
                         role === r
-                          ? 'bg-[#8F3800] border-white/30 text-white font-bold'
-                          : 'bg-[#9C3800] border-[#8F3800] text-orange-100 hover:text-white'
+                          ? 'bg-[#FFF1E6] border-[#FED7AA] text-[#C2410C] font-bold'
+                          : 'bg-[#9A3412] border-[#7C2D12] text-white hover:bg-[#7C2D12]'
                       )}
                     >
                       {r}
@@ -158,7 +158,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
             </div>
 
             {/* Logout Footer */}
-            <div className="p-3 border-t border-[#9C3800] bg-[#8F3800]">
+            <div className="p-3 border-t border-[#9A3412] bg-[#9A3412]">
               <button
                 type="button"
                 onClick={() => {

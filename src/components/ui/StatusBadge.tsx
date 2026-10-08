@@ -31,10 +31,10 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
       dot: 'bg-emerald-600',
     },
     Occupied: {
-      bg: 'bg-orange-50',
-      text: 'text-[#B84C00]',
-      border: 'border-orange-200',
-      dot: 'bg-[#B84C00]',
+      bg: 'bg-[#FFF1E6]',
+      text: 'text-[#C2410C]',
+      border: 'border-[#FED7AA]',
+      dot: 'bg-[#C2410C]',
     },
     Reserved: {
       bg: 'bg-blue-50',
@@ -75,10 +75,10 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
   };
 
   const current = configMap[status] || {
-    bg: 'bg-[#F1F5F9]',
-    text: 'text-[#64748B]',
-    border: 'border-[#E2E8F0]',
-    dot: 'bg-[#64748B]',
+    bg: 'bg-[#FFF8F3]',
+    text: 'text-[#6B7280]',
+    border: 'border-[#E5E7EB]',
+    dot: 'bg-[#6B7280]',
   };
 
   const sizeStyles = {

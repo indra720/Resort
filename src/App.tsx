@@ -6,7 +6,7 @@ import { ToastContainer } from '@/components/ui/Toast';
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-[#F1F5F9] text-[#0F172A] font-sans antialiased overflow-x-hidden selection:bg-[#B84C00] selection:text-white">
+      <div className="min-h-screen bg-[#FFFFFF] text-[#1F2937] font-sans antialiased overflow-x-hidden selection:bg-[#C2410C] selection:text-white">
         <AppRoutes />
         <ToastContainer />
       </div>

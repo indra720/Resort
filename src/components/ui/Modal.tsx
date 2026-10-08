@@ -81,7 +81,7 @@ export const Modal: React.FC<ModalProps> = ({
               // Mobile styles: Full-screen sheet with top handle
               'relative z-10 w-full h-[92vh] sm:h-auto max-h-[92vh] sm:max-h-[85vh]',
               'rounded-t-2xl sm:rounded-xl',
-              'bg-white border-t sm:border border-[#E2E8F0] text-[#0F172A]',
+              'bg-white border-t sm:border border-[#E5E7EB] text-[#1F2937]',
               'shadow-2xl flex flex-col overflow-hidden',
               // Desktop constraints
               'sm:m-4 sm:w-full',
@@ -90,19 +90,19 @@ export const Modal: React.FC<ModalProps> = ({
           >
             {/* Mobile Drag Indicator Handle */}
             <div className="sm:hidden flex justify-center pt-3 pb-1">
-              <div className="w-10 h-1 rounded-full bg-[#E2E8F0]" />
+              <div className="w-10 h-1 rounded-full bg-[#E5E7EB]" />
             </div>
 
             {/* Modal Header */}
-            <div className="px-5 py-4 border-b border-[#E2E8F0] flex items-center justify-between shrink-0">
+            <div className="px-5 py-4 border-b border-[#E5E7EB] flex items-center justify-between shrink-0">
               <div className="space-y-1 pr-4">
                 {title && (
-                  <h2 className="text-base sm:text-lg font-bold text-[#B84C00] tracking-tight">
+                  <h2 className="text-base sm:text-lg font-bold text-[#C2410C] tracking-tight">
                     {title}
                   </h2>
                 )}
                 {description && (
-                  <p className="text-xs sm:text-sm text-[#64748B]">{description}</p>
+                  <p className="text-xs sm:text-sm text-[#6B7280]">{description}</p>
                 )}
               </div>
 
@@ -110,7 +110,7 @@ export const Modal: React.FC<ModalProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="w-11 h-11 flex items-center justify-center rounded-lg text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B84C00]"
+                className="w-11 h-11 flex items-center justify-center rounded-lg text-[#6B7280] hover:text-[#1F2937] hover:bg-[#FFF8F3] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C2410C]"
                 aria-label="Close dialog"
               >
                 <X className="w-5 h-5" />
@@ -118,13 +118,13 @@ export const Modal: React.FC<ModalProps> = ({
             </div>
 
             {/* Modal Scrollable Content */}
-            <div className="p-5 sm:p-6 overflow-y-auto flex-1 text-sm text-[#0F172A]">
+            <div className="p-5 sm:p-6 overflow-y-auto flex-1 text-sm text-[#1F2937]">
               {children}
             </div>
 
             {/* Modal Footer */}
             {footer && (
-              <div className="p-4 sm:p-5 border-t border-[#E2E8F0] bg-[#F8FAFC] shrink-0">
+              <div className="p-4 sm:p-5 border-t border-[#E5E7EB] bg-[#FFF8F3] shrink-0">
                 {footer}
               </div>
             )}

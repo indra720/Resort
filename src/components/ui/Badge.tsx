@@ -15,10 +15,10 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       'inline-flex items-center justify-center font-medium rounded-full border transition-colors select-none tracking-wide';
 
     const variantStyles = {
-      default: 'bg-[#F1F5F9] text-[#0F172A] border-[#E2E8F0]',
-      primary: 'bg-orange-50 text-[#B84C00] border-orange-200 font-semibold',
-      secondary: 'bg-white text-[#64748B] border-[#E2E8F0]',
-      outline: 'bg-transparent text-[#0F172A] border-[#E2E8F0]',
+      default: 'bg-[#FFF8F3] text-[#1F2937] border-[#E5E7EB]',
+      primary: 'bg-[#FFF1E6] text-[#C2410C] border-[#FED7AA] font-semibold',
+      secondary: 'bg-white text-[#6B7280] border-[#E5E7EB]',
+      outline: 'bg-transparent text-[#1F2937] border-[#E5E7EB]',
       success: 'bg-emerald-50 text-emerald-700 border-emerald-200',
       warning: 'bg-amber-50 text-amber-700 border-amber-200',
       danger: 'bg-rose-50 text-rose-700 border-rose-200',

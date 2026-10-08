@@ -8,36 +8,36 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Theme Colors (Clean White Light Theme with Soft Slate Canvas)
-        background: '#F1F5F9',
+        // Theme Colors (Clean White Light Theme with Dark Orange Branding)
+        background: '#FFFFFF',
         card: '#FFFFFF',
         elevated: '#FFFFFF',
-        border: '#E2E8F0',
+        border: '#E5E7EB',
         
         // Brand Primary & Hover Dark Orange
         primary: {
-          DEFAULT: '#B84C00',
-          hover: '#9C3800',
-          button: '#B84C00',
-          accent: '#CC5500',
-          soft: 'rgba(184, 76, 0, 0.10)',
+          DEFAULT: '#C2410C',
+          hover: '#9A3412',
+          button: '#C2410C',
+          accent: '#D95F02',
+          soft: '#FFF1E6',
           foreground: '#FFFFFF',
         },
 
         // Sidebar Theme Colors (Dark Orange Sidebar)
         sidebar: {
-          DEFAULT: '#B84C00',
-          hover: '#A33E00',
-          active: '#8F3800',
+          DEFAULT: '#C2410C',
+          hover: '#9A3412',
+          active: '#FFF1E6',
           foreground: '#FFFFFF',
           muted: '#FED7AA',
         },
 
         // Text Colors
-        foreground: '#0F172A',
+        foreground: '#1F2937',
         muted: {
-          DEFAULT: '#F1F5F9',
-          foreground: '#64748B',
+          DEFAULT: '#FFF8F3',
+          foreground: '#6B7280',
         },
 
         // Status Colors
@@ -71,7 +71,7 @@ export default {
         sm: '6px',
       },
       boxShadow: {
-        glow: '0 0 20px -5px rgba(184, 76, 0, 0.25)',
+        glow: '0 0 20px -5px rgba(194, 65, 12, 0.25)',
       },
     },
   },

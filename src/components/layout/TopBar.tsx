@@ -73,24 +73,24 @@ export const TopBar: React.FC<TopBarProps> = ({
 
   return (
     <>
-      <header className="shrink-0 w-full h-16 border-b border-[#E2E8F0] bg-white/95 backdrop-blur-md px-3 sm:px-6 flex items-center justify-between z-30 shadow-xs">
+      <header className="shrink-0 w-full h-16 border-b border-[#E5E7EB] bg-white/95 backdrop-blur-md px-3 sm:px-6 flex items-center justify-between z-30 shadow-xs">
         {/* Left Section: Mobile Menu, Desktop Collapse, Brand */}
         <div className="flex items-center gap-2 sm:gap-4">
           {/* Mobile/Tablet Drawer Trigger (min-h-[44px], visible on mobile & md screens) */}
           <button
             type="button"
             onClick={onOpenMobileDrawer}
-            className="lg:hidden w-11 h-11 flex items-center justify-center rounded-lg text-[#0F172A] hover:bg-[#F1F5F9] transition-colors"
+            className="lg:hidden w-11 h-11 flex items-center justify-center rounded-lg text-[#1F2937] hover:bg-[#FFF8F3] transition-colors"
             aria-label="Open navigation menu"
           >
-            <Menu className="w-5 h-5" />
+            <Menu className="w-5 h-5 text-[#6B7280]" />
           </button>
 
           {/* Desktop Sidebar Collapse Toggle (visible on lg+ desktop) */}
           <button
             type="button"
             onClick={onToggleSidebar}
-            className="hidden lg:flex w-10 h-10 items-center justify-center rounded-lg text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition-colors"
+            className="hidden lg:flex w-10 h-10 items-center justify-center rounded-lg text-[#6B7280] hover:text-[#1F2937] hover:bg-[#FFF8F3] transition-colors"
             aria-label="Toggle sidebar collapse"
             title="Toggle Sidebar"
           >
@@ -106,14 +106,14 @@ export const TopBar: React.FC<TopBarProps> = ({
             onClick={() => navigate('/dashboard')}
             className="flex items-center gap-2.5 cursor-pointer select-none"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#B84C00] to-[#E06A10] flex items-center justify-center text-white shadow-sm shrink-0">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#C2410C] to-[#D95F02] flex items-center justify-center text-white shadow-sm shrink-0">
               <Sparkles className="w-4 h-4" />
             </div>
             <div className="hidden lg:block leading-tight">
-              <span className="text-sm sm:text-base font-bold tracking-tight text-[#0F172A]">
-                Aura Palms <span className="text-[#B84C00]">Resort</span>
+              <span className="text-sm sm:text-base font-bold tracking-tight text-[#1F2937]">
+                Aura Palms <span className="text-[#C2410C]">Resort</span>
               </span>
-              <span className="block text-[10px] text-[#64748B] uppercase tracking-wider font-semibold">
+              <span className="block text-[10px] text-[#6B7280] uppercase tracking-wider font-semibold">
                 Luxury & Heritage
               </span>
             </div>
@@ -125,13 +125,13 @@ export const TopBar: React.FC<TopBarProps> = ({
           <button
             type="button"
             onClick={() => setIsSearchOpen(true)}
-            className="w-full min-h-[40px] px-3.5 py-2 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#B84C00]/50 transition-colors flex items-center justify-between text-xs text-[#64748B]"
+            className="w-full min-h-[40px] px-3.5 py-2 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] hover:border-[#C2410C]/50 transition-colors flex items-center justify-between text-xs text-[#6B7280]"
           >
             <div className="flex items-center gap-2">
-              <Search className="w-4 h-4 text-[#B84C00]" />
+              <Search className="w-4 h-4 text-[#C2410C]" />
               <span>Search rooms, guests, bookings...</span>
             </div>
-            <kbd className="px-1.5 py-0.5 rounded bg-[#F1F5F9] border border-[#E2E8F0] text-[10px] text-[#64748B] font-medium">
+            <kbd className="px-1.5 py-0.5 rounded bg-white border border-[#E5E7EB] text-[10px] text-[#6B7280] font-medium">
               Ctrl+K
             </kbd>
           </button>
@@ -143,10 +143,10 @@ export const TopBar: React.FC<TopBarProps> = ({
           <button
             type="button"
             onClick={() => setIsSearchOpen(true)}
-            className="sm:hidden w-11 h-11 flex items-center justify-center rounded-lg text-[#0F172A] hover:bg-[#F1F5F9] transition-colors"
+            className="sm:hidden w-11 h-11 flex items-center justify-center rounded-lg text-[#1F2937] hover:bg-[#FFF8F3] transition-colors"
             aria-label="Search"
           >
-            <Search className="w-5 h-5 text-[#B84C00]" />
+            <Search className="w-5 h-5 text-[#C2410C]" />
           </button>
 
           {/* Notifications Dropdown */}
@@ -154,12 +154,12 @@ export const TopBar: React.FC<TopBarProps> = ({
             <button
               type="button"
               onClick={() => setIsNotifOpen((prev) => !prev)}
-              className="w-11 h-11 relative flex items-center justify-center rounded-lg text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition-colors"
+              className="w-11 h-11 relative flex items-center justify-center rounded-lg text-[#6B7280] hover:text-[#1F2937] hover:bg-[#FFF8F3] transition-colors"
               aria-label="Notifications"
             >
-              <Bell className="w-5 h-5" />
+              <Bell className="w-5 h-5 text-[#6B7280]" />
               {unreadCount > 0 && (
-                <span className="absolute top-2 right-2 w-4 h-4 rounded-full bg-[#B84C00] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">
+                <span className="absolute top-2 right-2 w-4 h-4 rounded-full bg-[#C2410C] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">
                   {unreadCount}
                 </span>
               )}
@@ -167,12 +167,12 @@ export const TopBar: React.FC<TopBarProps> = ({
 
             {/* Notification Dropdown Menu */}
             {isNotifOpen && (
-              <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl bg-white border border-[#E2E8F0] shadow-xl z-50 overflow-hidden">
-                <div className="p-3.5 border-b border-[#E2E8F0] flex items-center justify-between bg-[#F8FAFC]">
+              <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl bg-white border border-[#E5E7EB] shadow-xl z-50 overflow-hidden">
+                <div className="p-3.5 border-b border-[#E5E7EB] flex items-center justify-between bg-[#FFF8F3]">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-[#0F172A]">Notifications</span>
+                    <span className="text-sm font-semibold text-[#1F2937]">Notifications</span>
                     {unreadCount > 0 && (
-                      <span className="px-1.5 py-0.2 rounded-full bg-orange-50 text-[#B84C00] text-[11px] font-semibold border border-orange-200">
+                      <span className="px-1.5 py-0.2 rounded-full bg-[#FFF1E6] text-[#C2410C] text-[11px] font-semibold border border-[#FED7AA]">
                         {unreadCount} new
                       </span>
                     )}
@@ -180,26 +180,26 @@ export const TopBar: React.FC<TopBarProps> = ({
                   {unreadCount > 0 && (
                     <button
                       onClick={handleMarkAllRead}
-                      className="text-xs text-[#B84C00] hover:text-[#9C3800] flex items-center gap-1 font-medium"
+                      className="text-xs text-[#C2410C] hover:text-[#9A3412] flex items-center gap-1 font-medium"
                     >
                       <CheckCheck className="w-3.5 h-3.5" /> Mark all read
                     </button>
                   )}
                 </div>
 
-                <div className="max-h-80 overflow-y-auto divide-y divide-[#E2E8F0]">
+                <div className="max-h-80 overflow-y-auto divide-y divide-[#E5E7EB]">
                   {notifications.map((notif) => (
                     <div
                       key={notif.id}
-                      className={`p-3.5 hover:bg-[#F8FAFC] transition-colors text-left ${
-                        !notif.read ? 'bg-orange-50/50' : ''
+                      className={`p-3.5 hover:bg-[#FFF8F3] transition-colors text-left ${
+                        !notif.read ? 'bg-[#FFF1E6]/50' : ''
                       }`}
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <h4 className="text-xs font-semibold text-[#0F172A]">{notif.title}</h4>
-                        <span className="text-[10px] text-[#64748B] shrink-0">{notif.time}</span>
+                        <h4 className="text-xs font-semibold text-[#1F2937]">{notif.title}</h4>
+                        <span className="text-[10px] text-[#6B7280] shrink-0">{notif.time}</span>
                       </div>
-                      <p className="text-xs text-[#64748B] mt-1 leading-relaxed">{notif.message}</p>
+                      <p className="text-xs text-[#6B7280] mt-1 leading-relaxed">{notif.message}</p>
                     </div>
                   ))}
                 </div>
@@ -212,36 +212,36 @@ export const TopBar: React.FC<TopBarProps> = ({
             <button
               type="button"
               onClick={() => setIsProfileOpen((prev) => !prev)}
-              className="min-h-[44px] flex items-center gap-2 p-1.5 rounded-xl hover:bg-[#F1F5F9] border border-transparent hover:border-[#E2E8F0] transition-all"
+              className="min-h-[44px] flex items-center gap-2 p-1.5 rounded-xl hover:bg-[#FFF8F3] border border-transparent hover:border-[#E5E7EB] transition-all"
               aria-label="User Profile and Role Menu"
             >
-              <div className="w-8 h-8 rounded-full bg-orange-50 border border-orange-200 text-[#B84C00] flex items-center justify-center font-bold text-xs shrink-0">
+              <div className="w-8 h-8 rounded-full bg-[#FFF1E6] border border-[#FED7AA] text-[#C2410C] flex items-center justify-center font-bold text-xs shrink-0">
                 {user?.name.slice(0, 2).toUpperCase() || 'AD'}
               </div>
               <div className="hidden md:flex flex-col text-left leading-tight pr-1">
-                <span className="text-xs font-semibold text-[#0F172A] max-w-[110px] truncate">
+                <span className="text-xs font-semibold text-[#1F2937] max-w-[110px] truncate">
                   {user?.name || 'Administrator'}
                 </span>
-                <span className="text-[10px] text-[#B84C00] font-bold">{role}</span>
+                <span className="text-[10px] text-[#C2410C] font-bold">{role}</span>
               </div>
-              <ChevronDown className="w-3.5 h-3.5 text-[#64748B] hidden md:block" />
+              <ChevronDown className="w-3.5 h-3.5 text-[#6B7280] hidden md:block" />
             </button>
 
             {/* Profile Popover / Role Switcher Menu */}
             {isProfileOpen && (
-              <div className="absolute right-0 mt-2 w-72 rounded-xl bg-white border border-[#E2E8F0] shadow-xl z-50 overflow-hidden divide-y divide-[#E2E8F0]">
+              <div className="absolute right-0 mt-2 w-72 rounded-xl bg-white border border-[#E5E7EB] shadow-xl z-50 overflow-hidden divide-y divide-[#E5E7EB]">
                 {/* User Info Header */}
-                <div className="p-4 bg-[#F8FAFC]">
-                  <p className="text-sm font-semibold text-[#0F172A]">{user?.name}</p>
-                  <p className="text-xs text-[#64748B]">{user?.email}</p>
-                  <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-orange-50 border border-orange-200 text-[#B84C00] text-[11px] font-semibold">
-                    <Shield className="w-3 h-3" /> Active: {role}
+                <div className="p-4 bg-[#FFF8F3]">
+                  <p className="text-sm font-semibold text-[#1F2937]">{user?.name}</p>
+                  <p className="text-xs text-[#6B7280]">{user?.email}</p>
+                  <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FFF1E6] border border-[#FED7AA] text-[#C2410C] text-[11px] font-semibold">
+                    <Shield className="w-3 h-3 text-[#C2410C]" /> Active: {role}
                   </div>
                 </div>
 
                 {/* Role Switcher for Testing (Prominently Accessible) */}
                 <div className="p-3">
-                  <p className="text-[11px] font-semibold uppercase tracking-wider text-[#64748B] mb-2 px-1">
+                  <p className="text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] mb-2 px-1">
                     Quick Role Switcher (Test RBAC)
                   </p>
                   <div className="space-y-1">
@@ -256,8 +256,8 @@ export const TopBar: React.FC<TopBarProps> = ({
                         }}
                         className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left font-medium ${
                           role === r
-                            ? 'bg-[#B84C00] text-white font-semibold'
-                            : 'text-[#0F172A] hover:bg-[#F8FAFC] hover:text-[#B84C00]'
+                            ? 'bg-[#C2410C] text-white font-semibold'
+                            : 'text-[#1F2937] hover:bg-[#FFF8F3] hover:text-[#C2410C]'
                         }`}
                       >
                         <span>{r}</span>
@@ -268,7 +268,7 @@ export const TopBar: React.FC<TopBarProps> = ({
                 </div>
 
                 {/* Footer links */}
-                <div className="p-2 bg-[#F8FAFC]">
+                <div className="p-2 bg-[#FFF8F3]">
                   <button
                     type="button"
                     onClick={() => {

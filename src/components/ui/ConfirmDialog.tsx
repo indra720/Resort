@@ -32,7 +32,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
   const icons = {
     danger: <AlertCircle className="w-6 h-6 text-[#DC2626]" />,
     warning: <AlertTriangle className="w-6 h-6 text-[#D97706]" />,
-    primary: <HelpCircle className="w-6 h-6 text-[#B84C00]" />,
+    primary: <HelpCircle className="w-6 h-6 text-[#C2410C]" />,
   };
 
   const buttonVariants: Record<'danger' | 'warning' | 'primary', 'danger' | 'primary'> = {
@@ -71,10 +71,10 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
       }
     >
       <div className="flex items-start gap-4 text-left">
-        <div className="p-2.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] shrink-0">
+        <div className="p-2.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] shrink-0">
           {icons[variant]}
         </div>
-        <p className="text-sm text-[#64748B] leading-relaxed pt-1">
+        <p className="text-sm text-[#6B7280] leading-relaxed pt-1">
           {description}
         </p>
       </div>

@@ -27,14 +27,14 @@ export const ResortManagerDashboard: React.FC = () => {
     {
       key: 'roomNumber',
       header: 'Room',
-      accessor: (r) => <span className="font-bold text-[#0F172A]">#{r.roomNumber}</span>,
+      accessor: (r) => <span className="font-bold text-[#1F2937]">#{r.roomNumber}</span>,
       sortable: true,
       sortValue: (r) => r.roomNumber,
     },
     {
       key: 'category',
       header: 'Category',
-      accessor: (r) => <span className="text-[#64748B]">{r.category}</span>,
+      accessor: (r) => <span className="text-[#6B7280]">{r.category}</span>,
     },
     {
       key: 'status',
@@ -45,7 +45,7 @@ export const ResortManagerDashboard: React.FC = () => {
       key: 'ratePerNight',
       header: 'Rate/Night',
       accessor: (r) => (
-        <span className="font-semibold text-[#B84C00]">{formatINR(r.ratePerNight)}</span>
+        <span className="font-semibold text-[#C2410C]">{formatINR(r.ratePerNight)}</span>
       ),
       sortable: true,
       sortValue: (r) => r.ratePerNight,
@@ -57,10 +57,10 @@ export const ResortManagerDashboard: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
             Operations Command Center
           </h1>
-          <p className="text-xs sm:text-sm text-[#64748B]">
+          <p className="text-xs sm:text-sm text-[#6B7280]">
             Resort Manager daily briefing, property turnover, and guest logistics.
           </p>
         </div>
@@ -131,20 +131,20 @@ export const ResortManagerDashboard: React.FC = () => {
               data={WEEKLY_MOVEMENT_DATA}
               margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
             >
-              <XAxis dataKey="day" stroke="#64748B" fontSize={11} tickLine={false} />
-              <YAxis stroke="#64748B" fontSize={11} tickLine={false} />
+              <XAxis dataKey="day" stroke="#6B7280" fontSize={11} tickLine={false} />
+              <YAxis stroke="#6B7280" fontSize={11} tickLine={false} />
               <Tooltip
                 contentStyle={{
                   backgroundColor: '#FFFFFF',
-                  borderColor: '#E2E8F0',
+                  borderColor: '#E5E7EB',
                   borderRadius: '8px',
-                  color: '#0F172A',
+                  color: '#1F2937',
                   fontSize: '12px',
                   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                 }}
               />
               <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }} />
-              <Bar dataKey="arrivals" name="Arrivals" fill="#B84C00" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="arrivals" name="Arrivals" fill="#C2410C" radius={[4, 4, 0, 0]} />
               <Bar dataKey="departures" name="Departures" fill="#2563EB" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ChartCard>
@@ -161,7 +161,7 @@ export const ResortManagerDashboard: React.FC = () => {
       {/* Room Inventory Overview */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h3 className="text-base font-bold text-[#B84C00]">Room Turnaround Monitor</h3>
+          <h3 className="text-base font-bold text-[#C2410C]">Room Turnaround Monitor</h3>
           <Button variant="ghost" size="sm" onClick={() => navigate('/rooms')}>
             Open Full Grid
           </Button>

@@ -42,22 +42,22 @@ export const CheckInOutPage: React.FC = () => {
     <div className="space-y-6 text-left">
       {/* Header */}
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
           Front Desk Check-In & Check-Out Terminal
         </h1>
-        <p className="text-xs sm:text-sm text-[#64748B]">
+        <p className="text-xs sm:text-sm text-[#6B7280]">
           Guest arrivals, identity document capture, and key issuance.
         </p>
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-[#E2E8F0] gap-4">
+      <div className="flex border-b border-[#E5E7EB] gap-4">
         <button
           onClick={() => setActiveTab('checkin')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'checkin'
-              ? 'border-[#B84C00] text-[#B84C00]'
-              : 'border-transparent text-[#64748B] hover:text-[#0F172A]'
+              ? 'border-[#C2410C] text-[#C2410C]'
+              : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
           }`}
         >
           <UserCheck className="w-4 h-4" />
@@ -68,8 +68,8 @@ export const CheckInOutPage: React.FC = () => {
           onClick={() => setActiveTab('checkout')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'checkout'
-              ? 'border-[#B84C00] text-[#B84C00]'
-              : 'border-transparent text-[#64748B] hover:text-[#0F172A]'
+              ? 'border-[#C2410C] text-[#C2410C]'
+              : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
           }`}
         >
           <UserX className="w-4 h-4" />
@@ -83,30 +83,30 @@ export const CheckInOutPage: React.FC = () => {
           {checkInList.map((b) => (
             <div
               key={b.id}
-              className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm space-y-4 flex flex-col justify-between"
+              className="p-5 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm space-y-4 flex flex-col justify-between"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-base font-bold text-[#0F172A]">{b.guestName}</span>
+                  <span className="text-base font-bold text-[#1F2937]">{b.guestName}</span>
                   <StatusBadge status={b.paymentStatus} size="sm" />
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 text-xs text-[#64748B] pt-1">
+                <div className="grid grid-cols-2 gap-2 text-xs text-[#6B7280] pt-1">
                   <div>
                     <span className="block text-[11px]">Room Assigned:</span>
-                    <span className="font-semibold text-[#B84C00] text-sm">
+                    <span className="font-semibold text-[#C2410C] text-sm">
                       Room #{b.roomNumber}
                     </span>
                   </div>
                   <div>
                     <span className="block text-[11px]">Booking ID:</span>
-                    <span className="font-semibold text-[#0F172A]">{b.bookingCode}</span>
+                    <span className="font-semibold text-[#1F2937]">{b.bookingCode}</span>
                   </div>
                 </div>
 
-                <div className="text-xs text-[#64748B] pt-1">
+                <div className="text-xs text-[#6B7280] pt-1">
                   <span>Stay Window: </span>
-                  <span className="text-[#0F172A] font-medium">
+                  <span className="text-[#1F2937] font-medium">
                     {formatDate(b.checkIn)} → {formatDate(b.checkOut)}
                   </span>
                 </div>
@@ -117,7 +117,7 @@ export const CheckInOutPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#E2E8F0]">
+              <div className="pt-3 border-t border-[#E5E7EB]">
                 <Button
                   variant="primary"
                   fullWidth
@@ -138,33 +138,33 @@ export const CheckInOutPage: React.FC = () => {
           {checkOutList.map((b) => (
             <div
               key={b.id}
-              className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm space-y-4 flex flex-col justify-between"
+              className="p-5 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm space-y-4 flex flex-col justify-between"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-base font-bold text-[#0F172A]">{b.guestName}</span>
+                  <span className="text-base font-bold text-[#1F2937]">{b.guestName}</span>
                   <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
                     Folio Settled
                   </span>
                 </div>
 
-                <div className="text-xs text-[#64748B]">
+                <div className="text-xs text-[#6B7280]">
                   <span>Occupying: </span>
-                  <span className="font-bold text-[#B84C00]">Room #{b.roomNumber}</span>
+                  <span className="font-bold text-[#C2410C]">Room #{b.roomNumber}</span>
                 </div>
 
-                <div className="text-xs text-[#64748B]">
+                <div className="text-xs text-[#6B7280]">
                   <span>Total Settled Tariff: </span>
-                  <span className="font-bold text-[#0F172A]">{formatINR(b.totalAmount)}</span>
+                  <span className="font-bold text-[#1F2937]">{formatINR(b.totalAmount)}</span>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#64748B] flex items-center gap-2">
-                  <CreditCard className="w-4 h-4 text-[#B84C00]" />
+                <div className="p-2.5 rounded-lg bg-[#FFF8F3] border border-[#E5E7EB] text-xs text-[#6B7280] flex items-center gap-2">
+                  <CreditCard className="w-4 h-4 text-[#C2410C]" />
                   <span>Mini-bar and room service charges cleared.</span>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#E2E8F0]">
+              <div className="pt-3 border-t border-[#E5E7EB]">
                 <Button
                   variant="danger"
                   fullWidth

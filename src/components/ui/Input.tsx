@@ -34,14 +34,14 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full flex flex-col space-y-1.5 text-left">
         {label && (
-          <label htmlFor={inputId} className="text-sm font-semibold text-[#0F172A] select-none">
+          <label htmlFor={inputId} className="text-sm font-semibold text-[#1F2937] select-none">
             {label}
           </label>
         )}
 
         <div className="relative flex items-center w-full">
           {leftIcon && (
-            <div className="absolute left-3.5 flex items-center pointer-events-none text-[#64748B]">
+            <div className="absolute left-3.5 flex items-center pointer-events-none text-[#6B7280]">
               {leftIcon}
             </div>
           )}
@@ -55,11 +55,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               // Layout & sizing (min 44px for touch compliance)
               'w-full min-h-[44px] px-3.5 py-2.5 text-sm rounded-lg transition-all duration-150',
               // Light background & borders
-              'bg-white text-[#0F172A] placeholder:text-[#94A3B8] border border-[#E2E8F0]',
-              // Orange focus ring
-              'focus:outline-none focus:border-[#B84C00] focus:ring-2 focus:ring-[#B84C00]/20',
+              'bg-white text-[#1F2937] placeholder:text-[#6B7280] border border-[#E5E7EB]',
+              // Dark orange focus ring
+              'focus:outline-none focus:border-[#C2410C] focus:ring-2 focus:ring-[#C2410C]/20',
               // Disabled state
-              'disabled:bg-[#F1F5F9] disabled:text-[#94A3B8] disabled:cursor-not-allowed',
+              'disabled:bg-[#FFF8F3] disabled:text-[#6B7280] disabled:cursor-not-allowed',
               // Padding adjustments for left and right icons
               leftIcon ? 'pl-10' : '',
               rightIcon ? 'pr-10' : '',
@@ -71,7 +71,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           />
 
           {rightIcon && (
-            <div className="absolute right-3.5 flex items-center text-[#64748B]">
+            <div className="absolute right-3.5 flex items-center text-[#6B7280]">
               {rightIcon}
             </div>
           )}
@@ -79,7 +79,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
         {error && <p className="text-xs text-[#DC2626] font-medium">{error}</p>}
         {!error && helperText && (
-          <p className="text-xs text-[#64748B]">{helperText}</p>
+          <p className="text-xs text-[#6B7280]">{helperText}</p>
         )}
       </div>
     );

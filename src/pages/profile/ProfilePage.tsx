@@ -31,29 +31,29 @@ export const ProfilePage: React.FC = () => {
   return (
     <div className="w-full space-y-6 text-left">
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
           My Profile & Security Settings
         </h1>
-        <p className="text-xs sm:text-sm text-[#64748B]">
+        <p className="text-xs sm:text-sm text-[#6B7280]">
           Manage your resort employee credentials, assigned shift, and contact preferences.
         </p>
       </div>
 
       {/* User Header Summary Card */}
-      <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
-        <div className="w-16 h-16 rounded-full bg-[#FFF7ED] border-2 border-[#B84C00] flex items-center justify-center font-bold text-xl text-[#B84C00] shrink-0">
+      <div className="p-6 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
+        <div className="w-16 h-16 rounded-full bg-[#FFF1E6] border-2 border-[#C2410C] flex items-center justify-center font-bold text-xl text-[#C2410C] shrink-0">
           {name.slice(0, 2).toUpperCase()}
         </div>
 
         <div className="space-y-1 flex-1">
           <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-            <h2 className="text-lg font-bold text-[#0F172A]">{name}</h2>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FFF7ED] text-[#B84C00] text-xs font-semibold border border-[#B84C00]/30 w-fit mx-auto sm:mx-0">
+            <h2 className="text-lg font-bold text-[#1F2937]">{name}</h2>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FFF1E6] text-[#C2410C] text-xs font-semibold border border-[#FED7AA] w-fit mx-auto sm:mx-0">
               <Shield className="w-3.5 h-3.5" /> {role}
             </span>
           </div>
-          <p className="text-xs text-[#64748B]">{email}</p>
-          <p className="text-xs text-[#64748B]">
+          <p className="text-xs text-[#6B7280]">{email}</p>
+          <p className="text-xs text-[#6B7280]">
             Department: {user?.department || 'Executive Resort Operations'} • {user?.shift || 'Full-Time Shift'}
           </p>
         </div>

@@ -36,7 +36,7 @@ export const StaffLayout: React.FC<StaffLayoutProps> = ({ children }) => {
   }, []);
 
   return (
-    <div className="h-screen w-full bg-[#F1F5F9] text-[#0F172A] flex flex-col font-sans selection:bg-[#B84C00] selection:text-white overflow-hidden">
+    <div className="h-screen w-full bg-[#FFFFFF] text-[#1F2937] flex flex-col font-sans selection:bg-[#C2410C] selection:text-white overflow-hidden">
       {/* Top Bar with glass blur - Fixed */}
       <TopBar
         isSidebarCollapsed={isSidebarCollapsed}
@@ -45,14 +45,14 @@ export const StaffLayout: React.FC<StaffLayoutProps> = ({ children }) => {
       />
 
       {/* Staff Operations Sub-header Banner - Fixed */}
-      <div className="shrink-0 bg-white border-b border-[#E2E8F0] px-4 sm:px-6 py-2 flex items-center justify-between text-xs z-10 shadow-xs">
-        <div className="flex items-center gap-2 text-[#64748B]">
-          <Briefcase className="w-3.5 h-3.5 text-[#B84C00]" />
-          <span className="font-medium text-[#0F172A]">Staff Operations Desk</span>
+      <div className="shrink-0 bg-white border-b border-[#E5E7EB] px-4 sm:px-6 py-2 flex items-center justify-between text-xs z-10 shadow-xs">
+        <div className="flex items-center gap-2 text-[#6B7280]">
+          <Briefcase className="w-3.5 h-3.5 text-[#C2410C]" />
+          <span className="font-medium text-[#1F2937]">Staff Operations Desk</span>
           <span className="hidden sm:inline">•</span>
-          <span className="hidden sm:inline text-[#B84C00] font-semibold">{role}</span>
+          <span className="hidden sm:inline text-[#C2410C] font-semibold">{role}</span>
         </div>
-        <div className="text-[11px] text-[#64748B] font-medium bg-[#F1F5F9] px-2 py-0.5 rounded-full border border-[#E2E8F0]">
+        <div className="text-[11px] text-[#6B7280] font-medium bg-[#FFF8F3] px-2 py-0.5 rounded-full border border-[#E5E7EB]">
           {user?.shift ? `Shift: ${user.shift}` : 'On Duty'}
         </div>
       </div>

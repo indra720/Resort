@@ -34,10 +34,10 @@ export const ReportsPage: React.FC = () => {
     <div className="space-y-4 sm:space-y-5 text-left">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
             Financial & Operational Reports
           </h1>
-          <p className="text-xs sm:text-sm text-[#64748B]">
+          <p className="text-xs sm:text-sm text-[#6B7280]">
             GSTR compliance reports, revenue audits, occupancy metrics, and P&L statements.
           </p>
         </div>
@@ -64,7 +64,7 @@ export const ReportsPage: React.FC = () => {
       </div>
 
       {/* Date Range Selector & Report Tabs */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-white border border-[#E2E8F0] shadow-sm">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-white border border-[#E5E7EB] shadow-sm">
         <div className="flex flex-wrap gap-2">
           {[
             { id: 'revenue', label: 'Revenue Audit', icon: IndianRupee },
@@ -80,8 +80,8 @@ export const ReportsPage: React.FC = () => {
                 onClick={() => setReportType(tab.id as typeof reportType)}
                 className={`px-3 py-2 text-xs rounded-lg flex items-center gap-1.5 transition-all ${
                   isSelected
-                    ? 'bg-[#B84C00] text-white font-semibold'
-                    : 'bg-[#F8FAFC] text-[#64748B] hover:text-[#0F172A]'
+                    ? 'bg-[#C2410C] text-white font-semibold'
+                    : 'bg-[#FFF8F3] text-[#6B7280] hover:text-[#1F2937]'
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -92,11 +92,11 @@ export const ReportsPage: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2 text-xs">
-          <Calendar className="w-4 h-4 text-[#B84C00]" />
+          <Calendar className="w-4 h-4 text-[#C2410C]" />
           <select
             value={dateRange}
             onChange={(e) => setDateRange(e.target.value)}
-            className="bg-white text-[#0F172A] border border-[#E2E8F0] rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-[#B84C00]"
+            className="bg-white text-[#1F2937] border border-[#E5E7EB] rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-[#C2410C]"
           >
             <option value="This Month (Oct 2026)">This Month (Oct 2026)</option>
             <option value="Last 30 Days">Last 30 Days</option>
@@ -151,9 +151,9 @@ export const ReportsPage: React.FC = () => {
               data={MONTHLY_REVENUE_DATA}
               margin={{ top: 10, right: 10, left: -10, bottom: 0 }}
             >
-              <XAxis dataKey="month" stroke="#64748B" fontSize={11} tickLine={false} />
+              <XAxis dataKey="month" stroke="#6B7280" fontSize={11} tickLine={false} />
               <YAxis
-                stroke="#64748B"
+                stroke="#6B7280"
                 fontSize={11}
                 tickFormatter={(v) => `₹${v / 100000}L`}
                 tickLine={false}
@@ -161,16 +161,16 @@ export const ReportsPage: React.FC = () => {
               <Tooltip
                 contentStyle={{
                   backgroundColor: '#FFFFFF',
-                  borderColor: '#E2E8F0',
+                  borderColor: '#E5E7EB',
                   borderRadius: '8px',
-                  color: '#0F172A',
+                  color: '#1F2937',
                   fontSize: '12px',
                   boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
                 }}
                 formatter={(val: number) => [formatINR(val), 'Revenue']}
               />
               <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }} />
-              <Bar dataKey="rooms" name="Room Tariff" fill="#B84C00" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="rooms" name="Room Tariff" fill="#C2410C" radius={[4, 4, 0, 0]} />
               <Bar dataKey="fnb" name="Dining & Bar" fill="#3B82F6" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ChartCard>
@@ -185,8 +185,8 @@ export const ReportsPage: React.FC = () => {
               <CardTitle>Pool Villas (Premium)</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-sm">
-              <div className="text-3xl font-bold text-[#B84C00]">94.2%</div>
-              <p className="text-xs text-[#64748B]">Average Length of Stay: 3.4 nights</p>
+              <div className="text-3xl font-bold text-[#C2410C]">94.2%</div>
+              <p className="text-xs text-[#6B7280]">Average Length of Stay: 3.4 nights</p>
               <div className="text-xs text-[#22C55E]">Zero vacancy over weekends</div>
             </CardContent>
           </Card>
@@ -196,8 +196,8 @@ export const ReportsPage: React.FC = () => {
               <CardTitle>Luxury Suites</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-sm">
-              <div className="text-3xl font-bold text-[#0F172A]">86.0%</div>
-              <p className="text-xs text-[#64748B]">Average Length of Stay: 2.8 nights</p>
+              <div className="text-3xl font-bold text-[#1F2937]">86.0%</div>
+              <p className="text-xs text-[#6B7280]">Average Length of Stay: 2.8 nights</p>
               <div className="text-xs text-[#22C55E]">High domestic corporate inflow</div>
             </CardContent>
           </Card>
@@ -207,9 +207,9 @@ export const ReportsPage: React.FC = () => {
               <CardTitle>Deluxe Cottages</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-sm">
-              <div className="text-3xl font-bold text-[#0F172A]">78.5%</div>
-              <p className="text-xs text-[#64748B]">Average Length of Stay: 2.1 nights</p>
-              <div className="text-xs text-[#64748B]">Weekend leisure getaways</div>
+              <div className="text-3xl font-bold text-[#1F2937]">78.5%</div>
+              <p className="text-xs text-[#6B7280]">Average Length of Stay: 2.1 nights</p>
+              <div className="text-xs text-[#6B7280]">Weekend leisure getaways</div>
             </CardContent>
           </Card>
         </div>
@@ -226,9 +226,9 @@ export const ReportsPage: React.FC = () => {
             data={FINANCE_PNL_DATA}
             margin={{ top: 10, right: 10, left: -10, bottom: 0 }}
           >
-            <XAxis dataKey="month" stroke="#64748B" fontSize={11} tickLine={false} />
+            <XAxis dataKey="month" stroke="#6B7280" fontSize={11} tickLine={false} />
             <YAxis
-              stroke="#64748B"
+              stroke="#6B7280"
               fontSize={11}
               tickFormatter={(v) => `₹${v / 100000}L`}
               tickLine={false}
@@ -236,9 +236,9 @@ export const ReportsPage: React.FC = () => {
             <Tooltip
               contentStyle={{
                 backgroundColor: '#FFFFFF',
-                borderColor: '#E2E8F0',
+                borderColor: '#E5E7EB',
                 borderRadius: '8px',
-                color: '#0F172A',
+                color: '#1F2937',
                 fontSize: '12px',
                 boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
               }}
@@ -256,23 +256,23 @@ export const ReportsPage: React.FC = () => {
         <Card className="text-left">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Receipt className="w-5 h-5 text-[#B84C00]" />
+              <Receipt className="w-5 h-5 text-[#C2410C]" />
               <span>GSTR-3B Tax Liability Statement (State 30 - Goa)</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-                <span className="text-xs text-[#64748B] block">Total Taxable Turnover</span>
-                <span className="text-xl font-bold text-[#0F172A]">{formatINR(4830000)}</span>
+              <div className="p-4 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB]">
+                <span className="text-xs text-[#6B7280] block">Total Taxable Turnover</span>
+                <span className="text-xl font-bold text-[#1F2937]">{formatINR(4830000)}</span>
               </div>
-              <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-                <span className="text-xs text-[#64748B] block">CGST 9% (Central Tax)</span>
-                <span className="text-xl font-bold text-[#B84C00]">{formatINR(435000)}</span>
+              <div className="p-4 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB]">
+                <span className="text-xs text-[#6B7280] block">CGST 9% (Central Tax)</span>
+                <span className="text-xl font-bold text-[#C2410C]">{formatINR(435000)}</span>
               </div>
-              <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-                <span className="text-xs text-[#64748B] block">SGST 9% (State Tax)</span>
-                <span className="text-xl font-bold text-[#B84C00]">{formatINR(435000)}</span>
+              <div className="p-4 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB]">
+                <span className="text-xs text-[#6B7280] block">SGST 9% (State Tax)</span>
+                <span className="text-xl font-bold text-[#C2410C]">{formatINR(435000)}</span>
               </div>
             </div>
 

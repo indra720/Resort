@@ -71,28 +71,28 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.95, opacity: 0 }}
-          className="relative z-10 w-full max-w-xl bg-white border border-[#E2E8F0] rounded-xl shadow-2xl overflow-hidden flex flex-col"
+          className="relative z-10 w-full max-w-xl bg-white border border-[#E5E7EB] rounded-xl shadow-2xl overflow-hidden flex flex-col"
         >
           {/* Search Header */}
-          <div className="flex items-center px-4 border-b border-[#E2E8F0] bg-[#F8FAFC]">
-            <Search className="w-5 h-5 text-[#B84C00] shrink-0 mr-3" />
+          <div className="flex items-center px-4 border-b border-[#E5E7EB] bg-[#FFF8F3]">
+            <Search className="w-5 h-5 text-[#C2410C] shrink-0 mr-3" />
             <input
               type="text"
               autoFocus
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search rooms, guest names, booking codes (e.g. 101, Rohan)..."
-              className="w-full min-h-[50px] bg-transparent text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none"
+              className="w-full min-h-[50px] bg-transparent text-sm text-[#1F2937] placeholder:text-[#6B7280] focus:outline-none"
             />
             {query && (
               <button
                 onClick={() => setQuery('')}
-                className="p-1 rounded text-[#64748B] hover:text-[#0F172A] mr-1"
+                className="p-1 rounded text-[#6B7280] hover:text-[#1F2937] mr-1"
               >
                 <X className="w-4 h-4" />
               </button>
             )}
-            <kbd className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] text-[#64748B] bg-[#F1F5F9] rounded border border-[#E2E8F0]">
+            <kbd className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] text-[#6B7280] bg-white rounded border border-[#E5E7EB]">
               ESC
             </kbd>
           </div>
@@ -101,7 +101,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           <div className="max-h-[60vh] overflow-y-auto p-3 space-y-4">
             {/* Quick Actions / Navigation */}
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-[#64748B] px-2 mb-1.5">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] px-2 mb-1.5">
                 Quick Navigation
               </p>
               <div className="space-y-1">
@@ -115,10 +115,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   <button
                     key={item.path}
                     onClick={() => handleSelect(item.path)}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm text-[#0F172A] hover:bg-[#F8FAFC] hover:text-[#B84C00] transition-colors group text-left"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm text-[#1F2937] hover:bg-[#FFF8F3] hover:text-[#C2410C] transition-colors group text-left"
                   >
                     <span>{item.label}</span>
-                    <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 text-[#B84C00] transition-opacity" />
+                    <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 text-[#C2410C] transition-opacity" />
                   </button>
                 ))}
               </div>
@@ -127,7 +127,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
             {/* Matching Rooms */}
             {matchingRooms.length > 0 && (
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-wider text-[#64748B] px-2 mb-1.5">
+                <p className="text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] px-2 mb-1.5">
                   Rooms
                 </p>
                 <div className="space-y-1">
@@ -135,16 +135,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                     <button
                       key={room.id}
                       onClick={() => handleSelect('/rooms')}
-                      className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#B84C00]/40 hover:bg-orange-50/20 transition-colors text-left"
+                      className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm bg-[#FFF8F3] border border-[#E5E7EB] hover:border-[#C2410C]/40 hover:bg-[#FFF1E6]/40 transition-colors text-left"
                     >
                       <div className="flex items-center gap-2.5">
-                        <BedDouble className="w-4 h-4 text-[#B84C00]" />
-                        <span className="font-medium text-[#0F172A]">Room #{room.roomNumber}</span>
-                        <span className="text-xs text-[#64748B]">{room.category}</span>
+                        <BedDouble className="w-4 h-4 text-[#C2410C]" />
+                        <span className="font-medium text-[#1F2937]">Room #{room.roomNumber}</span>
+                        <span className="text-xs text-[#6B7280]">{room.category}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <StatusBadge status={room.status} size="sm" />
-                        <span className="text-xs font-semibold text-[#B84C00]">
+                        <span className="text-xs font-semibold text-[#C2410C]">
                           {formatINR(room.ratePerNight)}
                         </span>
                       </div>
@@ -157,7 +157,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
             {/* Matching Bookings */}
             {matchingBookings.length > 0 && (
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-wider text-[#64748B] px-2 mb-1.5">
+                <p className="text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] px-2 mb-1.5">
                   Bookings
                 </p>
                 <div className="space-y-1">
@@ -165,12 +165,12 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                     <button
                       key={b.id}
                       onClick={() => handleSelect('/bookings')}
-                      className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#B84C00]/40 hover:bg-orange-50/20 transition-colors text-left"
+                      className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm bg-[#FFF8F3] border border-[#E5E7EB] hover:border-[#C2410C]/40 hover:bg-[#FFF1E6]/40 transition-colors text-left"
                     >
                       <div className="flex items-center gap-2.5">
                         <Calendar className="w-4 h-4 text-[#2563EB]" />
-                        <span className="font-medium text-[#0F172A]">{b.guestName}</span>
-                        <span className="text-xs text-[#64748B]">{b.bookingCode}</span>
+                        <span className="font-medium text-[#1F2937]">{b.guestName}</span>
+                        <span className="text-xs text-[#6B7280]">{b.bookingCode}</span>
                       </div>
                       <StatusBadge status={b.paymentStatus} size="sm" />
                     </button>

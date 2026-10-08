@@ -42,14 +42,14 @@ const ToastCard: React.FC<ToastCardProps> = ({ toast, onDismiss }) => {
       initial={{ opacity: 0, y: -20, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.15 } }}
-      className={`pointer-events-auto flex items-start gap-3 p-4 rounded-xl bg-white border ${borders[toast.type]} shadow-xl text-[#0F172A]`}
+      className={`pointer-events-auto flex items-start gap-3 p-4 rounded-xl bg-white border ${borders[toast.type]} shadow-xl text-[#1F2937]`}
     >
       {icons[toast.type]}
 
       <div className="flex-1 text-left min-w-0">
-        <h4 className="text-sm font-semibold text-[#0F172A]">{toast.title}</h4>
+        <h4 className="text-sm font-semibold text-[#1F2937]">{toast.title}</h4>
         {toast.description && (
-          <p className="text-xs text-[#64748B] mt-0.5 leading-relaxed break-words">
+          <p className="text-xs text-[#6B7280] mt-0.5 leading-relaxed break-words">
             {toast.description}
           </p>
         )}
@@ -57,7 +57,7 @@ const ToastCard: React.FC<ToastCardProps> = ({ toast, onDismiss }) => {
 
       <button
         onClick={onDismiss}
-        className="w-8 h-8 -mr-1 -mt-1 flex items-center justify-center rounded-lg text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition-colors"
+        className="w-8 h-8 -mr-1 -mt-1 flex items-center justify-center rounded-lg text-[#6B7280] hover:text-[#1F2937] hover:bg-[#FFF8F3] transition-colors"
         aria-label="Close notification"
       >
         <X className="w-4 h-4" />

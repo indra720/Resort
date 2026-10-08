@@ -91,7 +91,7 @@ export const InventoryPage: React.FC = () => {
     {
       key: 'itemCode',
       header: 'Item SKU',
-      accessor: (s) => <span className="font-bold text-[#B84C00]">{s.itemCode}</span>,
+      accessor: (s) => <span className="font-bold text-[#C2410C]">{s.itemCode}</span>,
       sortable: true,
       sortValue: (s) => s.itemCode,
     },
@@ -100,8 +100,8 @@ export const InventoryPage: React.FC = () => {
       header: 'Stock Description',
       accessor: (s) => (
         <div>
-          <span className="font-semibold text-[#0F172A] block">{s.name}</span>
-          <span className="text-[11px] text-[#64748B]">{s.location}</span>
+          <span className="font-semibold text-[#1F2937] block">{s.name}</span>
+          <span className="text-[11px] text-[#6B7280]">{s.location}</span>
         </div>
       ),
       sortable: true,
@@ -143,7 +143,7 @@ export const InventoryPage: React.FC = () => {
       key: 'minThreshold',
       header: 'Threshold Limit',
       accessor: (s) => (
-        <span className="text-xs text-[#64748B]">Min: {s.minThreshold} {s.unit}</span>
+        <span className="text-xs text-[#6B7280]">Min: {s.minThreshold} {s.unit}</span>
       ),
     },
   ];
@@ -152,10 +152,10 @@ export const InventoryPage: React.FC = () => {
     <div className="space-y-4 sm:space-y-5 text-left">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
             Resort Inventory & Store Procurement
           </h1>
-          <p className="text-xs sm:text-sm text-[#64748B]">
+          <p className="text-xs sm:text-sm text-[#6B7280]">
             Linen stock, organic toiletries, kitchen supplies, and purchase orders.
           </p>
         </div>

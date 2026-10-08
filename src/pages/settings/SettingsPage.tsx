@@ -45,11 +45,11 @@ export const SettingsPage: React.FC = () => {
   return (
     <div className="w-full space-y-4 sm:space-y-5 text-left">
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00] flex items-center gap-2">
-          <Settings className="w-6 h-6 text-[#B84C00]" />
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C] flex items-center gap-2">
+          <Settings className="w-6 h-6 text-[#C2410C]" />
           <span>Resort Settings & RBAC Permissions</span>
         </h1>
-        <p className="text-xs sm:text-sm text-[#64748B]">
+        <p className="text-xs sm:text-sm text-[#6B7280]">
           Hospitality property metadata, GSTIN tax credentials, and role permission policies.
         </p>
       </div>
@@ -59,7 +59,7 @@ export const SettingsPage: React.FC = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Building className="w-4 h-4 text-[#B84C00]" />
+              <Building className="w-4 h-4 text-[#C2410C]" />
               <span>Resort Identity & Contact</span>
             </CardTitle>
           </CardHeader>
@@ -91,7 +91,7 @@ export const SettingsPage: React.FC = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Receipt className="w-4 h-4 text-[#B84C00]" />
+              <Receipt className="w-4 h-4 text-[#C2410C]" />
               <span>Goods & Services Tax (GST) Configuration</span>
             </CardTitle>
           </CardHeader>
@@ -133,29 +133,29 @@ export const SettingsPage: React.FC = () => {
           <CardHeader>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               <CardTitle className="flex items-center gap-2">
-                <Shield className="w-4 h-4 text-[#B84C00]" />
+                <Shield className="w-4 h-4 text-[#C2410C]" />
                 <span>Role-Based Access Control (RBAC) Matrix</span>
               </CardTitle>
-              <span className="text-xs text-[#64748B]">
+              <span className="text-xs text-[#6B7280]">
                 Multi-role access privileges for resort modules
               </span>
             </div>
           </CardHeader>
           <CardContent className="space-y-2">
             {/* Mobile swipe helper */}
-            <div className="sm:hidden flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-[11px] text-[#64748B]">
+            <div className="sm:hidden flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#FFF8F3] border border-[#E5E7EB] text-[11px] text-[#6B7280]">
               <span className="flex items-center gap-1.5">
-                <ArrowLeftRight className="w-3.5 h-3.5 text-[#B84C00] animate-pulse shrink-0" />
+                <ArrowLeftRight className="w-3.5 h-3.5 text-[#C2410C] animate-pulse shrink-0" />
                 <span>Swipe horizontally to view all roles</span>
               </span>
-              <span className="text-[10px] text-[#B84C00] font-medium bg-[#FFF7ED] px-1.5 py-0.5 rounded border border-[#FFEDD5]">
+              <span className="text-[10px] text-[#C2410C] font-medium bg-[#FFF1E6] px-1.5 py-0.5 rounded border border-[#FED7AA]">
                 7 Roles
               </span>
             </div>
 
-            <div className="overflow-x-auto rounded-xl border border-[#E2E8F0] pb-1">
+            <div className="overflow-x-auto rounded-xl border border-[#E5E7EB] pb-1">
               <table className="w-full min-w-[760px] text-xs text-left border-collapse">
-                <thead className="bg-[#F8FAFC] text-[#64748B] uppercase border-b border-[#E2E8F0]">
+                <thead className="bg-[#FFF8F3] text-[#6B7280] uppercase border-b border-[#E5E7EB]">
                   <tr>
                     <th className="py-3 px-4 whitespace-nowrap font-semibold">Module</th>
                     {allRoles.map((r) => (
@@ -165,10 +165,10 @@ export const SettingsPage: React.FC = () => {
                     ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#E2E8F0]">
+                <tbody className="divide-y divide-[#E5E7EB]">
                   {modules.map((m) => (
-                    <tr key={m.name} className="hover:bg-[#F8FAFC]/50 transition-colors">
-                      <td className="py-3 px-4 font-semibold text-[#0F172A] whitespace-nowrap">{m.name}</td>
+                    <tr key={m.name} className="hover:bg-[#FFF8F3] transition-colors">
+                      <td className="py-3 px-4 font-semibold text-[#1F2937] whitespace-nowrap">{m.name}</td>
                       {allRoles.map((r) => {
                         const hasAccess = m.roles.includes(r);
                         return (

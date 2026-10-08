@@ -63,14 +63,14 @@ export const AccountantDashboard: React.FC = () => {
     {
       key: 'invoiceNumber',
       header: 'Invoice #',
-      accessor: (i) => <span className="font-semibold text-[#B84C00]">{i.invoiceNumber}</span>,
+      accessor: (i) => <span className="font-semibold text-[#C2410C]">{i.invoiceNumber}</span>,
       sortable: true,
       sortValue: (i) => i.invoiceNumber,
     },
     {
       key: 'guestName',
       header: 'Billed To',
-      accessor: (i) => <span className="font-medium text-[#0F172A]">{i.guestName}</span>,
+      accessor: (i) => <span className="font-medium text-[#1F2937]">{i.guestName}</span>,
       sortable: true,
       sortValue: (i) => i.guestName,
     },
@@ -83,7 +83,7 @@ export const AccountantDashboard: React.FC = () => {
       key: 'gstAmount',
       header: 'GST Breakup',
       accessor: (i) => (
-        <span className="text-xs text-[#64748B]">
+        <span className="text-xs text-[#6B7280]">
           {formatINR(i.gstAmount)} ({i.gstRate}%)
         </span>
       ),
@@ -92,7 +92,7 @@ export const AccountantDashboard: React.FC = () => {
       key: 'grandTotal',
       header: 'Grand Total',
       accessor: (i) => (
-        <span className="font-bold text-[#0F172A]">{formatINR(i.grandTotal)}</span>
+        <span className="font-bold text-[#1F2937]">{formatINR(i.grandTotal)}</span>
       ),
       sortable: true,
       sortValue: (i) => i.grandTotal,
@@ -109,10 +109,10 @@ export const AccountantDashboard: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
             Finance & Tax Accounting Terminal
           </h1>
-          <p className="text-xs sm:text-sm text-[#64748B]">
+          <p className="text-xs sm:text-sm text-[#6B7280]">
             GST reconciliation (12% & 18%), payments ledger, and profit-and-loss balances.
           </p>
         </div>
@@ -122,7 +122,7 @@ export const AccountantDashboard: React.FC = () => {
             variant="outline"
             size="md"
             onClick={() => navigate('/reports')}
-            leftIcon={<FileSpreadsheet className="w-4 h-4 text-[#B84C00]" />}
+            leftIcon={<FileSpreadsheet className="w-4 h-4 text-[#C2410C]" />}
           >
             GST Audit Report
           </Button>
@@ -182,9 +182,9 @@ export const AccountantDashboard: React.FC = () => {
           data={FINANCE_PNL_DATA}
           margin={{ top: 10, right: 10, left: -10, bottom: 0 }}
         >
-          <XAxis dataKey="month" stroke="#64748B" fontSize={11} tickLine={false} />
+          <XAxis dataKey="month" stroke="#6B7280" fontSize={11} tickLine={false} />
           <YAxis
-            stroke="#64748B"
+            stroke="#6B7280"
             fontSize={11}
             tickFormatter={(v) => `₹${v / 100000}L`}
             tickLine={false}
@@ -192,9 +192,9 @@ export const AccountantDashboard: React.FC = () => {
           <Tooltip
             contentStyle={{
               backgroundColor: '#FFFFFF',
-              borderColor: '#E2E8F0',
+              borderColor: '#E5E7EB',
               borderRadius: '8px',
-              color: '#0F172A',
+              color: '#1F2937',
               fontSize: '12px',
               boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
             }}
@@ -210,8 +210,8 @@ export const AccountantDashboard: React.FC = () => {
       {/* Recent Tax Invoices Table */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h3 className="text-base font-semibold text-[#B84C00] flex items-center gap-2">
-            <Receipt className="w-4 h-4 text-[#B84C00]" />
+          <h3 className="text-base font-semibold text-[#C2410C] flex items-center gap-2">
+            <Receipt className="w-4 h-4 text-[#C2410C]" />
             <span>Recent GST Tax Invoices</span>
           </h3>
           <Button variant="ghost" size="sm" onClick={() => navigate('/billing')}>

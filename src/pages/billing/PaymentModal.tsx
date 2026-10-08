@@ -83,8 +83,8 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                 onClick={() => setMethod(item.id as typeof method)}
                 className={`p-2.5 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all text-xs ${
                   isSelected
-                    ? 'bg-[#FFF7ED] border-[#B84C00] text-[#B84C00] font-semibold'
-                    : 'bg-white border-[#E2E8F0] text-[#64748B] hover:text-[#0F172A]'
+                    ? 'bg-[#FFF1E6] border-[#FED7AA] text-[#C2410C] font-semibold'
+                    : 'bg-white border-[#E5E7EB] text-[#6B7280] hover:text-[#1F2937]'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -96,8 +96,8 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
 
         {/* 1. UPI Tab */}
         {method === 'upi' && (
-          <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-4 text-center">
-            <div className="w-36 h-36 bg-white p-2 rounded-xl mx-auto flex items-center justify-center shadow-lg border border-[#E2E8F0]">
+          <div className="p-4 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-4 text-center">
+            <div className="w-36 h-36 bg-white p-2 rounded-xl mx-auto flex items-center justify-center shadow-lg border border-[#E5E7EB]">
               {/* Simulated QR Code SVG pattern */}
               <div className="w-full h-full border-4 border-black p-2 flex flex-col justify-between">
                 <div className="flex justify-between">
@@ -113,7 +113,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                 </div>
               </div>
             </div>
-            <p className="text-xs text-[#64748B]">
+            <p className="text-xs text-[#6B7280]">
               Scan using any Indian UPI App (Google Pay, PhonePe, Paytm, BHIM)
             </p>
 
@@ -145,13 +145,13 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
 
         {/* 3. Cash Tab */}
         {method === 'cash' && (
-          <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-3">
+          <div className="p-4 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-3">
             <Input
               label="Amount Received (₹)"
               type="number"
               defaultValue={amount}
             />
-            <div className="p-3 rounded-lg bg-white border border-[#E2E8F0] text-xs text-[#64748B] flex justify-between">
+            <div className="p-3 rounded-lg bg-white border border-[#E5E7EB] text-xs text-[#6B7280] flex justify-between">
               <span>Change to return to guest:</span>
               <span className="font-bold text-[#22C55E]">{formatINR(0)}</span>
             </div>

@@ -52,11 +52,11 @@ export const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-[#F8FAFC] text-[#0F172A] flex flex-col lg:flex-row font-sans selection:bg-[#B84C00] selection:text-white">
+    <div className="h-screen w-screen overflow-hidden bg-[#FFF8F3] text-[#1F2937] flex flex-col lg:flex-row font-sans selection:bg-[#C2410C] selection:text-white">
       {/* =========================================================================
           LEFT SIDE: LUXURY GUEST PRIVILEGES SHOWCASE (Non-scrolling Desktop View)
           ========================================================================= */}
-      <div className="hidden lg:flex lg:w-1/2 relative h-full flex-col justify-between p-10 xl:p-14 overflow-hidden border-r border-[#E2E8F0]">
+      <div className="hidden lg:flex lg:w-1/2 relative h-full flex-col justify-between p-10 xl:p-14 overflow-hidden border-r border-[#E5E7EB]">
         {/* Background Resort Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -70,12 +70,12 @@ export const RegisterPage: React.FC = () => {
         {/* Top Header */}
         <div className="relative z-10 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 select-none">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#B84C00] to-[#E06A10] flex items-center justify-center text-white shadow-lg shadow-[#B84C00]/30">
+            <div className="w-10 h-10 rounded-xl bg-[#C2410C] flex items-center justify-center text-white shadow-lg shadow-[#C2410C]/20">
               <Sparkles className="w-5 h-5" />
             </div>
             <div className="text-left">
               <span className="text-lg font-bold tracking-tight text-white">
-                Aura Palms <span className="text-[#FF8A3D]">Resort</span>
+                Aura Palms <span className="text-[#D95F02]">Resort</span>
               </span>
               <span className="block text-[10px] text-white/80 uppercase tracking-widest font-medium">
                 Luxury Coastal Sanctuary • Goa
@@ -94,7 +94,7 @@ export const RegisterPage: React.FC = () => {
 
         {/* Middle Content: Guest Privileges */}
         <div className="relative z-10 space-y-4 max-w-lg text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B84C00] text-white text-xs font-semibold shadow-md">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C2410C] text-white text-xs font-semibold shadow-md">
             <Gift className="w-3.5 h-3.5" />
             <span>Exclusive Guest Privileges</span>
           </div>
@@ -110,12 +110,12 @@ export const RegisterPage: React.FC = () => {
           {/* Benefits Grid */}
           <div className="space-y-2.5 pt-1">
             <div className="p-3 rounded-xl bg-white/95 border border-white flex items-center gap-3 backdrop-blur-md shadow-lg">
-              <div className="w-8 h-8 rounded-lg bg-[#FFF7ED] border border-[#B84C00]/30 flex items-center justify-center text-[#B84C00] shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-[#FFF1E6] border border-[#FED7AA] flex items-center justify-center text-[#C2410C] shrink-0">
                 <CheckCircle2 className="w-4 h-4" />
               </div>
               <div className="text-xs">
-                <span className="font-semibold text-[#0F172A] block">Express Digital Check-In</span>
-                <span className="text-[#64748B]">Skip the front desk queue upon arrival</span>
+                <span className="font-semibold text-[#1F2937] block">Express Digital Check-In</span>
+                <span className="text-[#6B7280]">Skip the front desk queue upon arrival</span>
               </div>
             </div>
 
@@ -124,8 +124,8 @@ export const RegisterPage: React.FC = () => {
                 <CheckCircle2 className="w-4 h-4" />
               </div>
               <div className="text-xs">
-                <span className="font-semibold text-[#0F172A] block">Complimentary Welcome Refreshments</span>
-                <span className="text-[#64748B]">Fresh Goan tender coconut upon arrival</span>
+                <span className="font-semibold text-[#1F2937] block">Complimentary Welcome Refreshments</span>
+                <span className="text-[#6B7280]">Fresh Goan tender coconut upon arrival</span>
               </div>
             </div>
           </div>
@@ -141,22 +141,22 @@ export const RegisterPage: React.FC = () => {
       {/* =========================================================================
           RIGHT SIDE: ELEGANT COMPACT SIGNUP CARD (WHITE THEME)
           ========================================================================= */}
-      <div className="flex-1 h-full flex flex-col justify-center items-center p-4 sm:p-8 lg:p-12 overflow-y-auto bg-[#F8FAFC]">
+      <div className="flex-1 h-full flex flex-col justify-center items-center p-4 sm:p-8 lg:p-12 overflow-y-auto bg-[#FFF8F3]">
         <div className="w-full max-w-md space-y-4 my-auto">
           {/* Mobile Top Brand Bar */}
           <div className="lg:hidden flex items-center justify-between mb-1">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#B84C00] to-[#E06A10] flex items-center justify-center text-white">
+              <div className="w-8 h-8 rounded-lg bg-[#C2410C] flex items-center justify-center text-white">
                 <Sparkles className="w-4 h-4" />
               </div>
-              <span className="text-base font-bold text-[#0F172A]">
-                Aura Palms <span className="text-[#B84C00]">Resort</span>
+              <span className="text-base font-bold text-[#1F2937]">
+                Aura Palms <span className="text-[#C2410C]">Resort</span>
               </span>
             </Link>
 
             <Link
               to="/"
-              className="text-xs text-[#64748B] hover:text-[#B84C00] flex items-center gap-1"
+              className="text-xs text-[#6B7280] hover:text-[#C2410C] flex items-center gap-1"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Website</span>
@@ -165,17 +165,17 @@ export const RegisterPage: React.FC = () => {
 
           {/* Form Header */}
           <div className="text-left space-y-1">
-            <h1 className="text-2xl font-bold tracking-tight text-[#B84C00] flex items-center gap-2">
-              <UserCheck className="w-5 h-5 text-[#B84C00]" />
+            <h1 className="text-2xl font-bold tracking-tight text-[#C2410C] flex items-center gap-2">
+              <UserCheck className="w-5 h-5 text-[#C2410C]" />
               <span>Create Guest Account</span>
             </h1>
-            <p className="text-xs text-[#64748B]">
+            <p className="text-xs text-[#6B7280]">
               Register to book luxury villas and access in-room dining & concierge.
             </p>
           </div>
 
           {/* White Theme Signup Form Card */}
-          <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 sm:p-6 shadow-xl space-y-3.5">
+          <div className="bg-white border border-[#E5E7EB] rounded-2xl p-5 sm:p-6 shadow-xl space-y-3.5">
             <form onSubmit={handleSubmit} className="space-y-3 text-left">
               <Input
                 label="Full Name"
@@ -231,23 +231,23 @@ export const RegisterPage: React.FC = () => {
             </form>
 
             {/* Instant Demo Guest Button */}
-            <div className="pt-2 border-t border-[#E2E8F0] space-y-2">
+            <div className="pt-2 border-t border-[#E5E7EB] space-y-2">
               <button
                 type="button"
                 onClick={handleInstantGuestDemo}
-                className="w-full py-2 px-3 rounded-xl bg-[#F8FAFC] hover:bg-[#FFF7ED] border border-[#E2E8F0] hover:border-[#B84C00] text-xs font-semibold text-[#0F172A] hover:text-[#B84C00] transition-all flex items-center justify-center gap-2 active:scale-95 shadow-xs"
+                className="w-full py-2 px-3 rounded-xl bg-[#FFF8F3] hover:bg-[#FFF1E6] border border-[#E5E7EB] hover:border-[#C2410C] text-xs font-semibold text-[#1F2937] hover:text-[#C2410C] transition-all flex items-center justify-center gap-2 active:scale-95 shadow-xs"
               >
-                <Sparkles className="w-3.5 h-3.5 text-[#B84C00]" />
+                <Sparkles className="w-3.5 h-3.5 text-[#C2410C]" />
                 <span>1-Click Test: Sign in as Verified Guest</span>
               </button>
             </div>
 
             {/* Link to Login */}
-            <div className="pt-2 border-t border-[#E2E8F0] flex items-center justify-between text-xs">
-              <span className="text-[#64748B]">Already have an account?</span>
+            <div className="pt-2 border-t border-[#E5E7EB] flex items-center justify-between text-xs">
+              <span className="text-[#6B7280]">Already have an account?</span>
               <Link
                 to="/login"
-                className="text-xs font-semibold text-[#B84C00] hover:text-[#9C3800] transition-colors flex items-center gap-1"
+                className="text-xs font-semibold text-[#C2410C] hover:text-[#9A3412] transition-colors flex items-center gap-1"
               >
                 <span>Sign In to System</span>
                 <ArrowRight className="w-3 h-3" />
@@ -256,11 +256,11 @@ export const RegisterPage: React.FC = () => {
           </div>
 
           {/* Footer note */}
-          <div className="flex items-center justify-between text-[11px] text-[#64748B] px-1">
-            <Link to="/" className="hover:text-[#0F172A] flex items-center gap-1">
+          <div className="flex items-center justify-between text-[11px] text-[#6B7280] px-1">
+            <Link to="/" className="hover:text-[#1F2937] flex items-center gap-1">
               <ArrowLeft className="w-3 h-3" /> Aura Palms Website
             </Link>
-            <span>Staff member? <Link to="/login" className="text-[#B84C00] hover:underline font-medium">Staff Login</Link></span>
+            <span>Staff member? <Link to="/login" className="text-[#C2410C] hover:underline font-medium">Staff Login</Link></span>
           </div>
         </div>
       </div>

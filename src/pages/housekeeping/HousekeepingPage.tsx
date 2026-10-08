@@ -127,10 +127,10 @@ export const HousekeepingPage: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
             Housekeeping & Maintenance Operations
           </h1>
-          <p className="text-xs sm:text-sm text-[#64748B]">
+          <p className="text-xs sm:text-sm text-[#6B7280]">
             Turnover Kanban, room sanitization, and technical repair tickets.
           </p>
         </div>
@@ -148,13 +148,13 @@ export const HousekeepingPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-[#E2E8F0] gap-4">
+      <div className="flex border-b border-[#E5E7EB] gap-4">
         <button
           onClick={() => setActiveTab('kanban')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'kanban'
-              ? 'border-[#B84C00] text-[#B84C00]'
-              : 'border-transparent text-[#64748B] hover:text-[#0F172A]'
+              ? 'border-[#C2410C] text-[#C2410C]'
+              : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
           }`}
         >
           <Sparkles className="w-4 h-4" />
@@ -165,8 +165,8 @@ export const HousekeepingPage: React.FC = () => {
           onClick={() => setActiveTab('maintenance')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'maintenance'
-              ? 'border-[#B84C00] text-[#B84C00]'
-              : 'border-transparent text-[#64748B] hover:text-[#0F172A]'
+              ? 'border-[#C2410C] text-[#C2410C]'
+              : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
           }`}
         >
           <Wrench className="w-4 h-4" />
@@ -179,11 +179,11 @@ export const HousekeepingPage: React.FC = () => {
         <div className="overflow-x-auto pb-4">
           <div className="flex gap-4 min-w-[850px] md:min-w-0 md:grid md:grid-cols-3">
             {/* Column 1: Dirty / Turnover Needed */}
-            <div className="flex-1 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm p-4 flex flex-col space-y-3">
-              <div className="flex items-center justify-between pb-2 border-b border-[#E2E8F0]">
+            <div className="flex-1 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm p-4 flex flex-col space-y-3">
+              <div className="flex items-center justify-between pb-2 border-b border-[#E5E7EB]">
                 <div className="flex items-center gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#EF4444]" />
-                  <h3 className="text-sm font-bold text-[#0F172A]">Dirty / Turnover</h3>
+                  <h3 className="text-sm font-bold text-[#1F2937]">Dirty / Turnover</h3>
                 </div>
                 <span className="text-xs px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 font-semibold border border-rose-200">
                   {tasks.filter((t) => t.status === 'Dirty').length}
@@ -196,19 +196,19 @@ export const HousekeepingPage: React.FC = () => {
                   .map((task) => (
                     <div
                       key={task.id}
-                      className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-2 text-left"
+                      className="p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-2 text-left"
                     >
                       <div className="flex justify-between items-start">
-                        <span className="font-bold text-sm text-[#0F172A]">
+                        <span className="font-bold text-sm text-[#1F2937]">
                           Room #{task.roomNumber}
                         </span>
-                        <span className="text-[10px] text-[#64748B]">{task.category}</span>
+                        <span className="text-[10px] text-[#6B7280]">{task.category}</span>
                       </div>
-                      <p className="text-xs text-[#64748B] leading-relaxed">{task.notes}</p>
-                      <span className="text-[11px] text-[#B84C00] font-medium block">
+                      <p className="text-xs text-[#6B7280] leading-relaxed">{task.notes}</p>
+                      <span className="text-[11px] text-[#C2410C] font-medium block">
                         Assigned: {task.assignedTo}
                       </span>
-                      <div className="pt-2 border-t border-[#E2E8F0] flex justify-end">
+                      <div className="pt-2 border-t border-[#E5E7EB] flex justify-end">
                         <Button
                           size="sm"
                           variant="secondary"
@@ -224,11 +224,11 @@ export const HousekeepingPage: React.FC = () => {
             </div>
 
             {/* Column 2: In Progress */}
-            <div className="flex-1 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm p-4 flex flex-col space-y-3">
-              <div className="flex items-center justify-between pb-2 border-b border-[#E2E8F0]">
+            <div className="flex-1 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm p-4 flex flex-col space-y-3">
+              <div className="flex items-center justify-between pb-2 border-b border-[#E5E7EB]">
                 <div className="flex items-center gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]" />
-                  <h3 className="text-sm font-bold text-[#0F172A]">In Progress</h3>
+                  <h3 className="text-sm font-bold text-[#1F2937]">In Progress</h3>
                 </div>
                 <span className="text-xs px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-semibold border border-amber-200">
                   {tasks.filter((t) => t.status === 'InProgress').length}
@@ -241,19 +241,19 @@ export const HousekeepingPage: React.FC = () => {
                   .map((task) => (
                     <div
                       key={task.id}
-                      className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-2 text-left"
+                      className="p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-2 text-left"
                     >
                       <div className="flex justify-between items-start">
-                        <span className="font-bold text-sm text-[#0F172A]">
+                        <span className="font-bold text-sm text-[#1F2937]">
                           Room #{task.roomNumber}
                         </span>
-                        <span className="text-[10px] text-[#64748B]">{task.category}</span>
+                        <span className="text-[10px] text-[#6B7280]">{task.category}</span>
                       </div>
-                      <p className="text-xs text-[#64748B] leading-relaxed">{task.notes}</p>
+                      <p className="text-xs text-[#6B7280] leading-relaxed">{task.notes}</p>
                       <span className="text-[11px] text-amber-700 font-medium block">
                         Cleaning: {task.assignedTo}
                       </span>
-                      <div className="pt-2 border-t border-[#E2E8F0] flex items-center justify-between gap-2">
+                      <div className="pt-2 border-t border-[#E5E7EB] flex items-center justify-between gap-2">
                         <Button
                           size="sm"
                           variant="ghost"
@@ -277,11 +277,11 @@ export const HousekeepingPage: React.FC = () => {
             </div>
 
             {/* Column 3: Clean & Inspected */}
-            <div className="flex-1 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm p-4 flex flex-col space-y-3">
-              <div className="flex items-center justify-between pb-2 border-b border-[#E2E8F0]">
+            <div className="flex-1 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm p-4 flex flex-col space-y-3">
+              <div className="flex items-center justify-between pb-2 border-b border-[#E5E7EB]">
                 <div className="flex items-center gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#22C55E]" />
-                  <h3 className="text-sm font-bold text-[#0F172A]">Clean & Inspected</h3>
+                  <h3 className="text-sm font-bold text-[#1F2937]">Clean & Inspected</h3>
                 </div>
                 <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200">
                   {tasks.filter((t) => t.status === 'Clean').length}
@@ -294,19 +294,19 @@ export const HousekeepingPage: React.FC = () => {
                   .map((task) => (
                     <div
                       key={task.id}
-                      className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-2 text-left"
+                      className="p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-2 text-left"
                     >
                       <div className="flex justify-between items-start">
-                        <span className="font-bold text-sm text-[#0F172A]">
+                        <span className="font-bold text-sm text-[#1F2937]">
                           Room #{task.roomNumber}
                         </span>
                         <span className="text-[10px] text-[#22C55E] font-medium">Ready</span>
                       </div>
-                      <p className="text-xs text-[#64748B] leading-relaxed">{task.notes}</p>
+                      <p className="text-xs text-[#6B7280] leading-relaxed">{task.notes}</p>
                       <span className="text-[11px] text-[#22C55E] block">
                         Inspected: {task.assignedTo}
                       </span>
-                      <div className="pt-2 border-t border-[#E2E8F0] flex justify-start">
+                      <div className="pt-2 border-t border-[#E5E7EB] flex justify-start">
                         <Button
                           size="sm"
                           variant="ghost"
@@ -330,12 +330,12 @@ export const HousekeepingPage: React.FC = () => {
           {tickets.map((tck) => (
             <div
               key={tck.id}
-              className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm space-y-3 text-left"
+              className="p-5 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm space-y-3 text-left"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="font-bold text-sm text-[#0F172A]">{tck.id}</span>
-                  <span className="text-xs text-[#B84C00] font-semibold block">
+                  <span className="font-bold text-sm text-[#1F2937]">{tck.id}</span>
+                  <span className="text-xs text-[#C2410C] font-semibold block">
                     Room #{tck.roomNumber}
                   </span>
                 </div>
@@ -350,12 +350,12 @@ export const HousekeepingPage: React.FC = () => {
                 </span>
               </div>
 
-              <p className="text-xs text-[#475569] bg-[#F8FAFC] p-3 rounded-xl border border-[#E2E8F0]">
+              <p className="text-xs text-[#1F2937] bg-[#FFF8F3] p-3 rounded-xl border border-[#E5E7EB]">
                 {tck.issue}
               </p>
 
-              <div className="flex items-center justify-between text-xs pt-1 border-t border-[#E2E8F0]">
-                <span className="text-[#64748B]">{tck.reportedAt}</span>
+              <div className="flex items-center justify-between text-xs pt-1 border-t border-[#E5E7EB]">
+                <span className="text-[#6B7280]">{tck.reportedAt}</span>
                 <span className="font-semibold text-[#3B82F6]">{tck.status}</span>
               </div>
             </div>

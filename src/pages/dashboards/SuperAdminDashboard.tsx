@@ -46,34 +46,34 @@ export const SuperAdminDashboard: React.FC = () => {
     {
       key: 'bookingCode',
       header: 'Booking #',
-      accessor: (b) => <span className="font-semibold text-[#B84C00]">{b.bookingCode}</span>,
+      accessor: (b) => <span className="font-semibold text-[#C2410C]">{b.bookingCode}</span>,
       sortable: true,
       sortValue: (b) => b.bookingCode,
     },
     {
       key: 'guestName',
       header: 'Guest Name',
-      accessor: (b) => <span className="font-medium text-[#0F172A]">{b.guestName}</span>,
+      accessor: (b) => <span className="font-medium text-[#1F2937]">{b.guestName}</span>,
       sortable: true,
       sortValue: (b) => b.guestName,
     },
     {
       key: 'roomNumber',
       header: 'Room',
-      accessor: (b) => <span className="text-[#0F172A]">Room #{b.roomNumber}</span>,
+      accessor: (b) => <span className="text-[#1F2937]">Room #{b.roomNumber}</span>,
       sortable: true,
       sortValue: (b) => b.roomNumber,
     },
     {
       key: 'checkIn',
       header: 'Check-In',
-      accessor: (b) => <span className="text-[#64748B]">{formatDate(b.checkIn)}</span>,
+      accessor: (b) => <span className="text-[#6B7280]">{formatDate(b.checkIn)}</span>,
     },
     {
       key: 'totalAmount',
       header: 'Tariff + GST',
       accessor: (b) => (
-        <span className="font-semibold text-[#0F172A]">{formatINR(b.totalAmount)}</span>
+        <span className="font-semibold text-[#1F2937]">{formatINR(b.totalAmount)}</span>
       ),
       sortable: true,
       sortValue: (b) => b.totalAmount,
@@ -90,10 +90,10 @@ export const SuperAdminDashboard: React.FC = () => {
       {/* Top Banner / Quick Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#B84C00]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
             Super Admin Executive Command
           </h1>
-          <p className="text-xs sm:text-sm text-[#64748B]">
+          <p className="text-xs sm:text-sm text-[#6B7280]">
             Resort-wide operational intelligence, revenue analytics, and occupancy.
           </p>
         </div>
@@ -103,7 +103,7 @@ export const SuperAdminDashboard: React.FC = () => {
             variant="outline"
             size="md"
             onClick={() => navigate('/reports')}
-            leftIcon={<FileSpreadsheet className="w-4 h-4 text-[#B84C00]" />}
+            leftIcon={<FileSpreadsheet className="w-4 h-4 text-[#C2410C]" />}
           >
             Export GSTR & PnL
           </Button>
@@ -173,17 +173,17 @@ export const SuperAdminDashboard: React.FC = () => {
             >
               <defs>
                 <linearGradient id="roomsRevenueGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#B84C00" stopOpacity={0.22} />
-                  <stop offset="95%" stopColor="#B84C00" stopOpacity={0.0} />
+                  <stop offset="5%" stopColor="#C2410C" stopOpacity={0.22} />
+                  <stop offset="95%" stopColor="#C2410C" stopOpacity={0.0} />
                 </linearGradient>
                 <linearGradient id="fnbDiningGrad" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#2563EB" stopOpacity={0.18} />
                   <stop offset="95%" stopColor="#2563EB" stopOpacity={0.0} />
                 </linearGradient>
               </defs>
-              <XAxis dataKey="month" stroke="#94A3B8" fontSize={11} tickLine={false} />
+              <XAxis dataKey="month" stroke="#6B7280" fontSize={11} tickLine={false} />
               <YAxis
-                stroke="#94A3B8"
+                stroke="#6B7280"
                 fontSize={11}
                 tickFormatter={(val) => `₹${val / 100000}L`}
                 tickLine={false}
@@ -191,9 +191,9 @@ export const SuperAdminDashboard: React.FC = () => {
               <Tooltip
                 contentStyle={{
                   backgroundColor: '#FFFFFF',
-                  borderColor: '#E2E8F0',
+                  borderColor: '#E5E7EB',
                   borderRadius: '12px',
-                  color: '#0F172A',
+                  color: '#1F2937',
                   fontSize: '12px',
                   boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
                 }}
@@ -207,12 +207,12 @@ export const SuperAdminDashboard: React.FC = () => {
                 type="monotone"
                 dataKey="rooms"
                 name="Rooms Revenue"
-                stroke="#B84C00"
+                stroke="#C2410C"
                 strokeWidth={3}
                 fillOpacity={1}
                 fill="url(#roomsRevenueGrad)"
-                dot={{ r: 4, fill: '#B84C00', stroke: '#FFFFFF', strokeWidth: 2 }}
-                activeDot={{ r: 6, fill: '#B84C00', stroke: '#FFFFFF', strokeWidth: 2 }}
+                dot={{ r: 4, fill: '#C2410C', stroke: '#FFFFFF', strokeWidth: 2 }}
+                activeDot={{ r: 6, fill: '#C2410C', stroke: '#FFFFFF', strokeWidth: 2 }}
               />
               <Area
                 type="monotone"
@@ -253,9 +253,9 @@ export const SuperAdminDashboard: React.FC = () => {
               <Tooltip
                 contentStyle={{
                   backgroundColor: '#FFFFFF',
-                  borderColor: '#E2E8F0',
+                  borderColor: '#E5E7EB',
                   borderRadius: '8px',
-                  color: '#0F172A',
+                  color: '#1F2937',
                   fontSize: '12px',
                   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                 }}
@@ -275,8 +275,8 @@ export const SuperAdminDashboard: React.FC = () => {
         {/* Recent Bookings (2-cols on desktop) */}
         <div className="lg:col-span-2 space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="text-base font-bold text-[#B84C00] flex items-center gap-2">
-              <CalendarCheck className="w-4 h-4 text-[#B84C00]" />
+            <h3 className="text-base font-bold text-[#C2410C] flex items-center gap-2">
+              <CalendarCheck className="w-4 h-4 text-[#C2410C]" />
               <span>Recent Guest Bookings</span>
             </h3>
             <Button
