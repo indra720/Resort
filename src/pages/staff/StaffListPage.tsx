@@ -299,7 +299,7 @@ export const StaffListPage: React.FC = () => {
               <Crown className="w-5 h-5 text-amber-300" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <span className="text-xs font-bold text-[#0F5132] uppercase tracking-wider">
                   Resort Owner Root Administration
                 </span>
@@ -323,7 +323,7 @@ export const StaffListPage: React.FC = () => {
               <ClipboardList className="w-5 h-5 text-sky-100" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <span className="text-xs font-bold text-[#0369A1] uppercase tracking-wider">
                   General Manager Operations & Shift Roster View
                 </span>
@@ -345,7 +345,7 @@ export const StaffListPage: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col lg:flex-row items-center gap-2">
             <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132]">
               {isOwner ? 'Staff Personnel & Access Delegation' : 'Staff Duty Roster & Attendance'}
             </h1>
@@ -380,7 +380,7 @@ export const StaffListPage: React.FC = () => {
             <Users className="w-5 h-5" />
           </div>
           <div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col lg:flex-row items-center gap-2">
               <span className="text-xs font-bold text-[#0F172A]">Staff User Quota</span>
               <span className="text-[10px] px-2 py-0.5 rounded-full font-bold bg-[#DCFCE7] text-[#0F5132]">
                 {limits.plan} Plan
@@ -410,11 +410,11 @@ export const StaffListPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#E2E8F0] pb-2">
+      <div className="w-[300px] min-w-0 md:w-full overflow-x-auto flex items-center gap-2 border-b border-[#E2E8F0] pb-2">
         <button
           type="button"
           onClick={() => setActiveTab('active')}
-          className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors flex items-center gap-1.5 ${
+          className={`shrink-0 whitespace-nowrap px-3 py-1.5 text-xs font-bold rounded-lg transition-colors flex items-center gap-1.5 ${
             activeTab === 'active'
               ? 'bg-[#0F5132] text-white shadow-2xs'
               : 'text-[#64748B] hover:text-[#0F172A] hover:bg-slate-100'
@@ -427,7 +427,7 @@ export const StaffListPage: React.FC = () => {
         <button
           type="button"
           onClick={() => setActiveTab('invites')}
-          className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors flex items-center gap-1.5 ${
+          className={`shrink-0 whitespace-nowrap px-3 py-1.5 text-xs font-bold rounded-lg transition-colors flex items-center gap-1.5 ${
             activeTab === 'invites'
               ? 'bg-[#0F5132] text-white shadow-2xs'
               : 'text-[#64748B] hover:text-[#0F172A] hover:bg-slate-100'
@@ -440,7 +440,7 @@ export const StaffListPage: React.FC = () => {
         <button
           type="button"
           onClick={() => setActiveTab('matrix')}
-          className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors flex items-center gap-1.5 ${
+          className={`shrink-0 whitespace-nowrap px-3 py-1.5 text-xs font-bold rounded-lg transition-colors flex items-center gap-1.5 ${
             activeTab === 'matrix'
               ? 'bg-[#0F5132] text-white shadow-2xs'
               : 'text-[#64748B] hover:text-[#0F172A] hover:bg-slate-100'
@@ -543,7 +543,7 @@ export const StaffListPage: React.FC = () => {
         <div className="space-y-4">
           {/* Informational Guidance Box */}
           <div className="p-4 rounded-2xl bg-slate-900 text-white shadow-sm space-y-3">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col lg:flex-row items-center gap-2">
               <KeyRound className="w-5 h-5 text-emerald-400" />
               <h3 className="text-sm font-bold tracking-tight">
                 How Dashboard Permissions Work in This Resort Management Architecture

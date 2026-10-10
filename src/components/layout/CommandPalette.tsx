@@ -142,7 +142,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                         <span className="font-medium text-[#1F2937]">Room #{room.roomNumber}</span>
                         <span className="text-xs text-[#6B7280]">{room.category}</span>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-col lg:flex-row items-center gap-2">
                         <StatusBadge status={room.status} size="sm" />
                         <span className="text-xs font-semibold text-[#0F5132]">
                           {formatINR(room.ratePerNight)}

@@ -110,7 +110,7 @@ export const RoomsPage: React.FC = () => {
               <Crown className="w-5 h-5 text-amber-300" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <span className="text-xs font-bold text-[#0F5132] uppercase tracking-wider">
                   Resort Owner Asset Portfolio & Capex Valuation
                 </span>
@@ -139,7 +139,7 @@ export const RoomsPage: React.FC = () => {
               <Activity className="w-5 h-5 text-sky-100" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <span className="text-xs font-bold text-[#0369A1] uppercase tracking-wider">
                   General Manager Live Inventory & Housekeeping SLA
                 </span>

@@ -127,8 +127,8 @@ export const MarketingPage: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+          <div className="flex flex-col lg:flex-row items-center gap-2">
+            <h1 className="text-md sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
               <Send className="w-6 h-6 text-[#0F5132]" />
               <span>Marketing Campaigns & Guest Outreach</span>
             </h1>
@@ -206,17 +206,17 @@ export const MarketingPage: React.FC = () => {
                     <Mail className="w-5 h-5" />
                   )}
                 </div>
-                <div>
-                  <h3 className="font-bold text-sm sm:text-base text-[#0F172A]">{c.name}</h3>
-                  <div className="flex items-center gap-2 text-xs text-[#64748B]">
+                <div className=''>
+                 
+                  <div className="flex flex-col md:flex-row items-center gap-2 text-xs text-[#64748B]">
                     <span>Target: <strong>{c.segment}</strong></span>
-                    <span>•</span>
-                    <span>Sent: {c.sentDate}</span>
+                    
+                    <span><span>•</span> Sent: {c.sentDate}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200 flex items-center gap-1">
                   <Tag className="w-3 h-3" />
                   Promo: {c.promoCode}

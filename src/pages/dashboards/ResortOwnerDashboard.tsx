@@ -103,7 +103,7 @@ export const ResortOwnerDashboard: React.FC = () => {
       {/* 1. Executive Top Header */}
       <div className="bg-white border border-[#E2E8F0] rounded-2xl p-4 sm:p-6 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col lg:flex-row items-center gap-2">
             <span className="px-2.5 py-0.5 rounded-full bg-[#0F5132]/10 text-[#0F5132] text-[11px] font-bold uppercase tracking-wider">
               Resort Owner Executive Suite
             </span>

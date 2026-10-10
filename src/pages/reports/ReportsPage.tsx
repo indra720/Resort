@@ -56,7 +56,7 @@ export const ReportsPage: React.FC = () => {
               <Crown className="w-5 h-5 text-amber-300" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <span className="text-xs font-bold text-[#0F5132] uppercase tracking-wider">
                   Resort Owner Executive Financial Desk
                 </span>
@@ -81,7 +81,7 @@ export const ReportsPage: React.FC = () => {
               <ClipboardList className="w-5 h-5 text-sky-100" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <span className="text-xs font-bold text-[#0369A1] uppercase tracking-wider">
                   Resort General Manager Operational Audit
                 </span>
@@ -255,8 +255,8 @@ export const ReportsPage: React.FC = () => {
             {/* Owner Statement Card */}
             <Card className="lg:col-span-2">
               <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
+                <CardTitle className="flex flex-col md:flex-row items-center justify-between">
+                  <div className="flex flex-col lg:flex-row items-center gap-2">
                     <Crown className="w-4 h-4 text-amber-500" />
                     <span>Executive P&L Statement (FY 2026-27 YTD)</span>
                   </div>
@@ -267,7 +267,7 @@ export const ReportsPage: React.FC = () => {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs border-collapse">
+                  <table className="w-[300px] min-w-0 md:w-full overflow-x-auto text-left text-xs border-collapse">
                     <thead>
                       <tr className="border-b border-[#E2E8F0] text-[#64748B] font-semibold">
                         <th className="py-2.5 px-3">Revenue / Cost Head</th>
@@ -276,7 +276,7 @@ export const ReportsPage: React.FC = () => {
                         <th className="py-2.5 px-3 text-right">Variance</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-[#E2E8F0]">
+                    <tbody className="divide-y shrink-0 whitespace-nowrap divide-[#E2E8F0]">
                       <tr>
                         <td className="py-2.5 px-3 font-semibold text-[#0F172A]">Gross Room Tariff Income</td>
                         <td className="py-2.5 px-3 font-bold text-emerald-700">{formatINR(4850000)}</td>
@@ -413,7 +413,7 @@ export const ReportsPage: React.FC = () => {
             <Card className="lg:col-span-2">
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-col lg:flex-row items-center gap-2">
                     <Activity className="w-4 h-4 text-[#0284C7]" />
                     <span>Daily Departmental SLA Turnaround Audit</span>
                   </div>

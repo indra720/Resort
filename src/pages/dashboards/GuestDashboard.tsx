@@ -32,7 +32,7 @@ export const GuestDashboard: React.FC = () => {
 
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#0F5132]/10 text-[#0F5132] uppercase tracking-wider">
                   Guest Experience
                 </span>

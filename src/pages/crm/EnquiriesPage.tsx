@@ -257,8 +257,8 @@ export const EnquiriesPage: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <h1 className="text-md sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
               <MessageSquareText className="w-6 h-6 text-[#0F5132]" />
               <span>Guest Enquiries & Demand Pipeline</span>
             </h1>

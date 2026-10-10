@@ -125,7 +125,7 @@ export const SuperAdminDashboard: React.FC = () => {
     <div className="space-y-3.5 text-[#111827] w-full">
       {/* 1. Panoramic Hero Section with Header & 5 SaaS Platform Owner KPI Cards */}
       <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-2xs bg-white">
-        <div className="relative h-44 sm:h-52 w-full overflow-hidden flex flex-col justify-between p-5 sm:p-6">
+        <div className="relative h-54  w-full overflow-hidden flex flex-col justify-between p-5 sm:p-6">
           <img
             src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80"
             alt="Joy Resorts Sanctuary"
@@ -136,7 +136,7 @@ export const SuperAdminDashboard: React.FC = () => {
           {/* Header row */}
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#0F5132]/10 text-[#0F5132] uppercase tracking-wider">
                   SaaS Platform Owner
                 </span>
@@ -348,7 +348,7 @@ export const SuperAdminDashboard: React.FC = () => {
           />
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col lg:flex-row items-center gap-2">
           <button
             type="button"
             onClick={() => {
@@ -369,9 +369,9 @@ export const SuperAdminDashboard: React.FC = () => {
         <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-2xs overflow-hidden">
           <div className="p-4 border-b border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <h3 className="text-base font-bold text-[#0F172A]">Onboarded Resort Properties</h3>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#DCFCE7] text-[#0F5132]">
+                <span className="px-4 py-0.5 rounded-full text-xs font-semibold bg-[#DCFCE7] text-[#0F5132]">
                   {filteredResorts.length} Properties
                 </span>
               </div>
@@ -546,7 +546,7 @@ export const SuperAdminDashboard: React.FC = () => {
       {/* 5. Charts Row: MRR Growth Trajectory + Plans Donut */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 pt-1">
         <div className="lg:col-span-2 bg-white rounded-2xl border border-[#E2E8F0] p-4 sm:p-5 shadow-2xs">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col md:flex-row items-center justify-between mb-4">
             <div>
               <h3 className="text-sm sm:text-base font-bold text-[#0F172A]">
                 MRR Growth Trajectory (₹ Lakhs)

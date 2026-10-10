@@ -78,7 +78,7 @@ export const SubscriptionPage: React.FC = () => {
               <Sparkles className="w-5 h-5 text-emerald-300" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <span className="text-xs font-bold text-[#0F5132] uppercase tracking-wider">
                   Resort Owner Billing & License Desk
                 </span>
@@ -102,7 +102,7 @@ export const SubscriptionPage: React.FC = () => {
               <Lock className="w-5 h-5 text-sky-100" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <span className="text-xs font-bold text-[#0369A1] uppercase tracking-wider">
                   General Manager View-Only Quota Mode
                 </span>
@@ -124,7 +124,7 @@ export const SubscriptionPage: React.FC = () => {
       {/* Header */}
       <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col lg:flex-row items-center gap-2">
             <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-[#0F5132] text-[11px] font-bold uppercase tracking-wider border border-emerald-200">
               SaaS Billing & Plan Limits
             </span>
@@ -267,7 +267,7 @@ export const SubscriptionPage: React.FC = () => {
 
       {/* Subscription Invoices Table */}
       <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-2xs space-y-3">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row items-center justify-between">
           <div>
             <h3 className="text-sm font-bold text-[#0F172A]">SaaS Subscription GST Invoices</h3>
             <p className="text-xs text-[#64748B]">
@@ -280,7 +280,7 @@ export const SubscriptionPage: React.FC = () => {
         </div>
 
         {/* Mobile / Tablet Horizontal Scroll Notice */}
-        <div className="lg:hidden flex items-center justify-between px-4 py-2 bg-[#F8FAFC] border-b border-[#E2E8F0] text-xs text-[#64748B]">
+        <div className="lg:hidden flex flex-col md:flex-row items-center justify-between px-4 py-2 bg-[#F8FAFC] border-b border-[#E2E8F0] text-xs text-[#64748B]">
           <span className="flex items-center gap-1.5 font-medium">
             <span className="inline-block w-2 h-2 rounded-full bg-[#0F5132] animate-pulse" />
             Scroll table horizontally to view GST invoice receipts
@@ -394,7 +394,7 @@ export const SubscriptionPage: React.FC = () => {
               {/* Billing Cycle */}
               <div className="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs">
                 <span className="font-semibold text-[#1E293B]">Billing Cycle:</span>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col lg:flex-row items-center gap-2">
                   <button
                     type="button"
                     onClick={() => setBillingCycle('monthly')}

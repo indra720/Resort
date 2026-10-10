@@ -106,7 +106,7 @@ export const DesignSystemShowcase: React.FC = () => {
 
       {/* 1. Indian Currency (formatINR) & GST Breakdown */}
       <section className="space-y-4">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col lg:flex-row items-center gap-2">
           <IndianRupee className="w-5 h-5 text-[#0F5132]" />
           <h3 className="text-lg font-semibold text-[#1F2937]">
             Currency (INR ₹) & GST Tax Calculator
@@ -166,7 +166,7 @@ export const DesignSystemShowcase: React.FC = () => {
 
       {/* 2. StatusBadges Requirement */}
       <section className="space-y-4">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col lg:flex-row items-center gap-2">
           <Layers className="w-5 h-5 text-[#0F5132]" />
           <h3 className="text-lg font-semibold text-[#1F2937]">
             StatusBadges (All 8 Required Statuses)
@@ -491,7 +491,7 @@ export const DesignSystemShowcase: React.FC = () => {
 
       {/* 8. Active Bookings with Indian Guest Data & Dates */}
       <section className="space-y-4">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col lg:flex-row items-center gap-2">
           <Calendar className="w-5 h-5 text-[#0F5132]" />
           <h3 className="text-lg font-semibold text-[#1F2937]">
             Recent Bookings (Indian Guest Data & Date Formatter)
@@ -535,7 +535,7 @@ export const DesignSystemShowcase: React.FC = () => {
 
       {/* 9. Roles & Resort Staff Preview Section */}
       <section className="space-y-4">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col lg:flex-row items-center gap-2">
           <Shield className="w-5 h-5 text-[#0F5132]" />
           <h3 className="text-lg font-semibold text-[#1F2937]">
             User Roles Architecture (7 Supported Roles)

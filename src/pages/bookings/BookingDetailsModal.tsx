@@ -66,7 +66,7 @@ export const BookingDetailsModal: React.FC<BookingDetailsModalProps> = ({
         <div className="space-y-4 text-left">
           {/* Header Status Bar */}
           <div className="flex items-center justify-between p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col lg:flex-row items-center gap-2">
               <span className="text-xs text-[#64748B]">Reservation Code:</span>
               <span className="font-bold text-sm text-[#0F5132]">{booking.bookingCode}</span>
             </div>

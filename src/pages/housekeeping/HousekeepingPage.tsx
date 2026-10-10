@@ -129,7 +129,7 @@ export const HousekeepingPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-[#E5E7EB] gap-4">
+      <div className="flex flex-col md:flex-row border-b border-[#E5E7EB] gap-4">
         <button
           onClick={() => setActiveTab('kanban')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
@@ -162,7 +162,7 @@ export const HousekeepingPage: React.FC = () => {
             {/* Column 1: Dirty / Turnover Needed */}
             <div className="flex-1 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm p-4 flex flex-col space-y-3">
               <div className="flex items-center justify-between pb-2 border-b border-[#E5E7EB]">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col lg:flex-row items-center gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#EF4444]" />
                   <h3 className="text-sm font-bold text-[#1F2937]">Dirty / Turnover</h3>
                 </div>
@@ -207,7 +207,7 @@ export const HousekeepingPage: React.FC = () => {
             {/* Column 2: In Progress */}
             <div className="flex-1 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm p-4 flex flex-col space-y-3">
               <div className="flex items-center justify-between pb-2 border-b border-[#E5E7EB]">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col lg:flex-row items-center gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]" />
                   <h3 className="text-sm font-bold text-[#1F2937]">In Progress</h3>
                 </div>
@@ -260,7 +260,7 @@ export const HousekeepingPage: React.FC = () => {
             {/* Column 3: Clean & Inspected */}
             <div className="flex-1 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm p-4 flex flex-col space-y-3">
               <div className="flex items-center justify-between pb-2 border-b border-[#E5E7EB]">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col lg:flex-row items-center gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#22C55E]" />
                   <h3 className="text-sm font-bold text-[#1F2937]">Clean & Inspected</h3>
                 </div>

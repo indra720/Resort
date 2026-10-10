@@ -96,7 +96,7 @@ export const LoginPage: React.FC = () => {
             </div>
           </Link>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col lg:flex-row items-center gap-2">
             <Link
               to="/landing"
               className="px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 border border-white/30 hover:border-white text-xs text-white transition-all flex items-center gap-1.5 backdrop-blur-md"
@@ -179,7 +179,7 @@ export const LoginPage: React.FC = () => {
                 </div>
               </Link>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <Link
                   to="/landing"
                   className="text-xs font-semibold text-[#0F5132] hover:bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200 transition-colors flex items-center gap-1"

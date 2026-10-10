@@ -61,7 +61,7 @@ export const CheckInOutPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-[#E2E8F0] gap-4">
+      <div className="w-full flex flex-col md:flex-row border-b border-[#E2E8F0] gap-4">
         <button
           onClick={() => setActiveTab('checkin')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
@@ -71,7 +71,7 @@ export const CheckInOutPage: React.FC = () => {
           }`}
         >
           <UserCheck className="w-4 h-4" />
-          <span>Expected Check-Ins ({checkInList.length})</span>
+          <span>Expected-Ins ({checkInList.length})</span>
         </button>
 
         <button
@@ -174,14 +174,14 @@ export const CheckInOutPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#E2E8F0]">
+              <div className="pt-3  border-t border-[#E2E8F0]">
                 <Button
                   variant="danger"
                   fullWidth
                   onClick={() => handlePerformCheckOut(b.id, b.roomNumber)}
                   leftIcon={<Sparkles className="w-4 h-4" />}
                 >
-                  Process Check-Out & Dispatch Housekeeping
+                  Process Check-Out 
                 </Button>
               </div>
             </div>

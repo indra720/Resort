@@ -223,8 +223,8 @@ export const MaintenancePage: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+          <div className="flex flex-col lg:flex-row items-center gap-2">
+            <h1 className="text-md sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
               <Wrench className="w-6 h-6 text-[#0F5132]" />
               <span>Engineering & Facility Maintenance Desk</span>
             </h1>
@@ -277,13 +277,13 @@ export const MaintenancePage: React.FC = () => {
       </div>
 
       {/* Status Filter */}
-      <div className="flex items-center gap-1.5 pb-1">
+      <div className="w-[320px] min-w-0 md:w-full overflow-x-auto   flex items-center gap-1.5 pb-1">
         {['All', 'Open', 'In Progress', 'Resolved'].map((st) => (
           <button
             key={st}
             type="button"
             onClick={() => setStatusFilter(st)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
+            className={`shrink-0 whitespace-nowrap px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
               statusFilter === st
                 ? 'bg-[#0F5132] text-white shadow-2xs'
                 : 'bg-white hover:bg-slate-100 text-[#64748B] border border-[#E2E8F0]'

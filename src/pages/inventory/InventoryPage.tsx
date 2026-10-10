@@ -120,7 +120,7 @@ export const InventoryPage: React.FC = () => {
       accessor: (s) => {
         const isLow = s.quantity < s.minThreshold;
         return (
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col lg:flex-row items-center gap-2">
             <span
               className={`font-bold ${
                 isLow ? 'text-[#EF4444]' : 'text-[#22C55E]'

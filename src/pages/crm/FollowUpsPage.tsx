@@ -148,8 +148,8 @@ export const FollowUpsPage: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+          <div className="flex flex-col lg:flex-row items-center gap-2">
+            <h1 className="text-md sm:text-xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
               <PhoneCall className="w-6 h-6 text-[#0F5132]" />
               <span>CRM Follow-Ups & Guest Contact Scheduler</span>
             </h1>
@@ -204,7 +204,7 @@ export const FollowUpsPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#E2E8F0] pb-2">
+      <div className="w-[300px] md:w-full min-w-0 flex overflow-x-auto  items-center gap-2 border-b border-[#E2E8F0] pb-2">
         {[
           { id: 'all', label: 'All Tasks', count: followUps.length },
           { id: 'overdue', label: 'Overdue SLA', count: overdueCount },
@@ -215,7 +215,7 @@ export const FollowUpsPage: React.FC = () => {
             key={tab.id}
             type="button"
             onClick={() => setActiveTab(tab.id as any)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
+            className={`shrink-0 whitespace-nowrap px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
               activeTab === tab.id
                 ? 'bg-[#0F5132] text-white shadow-2xs'
                 : 'bg-white hover:bg-slate-100 text-[#64748B] border border-[#E2E8F0]'
@@ -237,7 +237,7 @@ export const FollowUpsPage: React.FC = () => {
           >
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col lg:flex-row items-center gap-2">
                   <span className="font-bold text-sm text-[#0F172A]">{item.guestName}</span>
                   <span
                     className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
@@ -286,7 +286,7 @@ export const FollowUpsPage: React.FC = () => {
             <div className="pt-2 border-t border-[#E2E8F0] flex items-center justify-between gap-2 text-xs">
               <span className="text-[11px] text-[#64748B]">Assigned: {item.assignedTo}</span>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 {item.status !== 'Completed' && (
                   <Button
                     size="sm"

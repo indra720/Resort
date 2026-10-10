@@ -121,7 +121,7 @@ export const AdminResortsPage: React.FC = () => {
     <div className="space-y-4 text-[#111827]">
       {/* Header Banner */}
       <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-2xs bg-white">
-        <div className="relative h-44 sm:h-48 w-full overflow-hidden flex flex-col justify-between p-4 sm:p-6">
+        <div className="relative h-54 w-full overflow-hidden flex flex-col justify-between p-4 sm:p-6">
           <img
             src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1920&q=80"
             alt="Multi-Tenant Resorts"
@@ -131,7 +131,7 @@ export const AdminResortsPage: React.FC = () => {
 
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#0F5132]/10 text-[#0F5132] uppercase tracking-wider">
                   Platform Multi-Tenant
                 </span>
@@ -255,7 +255,7 @@ export const AdminResortsPage: React.FC = () => {
           />
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex  items-center gap-2">
           {(['All', 'Active', 'Trial'] as const).map((st) => (
             <button
               key={st}
@@ -277,7 +277,7 @@ export const AdminResortsPage: React.FC = () => {
       <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-2xs overflow-hidden">
         <div className="p-4 border-b border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col lg:flex-row items-center gap-2">
               <h3 className="text-base font-bold text-[#0F172A]">All Registered Resort Tenants</h3>
               <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#DCFCE7] text-[#0F5132]">
                 {filteredResorts.length} Properties

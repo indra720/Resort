@@ -265,7 +265,7 @@ export const ResortOnboardingPage: React.FC = () => {
                         }`}
                       >
                         <div className="space-y-0.5">
-                          <div className="flex items-center gap-2">
+                          <div className="flex flex-col lg:flex-row items-center gap-2">
                             <span className="text-sm font-bold text-[#0F172A]">{plan} Plan</span>
                             {plan === 'Pro' && (
                               <span className="px-1.5 py-0.2 rounded bg-[#0F5132] text-white text-[9px] font-bold">

@@ -211,10 +211,10 @@ export const RestaurantPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-[#E5E7EB] gap-4">
+      <div className="w-[300px] min-w-0 md:w-full overflow-x-auto flex border-b border-[#E5E7EB] gap-4">
         <button
           onClick={() => setActiveTab('orders')}
-          className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
+          className={`shrink-0 whitespace-nowrap  flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'orders'
               ? 'border-[#0F5132] text-[#0F5132]'
               : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
@@ -226,7 +226,7 @@ export const RestaurantPage: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('menu')}
-          className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
+          className={`shrink-0 whitespace-nowrap flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'menu'
               ? 'border-[#0F5132] text-[#0F5132]'
               : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
@@ -238,7 +238,7 @@ export const RestaurantPage: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('tables')}
-          className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
+          className={`shrink-0 whitespace-nowrap flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'tables'
               ? 'border-[#0F5132] text-[#0F5132]'
               : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
@@ -268,7 +268,7 @@ export const RestaurantPage: React.FC = () => {
                   className="flex-1 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm p-3.5 flex flex-col space-y-3"
                 >
                   <div className="flex items-center justify-between pb-2 border-b border-[#E5E7EB]">
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-col lg:flex-row items-center gap-2">
                       <div className={`w-2.5 h-2.5 rounded-full ${headerColors[st]}`} />
                       <h3 className="text-sm font-bold text-[#1F2937]">{st}</h3>
                     </div>

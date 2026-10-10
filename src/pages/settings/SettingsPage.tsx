@@ -101,8 +101,8 @@ export const SettingsPage: React.FC = () => {
   return (
     <div className="w-full space-y-4 sm:space-y-5 text-left">
       <div>
-        <div className="flex items-center gap-2">
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+        <div className="flex flex-col lg:flex-row items-center gap-2">
+          <h1 className="text-md sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
             <Settings className="w-6 h-6 text-[#0F5132]" />
             <span>Resort Settings & GST Taxation</span>
           </h1>
@@ -367,7 +367,7 @@ export const SettingsPage: React.FC = () => {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               <CardTitle className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-[#0F5132]" />
-                <span>Role-Based Access Control (RBAC) Matrix</span>
+                <span className='text-xs'>Role-Based Access Control (RBAC) Matrix</span>
               </CardTitle>
               <span className="text-xs text-[#6B7280]">
                 Multi-role access privileges for resort operational modules

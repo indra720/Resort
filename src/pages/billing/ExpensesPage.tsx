@@ -171,7 +171,7 @@ export const ExpensesPage: React.FC = () => {
       key: 'status',
       header: 'Audit State & Actions',
       accessor: (e) => (
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col lg:flex-row items-center gap-2">
           <span
             className={`text-[11px] px-2.5 py-0.5 rounded-full font-bold border ${
               e.status === 'Approved'
@@ -237,8 +237,8 @@ export const ExpensesPage: React.FC = () => {
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+          <div className="flex flex-col lg:flex-row items-center gap-2">
+            <h1 className="text-md sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
               <FileBarChart className="w-6 h-6 text-[#0F5132]" />
               <span>Resort Operational Expenses & Petty Cash</span>
             </h1>

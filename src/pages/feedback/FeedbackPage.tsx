@@ -85,7 +85,7 @@ export const FeedbackPage: React.FC = () => {
     <div className="w-full space-y-6 text-left">
       {/* Page Header */}
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+        <h1 className="text-md sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
           <MessageSquareHeart className="w-6 h-6 text-[#0F5132]" />
           <span>Guest Stay Review & Feedback Center</span>
         </h1>
@@ -258,7 +258,7 @@ export const FeedbackPage: React.FC = () => {
 
           {/* Recent Guest Reviews */}
           <div className="p-6 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm space-y-4">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col lg:flex-row items-center gap-2">
               <Quote className="w-4 h-4 text-[#0F5132]" />
               <h3 className="text-sm font-semibold text-[#1F2937]">Recent Verified Reviews</h3>
             </div>

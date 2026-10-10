@@ -189,14 +189,14 @@ export const TopBar: React.FC<TopBarProps> = ({
           </button>
 
           {/* Quick Link to Guest Website Landing Page */}
-          <Link
+          {/* <Link
             to="/landing"
             className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-[#0F5132] bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200 transition-colors shadow-2xs"
             title="View Public Resort Landing Page"
           >
             <Compass className="w-3.5 h-3.5" />
             <span>Guest Website</span>
-          </Link>
+          </Link> */}
 
           {/* Notifications Dropdown (Bell icon with badge 3) */}
           <div className="relative" ref={notifRef}>
@@ -218,7 +218,7 @@ export const TopBar: React.FC<TopBarProps> = ({
             {isNotifOpen && (
               <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl bg-white border border-[#E5E7EB] shadow-xl z-50 overflow-hidden">
                 <div className="p-3.5 border-b border-[#E5E7EB] flex items-center justify-between bg-[#F8FAFC]">
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-col lg:flex-row items-center gap-2">
                     <span className="text-sm font-semibold text-[#111827]">Notifications</span>
                     <span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-600 text-[11px] font-semibold border border-rose-200">
                       {unreadCount} new

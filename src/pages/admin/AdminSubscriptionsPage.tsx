@@ -107,7 +107,7 @@ export const AdminSubscriptionsPage: React.FC = () => {
     <div className="space-y-4 text-[#111827]">
       {/* Header Banner */}
       <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-2xs bg-white">
-        <div className="relative h-44 sm:h-48 w-full overflow-hidden flex flex-col justify-between p-4 sm:p-6">
+        <div className="relative h-54 w-full overflow-hidden flex flex-col justify-between p-4 sm:p-6">
           <img
             src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1920&q=80"
             alt="Subscriptions & MRR"
@@ -117,7 +117,7 @@ export const AdminSubscriptionsPage: React.FC = () => {
 
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col lg:flex-row items-center gap-2">
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#0F5132]/10 text-[#0F5132] uppercase tracking-wider">
                   Platform Billing & Recurring Yield
                 </span>
@@ -227,7 +227,7 @@ export const AdminSubscriptionsPage: React.FC = () => {
 
       {/* Subscriptions Table */}
       <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-2xs overflow-hidden">
-        <div className="p-4 border-b border-[#E2E8F0] flex items-center justify-between">
+        <div className="p-4 border-b border-[#E2E8F0] flex flex-col md:flex-row items-center justify-between">
           <div>
             <h3 className="text-base font-bold text-[#0F172A]">Tenant Subscription Accounts</h3>
             <p className="text-xs text-[#64748B] mt-0.5">
