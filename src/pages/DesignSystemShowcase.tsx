@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
@@ -73,14 +73,14 @@ export const DesignSystemShowcase: React.FC = () => {
       {/* Page Title & Status Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#E5E7EB] pb-6">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#FFF1E6] border border-[#FED7AA] text-[#C2410C] text-xs font-semibold mb-2">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#F0FDF4] border border-[#BBF7D0] text-[#0F5132] text-xs font-semibold mb-2">
             <Sparkles className="w-3.5 h-3.5" /> Step 1: Design System & Core Architecture
           </div>
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#1F2937] tracking-tight">
             Resort Design System UI
           </h2>
           <p className="text-sm text-[#6B7280] mt-1">
-            Dark Orange theme (#FFFFFF / #C2410C), mobile-first 44px touch targets, zero TanStack.
+            Dark Orange theme (#FFFFFF / #0F5132), mobile-first 44px touch targets, zero TanStack.
           </p>
         </div>
 
@@ -107,7 +107,7 @@ export const DesignSystemShowcase: React.FC = () => {
       {/* 1. Indian Currency (formatINR) & GST Breakdown */}
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <IndianRupee className="w-5 h-5 text-[#C2410C]" />
+          <IndianRupee className="w-5 h-5 text-[#0F5132]" />
           <h3 className="text-lg font-semibold text-[#1F2937]">
             Currency (INR ₹) & GST Tax Calculator
           </h3>
@@ -117,7 +117,7 @@ export const DesignSystemShowcase: React.FC = () => {
           <Card hoverEffect>
             <CardHeader className="pb-2">
               <CardDescription>Single Room Rate</CardDescription>
-              <CardTitle className="text-2xl text-[#C2410C]">
+              <CardTitle className="text-2xl text-[#0F5132]">
                 {formatINR(5500)}
               </CardTitle>
             </CardHeader>
@@ -167,7 +167,7 @@ export const DesignSystemShowcase: React.FC = () => {
       {/* 2. StatusBadges Requirement */}
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <Layers className="w-5 h-5 text-[#C2410C]" />
+          <Layers className="w-5 h-5 text-[#0F5132]" />
           <h3 className="text-lg font-semibold text-[#1F2937]">
             StatusBadges (All 8 Required Statuses)
           </h3>
@@ -177,7 +177,7 @@ export const DesignSystemShowcase: React.FC = () => {
           <CardContent className="pt-6">
             <div className="flex flex-wrap items-center gap-3">
               {allStatuses.map((st) => (
-                <div key={st} className="flex flex-col items-center gap-1.5 p-3 rounded-lg bg-[#FFF8F3] border border-[#E5E7EB]">
+                <div key={st} className="flex flex-col items-center gap-1.5 p-3 rounded-lg bg-[#F8FAFC] border border-[#E5E7EB]">
                   <StatusBadge status={st} size="md" />
                   <span className="text-[11px] text-[#6B7280]">Status: {st}</span>
                 </div>
@@ -193,7 +193,7 @@ export const DesignSystemShowcase: React.FC = () => {
         <Card>
           <CardContent className="pt-6 space-y-6">
             <div className="flex flex-wrap items-center gap-3">
-              <Button variant="primary">Primary (#C2410C)</Button>
+              <Button variant="primary">Primary (#0F5132)</Button>
               <Button variant="secondary">Secondary</Button>
               <Button variant="outline">Outline</Button>
               <Button variant="ghost">Ghost</Button>
@@ -351,12 +351,12 @@ export const DesignSystemShowcase: React.FC = () => {
         </div>
 
         {/* Mobile Swipe Guidance Banner */}
-        <div className="sm:hidden flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#FFF1E6] border border-[#FED7AA] text-[11px] text-[#6B7280]">
+        <div className="sm:hidden flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#F0FDF4] border border-[#BBF7D0] text-[11px] text-[#6B7280]">
           <span className="flex items-center gap-1.5">
-            <ArrowLeftRight className="w-3.5 h-3.5 text-[#C2410C] animate-pulse shrink-0" />
+            <ArrowLeftRight className="w-3.5 h-3.5 text-[#0F5132] animate-pulse shrink-0" />
             <span>Swipe horizontally to view full table columns</span>
           </span>
-          <span className="text-[10px] text-[#C2410C] font-medium bg-[#FFF1E6] px-1.5 py-0.5 rounded">
+          <span className="text-[10px] text-[#0F5132] font-medium bg-[#F0FDF4] px-1.5 py-0.5 rounded">
             Full Table
           </span>
         </div>
@@ -364,7 +364,7 @@ export const DesignSystemShowcase: React.FC = () => {
         {/* Full Scrollable Table */}
         <div className="overflow-x-auto rounded-2xl border border-[#E5E7EB] bg-white pb-1 shadow-sm">
           <table className="w-full min-w-[760px] text-left text-sm text-[#1F2937] border-collapse">
-            <thead className="bg-[#FFF8F3] text-xs text-[#6B7280] uppercase border-b border-[#E5E7EB]">
+            <thead className="bg-[#F8FAFC] text-xs text-[#6B7280] uppercase border-b border-[#E5E7EB]">
               <tr>
                 <th className="py-3.5 px-4 font-semibold whitespace-nowrap">Room</th>
                 <th className="py-3.5 px-4 font-semibold whitespace-nowrap">Category</th>
@@ -376,7 +376,7 @@ export const DesignSystemShowcase: React.FC = () => {
             </thead>
             <tbody className="divide-y divide-[#E5E7EB]">
               {MOCK_ROOMS.map((room) => (
-                <tr key={room.id} className="hover:bg-[#FFF8F3] transition-colors">
+                <tr key={room.id} className="hover:bg-[#F8FAFC] transition-colors">
                   <td className="py-3.5 px-4 font-semibold text-[#1F2937] whitespace-nowrap">
                     #{room.roomNumber}
                   </td>
@@ -424,7 +424,7 @@ export const DesignSystemShowcase: React.FC = () => {
 
               <div className="flex items-center justify-between text-xs pt-2 border-t border-[#E5E7EB]">
                 <span className="text-[#6B7280]">Tariff:</span>
-                <span className="font-semibold text-[#C2410C] text-sm">
+                <span className="font-semibold text-[#0F5132] text-sm">
                   {formatINR(room.ratePerNight)} / night
                 </span>
               </div>
@@ -492,7 +492,7 @@ export const DesignSystemShowcase: React.FC = () => {
       {/* 8. Active Bookings with Indian Guest Data & Dates */}
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <Calendar className="w-5 h-5 text-[#C2410C]" />
+          <Calendar className="w-5 h-5 text-[#0F5132]" />
           <h3 className="text-lg font-semibold text-[#1F2937]">
             Recent Bookings (Indian Guest Data & Date Formatter)
           </h3>
@@ -517,7 +517,7 @@ export const DesignSystemShowcase: React.FC = () => {
                 </div>
                 <div className="flex justify-between text-[#6B7280]">
                   <span>Total Amount (incl. GST):</span>
-                  <span className="text-[#C2410C] font-semibold text-sm">
+                  <span className="text-[#0F5132] font-semibold text-sm">
                     {formatINR(b.totalAmount)}
                   </span>
                 </div>
@@ -536,7 +536,7 @@ export const DesignSystemShowcase: React.FC = () => {
       {/* 9. Roles & Resort Staff Preview Section */}
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <Shield className="w-5 h-5 text-[#C2410C]" />
+          <Shield className="w-5 h-5 text-[#0F5132]" />
           <h3 className="text-lg font-semibold text-[#1F2937]">
             User Roles Architecture (7 Supported Roles)
           </h3>
@@ -549,7 +549,7 @@ export const DesignSystemShowcase: React.FC = () => {
               key={role}
               className="p-3 rounded-xl bg-white border border-[#E5E7EB] text-center flex flex-col items-center justify-center gap-1.5 shadow-xs"
             >
-              <div className="w-8 h-8 rounded-full bg-[#FFF1E6] border border-[#FED7AA] flex items-center justify-center text-[#C2410C]">
+              <div className="w-8 h-8 rounded-full bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-[#0F5132]">
                 <Shield className="w-4 h-4" />
               </div>
               <span className="text-xs font-semibold text-[#1F2937] line-clamp-1">{role}</span>
@@ -566,13 +566,13 @@ export const DesignSystemShowcase: React.FC = () => {
                 key={usr.id}
                 className="p-3.5 rounded-xl bg-white border border-[#E5E7EB] flex items-center gap-3 shadow-xs"
               >
-                <div className="w-10 h-10 rounded-full bg-[#FFF1E6] border border-[#FED7AA] flex items-center justify-center text-[#C2410C] shrink-0 font-semibold text-sm">
+                <div className="w-10 h-10 rounded-full bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-[#0F5132] shrink-0 font-semibold text-sm">
                   {usr.name.slice(0, 2).toUpperCase()}
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-semibold text-[#1F2937] truncate">{usr.name}</p>
                   <div className="flex items-center gap-2 mt-0.5">
-                    <span className="text-xs text-[#C2410C] font-medium truncate">{usr.role}</span>
+                    <span className="text-xs text-[#0F5132] font-medium truncate">{usr.role}</span>
                     <span className="text-[11px] text-[#6B7280] truncate">{usr.phone}</span>
                   </div>
                 </div>
@@ -643,7 +643,7 @@ export const DesignSystemShowcase: React.FC = () => {
             ]}
           />
 
-          <div className="p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] text-xs space-y-1.5">
+          <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] text-xs space-y-1.5">
             <div className="flex justify-between text-[#6B7280]">
               <span>Base Rate (1 Night):</span>
               <span>{formatINR(11500)}</span>
@@ -654,7 +654,7 @@ export const DesignSystemShowcase: React.FC = () => {
             </div>
             <div className="flex justify-between font-semibold text-[#1F2937] pt-1 border-t border-[#E5E7EB]">
               <span>Total Payable:</span>
-              <span className="text-[#C2410C]">{formatINR(13570)}</span>
+              <span className="text-[#0F5132]">{formatINR(13570)}</span>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useToastStore, ToastItem } from '@/store/useToastStore';
 import { CheckCircle2, AlertCircle, AlertTriangle, Info, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -57,7 +57,7 @@ const ToastCard: React.FC<ToastCardProps> = ({ toast, onDismiss }) => {
 
       <button
         onClick={onDismiss}
-        className="w-8 h-8 -mr-1 -mt-1 flex items-center justify-center rounded-lg text-[#6B7280] hover:text-[#1F2937] hover:bg-[#FFF8F3] transition-colors"
+        className="w-8 h-8 -mr-1 -mt-1 flex items-center justify-center rounded-lg text-[#6B7280] hover:text-[#1F2937] hover:bg-[#F8FAFC] transition-colors"
         aria-label="Close notification"
       >
         <X className="w-4 h-4" />

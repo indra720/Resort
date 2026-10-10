@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { MOCK_ROOMS } from '@/data/mockData';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { addDays, format } from 'date-fns';
@@ -25,7 +25,7 @@ export const AvailabilityCalendar: React.FC = () => {
   return (
     <div className="space-y-4 text-left">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <h3 className="text-base font-semibold text-[#C2410C]">
+        <h3 className="text-base font-semibold text-[#0F5132]">
           7-Day Occupancy Timeline Grid
         </h3>
         <p className="text-xs text-[#6B7280]">
@@ -34,12 +34,12 @@ export const AvailabilityCalendar: React.FC = () => {
       </div>
 
       {/* Mobile Swipe Banner */}
-      <div className="sm:hidden flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#FFF8F3] border border-[#E5E7EB] text-[11px] text-[#6B7280]">
+      <div className="sm:hidden flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E5E7EB] text-[11px] text-[#6B7280]">
         <span className="flex items-center gap-1.5">
-          <ArrowLeftRight className="w-3.5 h-3.5 text-[#C2410C] animate-pulse shrink-0" />
+          <ArrowLeftRight className="w-3.5 h-3.5 text-[#0F5132] animate-pulse shrink-0" />
           <span>Swipe horizontally to view full 7-day schedule</span>
         </span>
-        <span className="text-[10px] text-[#C2410C] font-medium bg-[#FFF1E6] px-1.5 py-0.5 rounded border border-[#FED7AA]">
+        <span className="text-[10px] text-[#0F5132] font-medium bg-[#F0FDF4] px-1.5 py-0.5 rounded border border-[#BBF7D0]">
           7 Days
         </span>
       </div>
@@ -47,9 +47,9 @@ export const AvailabilityCalendar: React.FC = () => {
       {/* Horizontally scrollable container */}
       <div className="overflow-x-auto rounded-xl border border-[#E5E7EB] bg-white shadow-sm pb-1">
         <table className="w-full text-xs text-left border-collapse min-w-[780px]">
-          <thead className="bg-[#FFF8F3] text-[#1F2937] border-b border-[#E5E7EB]">
+          <thead className="bg-[#F8FAFC] text-[#1F2937] border-b border-[#E5E7EB]">
             <tr>
-              <th className="py-3.5 px-4 font-semibold sticky left-0 bg-[#FFF8F3] z-10 w-44 shadow-sm whitespace-nowrap">
+              <th className="py-3.5 px-4 font-semibold sticky left-0 bg-[#F8FAFC] z-10 w-44 shadow-sm whitespace-nowrap">
                 Room & Category
               </th>
               {days.map((d, i) => (
@@ -64,7 +64,7 @@ export const AvailabilityCalendar: React.FC = () => {
           </thead>
           <tbody className="divide-y divide-[#E5E7EB]">
             {MOCK_ROOMS.map((room, rIdx) => (
-              <tr key={room.id} className="hover:bg-[#FFF8F3] transition-colors">
+              <tr key={room.id} className="hover:bg-[#F8FAFC] transition-colors">
                 <td className="py-3.5 px-4 sticky left-0 bg-white z-10 border-r border-[#E5E7EB] whitespace-nowrap">
                   <span className="font-bold text-[#1F2937] block">#{room.roomNumber}</span>
                   <span className="text-[11px] text-[#6B7280] truncate block max-w-[140px]">
@@ -75,7 +75,7 @@ export const AvailabilityCalendar: React.FC = () => {
                   const status = getDayStatus(rIdx, dIdx);
                   const colors: Record<string, string> = {
                     Available: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-                    Occupied: 'bg-[#FFF1E6] text-[#C2410C] border-[#FED7AA]',
+                    Occupied: 'bg-[#F0FDF4] text-[#0F5132] border-[#BBF7D0]',
                     Reserved: 'bg-blue-50 text-blue-700 border-blue-200',
                     Cleaning: 'bg-amber-50 text-amber-700 border-amber-200',
                     Maintenance: 'bg-rose-50 text-rose-700 border-rose-200',

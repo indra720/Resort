@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useAuthStore } from '@/store/useAuthStore';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -31,7 +31,7 @@ export const ProfilePage: React.FC = () => {
   return (
     <div className="w-full space-y-6 text-left">
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132]">
           My Profile & Security Settings
         </h1>
         <p className="text-xs sm:text-sm text-[#6B7280]">
@@ -41,14 +41,14 @@ export const ProfilePage: React.FC = () => {
 
       {/* User Header Summary Card */}
       <div className="p-6 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
-        <div className="w-16 h-16 rounded-full bg-[#FFF1E6] border-2 border-[#C2410C] flex items-center justify-center font-bold text-xl text-[#C2410C] shrink-0">
+        <div className="w-16 h-16 rounded-full bg-[#F0FDF4] border-2 border-[#0F5132] flex items-center justify-center font-bold text-xl text-[#0F5132] shrink-0">
           {name.slice(0, 2).toUpperCase()}
         </div>
 
         <div className="space-y-1 flex-1">
           <div className="flex flex-col sm:flex-row sm:items-center gap-2">
             <h2 className="text-lg font-bold text-[#1F2937]">{name}</h2>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FFF1E6] text-[#C2410C] text-xs font-semibold border border-[#FED7AA] w-fit mx-auto sm:mx-0">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#F0FDF4] text-[#0F5132] text-xs font-semibold border border-[#BBF7D0] w-fit mx-auto sm:mx-0">
               <Shield className="w-3.5 h-3.5" /> {role}
             </span>
           </div>

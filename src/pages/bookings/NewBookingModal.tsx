@@ -136,8 +136,8 @@ export const NewBookingModal: React.FC<NewBookingModalProps> = ({
                     isCompleted
                       ? 'bg-[#22C55E] text-white'
                       : isCurrent
-                      ? 'bg-[#C2410C] text-white ring-2 ring-[#C2410C]/30'
-                      : 'bg-[#FFF8F3] text-[#6B7280] border border-[#E5E7EB]'
+                      ? 'bg-[#0F5132] text-white ring-2 ring-[#0F5132]/30'
+                      : 'bg-[#F8FAFC] text-[#64748B] border border-[#E2E8F0]'
                   }`}
                 >
                   {isCompleted ? <Check className="w-4 h-4" /> : stepNum}
@@ -220,38 +220,38 @@ export const NewBookingModal: React.FC<NewBookingModalProps> = ({
               Select luxury concierge add-ons for the guest stay:
             </p>
 
-            <label className="flex items-center justify-between p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] cursor-pointer hover:border-[#C2410C]/40 transition-colors">
+            <label className="flex items-center justify-between p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] cursor-pointer hover:border-[#0F5132]/40 transition-colors">
               <div>
-                <span className="text-sm font-semibold text-[#1F2937] block">
+                <span className="text-sm font-semibold text-[#111827] block">
                   Private Airport Transfer (AC Sedan)
                 </span>
-                <span className="text-xs text-[#6B7280]">Pick-up from Goa Dabolim Airport</span>
+                <span className="text-xs text-[#64748B]">Pick-up from Goa Dabolim Airport</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-xs font-semibold text-[#C2410C]">{formatINR(2500)}</span>
+                <span className="text-xs font-semibold text-[#0F5132]">{formatINR(2500)}</span>
                 <input
                   type="checkbox"
                   checked={includeAirportPickup}
                   onChange={(e) => setIncludeAirportPickup(e.target.checked)}
-                  className="w-5 h-5 rounded accent-[#C2410C]"
+                  className="w-5 h-5 rounded accent-[#0F5132]"
                 />
               </div>
             </label>
 
-            <label className="flex items-center justify-between p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] cursor-pointer hover:border-[#C2410C]/40 transition-colors">
+            <label className="flex items-center justify-between p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] cursor-pointer hover:border-[#0F5132]/40 transition-colors">
               <div>
-                <span className="text-sm font-semibold text-[#1F2937] block">
+                <span className="text-sm font-semibold text-[#111827] block">
                   Ayurvedic Spa Couple Package
                 </span>
-                <span className="text-xs text-[#6B7280]">60-minute therapeutic massage</span>
+                <span className="text-xs text-[#64748B]">60-minute therapeutic massage</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-xs font-semibold text-[#C2410C]">{formatINR(3800)}</span>
+                <span className="text-xs font-semibold text-[#0F5132]">{formatINR(3800)}</span>
                 <input
                   type="checkbox"
                   checked={includeSpaPackage}
                   onChange={(e) => setIncludeSpaPackage(e.target.checked)}
-                  className="w-5 h-5 rounded accent-[#C2410C]"
+                  className="w-5 h-5 rounded accent-[#0F5132]"
                 />
               </div>
             </label>
@@ -274,32 +274,32 @@ export const NewBookingModal: React.FC<NewBookingModalProps> = ({
             />
 
             {/* GST Tax Breakdown Card */}
-            <div className="p-4 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-2 text-xs">
-              <div className="flex justify-between text-[#6B7280]">
+            <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-2 text-xs">
+              <div className="flex justify-between text-[#64748B]">
                 <span>Room Charges ({nights} Nights):</span>
                 <span>{formatINR(roomBase)}</span>
               </div>
 
               {serviceExtras > 0 && (
-                <div className="flex justify-between text-[#6B7280]">
+                <div className="flex justify-between text-[#64748B]">
                   <span>Add-on Services:</span>
                   <span>{formatINR(serviceExtras)}</span>
                 </div>
               )}
 
-              <div className="flex justify-between text-[#6B7280]">
+              <div className="flex justify-between text-[#64748B]">
                 <span>Sub-Total:</span>
                 <span>{formatINR(totalBase)}</span>
               </div>
 
-              <div className="flex justify-between text-[#6B7280]">
+              <div className="flex justify-between text-[#64748B]">
                 <span>GST Tax ({gstBreakup.gstRate}%):</span>
                 <span>{formatINR(gstBreakup.totalGst)}</span>
               </div>
 
-              <div className="flex justify-between items-center pt-2 border-t border-[#E5E7EB] font-bold text-sm text-[#1F2937]">
+              <div className="flex justify-between items-center pt-2 border-t border-[#E2E8F0] font-bold text-sm text-[#111827]">
                 <span>Total Amount Payable:</span>
-                <span className="text-[#C2410C] text-base">
+                <span className="text-[#0F5132] text-base">
                   {formatINR(gstBreakup.totalWithGst)}
                 </span>
               </div>

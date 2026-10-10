@@ -23,7 +23,6 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
     let prevWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
     const handleResize = () => {
       const currentWidth = window.innerWidth;
-      // When resizing down into md (<1024px), auto-collapse
       if (currentWidth < 1024 && prevWidth >= 1024) {
         setIsSidebarCollapsed(true);
       }
@@ -34,25 +33,26 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   }, []);
 
   return (
-    <div className="h-screen w-full bg-[#FFFFFF] text-[#1F2937] flex flex-col font-sans selection:bg-[#C2410C] selection:text-white overflow-hidden">
-      {/* Top Navigation Bar - Fixed at top, never scrolls */}
-      <TopBar
-        isSidebarCollapsed={isSidebarCollapsed}
-        onToggleSidebar={() => setIsSidebarCollapsed((prev) => !prev)}
-        onOpenMobileDrawer={() => setIsMobileDrawerOpen(true)}
-      />
+    <div className="h-screen w-full bg-[#F8FAFC] text-[#111827] flex font-sans selection:bg-[#0F5132] selection:text-white overflow-hidden">
+      {/* Desktop Collapsible Sidebar - Full Height on Left (Exact Screenshot Match) */}
+      <Sidebar isCollapsed={isSidebarCollapsed} />
 
-      <div className="flex-1 flex w-full overflow-hidden min-h-0">
-        {/* Desktop Collapsible Sidebar - Fixed on left, never scrolls with page */}
-        <Sidebar isCollapsed={isSidebarCollapsed} />
+      {/* Right Content Column: TopBar + Main Canvas */}
+      <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden bg-[#F8FAFC]">
+        {/* TopBar on right column */}
+        <TopBar
+          isSidebarCollapsed={isSidebarCollapsed}
+          onToggleSidebar={() => setIsSidebarCollapsed((prev) => !prev)}
+          onOpenMobileDrawer={() => setIsMobileDrawerOpen(true)}
+        />
 
-        {/* Scrollable Main Content Area - Fluid full width with minimal compact padding */}
-        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden w-full px-2.5 sm:px-4 lg:px-5 py-2.5 sm:py-3.5 pb-20 md:pb-4 flex flex-col">
+        {/* Scrollable Main Content Area with 1px flush padding (Exact Screenshot Match) */}
+        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden w-full p-1 sm:p-1.5 pb-20 md:pb-2 flex flex-col bg-[#F8FAFC]">
           <PageTransition>{children}</PageTransition>
         </main>
       </div>
 
-      {/* Mobile Bottom Navigation (4-5 items) */}
+      {/* Mobile Bottom Navigation */}
       <BottomNav onOpenMore={() => setIsMobileDrawerOpen(true)} />
 
       {/* Mobile Slide-in Drawer */}

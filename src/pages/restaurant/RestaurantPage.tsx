@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Modal } from '@/components/ui/Modal';
 import { Input } from '@/components/ui/Input';
@@ -192,7 +192,7 @@ export const RestaurantPage: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132]">
             Spice & Palm Culinary & Restaurant
           </h1>
           <p className="text-xs sm:text-sm text-[#6B7280]">
@@ -216,7 +216,7 @@ export const RestaurantPage: React.FC = () => {
           onClick={() => setActiveTab('orders')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'orders'
-              ? 'border-[#C2410C] text-[#C2410C]'
+              ? 'border-[#0F5132] text-[#0F5132]'
               : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
           }`}
         >
@@ -228,7 +228,7 @@ export const RestaurantPage: React.FC = () => {
           onClick={() => setActiveTab('menu')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'menu'
-              ? 'border-[#C2410C] text-[#C2410C]'
+              ? 'border-[#0F5132] text-[#0F5132]'
               : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
           }`}
         >
@@ -240,7 +240,7 @@ export const RestaurantPage: React.FC = () => {
           onClick={() => setActiveTab('tables')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'tables'
-              ? 'border-[#C2410C] text-[#C2410C]'
+              ? 'border-[#0F5132] text-[#0F5132]'
               : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
           }`}
         >
@@ -257,7 +257,7 @@ export const RestaurantPage: React.FC = () => {
               const columnOrders = orders.filter((o) => o.status === st);
               const headerColors: Record<string, string> = {
                 New: 'bg-[#3B82F6]',
-                Preparing: 'bg-[#C2410C]',
+                Preparing: 'bg-[#0F5132]',
                 Ready: 'bg-[#F59E0B]',
                 Served: 'bg-[#22C55E]',
               };
@@ -272,7 +272,7 @@ export const RestaurantPage: React.FC = () => {
                       <div className={`w-2.5 h-2.5 rounded-full ${headerColors[st]}`} />
                       <h3 className="text-sm font-bold text-[#1F2937]">{st}</h3>
                     </div>
-                    <span className="text-xs px-2 py-0.5 rounded-full bg-[#FFF8F3] text-[#6B7280] font-bold">
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-[#F8FAFC] text-[#6B7280] font-bold">
                       {columnOrders.length}
                     </span>
                   </div>
@@ -281,12 +281,12 @@ export const RestaurantPage: React.FC = () => {
                     {columnOrders.map((ord) => (
                       <div
                         key={ord.id}
-                        className="p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-2 text-left"
+                        className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] space-y-2 text-left"
                       >
                         <div className="flex justify-between items-start">
                           <div>
                             <span className="font-bold text-sm text-[#1F2937]">{ord.id}</span>
-                            <p className="text-xs text-[#C2410C] font-semibold">{ord.table}</p>
+                            <p className="text-xs text-[#0F5132] font-semibold">{ord.table}</p>
                           </div>
                           <span className="text-[10px] text-[#6B7280]">{ord.time}</span>
                         </div>
@@ -354,7 +354,7 @@ export const RestaurantPage: React.FC = () => {
             >
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#FFF8F3] text-[#6B7280] border border-[#E5E7EB]">
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#F8FAFC] text-[#6B7280] border border-[#E5E7EB]">
                     {item.category}
                   </span>
                   <span
@@ -373,7 +373,7 @@ export const RestaurantPage: React.FC = () => {
               </div>
 
               <div className="flex items-center justify-between pt-3 border-t border-[#E5E7EB]">
-                <span className="text-base font-bold text-[#C2410C]">
+                <span className="text-base font-bold text-[#0F5132]">
                   {formatINR(item.price)}
                 </span>
                 <span className="text-[11px] text-[#6B7280]">+ 5% GST</span>
@@ -389,7 +389,7 @@ export const RestaurantPage: React.FC = () => {
           {tables.map((tbl) => {
             const statusColors: Record<string, string> = {
               Vacant: 'border-emerald-200 text-emerald-700 bg-emerald-50/50',
-              Occupied: 'border-[#FED7AA] text-[#C2410C] bg-[#FFF1E6]',
+              Occupied: 'border-[#BBF7D0] text-[#0F5132] bg-[#F0FDF4]',
               Reserved: 'border-blue-200 text-blue-700 bg-blue-50/50',
             };
 
@@ -398,7 +398,7 @@ export const RestaurantPage: React.FC = () => {
                 key={tbl.id}
                 className={`p-4 rounded-2xl bg-white border ${statusColors[tbl.status]} shadow-sm space-y-2 text-center`}
               >
-                <div className="w-10 h-10 rounded-full bg-[#FFF8F3] border border-[#E5E7EB] mx-auto flex items-center justify-center font-bold text-sm text-[#1F2937]">
+                <div className="w-10 h-10 rounded-full bg-[#F8FAFC] border border-[#E5E7EB] mx-auto flex items-center justify-center font-bold text-sm text-[#1F2937]">
                   {tbl.number}
                 </div>
                 <span className="font-bold text-sm block text-[#1F2937]">

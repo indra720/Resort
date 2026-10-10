@@ -1,4 +1,4 @@
-import { ActivityItem } from '@/components/ui/ActivityFeed';
+﻿import { ActivityItem } from '@/components/ui/ActivityFeed';
 import {
   BedDouble,
   UserCheck,
@@ -20,7 +20,7 @@ export const MONTHLY_REVENUE_DATA = [
 
 // Room Occupancy Donut Data
 export const ROOM_OCCUPANCY_DATA = [
-  { name: 'Occupied', value: 16, color: '#C2410C' },
+  { name: 'Occupied', value: 16, color: '#0F5132' },
   { name: 'Available', value: 8, color: '#22C55E' },
   { name: 'Cleaning', value: 4, color: '#F59E0B' },
   { name: 'Maintenance', value: 2, color: '#EF4444' },

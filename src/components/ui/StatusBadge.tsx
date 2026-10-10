@@ -31,10 +31,10 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
       dot: 'bg-emerald-600',
     },
     Occupied: {
-      bg: 'bg-[#FFF1E6]',
-      text: 'text-[#C2410C]',
-      border: 'border-[#FED7AA]',
-      dot: 'bg-[#C2410C]',
+      bg: 'bg-[#F0FDF4]',
+      text: 'text-[#0F5132]',
+      border: 'border-[#BBF7D0]',
+      dot: 'bg-[#0F5132]',
     },
     Reserved: {
       bg: 'bg-blue-50',
@@ -42,11 +42,23 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
       border: 'border-blue-200',
       dot: 'bg-blue-600',
     },
+    Dirty: {
+      bg: 'bg-orange-50',
+      text: 'text-orange-700',
+      border: 'border-orange-200',
+      dot: 'bg-orange-500',
+    },
     Cleaning: {
       bg: 'bg-amber-50',
       text: 'text-amber-700',
       border: 'border-amber-200',
       dot: 'bg-amber-600',
+    },
+    Clean: {
+      bg: 'bg-teal-50',
+      text: 'text-teal-700',
+      border: 'border-teal-200',
+      dot: 'bg-teal-600',
     },
     Maintenance: {
       bg: 'bg-rose-50',
@@ -75,7 +87,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
   };
 
   const current = configMap[status] || {
-    bg: 'bg-[#FFF8F3]',
+    bg: 'bg-[#F8FAFC]',
     text: 'text-[#6B7280]',
     border: 'border-[#E5E7EB]',
     dot: 'bg-[#6B7280]',

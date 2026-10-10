@@ -20,6 +20,11 @@ export const RoleGuard: React.FC<RoleGuardProps> = ({
 }) => {
   const { role } = useAuthStore();
 
+  // Super Admin wildcard access across all modules
+  if (role === 'Super Admin') {
+    return <>{children}</>;
+  }
+
   if (!allowedRoles.includes(role)) {
     return <>{fallback}</>;
   }

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { cn } from '@/lib/utils';
 import { Inbox } from 'lucide-react';
 
@@ -27,11 +27,11 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
         className
       )}
     >
-      <div className="w-14 h-14 rounded-2xl bg-[#FFF1E6] border border-[#FED7AA] flex items-center justify-center text-[#C2410C] mb-4 shadow-xs">
+      <div className="w-14 h-14 rounded-2xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-[#0F5132] mb-4 shadow-xs">
         {icon || <Inbox className="w-7 h-7" />}
       </div>
 
-      <h3 className="text-base sm:text-lg font-bold text-[#C2410C] mb-1">
+      <h3 className="text-base sm:text-lg font-bold text-[#0F5132] mb-1">
         {title}
       </h3>
 

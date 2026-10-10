@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { MOCK_NOTIFICATIONS, NotificationItem } from '@/data/mockNotifications';
 import { Button } from '@/components/ui/Button';
 import { toast } from '@/store/useToastStore';
@@ -34,7 +34,7 @@ export const NotificationsPage: React.FC = () => {
   const getIcon = (type: string) => {
     switch (type) {
       case 'booking':
-        return <CalendarCheck className="w-4 h-4 text-[#C2410C]" />;
+        return <CalendarCheck className="w-4 h-4 text-[#0F5132]" />;
       case 'alert':
         return <AlertTriangle className="w-4 h-4 text-[#F59E0B]" />;
       case 'service':
@@ -42,7 +42,7 @@ export const NotificationsPage: React.FC = () => {
       case 'payment':
         return <CreditCard className="w-4 h-4 text-[#22C55E]" />;
       default:
-        return <Bell className="w-4 h-4 text-[#C2410C]" />;
+        return <Bell className="w-4 h-4 text-[#0F5132]" />;
     }
   };
 
@@ -50,8 +50,8 @@ export const NotificationsPage: React.FC = () => {
     <div className="w-full space-y-6 text-left">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C] flex items-center gap-2">
-            <Bell className="w-6 h-6 text-[#C2410C]" />
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+            <Bell className="w-6 h-6 text-[#0F5132]" />
             <span>Resort Notifications Center</span>
           </h1>
           <p className="text-xs sm:text-sm text-[#6B7280]">
@@ -85,7 +85,7 @@ export const NotificationsPage: React.FC = () => {
           onClick={() => setFilter('all')}
           className={`px-3 py-1.5 rounded-lg transition-colors font-medium ${
             filter === 'all'
-              ? 'bg-[#C2410C] text-white'
+              ? 'bg-[#0F5132] text-white'
               : 'text-[#6B7280] hover:text-[#1F2937]'
           }`}
         >
@@ -95,7 +95,7 @@ export const NotificationsPage: React.FC = () => {
           onClick={() => setFilter('unread')}
           className={`px-3 py-1.5 rounded-lg transition-colors font-medium ${
             filter === 'unread'
-              ? 'bg-[#C2410C] text-white'
+              ? 'bg-[#0F5132] text-white'
               : 'text-[#6B7280] hover:text-[#1F2937]'
           }`}
         >
@@ -115,7 +115,7 @@ export const NotificationsPage: React.FC = () => {
               key={item.id}
               className={`p-4 rounded-xl border transition-all flex items-start gap-3.5 ${
                 !item.read
-                  ? 'bg-[#FFF1E6] border-[#FED7AA] shadow-sm'
+                  ? 'bg-[#F0FDF4] border-[#BBF7D0] shadow-sm'
                   : 'bg-white border-[#E5E7EB] shadow-sm'
               }`}
             >
@@ -132,7 +132,7 @@ export const NotificationsPage: React.FC = () => {
               </div>
 
               {!item.read && (
-                <div className="w-2 h-2 rounded-full bg-[#C2410C] shrink-0 mt-1" />
+                <div className="w-2 h-2 rounded-full bg-[#0F5132] shrink-0 mt-1" />
               )}
             </div>
           ))

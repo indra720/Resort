@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {
+  getHousekeepingTasks,
+  updateHousekeepingTaskStatus,
+  HousekeepingTask,
+} from '@/api/housekeepingApi';
 import { MOCK_ROOMS } from '@/data/mockData';
+import { useAuthStore } from '@/store/useAuthStore';
 import { Button } from '@/components/ui/Button';
 import { Modal } from '@/components/ui/Modal';
 import { Input } from '@/components/ui/Input';
@@ -16,15 +22,6 @@ import {
   ArrowLeft,
 } from 'lucide-react';
 
-interface KanbanTask {
-  id: string;
-  roomNumber: string;
-  category: string;
-  status: 'Dirty' | 'InProgress' | 'Clean';
-  assignedTo: string;
-  notes: string;
-}
-
 interface MaintenanceTicket {
   id: string;
   roomNumber: string;
@@ -35,43 +32,21 @@ interface MaintenanceTicket {
 }
 
 export const HousekeepingPage: React.FC = () => {
+  const { currentResort, role } = useAuthStore();
   const [activeTab, setActiveTab] = useState<'kanban' | 'maintenance'>('kanban');
 
   // Kanban tasks state
-  const [tasks, setTasks] = useState<KanbanTask[]>([
-    {
-      id: 'tsk-1',
-      roomNumber: '102',
-      category: 'Deluxe Cottage',
-      status: 'Dirty',
-      assignedTo: 'Sunita Devi',
-      notes: 'Guest checked out at 11:00 AM. Complete linen turnover required.',
-    },
-    {
-      id: 'tsk-2',
-      roomNumber: '202',
-      category: 'Luxury Suite',
-      status: 'InProgress',
-      assignedTo: 'Sunita Devi',
-      notes: 'Deep cleaning jacuzzi and sanitizing bathroom.',
-    },
-    {
-      id: 'tsk-3',
-      roomNumber: '101',
-      category: 'Deluxe Cottage',
-      status: 'Clean',
-      assignedTo: 'Ramesh K',
-      notes: 'Passed housekeeping supervisor inspection. Ready for check-in.',
-    },
-    {
-      id: 'tsk-4',
-      roomNumber: 'V-01',
-      category: 'Pool Villa',
-      status: 'Clean',
-      assignedTo: 'Housekeeping Team',
-      notes: 'Plunge pool water pH balanced & fresh towels set.',
-    },
-  ]);
+  const [tasks, setTasks] = useState<HousekeepingTask[]>([]);
+
+  const loadTasks = () => {
+    const isSuperAdmin = role === 'Super Admin';
+    const list = getHousekeepingTasks(currentResort.id, isSuperAdmin);
+    setTasks(list);
+  };
+
+  useEffect(() => {
+    loadTasks();
+  }, [currentResort.id, role]);
 
   // Maintenance tickets state
   const [tickets, setTickets] = useState<MaintenanceTicket[]>([
@@ -100,10 +75,16 @@ export const HousekeepingPage: React.FC = () => {
   const [ticketPriority, setTicketPriority] = useState<'High' | 'Medium' | 'Low'>('Medium');
 
   const moveTask = (taskId: string, targetStatus: 'Dirty' | 'InProgress' | 'Clean') => {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === taskId ? { ...t, status: targetStatus } : t))
-    );
-    toast.success('Task Moved', `Room task updated to ${targetStatus}`);
+    updateHousekeepingTaskStatus(taskId, targetStatus);
+    loadTasks();
+    if (targetStatus === 'Clean') {
+      toast.success(
+        'Room Sanitized & Inspected',
+        'Room marked Clean. Status synchronized to Available on Front Desk!'
+      );
+    } else {
+      toast.info('Housekeeping Stage Updated', `Room moved to ${targetStatus}`);
+    }
   };
 
   const handleCreateTicket = () => {
@@ -127,7 +108,7 @@ export const HousekeepingPage: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132]">
             Housekeeping & Maintenance Operations
           </h1>
           <p className="text-xs sm:text-sm text-[#6B7280]">
@@ -153,7 +134,7 @@ export const HousekeepingPage: React.FC = () => {
           onClick={() => setActiveTab('kanban')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'kanban'
-              ? 'border-[#C2410C] text-[#C2410C]'
+              ? 'border-[#0F5132] text-[#0F5132]'
               : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
           }`}
         >
@@ -165,7 +146,7 @@ export const HousekeepingPage: React.FC = () => {
           onClick={() => setActiveTab('maintenance')}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
             activeTab === 'maintenance'
-              ? 'border-[#C2410C] text-[#C2410C]'
+              ? 'border-[#0F5132] text-[#0F5132]'
               : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
           }`}
         >
@@ -196,7 +177,7 @@ export const HousekeepingPage: React.FC = () => {
                   .map((task) => (
                     <div
                       key={task.id}
-                      className="p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-2 text-left"
+                      className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] space-y-2 text-left"
                     >
                       <div className="flex justify-between items-start">
                         <span className="font-bold text-sm text-[#1F2937]">
@@ -205,7 +186,7 @@ export const HousekeepingPage: React.FC = () => {
                         <span className="text-[10px] text-[#6B7280]">{task.category}</span>
                       </div>
                       <p className="text-xs text-[#6B7280] leading-relaxed">{task.notes}</p>
-                      <span className="text-[11px] text-[#C2410C] font-medium block">
+                      <span className="text-[11px] text-[#0F5132] font-medium block">
                         Assigned: {task.assignedTo}
                       </span>
                       <div className="pt-2 border-t border-[#E5E7EB] flex justify-end">
@@ -241,7 +222,7 @@ export const HousekeepingPage: React.FC = () => {
                   .map((task) => (
                     <div
                       key={task.id}
-                      className="p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-2 text-left"
+                      className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] space-y-2 text-left"
                     >
                       <div className="flex justify-between items-start">
                         <span className="font-bold text-sm text-[#1F2937]">
@@ -294,7 +275,7 @@ export const HousekeepingPage: React.FC = () => {
                   .map((task) => (
                     <div
                       key={task.id}
-                      className="p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-2 text-left"
+                      className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] space-y-2 text-left"
                     >
                       <div className="flex justify-between items-start">
                         <span className="font-bold text-sm text-[#1F2937]">
@@ -335,7 +316,7 @@ export const HousekeepingPage: React.FC = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <span className="font-bold text-sm text-[#1F2937]">{tck.id}</span>
-                  <span className="text-xs text-[#C2410C] font-semibold block">
+                  <span className="text-xs text-[#0F5132] font-semibold block">
                     Room #{tck.roomNumber}
                   </span>
                 </div>
@@ -350,7 +331,7 @@ export const HousekeepingPage: React.FC = () => {
                 </span>
               </div>
 
-              <p className="text-xs text-[#1F2937] bg-[#FFF8F3] p-3 rounded-xl border border-[#E5E7EB]">
+              <p className="text-xs text-[#1F2937] bg-[#F8FAFC] p-3 rounded-xl border border-[#E5E7EB]">
                 {tck.issue}
               </p>
 

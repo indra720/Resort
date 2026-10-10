@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -97,7 +97,7 @@ export const Modal: React.FC<ModalProps> = ({
             <div className="px-5 py-4 border-b border-[#E5E7EB] flex items-center justify-between shrink-0">
               <div className="space-y-1 pr-4">
                 {title && (
-                  <h2 className="text-base sm:text-lg font-bold text-[#C2410C] tracking-tight">
+                  <h2 className="text-base sm:text-lg font-bold text-[#0F5132] tracking-tight">
                     {title}
                   </h2>
                 )}
@@ -110,7 +110,7 @@ export const Modal: React.FC<ModalProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="w-11 h-11 flex items-center justify-center rounded-lg text-[#6B7280] hover:text-[#1F2937] hover:bg-[#FFF8F3] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C2410C]"
+                className="w-11 h-11 flex items-center justify-center rounded-lg text-[#6B7280] hover:text-[#1F2937] hover:bg-[#F8FAFC] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F5132]"
                 aria-label="Close dialog"
               >
                 <X className="w-5 h-5" />
@@ -124,7 +124,7 @@ export const Modal: React.FC<ModalProps> = ({
 
             {/* Modal Footer */}
             {footer && (
-              <div className="p-4 sm:p-5 border-t border-[#E5E7EB] bg-[#FFF8F3] shrink-0">
+              <div className="p-4 sm:p-5 border-t border-[#E5E7EB] bg-[#F8FAFC] shrink-0">
                 {footer}
               </div>
             )}

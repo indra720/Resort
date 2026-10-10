@@ -4,17 +4,17 @@
 
 @layer base {
   :root {
-    --background: #FFFFFF;
+    --background: #F8FAFC;
     --card: #FFFFFF;
     --elevated: #FFFFFF;
     --border: #E5E7EB;
-    --primary: #C2410C;
-    --primary-hover: #9A3412;
-    --primary-button: #C2410C;
-    --primary-accent: #D95F02;
-    --primary-soft: #FFF1E6;
+    --primary: #0F5132;
+    --primary-hover: #0B3D25;
+    --primary-button: #0F5132;
+    --primary-accent: #16A34A;
+    --primary-soft: #DCFCE7;
     --primary-foreground: #FFFFFF;
-    --foreground: #1F2937;
+    --foreground: #111827;
     --muted-foreground: #6B7280;
     --success: #16A34A;
     --warning: #D97706;
@@ -28,42 +28,42 @@
   }
 
   body {
-    background-color: #FFFFFF;
-    color: #1F2937;
+    background-color: #F8FAFC;
+    color: #111827;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-feature-settings: 'rlig' 1, 'calt' 1;
     overflow-x: hidden;
   }
 
-  /* Universal Dark Orange Focus Ring for Accessibility */
+  /* Universal Forest Green Focus Ring for Accessibility */
   *:focus-visible {
-    outline: 2px solid #C2410C;
+    outline: 2px solid #0F5132;
     outline-offset: 2px;
   }
 
   ::selection {
-    background-color: #C2410C;
+    background-color: #0F5132;
     color: #ffffff;
   }
 }
 
-/* Custom Sleek Light Scrollbar with Dark Orange Hover */
+/* Custom Sleek Light Scrollbar with Forest Green Hover */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #FFFFFF;
+  background: #F8FAFC;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #E5E7EB;
+  background: #CBD5E1;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C2410C;
+  background: #0F5132;
 }
 
 /* Utility to ensure mobile touch targets are at least 44px */

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { cn } from '@/lib/utils';
 
 export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -22,7 +22,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   return (
     <div
       className={cn(
-        'animate-pulse bg-[#FFF8F3] border border-[#E5E7EB]',
+        'animate-pulse bg-[#F8FAFC] border border-[#E5E7EB]',
         variantStyles[variant],
         className
       )}

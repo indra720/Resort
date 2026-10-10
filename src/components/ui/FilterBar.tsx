@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Search, X, RotateCcw } from 'lucide-react';
 import { Button } from './Button';
 
@@ -32,7 +32,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder={searchPlaceholder}
-          className="w-full min-h-[44px] pl-10 pr-9 text-xs sm:text-sm bg-[#FFF8F3] text-[#1F2937] placeholder:text-[#6B7280] border border-[#E5E7EB] rounded-lg focus:outline-none focus:border-[#C2410C] focus:ring-1 focus:ring-[#C2410C]"
+          className="w-full min-h-[44px] pl-10 pr-9 text-xs sm:text-sm bg-[#F8FAFC] text-[#1F2937] placeholder:text-[#6B7280] border border-[#E5E7EB] rounded-lg focus:outline-none focus:border-[#0F5132] focus:ring-1 focus:ring-[#0F5132]"
         />
         {searchQuery && (
           <button

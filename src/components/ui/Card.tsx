@@ -12,8 +12,8 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         ref={ref}
         className={cn(
           // Base card styling - Pure Crisp White Surface with Layered Luxury Shadow
-          'bg-white text-[#1F2937] border border-[#E5E7EB] rounded-xl sm:rounded-2xl shadow-[0_4px_20px_-2px_rgba(0,0,0,0.05),0_1px_3px_0_rgba(0,0,0,0.02)] transition-all duration-200 overflow-hidden',
-          hoverEffect && 'hover:border-[#C2410C]/40 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.08)] hover:-translate-y-0.5',
+          'bg-white text-[#111827] border border-[#E2E8F0] rounded-xl sm:rounded-2xl shadow-[0_4px_20px_-2px_rgba(0,0,0,0.04),0_1px_3px_0_rgba(0,0,0,0.02)] transition-all duration-200 overflow-hidden',
+          hoverEffect && 'hover:border-[#0F5132]/40 hover:shadow-[0_12px_28px_-4px_rgba(0,0,0,0.08)] hover:-translate-y-0.5',
           className
         )}
         {...props}
@@ -28,7 +28,7 @@ export const CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<
     return (
       <div
         ref={ref}
-        className={cn('p-4 sm:p-5 flex flex-col space-y-1.5 border-b border-[#E5E7EB]', className)}
+        className={cn('p-4 sm:p-5 flex flex-col space-y-1.5 border-b border-[#E2E8F0]', className)}
         {...props}
       />
     );
@@ -41,7 +41,7 @@ export const CardTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttribut
     return (
       <h3
         ref={ref}
-        className={cn('text-base sm:text-lg font-bold text-[#C2410C] tracking-tight', className)}
+        className={cn('text-base sm:text-lg font-bold text-[#0F5132] tracking-tight', className)}
         {...props}
       >
         {children}
@@ -56,7 +56,7 @@ export const CardDescription = React.forwardRef<HTMLParagraphElement, React.HTML
     return (
       <p
         ref={ref}
-        className={cn('text-xs sm:text-sm text-[#6B7280]', className)}
+        className={cn('text-xs sm:text-sm text-[#64748B]', className)}
         {...props}
       />
     );

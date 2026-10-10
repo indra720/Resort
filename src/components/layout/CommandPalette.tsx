@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, X, BedDouble, Calendar, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -74,8 +74,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           className="relative z-10 w-full max-w-xl bg-white border border-[#E5E7EB] rounded-xl shadow-2xl overflow-hidden flex flex-col"
         >
           {/* Search Header */}
-          <div className="flex items-center px-4 border-b border-[#E5E7EB] bg-[#FFF8F3]">
-            <Search className="w-5 h-5 text-[#C2410C] shrink-0 mr-3" />
+          <div className="flex items-center px-4 border-b border-[#E5E7EB] bg-[#F8FAFC]">
+            <Search className="w-5 h-5 text-[#0F5132] shrink-0 mr-3" />
             <input
               type="text"
               autoFocus
@@ -115,10 +115,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   <button
                     key={item.path}
                     onClick={() => handleSelect(item.path)}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm text-[#1F2937] hover:bg-[#FFF8F3] hover:text-[#C2410C] transition-colors group text-left"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm text-[#1F2937] hover:bg-[#F8FAFC] hover:text-[#0F5132] transition-colors group text-left"
                   >
                     <span>{item.label}</span>
-                    <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 text-[#C2410C] transition-opacity" />
+                    <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 text-[#0F5132] transition-opacity" />
                   </button>
                 ))}
               </div>
@@ -135,16 +135,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                     <button
                       key={room.id}
                       onClick={() => handleSelect('/rooms')}
-                      className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm bg-[#FFF8F3] border border-[#E5E7EB] hover:border-[#C2410C]/40 hover:bg-[#FFF1E6]/40 transition-colors text-left"
+                      className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm bg-[#F8FAFC] border border-[#E5E7EB] hover:border-[#0F5132]/40 hover:bg-[#F0FDF4]/40 transition-colors text-left"
                     >
                       <div className="flex items-center gap-2.5">
-                        <BedDouble className="w-4 h-4 text-[#C2410C]" />
+                        <BedDouble className="w-4 h-4 text-[#0F5132]" />
                         <span className="font-medium text-[#1F2937]">Room #{room.roomNumber}</span>
                         <span className="text-xs text-[#6B7280]">{room.category}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <StatusBadge status={room.status} size="sm" />
-                        <span className="text-xs font-semibold text-[#C2410C]">
+                        <span className="text-xs font-semibold text-[#0F5132]">
                           {formatINR(room.ratePerNight)}
                         </span>
                       </div>
@@ -165,7 +165,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                     <button
                       key={b.id}
                       onClick={() => handleSelect('/bookings')}
-                      className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm bg-[#FFF8F3] border border-[#E5E7EB] hover:border-[#C2410C]/40 hover:bg-[#FFF1E6]/40 transition-colors text-left"
+                      className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm bg-[#F8FAFC] border border-[#E5E7EB] hover:border-[#0F5132]/40 hover:bg-[#F0FDF4]/40 transition-colors text-left"
                     >
                       <div className="flex items-center gap-2.5">
                         <Calendar className="w-4 h-4 text-[#2563EB]" />

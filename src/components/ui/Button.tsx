@@ -12,7 +12,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 /**
- * Custom accessible button with 44px mobile touch target and brand orange focus ring.
+ * Custom accessible button with 44px touch target and Joy Resorts Forest Green theme.
  */
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -31,24 +31,21 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    // Base styles: rounded, transition, focus ring, font weight, min touch target
     const baseStyles =
-      'inline-flex items-center justify-center font-medium rounded-lg transition-colors duration-150 select-none whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C2410C] focus-visible:ring-offset-2 focus-visible:ring-offset-white active:scale-[0.98]';
+      'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-150 select-none whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F5132] focus-visible:ring-offset-2 focus-visible:ring-offset-white active:scale-[0.98]';
 
-    // Variants according to White + Dark Orange Design System
     const variantStyles = {
-      primary: 'bg-[#C2410C] text-white hover:bg-[#9A3412] active:bg-[#9A3412] shadow-sm',
-      secondary: 'bg-[#FFF1E6] text-[#C2410C] border border-[#FED7AA] hover:bg-[#FED7AA] hover:text-[#9A3412]',
-      outline: 'bg-transparent text-[#C2410C] border border-[#C2410C] hover:bg-[#C2410C] hover:text-white',
-      ghost: 'bg-transparent text-[#6B7280] hover:bg-[#FFF8F3] hover:text-[#C2410C]',
+      primary: 'bg-[#0F5132] text-white hover:bg-[#0B3D25] active:bg-[#082C1B] shadow-xs',
+      secondary: 'bg-emerald-50 text-[#0F5132] border border-emerald-200 hover:bg-emerald-100 hover:text-[#0B3D25]',
+      outline: 'bg-transparent text-[#0F5132] border border-[#0F5132] hover:bg-[#0F5132] hover:text-white',
+      ghost: 'bg-transparent text-[#4B5563] hover:bg-[#F3F4F6] hover:text-[#0F5132]',
       danger: 'bg-rose-50 text-[#DC2626] border border-rose-200 hover:bg-[#DC2626] hover:text-white',
-      success: 'bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-600 hover:text-white',
+      success: 'bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-[#0F5132] hover:text-white',
     };
 
-    // Sizes ensuring at least 44px touch height on mobile
     const sizeStyles = {
-      sm: 'text-xs min-h-[40px] sm:min-h-[36px] px-3 gap-1.5',
-      md: 'text-sm min-h-[44px] px-4 gap-2',
+      sm: 'text-xs min-h-[36px] px-3 gap-1.5',
+      md: 'text-sm min-h-[42px] px-4 gap-2',
       lg: 'text-base min-h-[48px] px-5 gap-2.5',
     };
 

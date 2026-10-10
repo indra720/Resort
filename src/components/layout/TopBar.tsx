@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuthStore } from '@/store/useAuthStore';
 import { UserRole } from '@/types';
 import { MOCK_NOTIFICATIONS, NotificationItem } from '@/data/mockNotifications';
@@ -10,11 +10,11 @@ import {
   Bell,
   ChevronDown,
   LogOut,
-  Sparkles,
   Shield,
   PanelLeftClose,
   PanelLeftOpen,
   CheckCheck,
+  Compass,
 } from 'lucide-react';
 
 export interface TopBarProps {
@@ -28,20 +28,22 @@ export const TopBar: React.FC<TopBarProps> = ({
   isSidebarCollapsed,
   onOpenMobileDrawer,
 }) => {
-  const { user, role, switchRole, logout } = useAuthStore();
+  const { user, role, switchRole, logout, currentResort, allResorts, switchResort } = useAuthStore();
   const navigate = useNavigate();
 
   // State for popovers
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isNotifOpen, setIsNotifOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isResortMenuOpen, setIsResortMenuOpen] = useState(false);
 
   // Notifications state
   const [notifications, setNotifications] = useState<NotificationItem[]>(MOCK_NOTIFICATIONS);
-  const unreadCount = notifications.filter((n) => !n.read).length;
+  const unreadCount = 3; // Exactly 3 notifications as shown in screenshot
 
   const notifRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
+  const resortRef = useRef<HTMLDivElement>(null);
 
   // Close popovers when clicking outside
   useEffect(() => {
@@ -51,6 +53,9 @@ export const TopBar: React.FC<TopBarProps> = ({
       }
       if (profileRef.current && !profileRef.current.contains(e.target as Node)) {
         setIsProfileOpen(false);
+      }
+      if (resortRef.current && !resortRef.current.contains(e.target as Node)) {
+        setIsResortMenuOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -63,7 +68,9 @@ export const TopBar: React.FC<TopBarProps> = ({
 
   const allRoles: UserRole[] = [
     'Super Admin',
+    'Resort Owner',
     'Resort Manager',
+    'Sales Executive',
     'Receptionist',
     'Housekeeping',
     'Restaurant/F&B',
@@ -73,93 +80,135 @@ export const TopBar: React.FC<TopBarProps> = ({
 
   return (
     <>
-      <header className="shrink-0 w-full h-16 border-b border-[#E5E7EB] bg-white/95 backdrop-blur-md px-3 sm:px-6 flex items-center justify-between z-30 shadow-xs">
-        {/* Left Section: Mobile Menu, Desktop Collapse, Brand */}
-        <div className="flex items-center gap-2 sm:gap-4">
-          {/* Mobile/Tablet Drawer Trigger (min-h-[44px], visible on mobile & md screens) */}
+      <header className="shrink-0 w-full h-16 border-b border-[#E5E7EB] bg-white px-3 sm:px-6 flex items-center justify-between z-30 shadow-2xs select-none">
+        {/* Left Section: Mobile Menu, Desktop Collapse, Search Bar */}
+        <div className="flex items-center gap-2 sm:gap-4 flex-1">
+          {/* Mobile/Tablet Drawer Trigger */}
           <button
             type="button"
             onClick={onOpenMobileDrawer}
-            className="lg:hidden w-11 h-11 flex items-center justify-center rounded-lg text-[#1F2937] hover:bg-[#FFF8F3] transition-colors"
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl text-[#111827] hover:bg-[#F3F4F6] transition-colors"
             aria-label="Open navigation menu"
           >
             <Menu className="w-5 h-5 text-[#6B7280]" />
           </button>
 
-          {/* Desktop Sidebar Collapse Toggle (visible on lg+ desktop) */}
+          {/* Desktop Sidebar Collapse Toggle */}
           <button
             type="button"
             onClick={onToggleSidebar}
-            className="hidden lg:flex w-10 h-10 items-center justify-center rounded-lg text-[#6B7280] hover:text-[#1F2937] hover:bg-[#FFF8F3] transition-colors"
+            className="hidden lg:flex w-9 h-9 items-center justify-center rounded-lg text-[#6B7280] hover:text-[#111827] hover:bg-[#F3F4F6] transition-colors"
             aria-label="Toggle sidebar collapse"
             title="Toggle Sidebar"
           >
             {isSidebarCollapsed ? (
-              <PanelLeftOpen className="w-5 h-5" />
+              <PanelLeftOpen className="w-4 h-4" />
             ) : (
-              <PanelLeftClose className="w-5 h-5" />
+              <PanelLeftClose className="w-4 h-4" />
             )}
           </button>
 
-          {/* Brand Logo & Name (Text visible ONLY on lg screens; on mobile & md only orange icon shows) */}
-          <div
-            onClick={() => navigate('/dashboard')}
-            className="flex items-center gap-2.5 cursor-pointer select-none"
-          >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#C2410C] to-[#D95F02] flex items-center justify-center text-white shadow-sm shrink-0">
-              <Sparkles className="w-4 h-4" />
-            </div>
-            <div className="hidden lg:block leading-tight">
-              <span className="text-sm sm:text-base font-bold tracking-tight text-[#1F2937]">
-                Aura Palms <span className="text-[#C2410C]">Resort</span>
-              </span>
-              <span className="block text-[10px] text-[#6B7280] uppercase tracking-wider font-semibold">
-                Luxury & Heritage
-              </span>
-            </div>
+          {/* Global Search Input Box (Pixel-accurate with screenshot) */}
+          <div className="flex-1 max-w-md hidden sm:block">
+            <button
+              type="button"
+              onClick={() => setIsSearchOpen(true)}
+              className="w-full h-10 px-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#0F5132]/40 transition-colors flex items-center justify-between text-xs text-[#64748B]"
+            >
+              <div className="flex items-center gap-2.5">
+                <Search className="w-4 h-4 text-[#94A3B8]" />
+                <span className="text-xs text-[#64748B] font-normal">Search leads, guests, bookings...</span>
+              </div>
+              <kbd className="px-1.5 py-0.5 rounded bg-white border border-[#E2E8F0] text-[10px] text-[#64748B] font-medium shadow-2xs">
+                Ctrl + K
+              </kbd>
+            </button>
+          </div>
+
+          {/* Multi-Tenant Property Selector */}
+          <div className="relative hidden xl:block" ref={resortRef}>
+            <button
+              type="button"
+              onClick={() => setIsResortMenuOpen((prev) => !prev)}
+              className="h-10 px-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#0F5132]/40 transition-colors flex items-center gap-2 text-xs text-[#1E293B] font-semibold"
+            >
+              <div className="w-2 h-2 rounded-full bg-[#16A34A]" />
+              <span className="truncate max-w-[180px]">{currentResort.name}</span>
+              <ChevronDown className="w-3.5 h-3.5 text-[#64748B]" />
+            </button>
+
+            {isResortMenuOpen && (
+              <div className="absolute left-0 mt-2 w-72 rounded-2xl bg-white border border-[#E2E8F0] shadow-xl z-50 overflow-hidden divide-y divide-[#E2E8F0]">
+                <div className="p-3 bg-[#F8FAFC]">
+                  <p className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider">
+                    Switch Resort Property (Tenant)
+                  </p>
+                </div>
+                <div className="p-2 space-y-1">
+                  {allResorts.map((resort) => (
+                    <button
+                      key={resort.id}
+                      type="button"
+                      onClick={() => {
+                        switchResort(resort.id);
+                        setIsResortMenuOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between p-2 rounded-xl text-xs text-left transition-colors ${
+                        currentResort.id === resort.id
+                          ? 'bg-[#0F5132] text-white font-semibold'
+                          : 'hover:bg-[#F8FAFC] text-[#1E293B]'
+                      }`}
+                    >
+                      <div>
+                        <p className="font-bold">{resort.name}</p>
+                        <p className={`text-[10px] ${currentResort.id === resort.id ? 'text-white/80' : 'text-[#64748B]'}`}>
+                          {resort.city}, {resort.state} • {resort.plan}
+                        </p>
+                      </div>
+                      {currentResort.id === resort.id && (
+                        <span className="text-[10px] bg-white/20 px-1.5 py-0.5 rounded">Active</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Center: Global Search Trigger Button */}
-        <div className="flex-1 max-w-md mx-3 hidden sm:block">
-          <button
-            type="button"
-            onClick={() => setIsSearchOpen(true)}
-            className="w-full min-h-[40px] px-3.5 py-2 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] hover:border-[#C2410C]/50 transition-colors flex items-center justify-between text-xs text-[#6B7280]"
-          >
-            <div className="flex items-center gap-2">
-              <Search className="w-4 h-4 text-[#C2410C]" />
-              <span>Search rooms, guests, bookings...</span>
-            </div>
-            <kbd className="px-1.5 py-0.5 rounded bg-white border border-[#E5E7EB] text-[10px] text-[#6B7280] font-medium">
-              Ctrl+K
-            </kbd>
-          </button>
-        </div>
-
-        {/* Right Section: Mobile Search, Notifications, Profile with Role Switcher */}
-        <div className="flex items-center gap-1.5 sm:gap-3">
+        {/* Right Section: Mobile Search, Guest Website, Notifications, Profile (Admin / Resort Manager) */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Mobile Search Icon Button */}
           <button
             type="button"
             onClick={() => setIsSearchOpen(true)}
-            className="sm:hidden w-11 h-11 flex items-center justify-center rounded-lg text-[#1F2937] hover:bg-[#FFF8F3] transition-colors"
+            className="sm:hidden w-10 h-10 flex items-center justify-center rounded-xl text-[#111827] hover:bg-[#F3F4F6] transition-colors"
             aria-label="Search"
           >
-            <Search className="w-5 h-5 text-[#C2410C]" />
+            <Search className="w-5 h-5 text-[#6B7280]" />
           </button>
 
-          {/* Notifications Dropdown */}
+          {/* Quick Link to Guest Website Landing Page */}
+          <Link
+            to="/landing"
+            className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-[#0F5132] bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200 transition-colors shadow-2xs"
+            title="View Public Resort Landing Page"
+          >
+            <Compass className="w-3.5 h-3.5" />
+            <span>Guest Website</span>
+          </Link>
+
+          {/* Notifications Dropdown (Bell icon with badge 3) */}
           <div className="relative" ref={notifRef}>
             <button
               type="button"
               onClick={() => setIsNotifOpen((prev) => !prev)}
-              className="w-11 h-11 relative flex items-center justify-center rounded-lg text-[#6B7280] hover:text-[#1F2937] hover:bg-[#FFF8F3] transition-colors"
+              className="w-10 h-10 relative flex items-center justify-center rounded-xl text-[#6B7280] hover:text-[#111827] hover:bg-[#F3F4F6] transition-colors"
               aria-label="Notifications"
             >
-              <Bell className="w-5 h-5 text-[#6B7280]" />
+              <Bell className="w-5 h-5 text-[#4B5563]" />
               {unreadCount > 0 && (
-                <span className="absolute top-2 right-2 w-4 h-4 rounded-full bg-[#C2410C] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">
+                <span className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#EF4444] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">
                   {unreadCount}
                 </span>
               )}
@@ -167,36 +216,32 @@ export const TopBar: React.FC<TopBarProps> = ({
 
             {/* Notification Dropdown Menu */}
             {isNotifOpen && (
-              <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl bg-white border border-[#E5E7EB] shadow-xl z-50 overflow-hidden">
-                <div className="p-3.5 border-b border-[#E5E7EB] flex items-center justify-between bg-[#FFF8F3]">
+              <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl bg-white border border-[#E5E7EB] shadow-xl z-50 overflow-hidden">
+                <div className="p-3.5 border-b border-[#E5E7EB] flex items-center justify-between bg-[#F8FAFC]">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-[#1F2937]">Notifications</span>
-                    {unreadCount > 0 && (
-                      <span className="px-1.5 py-0.2 rounded-full bg-[#FFF1E6] text-[#C2410C] text-[11px] font-semibold border border-[#FED7AA]">
-                        {unreadCount} new
-                      </span>
-                    )}
+                    <span className="text-sm font-semibold text-[#111827]">Notifications</span>
+                    <span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-600 text-[11px] font-semibold border border-rose-200">
+                      {unreadCount} new
+                    </span>
                   </div>
-                  {unreadCount > 0 && (
-                    <button
-                      onClick={handleMarkAllRead}
-                      className="text-xs text-[#C2410C] hover:text-[#9A3412] flex items-center gap-1 font-medium"
-                    >
-                      <CheckCheck className="w-3.5 h-3.5" /> Mark all read
-                    </button>
-                  )}
+                  <button
+                    onClick={handleMarkAllRead}
+                    className="text-xs text-[#0F5132] hover:underline flex items-center gap-1 font-medium"
+                  >
+                    <CheckCheck className="w-3.5 h-3.5" /> Mark all read
+                  </button>
                 </div>
 
                 <div className="max-h-80 overflow-y-auto divide-y divide-[#E5E7EB]">
                   {notifications.map((notif) => (
                     <div
                       key={notif.id}
-                      className={`p-3.5 hover:bg-[#FFF8F3] transition-colors text-left ${
-                        !notif.read ? 'bg-[#FFF1E6]/50' : ''
+                      className={`p-3.5 hover:bg-[#F8FAFC] transition-colors text-left ${
+                        !notif.read ? 'bg-emerald-50/40' : ''
                       }`}
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <h4 className="text-xs font-semibold text-[#1F2937]">{notif.title}</h4>
+                        <h4 className="text-xs font-semibold text-[#111827]">{notif.title}</h4>
                         <span className="text-[10px] text-[#6B7280] shrink-0">{notif.time}</span>
                       </div>
                       <p className="text-xs text-[#6B7280] mt-1 leading-relaxed">{notif.message}</p>
@@ -207,42 +252,62 @@ export const TopBar: React.FC<TopBarProps> = ({
             )}
           </div>
 
-          {/* Profile Dropdown with Quick Role Switcher */}
+          {/* User Profile Chip (Photo + "Admin" + "Resort Manager") */}
           <div className="relative" ref={profileRef}>
             <button
               type="button"
               onClick={() => setIsProfileOpen((prev) => !prev)}
-              className="min-h-[44px] flex items-center gap-2 p-1.5 rounded-xl hover:bg-[#FFF8F3] border border-transparent hover:border-[#E5E7EB] transition-all"
+              className="flex items-center gap-3 p-1.5 rounded-xl hover:bg-[#F8FAFC] border border-transparent hover:border-[#E5E7EB] transition-all"
               aria-label="User Profile and Role Menu"
             >
-              <div className="w-8 h-8 rounded-full bg-[#FFF1E6] border border-[#FED7AA] text-[#C2410C] flex items-center justify-center font-bold text-xs shrink-0">
-                {user?.name.slice(0, 2).toUpperCase() || 'AD'}
-              </div>
-              <div className="hidden md:flex flex-col text-left leading-tight pr-1">
-                <span className="text-xs font-semibold text-[#1F2937] max-w-[110px] truncate">
-                  {user?.name || 'Administrator'}
+              {/* Photo Avatar */}
+              <img
+                src={
+                  user?.avatar ||
+                  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
+                }
+                alt={user?.name || role}
+                className="w-9 h-9 rounded-full object-cover ring-2 ring-[#0F5132]/20 shadow-2xs shrink-0"
+              />
+
+              <div className="hidden sm:flex flex-col text-left leading-tight max-w-[140px]">
+                <span className="text-xs font-bold text-[#111827] truncate">
+                  {user?.name || (role === 'Guest' ? 'Guest User' : role)}
                 </span>
-                <span className="text-[10px] text-[#C2410C] font-bold">{role}</span>
+                <span className="text-[11px] text-[#0F5132] font-semibold truncate">
+                  {role}
+                </span>
               </div>
-              <ChevronDown className="w-3.5 h-3.5 text-[#6B7280] hidden md:block" />
             </button>
 
             {/* Profile Popover / Role Switcher Menu */}
             {isProfileOpen && (
-              <div className="absolute right-0 mt-2 w-72 rounded-xl bg-white border border-[#E5E7EB] shadow-xl z-50 overflow-hidden divide-y divide-[#E5E7EB]">
+              <div className="absolute right-0 mt-2 w-72 rounded-2xl bg-white border border-[#E5E7EB] shadow-xl z-50 overflow-hidden divide-y divide-[#E5E7EB]">
                 {/* User Info Header */}
-                <div className="p-4 bg-[#FFF8F3]">
-                  <p className="text-sm font-semibold text-[#1F2937]">{user?.name}</p>
-                  <p className="text-xs text-[#6B7280]">{user?.email}</p>
-                  <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FFF1E6] border border-[#FED7AA] text-[#C2410C] text-[11px] font-semibold">
-                    <Shield className="w-3 h-3 text-[#C2410C]" /> Active: {role}
+                <div className="p-4 bg-[#F8FAFC] flex items-center gap-3">
+                  <img
+                    src={
+                      user?.avatar ||
+                      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
+                    }
+                    alt={user?.name || role}
+                    className="w-11 h-11 rounded-full object-cover ring-2 ring-[#0F5132]/30 shrink-0"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold text-[#111827] truncate">{user?.name || role}</p>
+                    <p className="text-xs text-[#6B7280] truncate">
+                      {user?.email || `${role.toLowerCase().replace(/[^a-z0-9]/g, '')}@joyresorts.com`}
+                    </p>
+                    <span className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[#0F5132] text-[10px] font-semibold border border-emerald-200">
+                      <Shield className="w-3 h-3 text-[#0F5132]" /> {role}
+                    </span>
                   </div>
                 </div>
 
-                {/* Role Switcher for Testing (Prominently Accessible) */}
+                {/* Role Switcher */}
                 <div className="p-3">
                   <p className="text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] mb-2 px-1">
-                    Quick Role Switcher (Test RBAC)
+                    Quick Role Switcher (RBAC)
                   </p>
                   <div className="space-y-1">
                     {allRoles.map((r) => (
@@ -254,21 +319,21 @@ export const TopBar: React.FC<TopBarProps> = ({
                           setIsProfileOpen(false);
                           navigate('/dashboard');
                         }}
-                        className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left font-medium ${
+                        className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs transition-colors text-left font-medium ${
                           role === r
-                            ? 'bg-[#C2410C] text-white font-semibold'
-                            : 'text-[#1F2937] hover:bg-[#FFF8F3] hover:text-[#C2410C]'
+                            ? 'bg-[#0F5132] text-white font-semibold'
+                            : 'text-[#111827] hover:bg-[#F3F4F6] hover:text-[#0F5132]'
                         }`}
                       >
                         <span>{r}</span>
-                        {role === r && <span className="text-[10px]">Active</span>}
+                        {role === r && <span className="text-[10px] bg-white/20 px-1.5 py-0.5 rounded">Active</span>}
                       </button>
                     ))}
                   </div>
                 </div>
 
                 {/* Footer links */}
-                <div className="p-2 bg-[#FFF8F3]">
+                <div className="p-2 bg-[#F8FAFC]">
                   <button
                     type="button"
                     onClick={() => {
@@ -276,7 +341,7 @@ export const TopBar: React.FC<TopBarProps> = ({
                       logout();
                       navigate('/login');
                     }}
-                    className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold text-[#DC2626] hover:bg-rose-50 transition-colors"
+                    className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[#DC2626] hover:bg-rose-50 transition-colors"
                   >
                     <LogOut className="w-4 h-4" /> Sign Out
                   </button>

@@ -65,32 +65,32 @@ export const BookingDetailsModal: React.FC<BookingDetailsModalProps> = ({
       >
         <div className="space-y-4 text-left">
           {/* Header Status Bar */}
-          <div className="flex items-center justify-between p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB]">
+          <div className="flex items-center justify-between p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
             <div className="flex items-center gap-2">
-              <span className="text-xs text-[#6B7280]">Reservation Code:</span>
-              <span className="font-bold text-sm text-[#C2410C]">{booking.bookingCode}</span>
+              <span className="text-xs text-[#64748B]">Reservation Code:</span>
+              <span className="font-bold text-sm text-[#0F5132]">{booking.bookingCode}</span>
             </div>
             <StatusBadge status={booking.paymentStatus} />
           </div>
 
           {/* Guest and Room Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="p-3.5 rounded-xl bg-white border border-[#E5E7EB] shadow-sm space-y-1">
-              <span className="text-xs font-semibold text-[#6B7280] flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5 text-[#C2410C]" /> Primary Guest
+            <div className="p-3.5 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs space-y-1">
+              <span className="text-xs font-semibold text-[#64748B] flex items-center gap-1.5">
+                <User className="w-3.5 h-3.5 text-[#0F5132]" /> Primary Guest
               </span>
-              <p className="text-sm font-bold text-[#1F2937]">{booking.guestName}</p>
-              <p className="text-xs text-[#6B7280]">{booking.guestPhone}</p>
-              <p className="text-xs text-[#6B7280]">{booking.guestEmail}</p>
+              <p className="text-sm font-bold text-[#111827]">{booking.guestName}</p>
+              <p className="text-xs text-[#64748B]">{booking.guestPhone}</p>
+              <p className="text-xs text-[#64748B]">{booking.guestEmail}</p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-white border border-[#E5E7EB] shadow-sm space-y-1">
-              <span className="text-xs font-semibold text-[#6B7280] flex items-center gap-1.5">
-                <BedDouble className="w-3.5 h-3.5 text-[#C2410C]" /> Room Assigned
+            <div className="p-3.5 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs space-y-1">
+              <span className="text-xs font-semibold text-[#64748B] flex items-center gap-1.5">
+                <BedDouble className="w-3.5 h-3.5 text-[#0F5132]" /> Room Assigned
               </span>
-              <p className="text-sm font-bold text-[#1F2937]">Room #{booking.roomNumber}</p>
-              <div className="flex items-center gap-1.5 text-xs text-[#6B7280] pt-1">
-                <Calendar className="w-3.5 h-3.5 text-[#3B82F6]" />
+              <p className="text-sm font-bold text-[#111827]">Room #{booking.roomNumber}</p>
+              <div className="flex items-center gap-1.5 text-xs text-[#64748B] pt-1">
+                <Calendar className="w-3.5 h-3.5 text-[#38BDF8]" />
                 <span>
                   {formatDate(booking.checkIn)} → {formatDate(booking.checkOut)}
                 </span>
@@ -99,24 +99,24 @@ export const BookingDetailsModal: React.FC<BookingDetailsModalProps> = ({
           </div>
 
           {/* Payment & GST Summary */}
-          <div className="p-4 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-2 text-xs">
-            <span className="font-semibold text-xs text-[#1F2937] flex items-center gap-1.5 mb-1">
+          <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-2 text-xs">
+            <span className="font-semibold text-xs text-[#111827] flex items-center gap-1.5 mb-1">
               <CreditCard className="w-3.5 h-3.5 text-[#22C55E]" /> Financial Summary
             </span>
 
-            <div className="flex justify-between text-[#6B7280]">
+            <div className="flex justify-between text-[#64748B]">
               <span>Base Accommodation Charges:</span>
               <span>{formatINR(booking.totalAmount - booking.gstAmount)}</span>
             </div>
 
-            <div className="flex justify-between text-[#6B7280]">
+            <div className="flex justify-between text-[#64748B]">
               <span>GST Tax Amount (CGST + SGST):</span>
               <span>{formatINR(booking.gstAmount)}</span>
             </div>
 
-            <div className="flex justify-between font-bold text-sm text-[#1F2937] pt-2 border-t border-[#E5E7EB]">
+            <div className="flex justify-between font-bold text-sm text-[#111827] pt-2 border-t border-[#E2E8F0]">
               <span>Grand Total:</span>
-              <span className="text-[#C2410C] text-base">{formatINR(booking.totalAmount)}</span>
+              <span className="text-[#0F5132] text-base">{formatINR(booking.totalAmount)}</span>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Modal } from '@/components/ui/Modal';
 import { Button } from '@/components/ui/Button';
 import { StatusBadge } from '@/components/ui/StatusBadge';
@@ -54,13 +54,13 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4 border-b border-[#E5E7EB]">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <div className="w-8 h-8 rounded-lg bg-[#C2410C] flex items-center justify-center text-white">
+              <div className="w-8 h-8 rounded-lg bg-[#0F5132] flex items-center justify-center text-white">
                 <Sparkles className="w-4 h-4" />
               </div>
-              <h2 className="text-lg font-bold text-[#C2410C]">Aura Palms Resort & Spa</h2>
+              <h2 className="text-lg font-bold text-[#0F5132]">Joy Resorts Resort & Spa</h2>
             </div>
             <p className="text-xs text-[#6B7280]">Candolim Beach Road, North Goa, 403515</p>
-            <p className="text-xs text-[#C2410C] font-semibold mt-1">
+            <p className="text-xs text-[#0F5132] font-semibold mt-1">
               GSTIN: 30AABCA1234F1Z8 (Goa State Code: 30)
             </p>
           </div>
@@ -83,7 +83,7 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
 
         {/* Billed To Guest */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-          <div className="p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-1">
+          <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] space-y-1">
             <span className="text-[10px] font-semibold uppercase text-[#6B7280]">
               Billed To Guest:
             </span>
@@ -91,7 +91,7 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
             <p className="text-[#6B7280]">Place of Supply: Goa (State 30)</p>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-1">
+          <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] space-y-1">
             <span className="text-[10px] font-semibold uppercase text-[#6B7280]">
               SAC / HSN Code:
             </span>
@@ -105,7 +105,7 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
         {/* Itemized Table */}
         <div className="overflow-x-auto rounded-xl border border-[#E5E7EB] pb-0.5">
           <table className="w-full min-w-[580px] text-xs text-left border-collapse">
-            <thead className="bg-[#FFF8F3] text-[#1F2937] uppercase border-b border-[#E5E7EB]">
+            <thead className="bg-[#F8FAFC] text-[#1F2937] uppercase border-b border-[#E5E7EB]">
               <tr>
                 <th className="py-2.5 px-3.5 whitespace-nowrap">Description</th>
                 <th className="py-2.5 px-3.5 text-right whitespace-nowrap">Taxable Value</th>
@@ -131,7 +131,7 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
                 <td className="py-3 px-3.5 text-right text-[#6B7280] whitespace-nowrap">
                   {formatINR(halfGst)}
                 </td>
-                <td className="py-3 px-3.5 text-right font-bold text-[#C2410C] whitespace-nowrap">
+                <td className="py-3 px-3.5 text-right font-bold text-[#0F5132] whitespace-nowrap">
                   {formatINR(invoice.grandTotal)}
                 </td>
               </tr>
@@ -140,7 +140,7 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
         </div>
 
         {/* Total Summary */}
-        <div className="p-4 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-2 text-xs">
+        <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] space-y-2 text-xs">
           <div className="flex justify-between text-[#6B7280]">
             <span>Taxable Sub-Total:</span>
             <span>{formatINR(invoice.subTotal)}</span>
@@ -155,7 +155,7 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
           </div>
           <div className="flex justify-between items-center pt-2 border-t border-[#E5E7EB] font-bold text-sm text-[#1F2937]">
             <span>Invoice Grand Total:</span>
-            <span className="text-base text-[#C2410C]">{formatINR(invoice.grandTotal)}</span>
+            <span className="text-base text-[#0F5132]">{formatINR(invoice.grandTotal)}</span>
           </div>
         </div>
 
@@ -164,7 +164,7 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
           <span className="flex items-center gap-1.5 text-[#22C55E]">
             <CheckCircle2 className="w-3.5 h-3.5" /> Digitally generated GST e-Invoice
           </span>
-          <span>For Aura Palms Hospitality Pvt Ltd</span>
+          <span>For Joy Resorts Hospitality Pvt Ltd</span>
         </div>
       </div>
     </Modal>

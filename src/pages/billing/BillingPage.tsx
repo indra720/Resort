@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Invoice } from '@/types';
 import { DataTable, Column } from '@/components/ui/DataTable';
 import { StatusBadge } from '@/components/ui/StatusBadge';
@@ -90,7 +90,7 @@ export const BillingPage: React.FC = () => {
     {
       key: 'invoiceNumber',
       header: 'Tax Invoice #',
-      accessor: (i) => <span className="font-bold text-[#C2410C]">{i.invoiceNumber}</span>,
+      accessor: (i) => <span className="font-bold text-[#0F5132]">{i.invoiceNumber}</span>,
       sortable: true,
       sortValue: (i) => i.invoiceNumber,
     },
@@ -134,7 +134,7 @@ export const BillingPage: React.FC = () => {
   return (
     <div className="space-y-4 sm:space-y-5 text-left">
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132]">
           Billing & GST Tax Invoices
         </h1>
         <p className="text-xs sm:text-sm text-[#6B7280]">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { DataTable, Column } from '@/components/ui/DataTable';
 import { Button } from '@/components/ui/Button';
 import { Modal } from '@/components/ui/Modal';
@@ -91,7 +91,7 @@ export const InventoryPage: React.FC = () => {
     {
       key: 'itemCode',
       header: 'Item SKU',
-      accessor: (s) => <span className="font-bold text-[#C2410C]">{s.itemCode}</span>,
+      accessor: (s) => <span className="font-bold text-[#0F5132]">{s.itemCode}</span>,
       sortable: true,
       sortValue: (s) => s.itemCode,
     },
@@ -152,7 +152,7 @@ export const InventoryPage: React.FC = () => {
     <div className="space-y-4 sm:space-y-5 text-left">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132]">
             Resort Inventory & Store Procurement
           </h1>
           <p className="text-xs sm:text-sm text-[#6B7280]">

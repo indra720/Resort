@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { MOCK_BOOKINGS } from '@/data/mockData';
 import { Booking } from '@/types';
 import { DataTable, Column } from '@/components/ui/DataTable';
@@ -31,7 +31,7 @@ export const BookingsPage: React.FC = () => {
     {
       key: 'bookingCode',
       header: 'Reservation Code',
-      accessor: (b) => <span className="font-bold text-[#C2410C]">{b.bookingCode}</span>,
+      accessor: (b) => <span className="font-bold text-[#0F5132]">{b.bookingCode}</span>,
       sortable: true,
       sortValue: (b) => b.bookingCode,
     },
@@ -84,7 +84,7 @@ export const BookingsPage: React.FC = () => {
       {/* Top Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132]">
             Guest Reservations & Bookings
           </h1>
           <p className="text-xs sm:text-sm text-[#6B7280]">

@@ -21,16 +21,32 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenMore }) => {
       <div className="flex items-center justify-around h-14">
         {primaryItems.map((item) => {
           const Icon = item.icon;
+          // Clean, concise mobile label mapping to prevent awkward truncation
+          const getMobileLabel = (label: string) => {
+            if (label.includes('Platform Hub')) return 'Platform';
+            if (label.includes('Resorts (Tenants)')) return 'Tenants';
+            if (label.includes('Plans &')) return 'Plans';
+            if (label.includes('Subscriptions')) return 'Billing';
+            if (label.includes('Dashboard')) return 'Home';
+            if (label.includes('CRM')) return 'CRM';
+            if (label.includes('Bookings')) return 'Bookings';
+            if (label.includes('Rooms')) return 'Rooms';
+            if (label.includes('Housekeeping')) return 'Cleaning';
+            if (label.includes('Restaurant')) return 'Dining';
+            if (label.includes('Staff')) return 'Staff';
+            return label.length > 9 ? label.split(' ')[0] : label;
+          };
+
           return (
             <NavLink
               key={item.id}
               to={item.path}
               className={({ isActive }) =>
                 cn(
-                  'flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 px-2 rounded-xl transition-all duration-150',
+                  'flex flex-col items-center justify-center min-w-[52px] min-h-[44px] py-1 px-1 rounded-xl transition-all duration-150',
                   isActive
-                    ? 'text-[#C2410C] font-bold'
-                    : 'text-[#6B7280] hover:text-[#1F2937]'
+                    ? 'text-[#0F5132] font-bold'
+                    : 'text-[#6B7280] hover:text-[#111827]'
                 )
               }
             >
@@ -39,11 +55,11 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenMore }) => {
                   <Icon
                     className={cn(
                       'w-5 h-5 transition-transform duration-150',
-                      isActive ? 'text-[#C2410C] scale-110' : 'text-[#6B7280]'
+                      isActive ? 'text-[#0F5132] scale-110' : 'text-[#6B7280]'
                     )}
                   />
-                  <span className="text-[10px] mt-1 tracking-tight truncate max-w-[64px]">
-                    {item.label}
+                  <span className="text-[10px] mt-1 tracking-tight font-medium whitespace-nowrap text-center leading-none">
+                    {getMobileLabel(item.label)}
                   </span>
                 </>
               )}
@@ -55,7 +71,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenMore }) => {
         <button
           type="button"
           onClick={onOpenMore}
-          className="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 px-2 rounded-xl text-[#6B7280] hover:text-[#1F2937] transition-all"
+          className="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 px-2 rounded-xl text-[#6B7280] hover:text-[#111827] transition-all"
           aria-label="Open full resort navigation menu"
         >
           <MoreHorizontal className="w-5 h-5" />

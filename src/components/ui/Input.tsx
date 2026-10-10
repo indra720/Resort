@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { cn } from '@/lib/utils';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -57,9 +57,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               // Light background & borders
               'bg-white text-[#1F2937] placeholder:text-[#6B7280] border border-[#E5E7EB]',
               // Dark orange focus ring
-              'focus:outline-none focus:border-[#C2410C] focus:ring-2 focus:ring-[#C2410C]/20',
+              'focus:outline-none focus:border-[#0F5132] focus:ring-2 focus:ring-[#0F5132]/20',
               // Disabled state
-              'disabled:bg-[#FFF8F3] disabled:text-[#6B7280] disabled:cursor-not-allowed',
+              'disabled:bg-[#F8FAFC] disabled:text-[#6B7280] disabled:cursor-not-allowed',
               // Padding adjustments for left and right icons
               leftIcon ? 'pl-10' : '',
               rightIcon ? 'pr-10' : '',

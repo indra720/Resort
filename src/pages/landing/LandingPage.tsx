@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { formatINR } from '@/lib/formatINR';
 import { toast } from '@/store/useToastStore';
@@ -166,7 +166,7 @@ export const LandingPage: React.FC = () => {
       location: 'London, United Kingdom',
       title: 'An Unforgettable Coastal Sanctuary',
       comment:
-        'Aura Palms gave us the most beautiful vacation experience! The staff was amazing, the views of Candolim beach were breathtaking, and the private plunge pool villa was simply perfect in every single detail.',
+        'Joy Resorts gave us the most beautiful vacation experience! The staff was amazing, the views of Candolim beach were breathtaking, and the private plunge pool villa was simply perfect in every single detail.',
       rating: 5,
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
       stayedIn: 'Private Pool Villa V-01',
@@ -208,7 +208,7 @@ export const LandingPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#FFFFFF] text-[#1F2937] font-sans selection:bg-[#C2410C] selection:text-white overflow-x-hidden">
+    <div className="min-h-screen w-full bg-[#FFFFFF] text-[#1F2937] font-sans selection:bg-[#0F5132] selection:text-white overflow-x-hidden">
       {/* =========================================================================
           1. TOP NAVIGATION BAR (Transparent / Frosted Glass Floating Navbar)
           ========================================================================= */}
@@ -219,12 +219,12 @@ export const LandingPage: React.FC = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center gap-3 cursor-pointer group select-none shrink-0"
           >
-            <div className="w-10 h-10 rounded-xl bg-[#C2410C] flex items-center justify-center text-white shadow-md shadow-[#C2410C]/25 group-hover:scale-105 transition-transform shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-[#0F5132] flex items-center justify-center text-white shadow-md shadow-[#0F5132]/25 group-hover:scale-105 transition-transform shrink-0">
               <Sparkles className="w-5 h-5" />
             </div>
             <div className="leading-tight text-left">
               <span className="text-base sm:text-lg font-extrabold tracking-tight text-[#1F2937] whitespace-nowrap">
-                Aura Palms <span className="text-[#C2410C]">Resort</span>
+                Joy Resorts <span className="text-[#0F5132]">Resort</span>
               </span>
               <span className="hidden sm:block text-[10px] text-[#6B7280] uppercase tracking-widest font-semibold whitespace-nowrap">
                 Hotels & Luxury Villas • Goa
@@ -234,22 +234,22 @@ export const LandingPage: React.FC = () => {
 
           {/* Desktop Navigation Links (Center) */}
           <div className="hidden lg:flex items-center gap-7 xl:gap-9 text-xs font-semibold text-[#6B7280] shrink-0">
-            <a href="#home" className="text-[#C2410C] hover:text-[#9A3412] transition-colors py-1">
+            <a href="#home" className="text-[#0F5132] hover:text-[#0A3622] transition-colors py-1">
               Home
             </a>
-            <a href="#rooms" className="hover:text-[#C2410C] transition-colors py-1">
+            <a href="#rooms" className="hover:text-[#0F5132] transition-colors py-1">
               Rooms & Villas
             </a>
-            <a href="#experiences" className="hover:text-[#C2410C] transition-colors py-1">
+            <a href="#experiences" className="hover:text-[#0F5132] transition-colors py-1">
               Experiences
             </a>
-            <a href="#advantage" className="hover:text-[#C2410C] transition-colors py-1">
+            <a href="#advantage" className="hover:text-[#0F5132] transition-colors py-1">
               About Us
             </a>
-            <a href="#reviews" className="hover:text-[#C2410C] transition-colors py-1">
+            <a href="#reviews" className="hover:text-[#0F5132] transition-colors py-1">
               Reviews
             </a>
-            <a href="#contact" className="hover:text-[#C2410C] transition-colors py-1">
+            <a href="#contact" className="hover:text-[#0F5132] transition-colors py-1">
               Contact
             </a>
           </div>
@@ -258,16 +258,16 @@ export const LandingPage: React.FC = () => {
           <div className="hidden sm:flex items-center gap-3 shrink-0">
             <a
               href="tel:+918322499888"
-              className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold text-[#6B7280] hover:text-[#C2410C] transition-colors"
+              className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold text-[#6B7280] hover:text-[#0F5132] transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 text-[#C2410C]" />
+              <Phone className="w-3.5 h-3.5 text-[#0F5132]" />
               <span>+91 832 249 9888</span>
             </a>
 
             <button
               type="button"
               onClick={() => navigate('/login')}
-              className="px-3.5 py-2 rounded-xl text-xs font-semibold text-[#6B7280] hover:text-[#1F2937] hover:bg-[#FFF8F3] transition-all whitespace-nowrap"
+              className="px-3.5 py-2 rounded-xl text-xs font-semibold text-[#6B7280] hover:text-[#1F2937] hover:bg-[#F8FAFC] transition-all whitespace-nowrap"
             >
               Sign In
             </button>
@@ -275,7 +275,7 @@ export const LandingPage: React.FC = () => {
             <button
               type="button"
               onClick={() => navigate('/rooms')}
-              className="px-5 py-2.5 rounded-xl bg-[#C2410C] hover:bg-[#9A3412] text-xs font-bold text-white shadow-md shadow-[#C2410C]/25 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 active:scale-95"
+              className="px-5 py-2.5 rounded-xl bg-[#0F5132] hover:bg-[#0A3622] text-xs font-bold text-white shadow-md shadow-[#0F5132]/25 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 active:scale-95"
             >
               <span>Book Now</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -286,7 +286,7 @@ export const LandingPage: React.FC = () => {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden w-11 h-11 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] flex items-center justify-center text-[#1F2937] shrink-0"
+            className="lg:hidden w-11 h-11 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] flex items-center justify-center text-[#1F2937] shrink-0"
             aria-label="Toggle Navigation"
           >
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -300,28 +300,28 @@ export const LandingPage: React.FC = () => {
               <a
                 href="#rooms"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2.5 rounded-lg bg-[#FFF8F3] text-[#1F2937] border border-[#E5E7EB] font-medium"
+                className="p-2.5 rounded-lg bg-[#F8FAFC] text-[#1F2937] border border-[#E5E7EB] font-medium"
               >
                 Rooms & Villas
               </a>
               <a
                 href="#experiences"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2.5 rounded-lg bg-[#FFF8F3] text-[#1F2937] border border-[#E5E7EB] font-medium"
+                className="p-2.5 rounded-lg bg-[#F8FAFC] text-[#1F2937] border border-[#E5E7EB] font-medium"
               >
                 Experiences
               </a>
               <a
                 href="#advantage"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2.5 rounded-lg bg-[#FFF8F3] text-[#1F2937] border border-[#E5E7EB] font-medium"
+                className="p-2.5 rounded-lg bg-[#F8FAFC] text-[#1F2937] border border-[#E5E7EB] font-medium"
               >
                 About Us
               </a>
               <a
                 href="#reviews"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2.5 rounded-lg bg-[#FFF8F3] text-[#1F2937] border border-[#E5E7EB] font-medium"
+                className="p-2.5 rounded-lg bg-[#F8FAFC] text-[#1F2937] border border-[#E5E7EB] font-medium"
               >
                 Guest Reviews
               </a>
@@ -333,7 +333,7 @@ export const LandingPage: React.FC = () => {
                   setIsMobileMenuOpen(false);
                   navigate('/login');
                 }}
-                className="w-full py-2.5 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] text-xs font-semibold text-[#1F2937]"
+                className="w-full py-2.5 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] text-xs font-semibold text-[#1F2937]"
               >
                 Sign In
               </button>
@@ -343,7 +343,7 @@ export const LandingPage: React.FC = () => {
                   setIsMobileMenuOpen(false);
                   navigate('/rooms')}
                 }
-                className="w-full py-2.5 rounded-xl bg-[#C2410C] text-xs font-bold text-white shadow-md shadow-[#C2410C]/25"
+                className="w-full py-2.5 rounded-xl bg-[#0F5132] text-xs font-bold text-white shadow-md shadow-[#0F5132]/25"
               >
                 Book Your Villa Now
               </button>
@@ -363,7 +363,7 @@ export const LandingPage: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2400&q=90"
-            alt="Aura Palms Luxury Resort Infinity Pool and Coastal Sunset"
+            alt="Joy Resorts Luxury Resort Infinity Pool and Coastal Sunset"
             className="w-full h-full object-cover object-center scale-105"
           />
           {/* Subtle multi-layer gradient for pristine readability */}
@@ -375,8 +375,8 @@ export const LandingPage: React.FC = () => {
         <div className="relative z-10 w-full px-4 sm:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-10">
           <div className="max-w-3xl space-y-4 sm:space-y-5">
             {/* Kicker */}
-            <p className="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#FED7AA] flex items-center gap-2">
-              <span className="w-6 h-[2px] bg-[#C2410C]" />
+            <p className="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#BBF7D0] flex items-center gap-2">
+              <span className="w-6 h-[2px] bg-[#0F5132]" />
               LUXURY STAYS • UNFORGETTABLE JOURNEYS
             </p>
 
@@ -388,7 +388,7 @@ export const LandingPage: React.FC = () => {
 
             {/* Subtitle */}
             <p className="text-sm sm:text-base lg:text-lg text-slate-100 max-w-2xl leading-relaxed drop-shadow-xs">
-              Discover world-class comfort, private plunge pools, breathtaking Arabian sea views, and personalized 5-star experiences at Aura Palms Resort & Luxury Villas, Goa.
+              Discover world-class comfort, private plunge pools, breathtaking Arabian sea views, and personalized 5-star experiences at Joy Resorts Resort & Luxury Villas, Goa.
             </p>
           </div>
 
@@ -411,8 +411,8 @@ export const LandingPage: React.FC = () => {
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-4 items-center"
             >
               {/* Field 1: Destination */}
-              <div className="lg:col-span-3 p-3 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-[#C2410C] shrink-0" />
+              <div className="lg:col-span-3 p-3 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] flex items-center gap-3">
+                <MapPin className="w-5 h-5 text-[#0F5132] shrink-0" />
                 <div className="flex-1 text-left min-w-0">
                   <span className="block text-[10px] text-[#6B7280] font-bold uppercase tracking-wider">
                     Destination
@@ -428,8 +428,8 @@ export const LandingPage: React.FC = () => {
               </div>
 
               {/* Field 2: Check-In */}
-              <div className="lg:col-span-2 p-3 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] flex items-center gap-3">
-                <Calendar className="w-5 h-5 text-[#C2410C] shrink-0" />
+              <div className="lg:col-span-2 p-3 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] flex items-center gap-3">
+                <Calendar className="w-5 h-5 text-[#0F5132] shrink-0" />
                 <div className="flex-1 text-left min-w-0">
                   <span className="block text-[10px] text-[#6B7280] font-bold uppercase tracking-wider">
                     Check In
@@ -444,8 +444,8 @@ export const LandingPage: React.FC = () => {
               </div>
 
               {/* Field 3: Check-Out */}
-              <div className="lg:col-span-2 p-3 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] flex items-center gap-3">
-                <Calendar className="w-5 h-5 text-[#C2410C] shrink-0" />
+              <div className="lg:col-span-2 p-3 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] flex items-center gap-3">
+                <Calendar className="w-5 h-5 text-[#0F5132] shrink-0" />
                 <div className="flex-1 text-left min-w-0">
                   <span className="block text-[10px] text-[#6B7280] font-bold uppercase tracking-wider">
                     Check Out
@@ -460,8 +460,8 @@ export const LandingPage: React.FC = () => {
               </div>
 
               {/* Field 4: Guests */}
-              <div className="lg:col-span-3 p-3 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] flex items-center gap-3">
-                <Users className="w-5 h-5 text-[#C2410C] shrink-0" />
+              <div className="lg:col-span-3 p-3 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] flex items-center gap-3">
+                <Users className="w-5 h-5 text-[#0F5132] shrink-0" />
                 <div className="flex-1 text-left min-w-0">
                   <span className="block text-[10px] text-[#6B7280] font-bold uppercase tracking-wider">
                     Guests & Rooms
@@ -480,7 +480,7 @@ export const LandingPage: React.FC = () => {
               <div className="lg:col-span-2">
                 <button
                   type="submit"
-                  className="w-full min-h-[48px] py-3.5 px-5 rounded-xl bg-[#C2410C] hover:bg-[#9A3412] text-xs font-bold text-white shadow-md shadow-[#C2410C]/30 transition-all flex items-center justify-center gap-2 active:scale-95 whitespace-nowrap"
+                  className="w-full min-h-[48px] py-3.5 px-5 rounded-xl bg-[#0F5132] hover:bg-[#0A3622] text-xs font-bold text-white shadow-md shadow-[#0F5132]/30 transition-all flex items-center justify-center gap-2 active:scale-95 whitespace-nowrap"
                 >
                   <Search className="w-4 h-4" />
                   <span>Search Rooms →</span>
@@ -497,8 +497,8 @@ export const LandingPage: React.FC = () => {
       <section className="py-8 bg-white border-b border-[#E5E7EB] w-full px-4 sm:px-8 lg:px-12 xl:px-16 shadow-xs">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6 text-left">
           {/* Item 1 */}
-          <div className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FFF8F3] transition-colors">
-            <div className="w-10 h-10 rounded-xl bg-[#FFF1E6] border border-[#FED7AA] flex items-center justify-center text-[#C2410C] shrink-0">
+          <div className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F8FAFC] transition-colors">
+            <div className="w-10 h-10 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-[#0F5132] shrink-0">
               <BedDouble className="w-5 h-5" />
             </div>
             <div>
@@ -508,8 +508,8 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Item 2 */}
-          <div className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FFF8F3] transition-colors">
-            <div className="w-10 h-10 rounded-xl bg-[#FFF1E6] border border-[#FED7AA] flex items-center justify-center text-[#C2410C] shrink-0">
+          <div className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F8FAFC] transition-colors">
+            <div className="w-10 h-10 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-[#0F5132] shrink-0">
               <Waves className="w-5 h-5" />
             </div>
             <div>
@@ -519,8 +519,8 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Item 3 */}
-          <div className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FFF8F3] transition-colors">
-            <div className="w-10 h-10 rounded-xl bg-[#FFF1E6] border border-[#FED7AA] flex items-center justify-center text-[#C2410C] shrink-0">
+          <div className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F8FAFC] transition-colors">
+            <div className="w-10 h-10 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-[#0F5132] shrink-0">
               <Utensils className="w-5 h-5" />
             </div>
             <div>
@@ -530,8 +530,8 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Item 4 */}
-          <div className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FFF8F3] transition-colors">
-            <div className="w-10 h-10 rounded-xl bg-[#FFF1E6] border border-[#FED7AA] flex items-center justify-center text-[#C2410C] shrink-0">
+          <div className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F8FAFC] transition-colors">
+            <div className="w-10 h-10 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-[#0F5132] shrink-0">
               <Palmtree className="w-5 h-5" />
             </div>
             <div>
@@ -541,8 +541,8 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Item 5 */}
-          <div className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FFF8F3] transition-colors col-span-2 md:col-span-1">
-            <div className="w-10 h-10 rounded-xl bg-[#FFF1E6] border border-[#FED7AA] flex items-center justify-center text-[#C2410C] shrink-0">
+          <div className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F8FAFC] transition-colors col-span-2 md:col-span-1">
+            <div className="w-10 h-10 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-[#0F5132] shrink-0">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
@@ -559,7 +559,7 @@ export const LandingPage: React.FC = () => {
       <section id="rooms" className="py-16 sm:py-20 w-full px-4 sm:px-8 lg:px-12 xl:px-16 text-left">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div className="max-w-xl">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#C2410C] bg-[#FFF1E6] px-3 py-1 rounded-full border border-[#FED7AA] inline-block mb-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#0F5132] bg-[#F0FDF4] px-3 py-1 rounded-full border border-[#BBF7D0] inline-block mb-2">
               FEATURED STAYS
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#1F2937] font-serif">
@@ -573,7 +573,7 @@ export const LandingPage: React.FC = () => {
           <button
             type="button"
             onClick={() => navigate('/rooms')}
-            className="px-5 py-2.5 rounded-xl border border-[#C2410C] text-[#C2410C] hover:bg-[#C2410C] hover:text-white transition-all text-xs font-bold flex items-center gap-2 self-start md:self-auto group shadow-xs"
+            className="px-5 py-2.5 rounded-xl border border-[#0F5132] text-[#0F5132] hover:bg-[#0F5132] hover:text-white transition-all text-xs font-bold flex items-center gap-2 self-start md:self-auto group shadow-xs"
           >
             <span>View All Rooms</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -586,7 +586,7 @@ export const LandingPage: React.FC = () => {
             <div
               key={room.id}
               onClick={() => navigate('/rooms')}
-              className="group cursor-pointer rounded-2xl overflow-hidden bg-white border border-[#E5E7EB] shadow-sm hover:shadow-xl hover:border-[#C2410C]/40 transition-all flex flex-col justify-between hover:-translate-y-1 duration-300"
+              className="group cursor-pointer rounded-2xl overflow-hidden bg-white border border-[#E5E7EB] shadow-sm hover:shadow-xl hover:border-[#0F5132]/40 transition-all flex flex-col justify-between hover:-translate-y-1 duration-300"
             >
               <div>
                 {/* Image Container */}
@@ -599,14 +599,14 @@ export const LandingPage: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                   {/* Tag */}
-                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[10px] font-bold text-[#C2410C] border border-[#E5E7EB] shadow-xs">
+                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[10px] font-bold text-[#0F5132] border border-[#E5E7EB] shadow-xs">
                     {room.tag}
                   </span>
                 </div>
 
                 {/* Card Details */}
                 <div className="p-4 space-y-2">
-                  <h3 className="text-base font-bold text-[#1F2937] group-hover:text-[#C2410C] transition-colors line-clamp-1">
+                  <h3 className="text-base font-bold text-[#1F2937] group-hover:text-[#0F5132] transition-colors line-clamp-1">
                     {room.name}
                   </h3>
                   <p className="text-[11px] text-[#6B7280] line-clamp-1">
@@ -615,11 +615,11 @@ export const LandingPage: React.FC = () => {
 
                   <div className="pt-2 flex items-center gap-3 text-xs text-[#6B7280] border-t border-[#E5E7EB]">
                     <span className="flex items-center gap-1">
-                      <Users className="w-3.5 h-3.5 text-[#C2410C]" /> {room.guests}
+                      <Users className="w-3.5 h-3.5 text-[#0F5132]" /> {room.guests}
                     </span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
-                      <BedDouble className="w-3.5 h-3.5 text-[#C2410C]" /> {room.bed}
+                      <BedDouble className="w-3.5 h-3.5 text-[#0F5132]" /> {room.bed}
                     </span>
                   </div>
                 </div>
@@ -628,13 +628,13 @@ export const LandingPage: React.FC = () => {
               {/* Price & Action Bottom Strip */}
               <div className="p-4 pt-0 flex items-center justify-between border-t border-[#E5E7EB]">
                 <div className="text-left">
-                  <span className="text-base font-extrabold text-[#C2410C]">
+                  <span className="text-base font-extrabold text-[#0F5132]">
                     {formatINR(room.price)}
                   </span>
                   <span className="text-[11px] text-[#6B7280]"> / night</span>
                 </div>
 
-                <div className="w-8 h-8 rounded-full bg-[#FFF8F3] border border-[#E5E7EB] group-hover:bg-[#C2410C] group-hover:text-white group-hover:border-[#C2410C] flex items-center justify-center text-[#6B7280] transition-colors shadow-xs">
+                <div className="w-8 h-8 rounded-full bg-[#F8FAFC] border border-[#E5E7EB] group-hover:bg-[#0F5132] group-hover:text-white group-hover:border-[#0F5132] flex items-center justify-center text-[#6B7280] transition-colors shadow-xs">
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
@@ -659,7 +659,7 @@ export const LandingPage: React.FC = () => {
 
             {/* Top Video Play Button Trigger */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2 cursor-pointer" onClick={() => setIsVideoModalOpen(true)}>
-              <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/50 flex items-center justify-center text-white shadow-2xl hover:scale-110 hover:bg-[#C2410C] transition-all">
+              <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/50 flex items-center justify-center text-white shadow-2xl hover:scale-110 hover:bg-[#0F5132] transition-all">
                 <Play className="w-6 h-6 fill-current ml-1" />
               </div>
               <span className="text-xs font-bold text-white drop-shadow-md">Watch 4K Tour</span>
@@ -667,7 +667,7 @@ export const LandingPage: React.FC = () => {
 
             {/* Bottom Content */}
             <div className="relative z-10 space-y-3">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#FED7AA] bg-white/15 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 inline-block">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#BBF7D0] bg-white/15 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 inline-block">
                 TOP DESTINATION
               </span>
 
@@ -681,13 +681,13 @@ export const LandingPage: React.FC = () => {
 
               <div className="pt-2 flex items-center justify-between">
                 <span className="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
-                  <MapPin className="w-4 h-4 text-[#D95F02]" /> Candolim Beach, North Goa
+                  <MapPin className="w-4 h-4 text-[#15803D]" /> Candolim Beach, North Goa
                 </span>
 
                 <button
                   type="button"
                   onClick={() => navigate('/rooms')}
-                  className="px-4 py-2 rounded-xl bg-white text-[#C2410C] hover:bg-[#FFF1E6] text-xs font-bold shadow-md transition-all flex items-center gap-1"
+                  className="px-4 py-2 rounded-xl bg-white text-[#0F5132] hover:bg-[#F0FDF4] text-xs font-bold shadow-md transition-all flex items-center gap-1"
                 >
                   <span>Explore Resort</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -699,7 +699,7 @@ export const LandingPage: React.FC = () => {
           {/* Right Column: Hotel Experiences 4-Card Grid (7 cols) */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#C2410C] bg-[#FFF1E6] px-3 py-1 rounded-full border border-[#FED7AA] inline-block mb-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#0F5132] bg-[#F0FDF4] px-3 py-1 rounded-full border border-[#BBF7D0] inline-block mb-2">
                 CURATED MEMORIES
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1F2937] font-serif">
@@ -716,7 +716,7 @@ export const LandingPage: React.FC = () => {
                 <div
                   key={exp.id}
                   onClick={() => navigate('/services')}
-                  className="group cursor-pointer rounded-2xl overflow-hidden bg-white border border-[#E5E7EB] shadow-sm hover:shadow-md hover:border-[#C2410C]/40 transition-all flex flex-col"
+                  className="group cursor-pointer rounded-2xl overflow-hidden bg-white border border-[#E5E7EB] shadow-sm hover:shadow-md hover:border-[#0F5132]/40 transition-all flex flex-col"
                 >
                   <div className="relative h-40 w-full overflow-hidden">
                     <img
@@ -729,8 +729,8 @@ export const LandingPage: React.FC = () => {
 
                   <div className="p-4 space-y-1 text-left flex-1 flex flex-col justify-between">
                     <div>
-                      <div className="text-[11px] font-bold text-[#C2410C]">{exp.tagline}</div>
-                      <h4 className="text-sm font-bold text-[#1F2937] group-hover:text-[#C2410C] transition-colors">
+                      <div className="text-[11px] font-bold text-[#0F5132]">{exp.tagline}</div>
+                      <h4 className="text-sm font-bold text-[#1F2937] group-hover:text-[#0F5132] transition-colors">
                         {exp.title}
                       </h4>
                       <p className="text-xs text-[#6B7280] mt-1 leading-relaxed">
@@ -738,7 +738,7 @@ export const LandingPage: React.FC = () => {
                       </p>
                     </div>
 
-                    <div className="pt-2 flex items-center text-xs font-semibold text-[#C2410C] gap-1 group-hover:translate-x-1 transition-transform">
+                    <div className="pt-2 flex items-center text-xs font-semibold text-[#0F5132] gap-1 group-hover:translate-x-1 transition-transform">
                       <span>Discover experience</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </div>
@@ -758,11 +758,11 @@ export const LandingPage: React.FC = () => {
           {/* Col 1: The Advantage 4 Pill Cards (4 cols) */}
           <div className="lg:col-span-4 space-y-5">
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#C2410C] bg-[#FFF1E6] px-3 py-1 rounded-full border border-[#FED7AA] inline-block mb-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#0F5132] bg-[#F0FDF4] px-3 py-1 rounded-full border border-[#BBF7D0] inline-block mb-2">
                 WHY CHOOSE US
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1F2937] font-serif">
-                The Aura Palms Advantage
+                The Joy Resorts Advantage
               </h2>
               <p className="text-xs sm:text-sm text-[#6B7280] mt-1.5 leading-relaxed">
                 From bespoke butler service to pristine private shorelines, every detail is crafted for extraordinary memories.
@@ -772,7 +772,7 @@ export const LandingPage: React.FC = () => {
             {/* 4 Feature Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
               <div className="p-3.5 rounded-xl bg-white border border-[#E5E7EB] shadow-sm flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-[#FFF1E6] border border-[#FED7AA] text-[#C2410C] flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 rounded-lg bg-[#F0FDF4] border border-[#BBF7D0] text-[#0F5132] flex items-center justify-center shrink-0">
                   <Star className="w-4 h-4 fill-current" />
                 </div>
                 <div>
@@ -782,7 +782,7 @@ export const LandingPage: React.FC = () => {
               </div>
 
               <div className="p-3.5 rounded-xl bg-white border border-[#E5E7EB] shadow-sm flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-[#FFF1E6] border border-[#FED7AA] text-[#C2410C] flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 rounded-lg bg-[#F0FDF4] border border-[#BBF7D0] text-[#0F5132] flex items-center justify-center shrink-0">
                   <Percent className="w-4 h-4" />
                 </div>
                 <div>
@@ -792,7 +792,7 @@ export const LandingPage: React.FC = () => {
               </div>
 
               <div className="p-3.5 rounded-xl bg-white border border-[#E5E7EB] shadow-sm flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-[#FFF1E6] border border-[#FED7AA] text-[#C2410C] flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 rounded-lg bg-[#F0FDF4] border border-[#BBF7D0] text-[#0F5132] flex items-center justify-center shrink-0">
                   <Calendar className="w-4 h-4" />
                 </div>
                 <div>
@@ -802,7 +802,7 @@ export const LandingPage: React.FC = () => {
               </div>
 
               <div className="p-3.5 rounded-xl bg-white border border-[#E5E7EB] shadow-sm flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-[#FFF1E6] border border-[#FED7AA] text-[#C2410C] flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 rounded-lg bg-[#F0FDF4] border border-[#BBF7D0] text-[#0F5132] flex items-center justify-center shrink-0">
                   <Headphones className="w-4 h-4" />
                 </div>
                 <div>
@@ -832,7 +832,7 @@ export const LandingPage: React.FC = () => {
           {/* Col 3: Testimonial Card with Carousel Controls (4 cols) */}
           <div className="lg:col-span-4 p-6 sm:p-7 rounded-3xl bg-white border border-[#E5E7EB] shadow-xl flex flex-col justify-between space-y-5">
             <div className="space-y-4">
-              <div className="w-10 h-10 rounded-xl bg-[#FFF1E6] border border-[#FED7AA] text-[#C2410C] flex items-center justify-center font-serif text-2xl font-bold">
+              <div className="w-10 h-10 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] text-[#0F5132] flex items-center justify-center font-serif text-2xl font-bold">
                 “
               </div>
 
@@ -840,7 +840,7 @@ export const LandingPage: React.FC = () => {
                 "{testimonials[currentTestimonialIndex].comment}"
               </p>
 
-              <div className="flex items-center gap-1 text-[#C2410C]">
+              <div className="flex items-center gap-1 text-[#0F5132]">
                 {[...Array(testimonials[currentTestimonialIndex].rating)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-current text-amber-500" />
                 ))}
@@ -852,7 +852,7 @@ export const LandingPage: React.FC = () => {
                 <img
                   src={testimonials[currentTestimonialIndex].avatar}
                   alt={testimonials[currentTestimonialIndex].name}
-                  className="w-10 h-10 rounded-full object-cover border-2 border-[#C2410C]/40"
+                  className="w-10 h-10 rounded-full object-cover border-2 border-[#0F5132]/40"
                 />
                 <div>
                   <h4 className="text-xs font-bold text-[#1F2937]">
@@ -873,7 +873,7 @@ export const LandingPage: React.FC = () => {
                       prev === 0 ? testimonials.length - 1 : prev - 1
                     )
                   }
-                  className="w-8 h-8 rounded-full bg-[#FFF8F3] border border-[#E5E7EB] hover:border-[#C2410C] hover:text-[#C2410C] flex items-center justify-center text-[#6B7280] transition-colors"
+                  className="w-8 h-8 rounded-full bg-[#F8FAFC] border border-[#E5E7EB] hover:border-[#0F5132] hover:text-[#0F5132] flex items-center justify-center text-[#6B7280] transition-colors"
                   aria-label="Previous review"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -885,7 +885,7 @@ export const LandingPage: React.FC = () => {
                       (prev + 1) % testimonials.length
                     )
                   }
-                  className="w-8 h-8 rounded-full bg-[#FFF8F3] border border-[#E5E7EB] hover:border-[#C2410C] hover:text-[#C2410C] flex items-center justify-center text-[#6B7280] transition-colors"
+                  className="w-8 h-8 rounded-full bg-[#F8FAFC] border border-[#E5E7EB] hover:border-[#0F5132] hover:text-[#0F5132] flex items-center justify-center text-[#6B7280] transition-colors"
                   aria-label="Next review"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -911,7 +911,7 @@ export const LandingPage: React.FC = () => {
 
           {/* Left Text */}
           <div className="relative z-10 max-w-xl space-y-3">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-[#FED7AA] bg-white/15 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 inline-block">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#BBF7D0] bg-white/15 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 inline-block">
               LIMITED TIME OFFER
             </span>
 
@@ -926,7 +926,7 @@ export const LandingPage: React.FC = () => {
             <button
               type="button"
               onClick={() => navigate('/rooms')}
-              className="mt-2 px-6 py-3 rounded-xl bg-[#C2410C] hover:bg-[#9A3412] text-xs font-bold text-white shadow-lg transition-all flex items-center gap-2 active:scale-95"
+              className="mt-2 px-6 py-3 rounded-xl bg-[#0F5132] hover:bg-[#0A3622] text-xs font-bold text-white shadow-lg transition-all flex items-center gap-2 active:scale-95"
             >
               <span>Book Now</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -939,7 +939,7 @@ export const LandingPage: React.FC = () => {
               <span className="text-2xl sm:text-3xl font-extrabold text-white block">
                 {String(timeLeft.days).padStart(2, '0')}
               </span>
-              <span className="text-[10px] sm:text-xs text-[#FED7AA] uppercase font-semibold">
+              <span className="text-[10px] sm:text-xs text-[#BBF7D0] uppercase font-semibold">
                 Days
               </span>
             </div>
@@ -948,7 +948,7 @@ export const LandingPage: React.FC = () => {
               <span className="text-2xl sm:text-3xl font-extrabold text-white block">
                 {String(timeLeft.hours).padStart(2, '0')}
               </span>
-              <span className="text-[10px] sm:text-xs text-[#FED7AA] uppercase font-semibold">
+              <span className="text-[10px] sm:text-xs text-[#BBF7D0] uppercase font-semibold">
                 Hours
               </span>
             </div>
@@ -957,16 +957,16 @@ export const LandingPage: React.FC = () => {
               <span className="text-2xl sm:text-3xl font-extrabold text-white block">
                 {String(timeLeft.minutes).padStart(2, '0')}
               </span>
-              <span className="text-[10px] sm:text-xs text-[#FED7AA] uppercase font-semibold">
+              <span className="text-[10px] sm:text-xs text-[#BBF7D0] uppercase font-semibold">
                 Minutes
               </span>
             </div>
 
             <div className="p-3 sm:p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-center min-w-[64px] sm:min-w-[80px]">
-              <span className="text-2xl sm:text-3xl font-extrabold text-[#D95F02] block animate-pulse">
+              <span className="text-2xl sm:text-3xl font-extrabold text-[#15803D] block animate-pulse">
                 {String(timeLeft.seconds).padStart(2, '0')}
               </span>
-              <span className="text-[10px] sm:text-xs text-[#FED7AA] uppercase font-semibold">
+              <span className="text-[10px] sm:text-xs text-[#BBF7D0] uppercase font-semibold">
                 Seconds
               </span>
             </div>
@@ -977,10 +977,10 @@ export const LandingPage: React.FC = () => {
       {/* =========================================================================
           9. TRUST STATS STRIP (Image 2 Wanderly Reference)
           ========================================================================= */}
-      <section className="py-10 bg-[#FFF8F3] border-t border-[#E5E7EB] w-full px-4 sm:px-8 lg:px-12 xl:px-16">
+      <section className="py-10 bg-[#F8FAFC] border-t border-[#E5E7EB] w-full px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div className="space-y-1">
-            <span className="text-2xl sm:text-3xl font-extrabold text-[#C2410C] block">
+            <span className="text-2xl sm:text-3xl font-extrabold text-[#0F5132] block">
               50,000+
             </span>
             <p className="text-xs font-semibold text-[#1F2937]">Happy Travelers</p>
@@ -988,7 +988,7 @@ export const LandingPage: React.FC = () => {
           </div>
 
           <div className="space-y-1">
-            <span className="text-2xl sm:text-3xl font-extrabold text-[#C2410C] block">
+            <span className="text-2xl sm:text-3xl font-extrabold text-[#0F5132] block">
               100%
             </span>
             <p className="text-xs font-semibold text-[#1F2937]">Verified Stays</p>
@@ -996,7 +996,7 @@ export const LandingPage: React.FC = () => {
           </div>
 
           <div className="space-y-1">
-            <span className="text-2xl sm:text-3xl font-extrabold text-[#C2410C] block">
+            <span className="text-2xl sm:text-3xl font-extrabold text-[#0F5132] block">
               4.9 / 5
             </span>
             <p className="text-xs font-semibold text-[#1F2937]">Customer Rating</p>
@@ -1004,7 +1004,7 @@ export const LandingPage: React.FC = () => {
           </div>
 
           <div className="space-y-1">
-            <span className="text-2xl sm:text-3xl font-extrabold text-[#C2410C] block">
+            <span className="text-2xl sm:text-3xl font-extrabold text-[#0F5132] block">
               15+
             </span>
             <p className="text-xs font-semibold text-[#1F2937]">Hospitality Awards</p>
@@ -1019,11 +1019,11 @@ export const LandingPage: React.FC = () => {
       <section className="py-14 w-full px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="rounded-3xl bg-white border border-[#E5E7EB] p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl text-left">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#FFF1E6] border border-[#FED7AA] flex items-center justify-center text-[#C2410C] shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-[#0F5132] shrink-0">
               <Send className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#C2410C]">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#0F5132]">
                 STAY INSPIRED
               </span>
               <h3 className="text-lg sm:text-xl font-bold text-[#1F2937]">
@@ -1045,11 +1045,11 @@ export const LandingPage: React.FC = () => {
               onChange={(e) => setNewsletterEmail(e.target.value)}
               placeholder="Enter your email address"
               required
-              className="w-full sm:flex-1 px-4 py-3 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] text-xs text-[#1F2937] placeholder-[#6B7280] focus:outline-none focus:border-[#C2410C] min-w-0"
+              className="w-full sm:flex-1 px-4 py-3 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] text-xs text-[#1F2937] placeholder-[#6B7280] focus:outline-none focus:border-[#0F5132] min-w-0"
             />
             <button
               type="submit"
-              className="w-full sm:w-auto min-h-[44px] px-6 py-3 rounded-xl bg-[#C2410C] hover:bg-[#9A3412] text-xs font-bold text-white transition-all shadow-md shrink-0 whitespace-nowrap active:scale-95"
+              className="w-full sm:w-auto min-h-[44px] px-6 py-3 rounded-xl bg-[#0F5132] hover:bg-[#0A3622] text-xs font-bold text-white transition-all shadow-md shrink-0 whitespace-nowrap active:scale-95"
             >
               {isSubscribed ? 'Subscribed!' : 'Subscribe →'}
             </button>
@@ -1066,15 +1066,15 @@ export const LandingPage: React.FC = () => {
             {/* Col 1: Brand Info */}
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#C2410C] flex items-center justify-center text-white shadow-md">
+                <div className="w-9 h-9 rounded-xl bg-[#0F5132] flex items-center justify-center text-white shadow-md">
                   <Sparkles className="w-5 h-5" />
                 </div>
                 <span className="text-lg font-bold text-white">
-                  Aura Palms <span className="text-[#D95F02]">Resort</span>
+                  Joy Resorts <span className="text-[#15803D]">Resort</span>
                 </span>
               </div>
               <p className="text-xs text-slate-300 max-w-sm leading-relaxed">
-                Aura Palms Resort & Spa is Goa’s premier 5-star beachfront sanctuary, featuring private plunge pool villas, Ayurvedic therapies, and bespoke coastal dining.
+                Joy Resorts Resort & Spa is Goa’s premier 5-star beachfront sanctuary, featuring private plunge pool villas, Ayurvedic therapies, and bespoke coastal dining.
               </p>
               <div className="text-xs text-slate-400">
                 Candolim Beach Road, North Goa, 403515, India
@@ -1128,15 +1128,15 @@ export const LandingPage: React.FC = () => {
               </h4>
               <ul className="space-y-2.5 text-xs text-slate-300">
                 <li className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-[#D95F02]" />
+                  <Phone className="w-3.5 h-3.5 text-[#15803D]" />
                   <span>+91 832 249 9888</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Send className="w-3.5 h-3.5 text-[#D95F02]" />
+                  <Send className="w-3.5 h-3.5 text-[#15803D]" />
                   <span>reservations@aurapalms.in</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-[#D95F02]" />
+                  <MapPin className="w-3.5 h-3.5 text-[#15803D]" />
                   <span>Candolim, North Goa</span>
                 </li>
               </ul>
@@ -1145,14 +1145,14 @@ export const LandingPage: React.FC = () => {
 
           {/* Bottom Copyright */}
           <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-            <p>© 2026 Aura Palms Resort & Spa. All Rights Reserved. GSTIN: 30AABCA1234F1Z8.</p>
+            <p>© 2026 Joy Resorts Resort & Spa. All Rights Reserved. GSTIN: 30AABCA1234F1Z8.</p>
             <div className="flex items-center gap-6">
               <span className="hover:text-white cursor-pointer">Privacy Policy</span>
               <span className="hover:text-white cursor-pointer">Terms & Conditions</span>
               <button
                 type="button"
                 onClick={() => navigate('/dashboard')}
-                className="text-[#D95F02] hover:underline font-medium"
+                className="text-[#15803D] hover:underline font-medium"
               >
                 Go to Dashboard →
               </button>
@@ -1166,13 +1166,13 @@ export const LandingPage: React.FC = () => {
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
           <div className="relative w-full max-w-4xl rounded-3xl overflow-hidden bg-white border border-[#E5E7EB] p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-bold text-[#C2410C]">
-                Aura Palms Resort & Spa • Virtual 4K Drone Tour
+              <h3 className="text-base font-bold text-[#0F5132]">
+                Joy Resorts Resort & Spa • Virtual 4K Drone Tour
               </h3>
               <button
                 type="button"
                 onClick={() => setIsVideoModalOpen(false)}
-                className="w-9 h-9 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] flex items-center justify-center text-[#6B7280] hover:text-[#1F2937]"
+                className="w-9 h-9 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] flex items-center justify-center text-[#6B7280] hover:text-[#1F2937]"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -1184,7 +1184,7 @@ export const LandingPage: React.FC = () => {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-3">
-                <div className="w-16 h-16 rounded-full bg-[#C2410C] text-white flex items-center justify-center shadow-2xl animate-pulse">
+                <div className="w-16 h-16 rounded-full bg-[#0F5132] text-white flex items-center justify-center shadow-2xl animate-pulse">
                   <Play className="w-7 h-7 fill-current ml-1" />
                 </div>
                 <span className="text-xs font-semibold text-white">

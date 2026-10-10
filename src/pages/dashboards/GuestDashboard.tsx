@@ -1,196 +1,196 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/Button';
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/Card';
-import { StatusBadge } from '@/components/ui/StatusBadge';
-import { formatINR } from '@/lib/formatINR';
-import { toast } from '@/store/useToastStore';
 import {
   Sparkles,
   BedDouble,
-  Wifi,
-  Calendar,
-  Compass,
-  Utensils,
+  UtensilsCrossed,
   Key,
-  ShieldCheck,
+  Compass,
+  Calendar,
+  CheckCircle2,
+  Clock,
+  MapPin,
+  CalendarDays,
 } from 'lucide-react';
+import { formatINR } from '@/lib/formatINR';
+import { toast } from '@/store/useToastStore';
 
 export const GuestDashboard: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="space-y-3.5 sm:space-y-4">
-      {/* Welcome Banner */}
-      <div className="p-4 sm:p-5 lg:p-6 rounded-2xl bg-gradient-to-r from-white via-[#FFF1E6]/30 to-white border border-[#E5E7EB] relative overflow-hidden text-left shadow-sm flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3.5 sm:gap-4">
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-[#C2410C]/5 to-transparent pointer-events-none" />
+    <div className="space-y-4 text-[#111827]">
+      {/* 1. Panoramic Hero Banner */}
+      <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-2xs bg-white">
+        <div className="relative h-44 sm:h-52 w-full overflow-hidden flex flex-col justify-between p-5 sm:p-6">
+          <img
+            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80"
+            alt="Joy Resorts Sanctuary"
+            className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.98]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/60 to-transparent" />
 
-        <div className="max-w-xl space-y-2 relative z-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF1E6] border border-[#FED7AA] text-[#C2410C] text-xs font-semibold">
-            <Sparkles className="w-3.5 h-3.5" /> Welcome to Goa, Pooja Hegde
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#0F5132]/10 text-[#0F5132] uppercase tracking-wider">
+                  Guest Experience
+                </span>
+                <span className="text-xs text-[#64748B]">Joy Resorts Sanctuary</span>
+              </div>
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] mt-1">
+                Welcome, Indrajeet
+              </h1>
+              <p className="text-xs sm:text-sm text-[#475569] font-medium mt-0.5">
+                Your luxury nature stay at Villa #101 • Presidential Waterfront Suite
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 self-start sm:self-auto">
+              <div className="flex items-center gap-2 px-3.5 py-1.5 bg-white border border-[#E2E8F0] rounded-xl text-xs font-semibold text-[#1E293B] shadow-2xs">
+                <CalendarDays className="w-4 h-4 text-[#64748B]" />
+                <span>Stay: 08 Oct - 12 Oct 2026</span>
+              </div>
+            </div>
           </div>
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#C2410C] tracking-tight">
-            Your Coastal Sanctuary at Aura Palms
-          </h1>
-          <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed">
-            Enjoy luxury cottages, private plunge pools, Ayurvedic spa therapies, and authentic Goan seafood dining.
-          </p>
         </div>
 
-        {/* Action Buttons - Clean horizontal row, right-aligned on desktop, never flex-col */}
-        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 shrink-0 relative z-10 pt-1 lg:pt-0">
-          <Button
-            variant="primary"
-            size="md"
-            onClick={() => navigate('/services')}
-            leftIcon={<Compass className="w-4 h-4" />}
-          >
-            Explore Resort Experiences
-          </Button>
-          <Button
-            variant="outline"
-            size="md"
-            onClick={() => navigate('/rooms')}
-            leftIcon={<BedDouble className="w-4 h-4" />}
-          >
-            Book Another Villa
-          </Button>
+        {/* 4 Guest Highlight Cards */}
+        {/* 4 Guest Metric Cards (Responsive spreading cards with top icon layout) */}
+        <div className="p-3 sm:p-4 bg-white/95 backdrop-blur-md border-t border-[#E2E8F0]">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+              <div className="flex items-center justify-between gap-1 mb-2">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0F5132] flex items-center justify-center text-white shrink-0 shadow-2xs">
+                  <Key className="w-4 h-4" />
+                </div>
+                <span className="text-[10px] sm:text-[11px] font-semibold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full shrink-0">
+                  Active
+                </span>
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">Digital RFID Key</p>
+                <div className="text-base sm:text-lg font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                  Villa #101
+                </div>
+                <p className="text-[10px] sm:text-[11px] text-[#16A34A] font-semibold mt-0.5 whitespace-nowrap">Tap to unlock</p>
+              </div>
+            </div>
+
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+              <div className="flex items-center justify-between gap-1 mb-2">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#38BDF8] flex items-center justify-center text-white shrink-0 shadow-2xs">
+                  <UtensilsCrossed className="w-4 h-4" />
+                </div>
+                <span className="text-[10px] sm:text-[11px] font-semibold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full shrink-0">
+                  Credit
+                </span>
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">Dining Credit</p>
+                <div className="text-base sm:text-lg font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                  ₹5,000
+                </div>
+                <p className="text-[10px] sm:text-[11px] text-[#0284C7] mt-0.5 whitespace-nowrap">Lake Restaurant</p>
+              </div>
+            </div>
+
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+              <div className="flex items-center justify-between gap-1 mb-2">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#8B5CF6] flex items-center justify-center text-white shrink-0 shadow-2xs">
+                  <Compass className="w-4 h-4" />
+                </div>
+                <span className="text-[10px] sm:text-[11px] font-semibold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full shrink-0">
+                  4:00 PM
+                </span>
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">Resort Activities</p>
+                <div className="text-base sm:text-lg font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                  Kayak & Spa
+                </div>
+                <p className="text-[10px] sm:text-[11px] text-[#7C3AED] mt-0.5 whitespace-nowrap">Confirmed slot</p>
+              </div>
+            </div>
+
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+              <div className="flex items-center justify-between gap-1 mb-2">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#22C55E] flex items-center justify-center text-white shrink-0 shadow-2xs">
+                  <Clock className="w-4 h-4" />
+                </div>
+                <span className="text-[10px] sm:text-[11px] font-semibold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full shrink-0">
+                  11:00 AM
+                </span>
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">Check-Out</p>
+                <div className="text-base sm:text-lg font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                  12 Oct
+                </div>
+                <p className="text-[10px] sm:text-[11px] text-[#16A34A] font-semibold mt-0.5 whitespace-nowrap">Express checkout</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Active Stay Details Card */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5">
-        <div className="lg:col-span-2 space-y-4">
-          <Card className="text-left">
-            <CardHeader className="flex-row items-center justify-between pb-3">
-              <div>
-                <CardTitle className="text-base sm:text-lg flex items-center gap-2">
-                  <Key className="w-5 h-5 text-[#C2410C]" />
-                  <span>Current Stay Details</span>
-                </CardTitle>
-                <p className="text-xs text-[#6B7280]">Reservation Code: RES-8821</p>
-              </div>
-              <StatusBadge status="Occupied" size="sm" />
-            </CardHeader>
-
-            <CardContent className="space-y-4 pt-2">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB]">
-                <div>
-                  <span className="text-[11px] text-[#6B7280] block">Accommodation</span>
-                  <span className="text-sm font-bold text-[#1F2937]">Pool Villa V-01</span>
-                  <span className="text-xs text-[#C2410C] block mt-0.5">Private Plunge Pool</span>
-                </div>
-
-                <div>
-                  <span className="text-[11px] text-[#6B7280] block">Stay Period</span>
-                  <span className="text-sm font-semibold text-[#1F2937]">05 Oct → 08 Oct 2026</span>
-                  <span className="text-xs text-[#22C55E] block mt-0.5">3 Nights Reserved</span>
-                </div>
-
-                <div>
-                  <span className="text-[11px] text-[#6B7280] block">Folio Balance</span>
-                  <span className="text-sm font-bold text-[#1F2937]">{formatINR(0)}</span>
-                  <span className="text-xs text-[#22C55E] block mt-0.5">Fully Paid (incl. 18% GST)</span>
-                </div>
-              </div>
-
-              {/* Wi-Fi & Key Credentials */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                <div className="p-3 rounded-lg bg-white border border-[#E5E7EB] shadow-sm flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <Wifi className="w-4 h-4 text-[#C2410C]" />
-                    <div>
-                      <span className="font-semibold text-[#1F2937] block">Complimentary Wi-Fi</span>
-                      <span className="text-[#6B7280]">Passcode: luxury@stay26</span>
-                    </div>
-                  </div>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    onClick={() => toast.success('Wi-Fi Copied', 'Connected to AuraPalms_Guest')}
-                  >
-                    Connect
-                  </Button>
-                </div>
-
-                <div className="p-3 rounded-lg bg-white border border-[#E5E7EB] shadow-sm flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <ShieldCheck className="w-4 h-4 text-[#22C55E]" />
-                    <div>
-                      <span className="font-semibold text-[#1F2937] block">Digital Key Card</span>
-                      <span className="text-[#6B7280]">Active on Phone NFC</span>
-                    </div>
-                  </div>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    onClick={() => toast.info('Door Key', 'Hold phone near Villa V-01 lock')}
-                  >
-                    Tap Door
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-
-            <CardFooter className="pt-3 border-t border-[#E5E7EB] flex justify-between">
-              <span className="text-xs text-[#6B7280]">Checkout Time: 11:00 AM on 08 Oct</span>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => navigate('/feedback')}
-              >
-                Submit Stay Feedback
-              </Button>
-            </CardFooter>
-          </Card>
+      {/* Quick Services Row */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="bg-white rounded-2xl border border-[#E2E8F0] p-5 shadow-2xs flex flex-col justify-between">
+          <div>
+            <div className="w-10 h-10 rounded-xl bg-[#0F5132]/10 text-[#0F5132] flex items-center justify-center mb-3">
+              <UtensilsCrossed className="w-5 h-5" />
+            </div>
+            <h3 className="text-base font-bold text-[#0F172A]">In-Villa Dining</h3>
+            <p className="text-xs text-[#64748B] mt-1">
+              Order fresh lake trout, farm-to-table salads, and artisanal desserts straight to Villa #101.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => navigate('/services')}
+            className="mt-4 w-full py-2 bg-[#0F5132] text-white hover:bg-[#0B3D25] rounded-xl text-xs font-semibold transition-colors"
+          >
+            Browse Menu
+          </button>
         </div>
 
-        {/* Resort Experiences Quick Booking */}
-        <div className="space-y-4">
-          <Card className="text-left h-full flex flex-col justify-between">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-base flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#C2410C]" />
-                <span>Featured Experiences</span>
-              </CardTitle>
-            </CardHeader>
+        <div className="bg-white rounded-2xl border border-[#E2E8F0] p-5 shadow-2xs flex flex-col justify-between">
+          <div>
+            <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center mb-3">
+              <Compass className="w-5 h-5" />
+            </div>
+            <h3 className="text-base font-bold text-[#0F172A]">Nature Activities</h3>
+            <p className="text-xs text-[#64748B] mt-1">
+              Sunset kayak tours, guided herbal garden walks, campfire acoustic nights, and cycling.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => navigate('/services')}
+            className="mt-4 w-full py-2 bg-[#0F5132] text-white hover:bg-[#0B3D25] rounded-xl text-xs font-semibold transition-colors"
+          >
+            Explore Activities
+          </button>
+        </div>
 
-            <CardContent className="space-y-3 pt-0">
-              <div className="p-3 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-1">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#1F2937]">Ayurvedic Abhyanga Spa</span>
-                  <span className="text-xs font-semibold text-[#C2410C]">{formatINR(3800)}</span>
-                </div>
-                <p className="text-[11px] text-[#6B7280]">60 mins herbal oil massage with steam bath</p>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  fullWidth
-                  className="mt-2"
-                  onClick={() => toast.success('Spa Requested', 'Concierge will confirm slot.')}
-                >
-                  Book Slot
-                </Button>
-              </div>
-
-              <div className="p-3 rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] space-y-1">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#1F2937]">Candlelight Poolside Dinner</span>
-                  <span className="text-xs font-semibold text-[#C2410C]">{formatINR(4500)}</span>
-                </div>
-                <p className="text-[11px] text-[#6B7280]">4-course chef tasting menu with live acoustic guitar</p>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  fullWidth
-                  className="mt-2"
-                  onClick={() => toast.success('Dinner Requested', 'Table reserved for 8:00 PM!')}
-                >
-                  Reserve Table
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+        <div className="bg-white rounded-2xl border border-[#E2E8F0] p-5 shadow-2xs flex flex-col justify-between">
+          <div>
+            <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-3">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <h3 className="text-base font-bold text-[#0F172A]">Concierge Request</h3>
+            <p className="text-xs text-[#64748B] mt-1">
+              Need fresh towels, extra pillows, luggage pickup, or airport transfer? We are here 24/7.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => toast.success('Front desk concierge notified!')}
+            className="mt-4 w-full py-2 bg-[#0F5132] text-white hover:bg-[#0B3D25] rounded-xl text-xs font-semibold transition-colors"
+          >
+            Call Front Desk
+          </button>
         </div>
       </div>
     </div>

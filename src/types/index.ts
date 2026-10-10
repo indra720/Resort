@@ -5,19 +5,55 @@
 // Staff and Guest Roles
 export type UserRole =
   | 'Super Admin'
+  | 'Resort Owner'
   | 'Resort Manager'
+  | 'Sales Executive'
   | 'Receptionist'
   | 'Housekeeping'
   | 'Restaurant/F&B'
   | 'Accountant'
   | 'Guest';
 
+// Multi-Tenant Resort Interface
+export interface ResortTenant {
+  id: string;
+  name: string;
+  code: string;
+  tagline: string;
+  city: string;
+  state: string;
+  plan: 'Basic' | 'Pro' | 'Enterprise';
+  status: 'Active' | 'Trial' | 'Suspended';
+  totalRooms: number;
+  activeUsers: number;
+  mrr: number; // in INR
+  ownerName: string;
+  ownerEmail: string;
+  logo?: string;
+  joinedDate: string;
+}
+
+// SaaS Subscription Plan
+export interface PlatformPlan {
+  id: string;
+  name: string;
+  priceMonthly: number;
+  priceYearly: number;
+  roomLimit: number;
+  userLimit: number;
+  branchLimit: number;
+  features: string[];
+  isPopular?: boolean;
+}
+
 // Room and Booking Statuses
 export type StatusType =
   | 'Available'
   | 'Occupied'
   | 'Reserved'
+  | 'Dirty'
   | 'Cleaning'
+  | 'Clean'
   | 'Maintenance'
   | 'Paid'
   | 'Pending'
@@ -70,8 +106,60 @@ export interface Invoice {
   guestName: string;
   date: string;
   subTotal: number;
-  gstRate: 12 | 18;
+  gstRate: number;
   gstAmount: number;
   grandTotal: number;
   status: 'Paid' | 'Pending';
+  resortId?: string;
+}
+
+// SaaS Audit Log Entry
+export interface AuditLogEntry {
+  id: string;
+  timestamp: string;
+  actorName: string;
+  actorEmail: string;
+  actorRole: UserRole;
+  action: string;
+  details: string;
+  resortId?: string;
+  resortName?: string;
+  severity: 'Info' | 'Warning' | 'Critical';
+}
+
+// Resort Owner Executive Approvals
+export interface ExecutiveApproval {
+  id: string;
+  resortId: string;
+  title: string;
+  type: 'Refund' | 'Capex' | 'Discount' | 'Vendor';
+  amount: number;
+  requestedBy: string;
+  requestedDate: string;
+  status: 'Pending' | 'Approved' | 'Rejected';
+  reason: string;
+}
+
+// Configurable Tax Settings per Resort
+export interface TaxConfig {
+  resortId: string;
+  roomGstUnder7500: number; // default 12%
+  roomGstAbove7500: number; // default 18%
+  restaurantGst: number;   // default 5%
+  isCompositionScheme: boolean;
+  notes: string;
+}
+
+// Staff Invitation
+export interface StaffInvite {
+  id: string;
+  email: string;
+  role: UserRole;
+  resortId: string;
+  resortName: string;
+  invitedBy: string;
+  createdAt: string;
+  expiresAt: string; // 7 days expiry
+  token: string;
+  status: 'Pending' | 'Accepted' | 'Expired' | 'Revoked';
 }

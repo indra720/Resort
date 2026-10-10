@@ -12,7 +12,6 @@ export interface GuestLayoutProps {
 }
 
 export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
-  // On md/tablet screens (<1024px), sidebar defaults to collapsed; only expands when user clicks toggle
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
       return window.innerWidth < 1024;
@@ -35,51 +34,52 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
   }, []);
 
   return (
-    <div className="h-screen w-full bg-[#FFFFFF] text-[#1F2937] flex flex-col font-sans selection:bg-[#C2410C] selection:text-white overflow-hidden">
-      {/* Top Bar with Glass Blur - Fixed */}
-      <TopBar
-        isSidebarCollapsed={isSidebarCollapsed}
-        onToggleSidebar={() => setIsSidebarCollapsed((prev) => !prev)}
-        onOpenMobileDrawer={() => setIsMobileDrawerOpen(true)}
-      />
+    <div className="h-screen w-full bg-[#F8FAFC] text-[#111827] flex font-sans selection:bg-[#0F5132] selection:text-white overflow-hidden">
+      {/* Desktop Collapsible Sidebar */}
+      <Sidebar isCollapsed={isSidebarCollapsed} />
 
-      {/* Guest Hospitality Welcome Banner - Fixed */}
-      <div className="shrink-0 bg-white border-b border-[#E5E7EB] px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between text-xs gap-2 z-10 shadow-xs">
-        <div className="flex items-center gap-2 text-[#1F2937]">
-          <Sparkles className="w-4 h-4 text-[#C2410C]" />
-          <span className="font-semibold text-[#1F2937]">Guest Experience Portal</span>
-          <span className="text-[#6B7280] hidden sm:inline">| Complimentary Wi-Fi Active</span>
+      {/* Right Column */}
+      <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden bg-[#F8FAFC]">
+        {/* Top Bar */}
+        <TopBar
+          isSidebarCollapsed={isSidebarCollapsed}
+          onToggleSidebar={() => setIsSidebarCollapsed((prev) => !prev)}
+          onOpenMobileDrawer={() => setIsMobileDrawerOpen(true)}
+        />
+
+        {/* Guest Hospitality Welcome Banner */}
+        <div className="shrink-0 bg-white border-b border-[#E2E8F0] px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between text-xs gap-2 z-10 shadow-2xs">
+          <div className="flex items-center gap-2 text-[#111827]">
+            <Sparkles className="w-4 h-4 text-[#0F5132]" />
+            <span className="font-semibold text-[#111827]">Guest Experience Portal</span>
+            <span className="text-[#64748B] hidden sm:inline">| Complimentary Wi-Fi Active</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() =>
+                toast.info('Joy Resorts Wi-Fi', 'SSID: JoyResorts_Guest | Passcode: nature@stay26')
+              }
+              className="flex items-center gap-1.5 text-[#64748B] hover:text-[#0F5132] transition-colors"
+            >
+              <Wifi className="w-3.5 h-3.5" />
+              <span>Connect Wi-Fi</span>
+            </button>
+
+            <button
+              onClick={() =>
+                toast.info('Concierge Hotline', 'Front Desk Extension: #100 | Butler: #101')
+              }
+              className="flex items-center gap-1.5 text-[#0F5132] font-semibold hover:underline"
+            >
+              <PhoneCall className="w-3.5 h-3.5" />
+              <span>Concierge Dial #100</span>
+            </button>
+          </div>
         </div>
 
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() =>
-              toast.info('Resort Wi-Fi', 'SSID: AuraPalms_Guest | Passcode: luxury@stay26')
-            }
-            className="flex items-center gap-1.5 text-[#6B7280] hover:text-[#C2410C] transition-colors"
-          >
-            <Wifi className="w-3.5 h-3.5" />
-            <span className="text-[11px] font-medium">Wi-Fi Info</span>
-          </button>
-
-          <button
-            onClick={() =>
-              toast.success('Front Desk Call', 'Front desk notified. An attendant is contacting you.')
-            }
-            className="flex items-center gap-1.5 text-[#C2410C] hover:text-[#9A3412] transition-colors font-semibold bg-[#FFF1E6] px-2.5 py-1 rounded-lg border border-[#FED7AA]"
-          >
-            <PhoneCall className="w-3.5 h-3.5" />
-            <span className="text-[11px]">Dial Concierge (Ext. 0)</span>
-          </button>
-        </div>
-      </div>
-
-      <div className="flex-1 flex w-full overflow-hidden min-h-0">
-        {/* Desktop Sidebar with Guest specific links - Fixed */}
-        <Sidebar isCollapsed={isSidebarCollapsed} />
-
-        {/* Main Content - Fluid full width */}
-        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden w-full px-2.5 sm:px-4 lg:px-5 py-2.5 sm:py-3.5 pb-20 md:pb-4 flex flex-col">
+        {/* Scrollable Main Area with 1px flush padding */}
+        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden w-full p-1 sm:p-1.5 pb-20 md:pb-2 flex flex-col bg-[#F8FAFC]">
           <PageTransition>{children}</PageTransition>
         </main>
       </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/Button';
 import { ShieldAlert, ArrowLeft, Home } from 'lucide-react';
@@ -18,12 +18,12 @@ export const Unauthorized403: React.FC = () => {
         403 • Access Denied
       </span>
 
-      <h1 className="text-2xl sm:text-3xl font-bold text-[#C2410C] tracking-tight mb-2">
+      <h1 className="text-2xl sm:text-3xl font-bold text-[#0F5132] tracking-tight mb-2">
         Restricted Access Area
       </h1>
 
       <p className="text-sm text-[#6B7280] max-w-md mb-8 leading-relaxed">
-        Your current role (<strong className="text-[#C2410C]">{role}</strong>) does not have
+        Your current role (<strong className="text-[#0F5132]">{role}</strong>) does not have
         permission to view this section of the resort management system.
       </p>
 

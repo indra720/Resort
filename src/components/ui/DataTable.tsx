@@ -185,7 +185,7 @@ export function DataTable<T>({
               setCurrentPage(1);
             }}
             placeholder={searchPlaceholder}
-            className="w-full min-h-[44px] pl-10 pr-4 text-xs sm:text-sm bg-[#FFF8F3] text-[#1F2937] placeholder:text-[#6B7280] border border-[#E5E7EB] rounded-xl focus:bg-white focus:outline-none focus:border-[#C2410C] focus:ring-2 focus:ring-[#C2410C]/20 transition-all"
+            className="w-full min-h-[44px] pl-10 pr-4 text-xs sm:text-sm bg-[#F8FAFC] text-[#1F2937] placeholder:text-[#6B7280] border border-[#E5E7EB] rounded-xl focus:bg-white focus:outline-none focus:border-[#0F5132] focus:ring-2 focus:ring-[#0F5132]/20 transition-all"
           />
         </div>
 
@@ -198,7 +198,7 @@ export function DataTable<T>({
                 setActiveFilter(e.target.value);
                 setCurrentPage(1);
               }}
-              className="min-h-[44px] px-3 text-xs bg-[#FFF8F3] text-[#1F2937] border border-[#E5E7EB] rounded-xl focus:bg-white focus:outline-none focus:border-[#C2410C] shrink-0"
+              className="min-h-[44px] px-3 text-xs bg-[#F8FAFC] text-[#1F2937] border border-[#E5E7EB] rounded-xl focus:bg-white focus:outline-none focus:border-[#0F5132] shrink-0"
             >
               <option value="ALL">All {filterOptions.label}</option>
               {filterOptions.options.map((opt) => (
@@ -210,14 +210,14 @@ export function DataTable<T>({
           )}
 
           {/* View Mode Switcher (Table [Full LG scrollable] vs Cards) */}
-          <div className="flex items-center rounded-xl bg-[#FFF8F3] border border-[#E5E7EB] p-1 shrink-0">
+          <div className="flex items-center rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] p-1 shrink-0">
             <button
               type="button"
               onClick={() => setViewMode('table')}
               className={cn(
                 'min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-md flex items-center gap-1.5 transition-colors',
                 viewMode === 'table'
-                  ? 'bg-[#C2410C] text-white shadow-xs'
+                  ? 'bg-[#0F5132] text-white shadow-xs'
                   : 'text-[#6B7280] hover:text-[#1F2937]'
               )}
               title="Table View (Full LG multi-column with clear smooth scroll)"
@@ -231,7 +231,7 @@ export function DataTable<T>({
               className={cn(
                 'min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-md flex items-center gap-1.5 transition-colors',
                 viewMode === 'cards'
-                  ? 'bg-[#C2410C] text-white shadow-xs'
+                  ? 'bg-[#0F5132] text-white shadow-xs'
                   : 'text-[#6B7280] hover:text-[#1F2937]'
               )}
               title="Card View (Stacked cards)"
@@ -246,10 +246,10 @@ export function DataTable<T>({
             <button
               type="button"
               onClick={() => setIsColumnDropdownOpen((prev) => !prev)}
-              className="min-h-[44px] px-3 flex items-center gap-1.5 text-xs font-semibold bg-white text-[#1F2937] border border-[#E5E7EB] rounded-lg hover:border-[#C2410C] transition-colors shrink-0 whitespace-nowrap"
+              className="min-h-[44px] px-3 flex items-center gap-1.5 text-xs font-semibold bg-white text-[#1F2937] border border-[#E5E7EB] rounded-lg hover:border-[#0F5132] transition-colors shrink-0 whitespace-nowrap"
               title="Show or hide table columns"
             >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-[#C2410C] shrink-0" />
+              <SlidersHorizontal className="w-3.5 h-3.5 text-[#0F5132] shrink-0" />
               <span>Columns</span>
             </button>
 
@@ -270,11 +270,11 @@ export function DataTable<T>({
                       key={col.key}
                       type="button"
                       onClick={() => toggleColumn(col.key)}
-                      className="w-full flex items-center justify-between px-2.5 py-1.5 rounded text-xs text-[#1F2937] hover:bg-[#FFF8F3] transition-colors text-left"
+                      className="w-full flex items-center justify-between px-2.5 py-1.5 rounded text-xs text-[#1F2937] hover:bg-[#F8FAFC] transition-colors text-left"
                     >
                       <span className="truncate pr-2">{col.header}</span>
                       {visibleColumns[col.key] && (
-                        <Check className="w-3.5 h-3.5 text-[#C2410C] shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-[#0F5132] shrink-0" />
                       )}
                     </button>
                   ))}
@@ -305,7 +305,7 @@ export function DataTable<T>({
                   setSearchQuery('');
                   setActiveFilter('ALL');
                 }}
-                className="text-xs text-[#C2410C] underline font-medium hover:text-[#9A3412]"
+                className="text-xs text-[#0F5132] underline font-medium hover:text-[#0A3622]"
               >
                 Reset Search & Filters
               </button>
@@ -316,21 +316,21 @@ export function DataTable<T>({
         <>
           {viewMode === 'table' ? (
             <div className="space-y-2">
-              {/* Mobile Swipe Guidance Banner */}
-              <div className="sm:hidden flex items-center justify-between px-3 py-2 rounded-xl bg-[#FFF1E6] border border-[#FED7AA] text-xs text-[#6B7280]">
-                <div className="flex items-center gap-2">
-                  <ArrowLeftRight className="w-4 h-4 text-[#C2410C] animate-pulse shrink-0" />
-                  <span className="font-semibold text-[#1F2937]">Scroll horizontally for all columns</span>
+              {/* Mobile / Tablet Swipe Guidance Banner */}
+              <div className="lg:hidden flex items-center justify-between gap-2 px-3 py-1.5 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] text-[11px] text-[#475569]">
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <ArrowLeftRight className="w-3.5 h-3.5 text-[#0F5132] animate-pulse shrink-0" />
+                  <span className="font-semibold text-[#1F2937] truncate">Swipe horizontally for all columns</span>
                 </div>
-                <span className="text-[10px] uppercase font-bold tracking-wider text-[#C2410C] bg-white border border-[#FED7AA] px-2 py-0.5 rounded shrink-0">
-                  Full Table
+                <span className="text-[10px] font-bold text-[#0F5132] bg-white border border-[#BBF7D0] px-2 py-0.5 rounded shrink-0 whitespace-nowrap">
+                  ↔ Swipe
                 </span>
               </div>
 
               {/* Table View (Displays with full desktop clarity; smooth horizontal scroll on smaller screens) */}
-              <div className="overflow-x-auto rounded-2xl border border-[#E5E7EB] bg-white pb-1 shadow-sm">
-                <table className="w-full min-w-[840px] text-left text-sm text-[#1F2937] border-collapse">
-                  <thead className="bg-[#FFF8F3] text-xs text-[#1F2937] uppercase tracking-wider border-b border-[#E5E7EB]">
+              <div className="overflow-x-auto rounded-2xl border border-[#E5E7EB] bg-white pb-1 shadow-sm scrollbar-thin">
+                <table className="w-full min-w-[900px] text-left text-sm text-[#1F2937] border-collapse">
+                  <thead className="bg-[#F8FAFC] text-xs text-[#1F2937] uppercase tracking-wider border-b border-[#E5E7EB]">
                     <tr>
                       {activeColumns.map((col) => {
                         const isSorted = sortKey === col.key;
@@ -343,14 +343,14 @@ export function DataTable<T>({
                               <button
                                 type="button"
                                 onClick={() => handleSort(col.key)}
-                                className="flex items-center gap-1.5 hover:text-[#C2410C] transition-colors whitespace-nowrap text-[#1F2937]"
+                                className="flex items-center gap-1.5 hover:text-[#0F5132] transition-colors whitespace-nowrap text-[#1F2937]"
                               >
                                 <span>{col.header}</span>
                                 {isSorted ? (
                                   sortOrder === 'asc' ? (
-                                    <ArrowUp className="w-3.5 h-3.5 text-[#C2410C]" />
+                                    <ArrowUp className="w-3.5 h-3.5 text-[#0F5132]" />
                                   ) : (
-                                    <ArrowDown className="w-3.5 h-3.5 text-[#C2410C]" />
+                                    <ArrowDown className="w-3.5 h-3.5 text-[#0F5132]" />
                                   )
                                 ) : (
                                   <ArrowUpDown className="w-3.5 h-3.5 text-[#6B7280]" />
@@ -371,7 +371,7 @@ export function DataTable<T>({
                     {paginatedData.map((item) => (
                       <tr
                         key={keyExtractor(item)}
-                        className="hover:bg-[#FFF8F3] transition-colors"
+                        className="hover:bg-[#F8FAFC] transition-colors"
                       >
                         {activeColumns.map((col) => (
                           <td key={col.key} className={cn('py-3.5 px-4 text-sm whitespace-nowrap text-[#1F2937]', col.className)}>

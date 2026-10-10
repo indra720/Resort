@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { cn } from '@/lib/utils';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -15,8 +15,8 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       'inline-flex items-center justify-center font-medium rounded-full border transition-colors select-none tracking-wide';
 
     const variantStyles = {
-      default: 'bg-[#FFF8F3] text-[#1F2937] border-[#E5E7EB]',
-      primary: 'bg-[#FFF1E6] text-[#C2410C] border-[#FED7AA] font-semibold',
+      default: 'bg-[#F8FAFC] text-[#1F2937] border-[#E5E7EB]',
+      primary: 'bg-[#F0FDF4] text-[#0F5132] border-[#BBF7D0] font-semibold',
       secondary: 'bg-white text-[#6B7280] border-[#E5E7EB]',
       outline: 'bg-transparent text-[#1F2937] border-[#E5E7EB]',
       success: 'bg-emerald-50 text-emerald-700 border-emerald-200',

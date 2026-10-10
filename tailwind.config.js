@@ -8,70 +8,83 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Theme Colors (Clean White Light Theme with Dark Orange Branding)
-        background: '#FFFFFF',
+        // Theme Colors (Clean White & Slate Canvas with Joy Resorts Forest Green)
+        background: '#F8FAFC',
         card: '#FFFFFF',
         elevated: '#FFFFFF',
         border: '#E5E7EB',
         
-        // Brand Primary & Hover Dark Orange
+        // Brand Primary & Hover Joy Resorts Forest Green
         primary: {
-          DEFAULT: '#C2410C',
-          hover: '#9A3412',
-          button: '#C2410C',
-          accent: '#D95F02',
-          soft: '#FFF1E6',
+          DEFAULT: '#0F5132',
+          hover: '#0B3D25',
+          button: '#0F5132',
+          accent: '#16A34A',
+          soft: '#DCFCE7',
           foreground: '#FFFFFF',
         },
 
-        // Sidebar Theme Colors (Dark Orange Sidebar)
+        // Sidebar Theme Colors (Clean White Sidebar with Forest Green Active Pill)
         sidebar: {
-          DEFAULT: '#C2410C',
-          hover: '#9A3412',
-          active: '#FFF1E6',
-          foreground: '#FFFFFF',
-          muted: '#FED7AA',
+          DEFAULT: '#FFFFFF',
+          hover: '#F3F4F6',
+          active: '#0F5132',
+          foreground: '#374151',
+          activeText: '#FFFFFF',
+          muted: '#6B7280',
+          border: '#E5E7EB',
         },
 
         // Text Colors
-        foreground: '#1F2937',
+        foreground: '#111827',
         muted: {
-          DEFAULT: '#FFF8F3',
+          DEFAULT: '#F3F4F6',
           foreground: '#6B7280',
         },
 
-        // Status Colors
+        // Metric & Status Colors
+        metric: {
+          leads: '#22C55E',
+          enquiries: '#3B82F6',
+          visits: '#F97316',
+          bookings: '#8B5CF6',
+          revenue: '#10B981',
+        },
+
         success: {
           DEFAULT: '#16A34A',
           foreground: '#FFFFFF',
-          bg: 'rgba(22, 163, 74, 0.10)',
+          bg: '#DCFCE7',
         },
         warning: {
           DEFAULT: '#D97706',
           foreground: '#FFFFFF',
-          bg: 'rgba(217, 119, 6, 0.10)',
+          bg: '#FEF3C7',
         },
         danger: {
           DEFAULT: '#DC2626',
           foreground: '#FFFFFF',
-          bg: 'rgba(220, 38, 38, 0.10)',
+          bg: '#FEE2E2',
         },
         info: {
           DEFAULT: '#2563EB',
           foreground: '#FFFFFF',
-          bg: 'rgba(37, 99, 235, 0.10)',
+          bg: '#E0F2FE',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
       borderRadius: {
-        lg: '12px',
+        xl: '14px',
+        lg: '10px',
         md: '8px',
         sm: '6px',
       },
       boxShadow: {
-        glow: '0 0 20px -5px rgba(194, 65, 12, 0.25)',
+        subtle: '0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05)',
+        card: '0 1px 3px 0 rgb(0 0 0 / 0.07), 0 2px 4px -1px rgb(0 0 0 / 0.04)',
+        glow: '0 0 20px -5px rgba(15, 81, 50, 0.25)',
       },
     },
   },

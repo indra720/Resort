@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MOCK_BOOKINGS } from '@/data/mockData';
 import { StatusBadge } from '@/components/ui/StatusBadge';
@@ -16,7 +16,7 @@ export const MyBookingsPage: React.FC = () => {
     <div className="space-y-6 text-left">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#C2410C]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132]">
             My Resort Reservations
           </h1>
           <p className="text-xs sm:text-sm text-[#6B7280]">
@@ -39,7 +39,7 @@ export const MyBookingsPage: React.FC = () => {
           <Card key={booking.id} hoverEffect>
             <CardHeader className="flex-row items-center justify-between pb-3">
               <div>
-                <CardTitle className="text-base text-[#C2410C]">
+                <CardTitle className="text-base text-[#0F5132]">
                   {booking.bookingCode}
                 </CardTitle>
                 <p className="text-xs text-[#6B7280]">Room #{booking.roomNumber}</p>
@@ -56,13 +56,13 @@ export const MyBookingsPage: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-2 text-[#6B7280]">
-                <BedDouble className="w-4 h-4 text-[#C2410C]" />
+                <BedDouble className="w-4 h-4 text-[#0F5132]" />
                 <span>Occupying: Room #{booking.roomNumber}</span>
               </div>
 
-              <div className="p-3 rounded-lg bg-[#FFF8F3] border border-[#E5E7EB] flex items-center justify-between">
+              <div className="p-3 rounded-lg bg-[#F8FAFC] border border-[#E5E7EB] flex items-center justify-between">
                 <span className="text-[#6B7280]">Total Tariff (incl. GST):</span>
-                <span className="font-bold text-sm text-[#C2410C]">
+                <span className="font-bold text-sm text-[#0F5132]">
                   {formatINR(booking.totalAmount)}
                 </span>
               </div>
