@@ -26,6 +26,10 @@ import {
   Sparkles,
   Wrench,
   RotateCcw,
+  Kanban,
+  FileSpreadsheet,
+  FileText,
+  Zap,
 } from 'lucide-react';
 
 export const SUPER_ADMIN_WILDCARD = '*';
@@ -137,6 +141,13 @@ export const RESORT_NAV_ITEMS: NavItem[] = [
     label: 'Leads',
     path: '/leads',
     icon: UserPlus,
+    allowedRoles: ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive', 'Receptionist'],
+  },
+  {
+    id: 'leads-pipeline',
+    label: 'Pipeline Board',
+    path: '/leads/pipeline',
+    icon: Kanban,
     allowedRoles: ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive'],
   },
   {
@@ -154,10 +165,45 @@ export const RESORT_NAV_ITEMS: NavItem[] = [
     allowedRoles: ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive'],
   },
   {
+    id: 'quotations',
+    label: 'Quotations',
+    path: '/quotations',
+    icon: FileSpreadsheet,
+    allowedRoles: ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive'],
+  },
+  {
+    id: 'templates',
+    label: 'Templates',
+    path: '/templates',
+    icon: FileText,
+    allowedRoles: ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive'],
+  },
+  {
+    id: 'automations',
+    label: 'Automations',
+    path: '/automations',
+    icon: Zap,
+    allowedRoles: ['Super Admin', 'Resort Owner', 'Resort Manager'],
+  },
+  {
     id: 'marketing',
     label: 'Marketing',
     path: '/marketing',
     icon: Send,
+    allowedRoles: ['Super Admin', 'Resort Owner', 'Resort Manager'],
+  },
+  {
+    id: 'crm-reports',
+    label: 'CRM Reports',
+    path: '/crm/reports',
+    icon: FileBarChart,
+    allowedRoles: ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive'],
+  },
+  {
+    id: 'crm-settings',
+    label: 'CRM Settings',
+    path: '/crm/settings',
+    icon: Settings,
     allowedRoles: ['Super Admin', 'Resort Owner', 'Resort Manager'],
   },
   {
@@ -398,4 +444,74 @@ export const PERMISSIONS = {
     ['Super Admin', 'Resort Owner', 'Resort Manager', 'Accountant'].includes(role),
   canManageStaff: (role: UserRole) => ['Super Admin', 'Resort Owner', 'Resort Manager'].includes(role),
   canBookServices: (_role: UserRole) => true,
+  // Lead Management Permissions
+  canAddLead: (role: UserRole) =>
+    ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive', 'Receptionist'].includes(role),
+  canAddWalkInLeadOnly: (role: UserRole) => role === 'Receptionist',
+  canEditLead: (role: UserRole) =>
+    ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive'].includes(role),
+  canDeleteLead: (role: UserRole) =>
+    ['Super Admin', 'Resort Owner', 'Resort Manager'].includes(role),
+  canConvertLeadToBooking: (role: UserRole) =>
+    ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive', 'Receptionist'].includes(role),
+  canManageQuotations: (role: UserRole) =>
+    ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive'].includes(role),
+  canManageTemplates: (role: UserRole) =>
+    ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive'].includes(role),
+  canManageAutomations: (role: UserRole) =>
+    ['Super Admin', 'Resort Owner', 'Resort Manager'].includes(role),
 };
+
+/**
+ * SaaS Plan Gating Helper:
+ * canUse(resort, feature)
+ * - Basic = Phase 1 (Core Leads) + Simple Follow-ups
+ * - Pro = Phase 2-3 (Pipeline Kanban, SLA, Quotations, Templates, Automations) + Basic Marketing
+ * - Enterprise = Full Access (ROI, Embed Form Builder, Referral Program, Leaderboard)
+ */
+export function canUse(
+  resort: { plan?: 'Basic' | 'Pro' | 'Enterprise' } | null | undefined,
+  feature:
+    | 'leads'
+    | 'simple_followups'
+    | 'pipeline'
+    | 'advanced_followups'
+    | 'lead_scoring'
+    | 'quotations'
+    | 'templates'
+    | 'automations'
+    | 'campaigns'
+    | 'coupons'
+    | 'marketing_roi'
+    | 'form_builder'
+    | 'referral_program'
+    | 'team_targets'
+    | 'crm_reports'
+    | 'crm_settings'
+    | 'lead_scoring_editor'
+    | 'crm_webhooks'
+    | 'crm_export_backup'
+): boolean {
+  const plan = resort?.plan || 'Pro';
+
+  if (plan === 'Enterprise') {
+    return true;
+  }
+
+  if (plan === 'Pro') {
+    const enterpriseOnlyFeatures = [
+      'marketing_roi',
+      'form_builder',
+      'referral_program',
+      'team_targets',
+      'lead_scoring_editor',
+      'crm_webhooks',
+      'crm_export_backup',
+    ];
+    return !enterpriseOnlyFeatures.includes(feature);
+  }
+
+  // Basic Plan: Only Phase 1 (leads) and simple followups
+  return feature === 'leads' || feature === 'simple_followups';
+}
+

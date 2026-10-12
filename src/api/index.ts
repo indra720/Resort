@@ -6,4 +6,15 @@ export * from './bookingsApi';
 export * from './staffApi';
 export * from './housekeepingApi';
 export * from './taxApi';
-
+export * from './leads';
+export * from './followups';
+export * from './quotations';
+export * from './templates';
+export * from './automations';
+export * from './scoring';
+export * from './targets';
+export * from './campaigns';
+export * from './coupons';
+export * from './marketing';
+export * from './crmReports';
+export * from './crmSettings';

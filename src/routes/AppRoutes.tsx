@@ -41,9 +41,16 @@ import { SubscriptionPage } from '@/pages/settings/SubscriptionPage';
 
 // Dedicated CRM & Operations Modules
 import { LeadsPage } from '@/pages/crm/LeadsPage';
+import { LeadPipelinePage } from '@/pages/crm/LeadPipelinePage';
 import { EnquiriesPage } from '@/pages/crm/EnquiriesPage';
 import { FollowUpsPage } from '@/pages/crm/FollowUpsPage';
+import { QuotationsPage } from '@/pages/crm/QuotationsPage';
+import { TemplatesPage } from '@/pages/crm/TemplatesPage';
+import { AutomationsPage } from '@/pages/crm/AutomationsPage';
 import { MarketingPage } from '@/pages/crm/MarketingPage';
+import { CRMReportsPage } from '@/pages/crm/CRMReportsPage';
+import { CRMSettingsPage } from '@/pages/crm/CRMSettingsPage';
+import { PublicEnquiryPage } from '@/pages/marketing/PublicEnquiryPage';
 import { ActivitiesPage } from '@/pages/activities/ActivitiesPage';
 import { EventsPage } from '@/pages/events/EventsPage';
 import { PaymentsPage } from '@/pages/billing/PaymentsPage';
@@ -87,6 +94,8 @@ export const AppRoutes: React.FC = () => {
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/resort-signup" element={<ResortOnboardingPage />} />
       <Route path="/invite/:token" element={<AcceptInvitePage />} />
+      <Route path="/enquire/:resortSlug" element={<PublicEnquiryPage />} />
+      <Route path="/enquire" element={<PublicEnquiryPage />} />
 
       {/* Design System Reference Page */}
       <Route
@@ -140,6 +149,32 @@ export const AppRoutes: React.FC = () => {
       />
 
       <Route
+        path="/leads/pipeline"
+        element={
+          <ProtectedRoute>
+            <RoleGuard allowedRoles={['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive']}>
+              <AppLayout>
+                <LeadPipelinePage />
+              </AppLayout>
+            </RoleGuard>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/crm/pipeline"
+        element={
+          <ProtectedRoute>
+            <RoleGuard allowedRoles={['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive']}>
+              <AppLayout>
+                <LeadPipelinePage />
+              </AppLayout>
+            </RoleGuard>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
         path="/enquiries"
         element={
           <ProtectedRoute>
@@ -165,6 +200,48 @@ export const AppRoutes: React.FC = () => {
         }
       />
 
+      {/* Phase 3: Quotations Engine */}
+      <Route
+        path="/quotations"
+        element={
+          <ProtectedRoute>
+            <RoleGuard allowedRoles={['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive']}>
+              <AppLayout>
+                <QuotationsPage />
+              </AppLayout>
+            </RoleGuard>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Phase 3: Message Templates */}
+      <Route
+        path="/templates"
+        element={
+          <ProtectedRoute>
+            <RoleGuard allowedRoles={['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive']}>
+              <AppLayout>
+                <TemplatesPage />
+              </AppLayout>
+            </RoleGuard>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Phase 3: Sales Automation Rules */}
+      <Route
+        path="/automations"
+        element={
+          <ProtectedRoute>
+            <RoleGuard allowedRoles={['Super Admin', 'Resort Owner', 'Resort Manager']}>
+              <AppLayout>
+                <AutomationsPage />
+              </AppLayout>
+            </RoleGuard>
+          </ProtectedRoute>
+        }
+      />
+
       <Route
         path="/marketing"
         element={
@@ -172,6 +249,34 @@ export const AppRoutes: React.FC = () => {
             <RoleGuard allowedRoles={['Super Admin', 'Resort Owner', 'Resort Manager']}>
               <AppLayout>
                 <MarketingPage />
+              </AppLayout>
+            </RoleGuard>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Phase 5: CRM Sales Reports & Analytics */}
+      <Route
+        path="/crm/reports"
+        element={
+          <ProtectedRoute>
+            <RoleGuard allowedRoles={['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive']}>
+              <AppLayout>
+                <CRMReportsPage />
+              </AppLayout>
+            </RoleGuard>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Phase 5: CRM Settings & Integrations */}
+      <Route
+        path="/crm/settings"
+        element={
+          <ProtectedRoute>
+            <RoleGuard allowedRoles={['Super Admin', 'Resort Owner', 'Resort Manager']}>
+              <AppLayout>
+                <CRMSettingsPage />
               </AppLayout>
             </RoleGuard>
           </ProtectedRoute>

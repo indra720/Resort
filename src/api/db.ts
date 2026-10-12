@@ -1,5 +1,35 @@
 import { ResortTenant, Room, Booking, User, StaffInvite, AuditLogEntry, Invoice } from '@/types';
 import { MOCK_RESORT_TENANTS, MOCK_USERS, MOCK_ROOMS, MOCK_BOOKINGS } from '@/data/mockData';
+import {
+  INITIAL_SEEDED_LEADS,
+  INITIAL_SEEDED_ACTIVITIES,
+  INITIAL_SEEDED_NOTES,
+  INITIAL_SEEDED_FOLLOWUPS,
+  INITIAL_SEEDED_GUESTS,
+} from '@/data/seedLeads';
+import {
+  INITIAL_SEEDED_QUOTATIONS,
+  INITIAL_SEEDED_TEMPLATES,
+  INITIAL_SEEDED_AUTOMATIONS,
+  INITIAL_SEEDED_AUTOMATION_LOGS,
+  INITIAL_SEEDED_TARGETS,
+  INITIAL_AUTO_ASSIGN_CONFIG,
+} from '@/data/seedAdvancedCRM';
+import {
+  INITIAL_SEEDED_CAMPAIGNS,
+  INITIAL_SEEDED_COUPONS,
+  INITIAL_SEEDED_LEAD_SOURCES,
+  INITIAL_SEEDED_SEGMENTS,
+  INITIAL_SEEDED_BROADCASTS,
+  INITIAL_SEEDED_CAPTURE_FORMS,
+  INITIAL_SEEDED_REFERRALS,
+} from '@/data/seedMarketing';
+import {
+  INITIAL_SEEDED_LOST_REASONS,
+  INITIAL_SEEDED_SCORING_WEIGHTS,
+  INITIAL_SEEDED_SLA_CONFIGS,
+  INITIAL_SEEDED_INTEGRATIONS,
+} from '@/data/seedSettings';
 
 export const DB_KEYS = {
   RESORTS: 'joy_resorts_tenants',
@@ -11,6 +41,32 @@ export const DB_KEYS = {
   AUDIT_LOGS: 'joy_audit_logs',
   HOUSEKEEPING_TASKS: 'joy_housekeeping_tasks',
   TAX_CONFIG: 'joy_tax_config',
+  // CRM & Leads Module
+  LEADS: 'joy_leads_data',
+  GUESTS: 'joy_guests_data',
+  FOLLOWUPS: 'joy_followups_data',
+  NOTES: 'joy_notes_data',
+  ACTIVITIES: 'joy_activities_data',
+  // Phase 3: Advanced Sales
+  QUOTATIONS: 'joy_quotations_data',
+  TEMPLATES: 'joy_templates_data',
+  AUTOMATIONS: 'joy_automations_data',
+  AUTOMATION_LOGS: 'joy_automation_logs_data',
+  SALES_TARGETS: 'joy_sales_targets_data',
+  AUTO_ASSIGN_CONFIG: 'joy_auto_assign_config',
+  // Phase 4: Marketing & Guest Acquisition
+  CAMPAIGNS: 'joy_campaigns_data',
+  COUPONS: 'joy_coupons_data',
+  LEAD_SOURCES: 'joy_lead_sources_data',
+  SEGMENTS: 'joy_segments_data',
+  BROADCASTS: 'joy_broadcasts_data',
+  CAPTURE_FORMS: 'joy_capture_forms_data',
+  REFERRALS: 'joy_referrals_data',
+  // Phase 5: CRM Reports & Settings
+  LOST_REASONS: 'joy_lost_reasons_data',
+  SCORING_WEIGHTS: 'joy_scoring_weights_data',
+  SLA_CONFIG: 'joy_sla_config_data',
+  INTEGRATIONS: 'joy_integrations_data',
 };
 
 // Seed rooms with resortId
@@ -116,6 +172,74 @@ export function initDatabase(): void {
   }
   if (!localStorage.getItem(DB_KEYS.INVOICES)) {
     localStorage.setItem(DB_KEYS.INVOICES, JSON.stringify(INITIAL_INVOICES));
+  }
+  if (!localStorage.getItem(DB_KEYS.LEADS)) {
+    localStorage.setItem(DB_KEYS.LEADS, JSON.stringify(INITIAL_SEEDED_LEADS));
+  }
+  if (!localStorage.getItem(DB_KEYS.ACTIVITIES)) {
+    localStorage.setItem(DB_KEYS.ACTIVITIES, JSON.stringify(INITIAL_SEEDED_ACTIVITIES));
+  }
+  if (!localStorage.getItem(DB_KEYS.NOTES)) {
+    localStorage.setItem(DB_KEYS.NOTES, JSON.stringify(INITIAL_SEEDED_NOTES));
+  }
+  if (!localStorage.getItem(DB_KEYS.FOLLOWUPS)) {
+    localStorage.setItem(DB_KEYS.FOLLOWUPS, JSON.stringify(INITIAL_SEEDED_FOLLOWUPS));
+  }
+  if (!localStorage.getItem(DB_KEYS.GUESTS)) {
+    localStorage.setItem(DB_KEYS.GUESTS, JSON.stringify(INITIAL_SEEDED_GUESTS));
+  }
+  if (!localStorage.getItem(DB_KEYS.QUOTATIONS)) {
+    localStorage.setItem(DB_KEYS.QUOTATIONS, JSON.stringify(INITIAL_SEEDED_QUOTATIONS));
+  }
+  if (!localStorage.getItem(DB_KEYS.TEMPLATES)) {
+    localStorage.setItem(DB_KEYS.TEMPLATES, JSON.stringify(INITIAL_SEEDED_TEMPLATES));
+  }
+  if (!localStorage.getItem(DB_KEYS.AUTOMATIONS)) {
+    localStorage.setItem(DB_KEYS.AUTOMATIONS, JSON.stringify(INITIAL_SEEDED_AUTOMATIONS));
+  }
+  if (!localStorage.getItem(DB_KEYS.AUTOMATION_LOGS)) {
+    localStorage.setItem(DB_KEYS.AUTOMATION_LOGS, JSON.stringify(INITIAL_SEEDED_AUTOMATION_LOGS));
+  }
+  if (!localStorage.getItem(DB_KEYS.SALES_TARGETS)) {
+    localStorage.setItem(DB_KEYS.SALES_TARGETS, JSON.stringify(INITIAL_SEEDED_TARGETS));
+  }
+  if (!localStorage.getItem(DB_KEYS.AUTO_ASSIGN_CONFIG)) {
+    localStorage.setItem(DB_KEYS.AUTO_ASSIGN_CONFIG, JSON.stringify(INITIAL_AUTO_ASSIGN_CONFIG));
+  }
+  // Phase 4: Marketing Seeds
+  if (!localStorage.getItem(DB_KEYS.CAMPAIGNS)) {
+    localStorage.setItem(DB_KEYS.CAMPAIGNS, JSON.stringify(INITIAL_SEEDED_CAMPAIGNS));
+  }
+  if (!localStorage.getItem(DB_KEYS.COUPONS)) {
+    localStorage.setItem(DB_KEYS.COUPONS, JSON.stringify(INITIAL_SEEDED_COUPONS));
+  }
+  if (!localStorage.getItem(DB_KEYS.LEAD_SOURCES)) {
+    localStorage.setItem(DB_KEYS.LEAD_SOURCES, JSON.stringify(INITIAL_SEEDED_LEAD_SOURCES));
+  }
+  if (!localStorage.getItem(DB_KEYS.SEGMENTS)) {
+    localStorage.setItem(DB_KEYS.SEGMENTS, JSON.stringify(INITIAL_SEEDED_SEGMENTS));
+  }
+  if (!localStorage.getItem(DB_KEYS.BROADCASTS)) {
+    localStorage.setItem(DB_KEYS.BROADCASTS, JSON.stringify(INITIAL_SEEDED_BROADCASTS));
+  }
+  if (!localStorage.getItem(DB_KEYS.CAPTURE_FORMS)) {
+    localStorage.setItem(DB_KEYS.CAPTURE_FORMS, JSON.stringify(INITIAL_SEEDED_CAPTURE_FORMS));
+  }
+  if (!localStorage.getItem(DB_KEYS.REFERRALS)) {
+    localStorage.setItem(DB_KEYS.REFERRALS, JSON.stringify(INITIAL_SEEDED_REFERRALS));
+  }
+  // Phase 5: CRM Settings & Config
+  if (!localStorage.getItem(DB_KEYS.LOST_REASONS)) {
+    localStorage.setItem(DB_KEYS.LOST_REASONS, JSON.stringify(INITIAL_SEEDED_LOST_REASONS));
+  }
+  if (!localStorage.getItem(DB_KEYS.SCORING_WEIGHTS)) {
+    localStorage.setItem(DB_KEYS.SCORING_WEIGHTS, JSON.stringify(INITIAL_SEEDED_SCORING_WEIGHTS));
+  }
+  if (!localStorage.getItem(DB_KEYS.SLA_CONFIG)) {
+    localStorage.setItem(DB_KEYS.SLA_CONFIG, JSON.stringify(INITIAL_SEEDED_SLA_CONFIGS));
+  }
+  if (!localStorage.getItem(DB_KEYS.INTEGRATIONS)) {
+    localStorage.setItem(DB_KEYS.INTEGRATIONS, JSON.stringify(INITIAL_SEEDED_INTEGRATIONS));
   }
 }
 

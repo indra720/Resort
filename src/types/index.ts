@@ -97,6 +97,10 @@ export interface Booking {
   gstAmount: number;
   paymentStatus: 'Paid' | 'Pending' | 'Cancelled';
   roomStatus: StatusType;
+  status?: StatusType;
+  resortId?: string;
+  paidAmount?: number;
+  specialRequests?: string;
 }
 
 // Billing / Invoice
@@ -163,3 +167,7 @@ export interface StaffInvite {
   token: string;
   status: 'Pending' | 'Accepted' | 'Expired' | 'Revoked';
 }
+
+// CRM & Leads Type Re-exports
+export * from './crm';
+

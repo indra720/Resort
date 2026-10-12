@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { toast } from '@/store/useToastStore';
 import { formatINR } from '@/lib/formatINR';
+import { createLead, checkDuplicateLead } from '@/api/leads';
 import {
   MessageSquareText,
   PlusCircle,
@@ -102,7 +103,7 @@ const INITIAL_ENQUIRIES: Enquiry[] = [
 ];
 
 export const EnquiriesPage: React.FC = () => {
-  const { currentResort } = useAuthStore();
+  const { currentResort, user } = useAuthStore();
   const [enquiries, setEnquiries] = useState<Enquiry[]>(INITIAL_ENQUIRIES);
   const [statusFilter, setStatusFilter] = useState<string>('All');
   const [isAddOpen, setIsAddOpen] = useState(false);
@@ -157,6 +158,58 @@ export const EnquiriesPage: React.FC = () => {
     );
     toast.info('Enquiry Status Updated', `Marked as ${status}`);
   };
+
+  const handleConvertToLead = (enq: Enquiry) => {
+    // 1. Check duplicate lead in store
+    const dupCheck = checkDuplicateLead(enq.phone, enq.email, currentResort.id);
+    if (dupCheck.isDuplicate) {
+      toast.warning(
+        'Lead Already Exists',
+        `A lead already exists for ${dupCheck.existingLead?.name} (${dupCheck.existingLead?.phone}).`
+      );
+      return;
+    }
+
+    // 2. Map enquiry source and interested stay
+    const mappedSource = enq.source === 'WhatsApp' ? 'Website' : enq.source;
+    const res = createLead(
+      {
+        name: enq.guestName,
+        phone: enq.phone,
+        email: enq.email,
+        city: 'Mumbai, India',
+        interested_in: (enq.category.includes('Villa') ? 'Luxury Stay' : 'Weekend Stay') as any,
+        guests_adults: enq.pax,
+        guests_children: 0,
+        preferred_date: enq.checkIn,
+        budget_min: Math.round(enq.budget * 0.8),
+        budget_max: enq.budget,
+        source: mappedSource as any,
+        status: 'New',
+        priority: 'High',
+        score: 'Hot',
+        tags: ['Enquiry Conversion', enq.category],
+        assigned_to: enq.assignedTo.split(' ')[0] || 'Sameer Verma',
+        remarks: `Converted from online enquiry #${enq.id}. Interested in ${enq.category} from ${enq.checkIn} to ${enq.checkOut}.`,
+      },
+      currentResort.id,
+      user
+    );
+
+    if (res.success) {
+      // Mark enquiry as qualified
+      setEnquiries((prev) =>
+        prev.map((e) => (e.id === enq.id ? { ...e, status: 'Qualified' } : e))
+      );
+      toast.success(
+        'Enquiry Converted to Lead!',
+        `Lead created for ${enq.guestName}. Added to CRM sales pipeline.`
+      );
+    } else {
+      toast.error('Conversion Error', res.error || 'Failed to create lead.');
+    }
+  };
+
 
   const columns: Column<Enquiry>[] = [
     {
@@ -229,15 +282,15 @@ export const EnquiriesPage: React.FC = () => {
       header: 'Stage Action',
       accessor: (e) => (
         <div className="flex items-center gap-1.5 justify-end">
-          {e.status !== 'Won' && (
-            <button
-              type="button"
-              onClick={() => handleStatusChange(e.id, 'Won')}
-              className="px-2 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded-lg text-xs font-semibold"
-            >
-              Convert to Booking
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={() => handleConvertToLead(e)}
+            className="px-2.5 py-1 bg-emerald-50 hover:bg-emerald-100 text-[#0F5132] border border-emerald-300 rounded-lg text-xs font-semibold flex items-center gap-1 transition-colors"
+            title="Convert this enquiry into a tracked sales lead"
+          >
+            <User className="w-3 h-3 text-[#0F5132]" />
+            <span>Convert to Lead</span>
+          </button>
           {e.status === 'New' && (
             <button
               type="button"
