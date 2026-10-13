@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo } from "react";
 import {
   FileBarChart,
   Download,
@@ -19,7 +19,7 @@ import {
   Lock,
   ArrowUpRight,
   HelpCircle,
-} from 'lucide-react';
+} from "lucide-react";
 import {
   ResponsiveContainer,
   AreaChart,
@@ -30,23 +30,23 @@ import {
   YAxis,
   Tooltip,
   Legend,
-} from 'recharts';
-import { useAuthStore } from '@/store/useAuthStore';
-import { canUse } from '@/lib/permissions';
-import { formatINR } from '@/lib/formatINR';
-import { toast } from '@/store/useToastStore';
-import { getCRMAnalyticsReport, exportCRMReportCSV } from '@/api/crmReports';
-import { DateRangeOption, DateRangeFilter } from '@/types/crm';
+} from "recharts";
+import { useAuthStore } from "@/store/useAuthStore";
+import { canUse } from "@/lib/permissions";
+import { formatINR } from "@/lib/formatINR";
+import { toast } from "@/store/useToastStore";
+import { getCRMAnalyticsReport, exportCRMReportCSV } from "@/api/crmReports";
+import { DateRangeOption, DateRangeFilter } from "@/types/crm";
 
 export const CRMReportsPage: React.FC = () => {
   const { currentResort } = useAuthStore();
-  const [dateRange, setDateRange] = useState<DateRangeOption>('all_time');
-  const [customStart, setCustomStart] = useState<string>('');
-  const [customEnd, setCustomEnd] = useState<string>('');
+  const [dateRange, setDateRange] = useState<DateRangeOption>("all_time");
+  const [customStart, setCustomStart] = useState<string>("");
+  const [customEnd, setCustomEnd] = useState<string>("");
   const [refreshKey, setRefreshKey] = useState<number>(0);
   const [isExportMenuOpen, setIsExportMenuOpen] = useState(false);
 
-  const isUnlocked = canUse(currentResort, 'crm_reports');
+  const isUnlocked = canUse(currentResort, "crm_reports");
 
   const filter: DateRangeFilter = useMemo(() => {
     return {
@@ -58,28 +58,33 @@ export const CRMReportsPage: React.FC = () => {
 
   const report = useMemo(() => {
     // refreshKey allows manual recalculation
-    return getCRMAnalyticsReport(currentResort?.id || 'resort-1', filter);
+    return getCRMAnalyticsReport(currentResort?.id || "resort-1", filter);
   }, [currentResort?.id, filter, refreshKey]);
 
-  const handleDownloadCSV = (type: 'executive' | 'source' | 'lost' | 'monthly') => {
+  const handleDownloadCSV = (
+    type: "executive" | "source" | "lost" | "monthly",
+  ) => {
     try {
       const csvContent = exportCRMReportCSV(report, type);
-      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.setAttribute('href', url);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
       link.setAttribute(
-        'download',
-        `JOY_CRM_Report_${type}_${currentResort?.id || 'resort-1'}_${dateRange}.csv`
+        "download",
+        `JOY_CRM_Report_${type}_${currentResort?.id || "resort-1"}_${dateRange}.csv`,
       );
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
       setIsExportMenuOpen(false);
-      toast.success('CSV Downloaded', `${type.toUpperCase()} report exported successfully.`);
+      toast.success(
+        "CSV Downloaded",
+        `${type.toUpperCase()} report exported successfully.`,
+      );
     } catch {
-      toast.error('Export Failed', 'Could not generate CSV file.');
+      toast.error("Export Failed", "Could not generate CSV file.");
     }
   };
 
@@ -89,7 +94,7 @@ export const CRMReportsPage: React.FC = () => {
 
   const handleRefresh = () => {
     setRefreshKey((k) => k + 1);
-    toast.success('Data Refreshed', 'Recalculated CRM report metrics.');
+    toast.success("Data Refreshed", "Recalculated CRM report metrics.");
   };
 
   if (!isUnlocked) {
@@ -105,10 +110,17 @@ export const CRMReportsPage: React.FC = () => {
           CRM Analytics & Sales Reports Locked
         </h2>
         <p className="text-xs sm:text-sm text-[#64748B] max-w-md mb-6 leading-relaxed">
-          Unlock executive conversion leaderboards, source channel ROI matrices, sales velocity trackers, and lost reason analytics on the <strong>Pro Plan</strong>.
+          Unlock executive conversion leaderboards, source channel ROI matrices,
+          sales velocity trackers, and lost reason analytics on the{" "}
+          <strong>Pro Plan</strong>.
         </p>
         <button
-          onClick={() => toast.info('Upgrade Plan', 'Please contact support or visit SaaS Billing.')}
+          onClick={() =>
+            toast.info(
+              "Upgrade Plan",
+              "Please contact support or visit SaaS Billing.",
+            )
+          }
           className="px-5 py-2.5 rounded-xl bg-[#0F5132] text-white font-bold text-sm shadow hover:bg-[#0c4128] transition-colors"
         >
           Upgrade to Pro
@@ -118,13 +130,13 @@ export const CRMReportsPage: React.FC = () => {
   }
 
   const datePresets: { id: DateRangeOption; label: string }[] = [
-    { id: 'today', label: 'Today' },
-    { id: 'this_week', label: 'This Week' },
-    { id: 'this_month', label: 'This Month' },
-    { id: 'this_quarter', label: 'This Quarter' },
-    { id: 'this_year', label: 'This Year' },
-    { id: 'all_time', label: 'All Time' },
-    { id: 'custom', label: 'Custom' },
+    { id: "today", label: "Today" },
+    { id: "this_week", label: "This Week" },
+    { id: "this_month", label: "This Month" },
+    { id: "this_quarter", label: "This Quarter" },
+    { id: "this_year", label: "This Year" },
+    { id: "all_time", label: "All Time" },
+    { id: "custom", label: "Custom" },
   ];
 
   return (
@@ -133,7 +145,7 @@ export const CRMReportsPage: React.FC = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#E2E8F0] pb-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight">
+            <h1 className="text-lg sm:text-3xl font-black text-[#0F172A] tracking-tight">
               Sales Reports & Analytics
             </h1>
             <span className="bg-emerald-100 text-[#0F5132] text-xs font-bold px-2.5 py-0.5 rounded-full border border-emerald-300">
@@ -141,8 +153,12 @@ export const CRMReportsPage: React.FC = () => {
             </span>
           </div>
           <p className="text-xs sm:text-sm text-[#64748B] mt-1">
-            Conversion metrics, sales velocity, executive performance, and source attribution for{' '}
-            <strong className="text-[#0F172A]">{currentResort?.name || 'Resort'}</strong>.
+            Conversion metrics, sales velocity, executive performance, and
+            source attribution for{" "}
+            <strong className="text-[#0F172A]">
+              {currentResort?.name || "Resort"}
+            </strong>
+            .
           </p>
         </div>
 
@@ -183,28 +199,28 @@ export const CRMReportsPage: React.FC = () => {
                   Select CSV Dataset
                 </div>
                 <button
-                  onClick={() => handleDownloadCSV('executive')}
+                  onClick={() => handleDownloadCSV("executive")}
                   className="w-full text-left px-3 py-2 text-xs font-semibold text-[#0F172A] hover:bg-[#F1F5F9] transition-colors flex items-center justify-between"
                 >
                   <span>Executive Leaderboard</span>
                   <ArrowUpRight className="w-3 h-3 text-[#94A3B8]" />
                 </button>
                 <button
-                  onClick={() => handleDownloadCSV('source')}
+                  onClick={() => handleDownloadCSV("source")}
                   className="w-full text-left px-3 py-2 text-xs font-semibold text-[#0F172A] hover:bg-[#F1F5F9] transition-colors flex items-center justify-between"
                 >
                   <span>Source Conversion Matrix</span>
                   <ArrowUpRight className="w-3 h-3 text-[#94A3B8]" />
                 </button>
                 <button
-                  onClick={() => handleDownloadCSV('lost')}
+                  onClick={() => handleDownloadCSV("lost")}
                   className="w-full text-left px-3 py-2 text-xs font-semibold text-[#0F172A] hover:bg-[#F1F5F9] transition-colors flex items-center justify-between"
                 >
                   <span>Lost Reasons & Revenue</span>
                   <ArrowUpRight className="w-3 h-3 text-[#94A3B8]" />
                 </button>
                 <button
-                  onClick={() => handleDownloadCSV('monthly')}
+                  onClick={() => handleDownloadCSV("monthly")}
                   className="w-full text-left px-3 py-2 text-xs font-semibold text-[#0F172A] hover:bg-[#F1F5F9] transition-colors flex items-center justify-between"
                 >
                   <span>Monthly Trailing Trend</span>
@@ -228,8 +244,8 @@ export const CRMReportsPage: React.FC = () => {
               onClick={() => setDateRange(preset.id)}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
                 dateRange === preset.id
-                  ? 'bg-[#0F5132] text-white shadow-2xs'
-                  : 'bg-[#F8FAFC] text-[#64748B] hover:bg-[#E2E8F0] hover:text-[#0F172A]'
+                  ? "bg-[#0F5132] text-white shadow-2xs"
+                  : "bg-[#F8FAFC] text-[#64748B] hover:bg-[#E2E8F0] hover:text-[#0F172A]"
               }`}
             >
               {preset.label}
@@ -237,10 +253,12 @@ export const CRMReportsPage: React.FC = () => {
           ))}
         </div>
 
-        {dateRange === 'custom' && (
+        {dateRange === "custom" && (
           <div className="flex items-center gap-2 pt-2 md:pt-0 border-t md:border-t-0 border-[#E2E8F0]">
             <div className="flex items-center gap-1.5">
-              <span className="text-xs text-[#64748B] font-semibold">From:</span>
+              <span className="text-xs text-[#64748B] font-semibold">
+                From:
+              </span>
               <input
                 type="date"
                 value={customStart}
@@ -266,86 +284,114 @@ export const CRMReportsPage: React.FC = () => {
         {/* 1. Total Leads */}
         <div className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-2xs text-left">
           <div className="flex items-center justify-between text-[#64748B]">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Total Leads</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider">
+              Total Leads
+            </span>
             <Users2 className="w-4 h-4 text-blue-600" />
           </div>
           <div className="text-xl sm:text-2xl font-black text-[#0F172A] mt-1.5">
             {report.totalLeads}
           </div>
-          <p className="text-[10px] text-[#64748B] font-semibold mt-0.5">In selected range</p>
+          <p className="text-[10px] text-[#64748B] font-semibold mt-0.5">
+            In selected range
+          </p>
         </div>
 
         {/* 2. Direct Bookings */}
         <div className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-2xs text-left">
           <div className="flex items-center justify-between text-[#64748B]">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Bookings</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider">
+              Bookings
+            </span>
             <CalendarCheck2 className="w-4 h-4 text-emerald-600" />
           </div>
           <div className="text-xl sm:text-2xl font-black text-emerald-600 mt-1.5">
             {report.totalBookings}
           </div>
-          <p className="text-[10px] text-emerald-700 font-semibold mt-0.5">Confirmed stays</p>
+          <p className="text-[10px] text-emerald-700 font-semibold mt-0.5">
+            Confirmed stays
+          </p>
         </div>
 
         {/* 3. Conversion Win Rate */}
         <div className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-2xs text-left">
           <div className="flex items-center justify-between text-[#64748B]">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Win Rate</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider">
+              Win Rate
+            </span>
             <TrendingUp className="w-4 h-4 text-[#0F5132]" />
           </div>
           <div className="text-xl sm:text-2xl font-black text-[#0F5132] mt-1.5">
             {report.overallConversionRate}%
           </div>
-          <p className="text-[10px] text-emerald-800 font-semibold mt-0.5">Leads to Booked</p>
+          <p className="text-[10px] text-emerald-800 font-semibold mt-0.5">
+            Leads to Booked
+          </p>
         </div>
 
         {/* 4. Total Attributed Revenue */}
         <div className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-2xs text-left">
           <div className="flex items-center justify-between text-[#64748B]">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Sales Revenue</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider">
+              Sales Revenue
+            </span>
             <DollarSign className="w-4 h-4 text-indigo-600" />
           </div>
           <div className="text-xl sm:text-2xl font-black text-[#0F172A] mt-1.5 truncate">
             {formatINR(report.totalRevenue)}
           </div>
-          <p className="text-[10px] text-[#64748B] font-semibold mt-0.5">Booked pipeline value</p>
+          <p className="text-[10px] text-[#64748B] font-semibold mt-0.5">
+            Booked pipeline value
+          </p>
         </div>
 
         {/* 5. Average Deal Size */}
         <div className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-2xs text-left">
           <div className="flex items-center justify-between text-[#64748B]">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Avg Deal Size</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider">
+              Avg Deal Size
+            </span>
             <Award className="w-4 h-4 text-amber-600" />
           </div>
           <div className="text-lg sm:text-xl font-black text-[#0F172A] mt-1.5 truncate">
             {formatINR(report.avgDealSize)}
           </div>
-          <p className="text-[10px] text-[#64748B] font-semibold mt-0.5">Per converted stay</p>
+          <p className="text-[10px] text-[#64748B] font-semibold mt-0.5">
+            Per converted stay
+          </p>
         </div>
 
         {/* 6. Sales Cycle Velocity */}
         <div className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-2xs text-left">
           <div className="flex items-center justify-between text-[#64748B]">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Velocity</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider">
+              Velocity
+            </span>
             <Timer className="w-4 h-4 text-cyan-600" />
           </div>
           <div className="text-xl sm:text-2xl font-black text-[#0F172A] mt-1.5">
-            {report.avgSalesCycleDays}{' '}
+            {report.avgSalesCycleDays}{" "}
             <span className="text-xs font-semibold text-[#64748B]">days</span>
           </div>
-          <p className="text-[10px] text-cyan-800 font-semibold mt-0.5">Enquiry to booking</p>
+          <p className="text-[10px] text-cyan-800 font-semibold mt-0.5">
+            Enquiry to booking
+          </p>
         </div>
 
         {/* 7. Follow-up SLA Adherence */}
         <div className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-2xs text-left">
           <div className="flex items-center justify-between text-[#64748B]">
-            <span className="text-[11px] font-bold uppercase tracking-wider">SLA Adherence</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider">
+              SLA Adherence
+            </span>
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
           </div>
           <div className="text-xl sm:text-2xl font-black text-emerald-700 mt-1.5">
             {report.followupAdherenceRate}%
           </div>
-          <p className="text-[10px] text-[#64748B] font-semibold mt-0.5">Target SLA &lt;30m</p>
+          <p className="text-[10px] text-[#64748B] font-semibold mt-0.5">
+            Target SLA &lt;30m
+          </p>
         </div>
       </div>
 
@@ -358,7 +404,8 @@ export const CRMReportsPage: React.FC = () => {
               Sales Executive Conversion Leaderboard
             </h2>
             <p className="text-xs text-[#64748B]">
-              Ranked by total closed revenue, conversion percentage, and sales turnaround time.
+              Ranked by total closed revenue, conversion percentage, and sales
+              turnaround time.
             </p>
           </div>
           <span className="text-xs font-bold text-[#0F5132] bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 self-start sm:self-auto">
@@ -396,12 +443,12 @@ export const CRMReportsPage: React.FC = () => {
                         <span
                           className={`w-6 h-6 rounded-full flex items-center justify-center font-black text-[11px] ${
                             isGold
-                              ? 'bg-amber-100 text-amber-800 border border-amber-300'
+                              ? "bg-amber-100 text-amber-800 border border-amber-300"
                               : isSilver
-                              ? 'bg-slate-200 text-slate-700'
-                              : isBronze
-                              ? 'bg-amber-50 text-amber-700'
-                              : 'bg-slate-100 text-slate-600'
+                                ? "bg-slate-200 text-slate-700"
+                                : isBronze
+                                  ? "bg-amber-50 text-amber-700"
+                                  : "bg-slate-100 text-slate-600"
                           }`}
                         >
                           {idx + 1}
@@ -415,7 +462,9 @@ export const CRMReportsPage: React.FC = () => {
                               </span>
                             )}
                           </div>
-                          <span className="text-[10px] text-[#64748B]">Sales Executive</span>
+                          <span className="text-[10px] text-[#64748B]">
+                            Sales Executive
+                          </span>
                         </div>
                       </div>
                     </td>
@@ -436,7 +485,9 @@ export const CRMReportsPage: React.FC = () => {
                         <div className="w-full bg-[#E2E8F0] h-1.5 rounded-full overflow-hidden">
                           <div
                             className="bg-[#0F5132] h-full rounded-full transition-all"
-                            style={{ width: `${Math.min(100, exec.conversionRate * 2.5)}%` }}
+                            style={{
+                              width: `${Math.min(100, exec.conversionRate * 2.5)}%`,
+                            }}
                           />
                         </div>
                       </div>
@@ -460,8 +511,8 @@ export const CRMReportsPage: React.FC = () => {
                       <span
                         className={`px-2 py-0.5 rounded-md font-bold text-[11px] ${
                           exec.followupAdherenceRate >= 90
-                            ? 'bg-emerald-100 text-emerald-800'
-                            : 'bg-amber-100 text-amber-800'
+                            ? "bg-emerald-100 text-emerald-800"
+                            : "bg-amber-100 text-amber-800"
                         }`}
                       >
                         {exec.followupAdherenceRate}%
@@ -563,19 +614,19 @@ export const CRMReportsPage: React.FC = () => {
                 <Tooltip
                   formatter={(val: number, name: string) => [
                     val,
-                    name === 'leadsCount' ? 'Total Leads' : 'Bookings',
+                    name === "leadsCount" ? "Total Leads" : "Bookings",
                   ]}
                   contentStyle={{
-                    backgroundColor: '#0F172A',
-                    color: '#fff',
-                    borderRadius: '12px',
-                    fontSize: '12px',
+                    backgroundColor: "#0F172A",
+                    color: "#fff",
+                    borderRadius: "12px",
+                    fontSize: "12px",
                   }}
                 />
                 <Legend
                   verticalAlign="top"
                   align="right"
-                  wrapperStyle={{ fontSize: '11px', paddingBottom: '8px' }}
+                  wrapperStyle={{ fontSize: "11px", paddingBottom: "8px" }}
                 />
                 <Bar
                   dataKey="leadsCount"
@@ -604,13 +655,17 @@ export const CRMReportsPage: React.FC = () => {
               Lost Reasons Breakdown & Potential Revenue Loss
             </h2>
             <p className="text-xs text-[#64748B]">
-              Identify drop-off friction points, pricing mismatch, and lost pipeline value.
+              Identify drop-off friction points, pricing mismatch, and lost
+              pipeline value.
             </p>
           </div>
           <div className="text-xs font-bold text-red-700 bg-red-50 px-3 py-1 rounded-full border border-red-200">
-            Total Lost Value:{' '}
+            Total Lost Value:{" "}
             {formatINR(
-              report.lostReasonsBreakdown.reduce((acc, r) => acc + r.lostPotentialRevenue, 0)
+              report.lostReasonsBreakdown.reduce(
+                (acc, r) => acc + r.lostPotentialRevenue,
+                0,
+              ),
             )}
           </div>
         </div>
@@ -627,7 +682,9 @@ export const CRMReportsPage: React.FC = () => {
                 className="p-4 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] space-y-2 hover:border-red-200 transition-colors"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs text-[#0F172A]">{item.reason}</span>
+                  <span className="font-bold text-xs text-[#0F172A]">
+                    {item.reason}
+                  </span>
                   <span className="text-xs font-extrabold text-red-600">
                     {item.count} leads ({item.percentage}%)
                   </span>
@@ -659,7 +716,8 @@ export const CRMReportsPage: React.FC = () => {
               Trailing Monthly Revenue & Booking Trajectory
             </h2>
             <p className="text-xs text-[#64748B]">
-              6-month historical view of lead volume, closed conversions, and total INR revenue.
+              6-month historical view of lead volume, closed conversions, and
+              total INR revenue.
             </p>
           </div>
         </div>
@@ -676,7 +734,12 @@ export const CRMReportsPage: React.FC = () => {
                   <stop offset="95%" stopColor="#0F5132" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <XAxis dataKey="month" stroke="#94A3B8" fontSize={11} tickLine={false} />
+              <XAxis
+                dataKey="month"
+                stroke="#94A3B8"
+                fontSize={11}
+                tickLine={false}
+              />
               <YAxis
                 stroke="#94A3B8"
                 fontSize={11}
@@ -685,14 +748,14 @@ export const CRMReportsPage: React.FC = () => {
               />
               <Tooltip
                 formatter={(val: number, name: string) => [
-                  name === 'revenue' ? formatINR(val) : val,
-                  name === 'revenue' ? 'Sales Revenue' : 'Bookings',
+                  name === "revenue" ? formatINR(val) : val,
+                  name === "revenue" ? "Sales Revenue" : "Bookings",
                 ]}
                 contentStyle={{
-                  backgroundColor: '#0F172A',
-                  color: '#fff',
-                  borderRadius: '12px',
-                  fontSize: '12px',
+                  backgroundColor: "#0F172A",
+                  color: "#fff",
+                  borderRadius: "12px",
+                  fontSize: "12px",
                 }}
               />
               <Area
@@ -723,7 +786,9 @@ export const CRMReportsPage: React.FC = () => {
             <tbody className="divide-y divide-[#E2E8F0]">
               {report.monthlyTrend.map((m) => (
                 <tr key={m.month} className="hover:bg-[#F8FAFC]">
-                  <td className="py-2 px-3 font-bold text-[#0F172A]">{m.month}</td>
+                  <td className="py-2 px-3 font-bold text-[#0F172A]">
+                    {m.month}
+                  </td>
                   <td className="py-2 px-3 text-center font-semibold text-[#64748B]">
                     {m.leadsCount}
                   </td>

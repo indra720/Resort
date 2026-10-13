@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { useAuthStore } from '@/store/useAuthStore';
-import { canUse } from '@/lib/permissions';
-import { formatINR } from '@/lib/formatINR';
-import { toast } from '@/store/useToastStore';
+import React, { useState, useEffect, useMemo } from "react";
+import { useAuthStore } from "@/store/useAuthStore";
+import { canUse } from "@/lib/permissions";
+import { formatINR } from "@/lib/formatINR";
+import { toast } from "@/store/useToastStore";
 import {
   Send,
   PlusCircle,
@@ -38,7 +38,8 @@ import {
   Award,
   AlertTriangle,
   Info,
-} from 'lucide-react';
+  X,
+} from "lucide-react";
 import {
   Campaign,
   CampaignChannel,
@@ -52,7 +53,7 @@ import {
   ReferralRecord,
   MarketingDashboardMetrics,
   MessageTemplate,
-} from '@/types/crm';
+} from "@/types/crm";
 import {
   getMarketingMetrics,
   getLeadSources,
@@ -76,31 +77,33 @@ import {
   getReferrals,
   createReferral,
   updateReferralStatus,
-} from '@/api';
-import { getTemplates } from '@/api/templates';
+} from "@/api";
+import { getTemplates } from "@/api/templates";
 
 type MarketingTab =
-  | 'overview'
-  | 'campaigns'
-  | 'coupons'
-  | 'segments'
-  | 'broadcasts'
-  | 'forms'
-  | 'referrals';
+  | "overview"
+  | "campaigns"
+  | "coupons"
+  | "segments"
+  | "broadcasts"
+  | "forms"
+  | "referrals";
 
 export const MarketingPage: React.FC = () => {
   const { currentResort, user } = useAuthStore();
-  const [activeTab, setActiveTab] = useState<MarketingTab>('overview');
+  const [activeTab, setActiveTab] = useState<MarketingTab>("overview");
 
   // Plan Gating Checks
-  const isMarketingRoiUnlocked = canUse(currentResort, 'marketing_roi');
-  const isCampaignsUnlocked = canUse(currentResort, 'campaigns');
-  const isCouponsUnlocked = canUse(currentResort, 'coupons');
-  const isFormBuilderUnlocked = canUse(currentResort, 'form_builder');
-  const isReferralsUnlocked = canUse(currentResort, 'referral_program');
+  const isMarketingRoiUnlocked = canUse(currentResort, "marketing_roi");
+  const isCampaignsUnlocked = canUse(currentResort, "campaigns");
+  const isCouponsUnlocked = canUse(currentResort, "coupons");
+  const isFormBuilderUnlocked = canUse(currentResort, "form_builder");
+  const isReferralsUnlocked = canUse(currentResort, "referral_program");
 
   // Data States
-  const [metrics, setMetrics] = useState<MarketingDashboardMetrics | null>(null);
+  const [metrics, setMetrics] = useState<MarketingDashboardMetrics | null>(
+    null,
+  );
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [coupons, setCoupons] = useState<Coupon[]>([]);
   const [sources, setSources] = useState<LeadSourceConfig[]>([]);
@@ -132,10 +135,10 @@ export const MarketingPage: React.FC = () => {
   // TAB 1: OVERVIEW & ANALYTICS STATE & MODALS
   // ==========================================
   const [isAddSourceOpen, setIsAddSourceOpen] = useState(false);
-  const [newSourceName, setNewSourceName] = useState('');
+  const [newSourceName, setNewSourceName] = useState("");
   const [newSourceCategory, setNewSourceCategory] = useState<
-    'Digital' | 'Offline' | 'Referral' | 'Direct'
-  >('Digital');
+    "Digital" | "Offline" | "Referral" | "Direct"
+  >("Digital");
   const [newSourceEstCpl, setNewSourceEstCpl] = useState(500);
 
   const handleAddSource = (e: React.FormEvent) => {
@@ -149,12 +152,12 @@ export const MarketingPage: React.FC = () => {
         is_active: true,
       },
       currentResort.id,
-      user
+      user,
     );
     if (res.success) {
-      toast.success('Source Added', `Channel "${newSourceName}" registered.`);
+      toast.success("Source Added", `Channel "${newSourceName}" registered.`);
       setIsAddSourceOpen(false);
-      setNewSourceName('');
+      setNewSourceName("");
       refreshData();
     }
   };
@@ -163,23 +166,27 @@ export const MarketingPage: React.FC = () => {
   // TAB 2: CAMPAIGNS STATE & MODALS
   // ==========================================
   const [isCreateCampaignOpen, setIsCreateCampaignOpen] = useState(false);
-  const [campaignSearch, setCampaignSearch] = useState('');
-  const [campaignChannelFilter, setCampaignChannelFilter] = useState<string>('All');
-  const [campaignStatusFilter, setCampaignStatusFilter] = useState<string>('All');
+  const [campaignSearch, setCampaignSearch] = useState("");
+  const [campaignChannelFilter, setCampaignChannelFilter] =
+    useState<string>("All");
+  const [campaignStatusFilter, setCampaignStatusFilter] =
+    useState<string>("All");
 
   // New Campaign Form
-  const [campName, setCampName] = useState('');
-  const [campChannel, setCampChannel] = useState<CampaignChannel>('WhatsApp');
+  const [campName, setCampName] = useState("");
+  const [campChannel, setCampChannel] = useState<CampaignChannel>("WhatsApp");
   const [campBudget, setCampBudget] = useState(50000);
   const [campSpend, setCampSpend] = useState(0);
-  const [campStartDate, setCampStartDate] = useState(new Date().toISOString().slice(0, 10));
-  const [campEndDate, setCampEndDate] = useState(
-    new Date(Date.now() + 86400000 * 30).toISOString().slice(0, 10)
+  const [campStartDate, setCampStartDate] = useState(
+    new Date().toISOString().slice(0, 10),
   );
-  const [campAudience, setCampAudience] = useState('High-Spender Past Guests');
-  const [campOfferCode, setCampOfferCode] = useState('');
-  const [campStatus, setCampStatus] = useState<CampaignStatus>('Running');
-  const [campMessage, setCampMessage] = useState('');
+  const [campEndDate, setCampEndDate] = useState(
+    new Date(Date.now() + 86400000 * 30).toISOString().slice(0, 10),
+  );
+  const [campAudience, setCampAudience] = useState("High-Spender Past Guests");
+  const [campOfferCode, setCampOfferCode] = useState("");
+  const [campStatus, setCampStatus] = useState<CampaignStatus>("Running");
+  const [campMessage, setCampMessage] = useState("");
 
   const filteredCampaigns = useMemo(() => {
     return campaigns.filter((c) => {
@@ -187,8 +194,9 @@ export const MarketingPage: React.FC = () => {
         c.name.toLowerCase().includes(campaignSearch.toLowerCase()) ||
         c.target_audience.toLowerCase().includes(campaignSearch.toLowerCase());
       const matchChannel =
-        campaignChannelFilter === 'All' || c.channel === campaignChannelFilter;
-      const matchStatus = campaignStatusFilter === 'All' || c.status === campaignStatusFilter;
+        campaignChannelFilter === "All" || c.channel === campaignChannelFilter;
+      const matchStatus =
+        campaignStatusFilter === "All" || c.status === campaignStatusFilter;
       return matchSearch && matchChannel && matchStatus;
     });
   }, [campaigns, campaignSearch, campaignChannelFilter, campaignStatusFilter]);
@@ -196,7 +204,7 @@ export const MarketingPage: React.FC = () => {
   const handleCreateCampaign = (e: React.FormEvent) => {
     e.preventDefault();
     if (!campName.trim()) {
-      toast.error('Validation Error', 'Campaign name is required.');
+      toast.error("Validation Error", "Campaign name is required.");
       return;
     }
 
@@ -218,26 +226,41 @@ export const MarketingPage: React.FC = () => {
         message: campMessage,
       },
       currentResort.id,
-      user
+      user,
     );
 
     if (res.success) {
-      toast.success('Campaign Created', `Campaign "${campName}" is now active.`);
+      toast.success(
+        "Campaign Created",
+        `Campaign "${campName}" is now active.`,
+      );
       setIsCreateCampaignOpen(false);
-      setCampName('');
-      setCampMessage('');
+      setCampName("");
+      setCampMessage("");
       refreshData();
     } else {
-      toast.error('Failed', res.error);
+      toast.error("Failed", res.error);
     }
   };
 
   const handleToggleCampaign = (campaign: Campaign) => {
     const nextStatus: CampaignStatus =
-      campaign.status === 'Running' ? 'Paused' : campaign.status === 'Paused' ? 'Running' : 'Running';
-    const res = toggleCampaignStatus(campaign.id, nextStatus, currentResort.id, user);
+      campaign.status === "Running"
+        ? "Paused"
+        : campaign.status === "Paused"
+          ? "Running"
+          : "Running";
+    const res = toggleCampaignStatus(
+      campaign.id,
+      nextStatus,
+      currentResort.id,
+      user,
+    );
     if (res.success) {
-      toast.info('Status Updated', `Campaign "${campaign.name}" is now ${nextStatus}.`);
+      toast.info(
+        "Status Updated",
+        `Campaign "${campaign.name}" is now ${nextStatus}.`,
+      );
       refreshData();
     }
   };
@@ -246,7 +269,7 @@ export const MarketingPage: React.FC = () => {
     if (confirm(`Are you sure you want to delete campaign "${name}"?`)) {
       const res = deleteCampaign(id, currentResort.id, user);
       if (res.success) {
-        toast.success('Deleted', 'Campaign removed.');
+        toast.success("Deleted", "Campaign removed.");
         refreshData();
       }
     }
@@ -256,15 +279,17 @@ export const MarketingPage: React.FC = () => {
   // TAB 3: COUPONS STATE & MODALS
   // ==========================================
   const [isCreateCouponOpen, setIsCreateCouponOpen] = useState(false);
-  const [cpnCode, setCpnCode] = useState('');
-  const [cpnDesc, setCpnDesc] = useState('');
-  const [cpnType, setCpnType] = useState<'percentage' | 'fixed'>('percentage');
+  const [cpnCode, setCpnCode] = useState("");
+  const [cpnDesc, setCpnDesc] = useState("");
+  const [cpnType, setCpnType] = useState<"percentage" | "fixed">("percentage");
   const [cpnValue, setCpnValue] = useState(15);
   const [cpnMinStay, setCpnMinStay] = useState(1);
   const [cpnMinSpend, setCpnMinSpend] = useState(10000);
-  const [cpnValidFrom, setCpnValidFrom] = useState(new Date().toISOString().slice(0, 10));
+  const [cpnValidFrom, setCpnValidFrom] = useState(
+    new Date().toISOString().slice(0, 10),
+  );
   const [cpnValidTo, setCpnValidTo] = useState(
-    new Date(Date.now() + 86400000 * 60).toISOString().slice(0, 10)
+    new Date(Date.now() + 86400000 * 60).toISOString().slice(0, 10),
   );
   const [cpnLimit, setCpnLimit] = useState(100);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
@@ -272,7 +297,7 @@ export const MarketingPage: React.FC = () => {
   const handleCreateCoupon = (e: React.FormEvent) => {
     e.preventDefault();
     if (!cpnCode.trim()) {
-      toast.error('Validation Error', 'Coupon code is required.');
+      toast.error("Validation Error", "Coupon code is required.");
       return;
     }
 
@@ -280,7 +305,7 @@ export const MarketingPage: React.FC = () => {
       {
         resort_id: currentResort.id,
         code: cpnCode.trim().toUpperCase(),
-        description: cpnDesc.trim() || 'Promotional Discount Offer',
+        description: cpnDesc.trim() || "Promotional Discount Offer",
         discount_type: cpnType,
         discount_value: Number(cpnValue) || 0,
         min_stay_nights: Number(cpnMinStay) || 1,
@@ -291,24 +316,30 @@ export const MarketingPage: React.FC = () => {
         is_active: true,
       },
       currentResort.id,
-      user
+      user,
     );
 
     if (res.success) {
-      toast.success('Coupon Created', `Promo code ${cpnCode.toUpperCase()} is active.`);
+      toast.success(
+        "Coupon Created",
+        `Promo code ${cpnCode.toUpperCase()} is active.`,
+      );
       setIsCreateCouponOpen(false);
-      setCpnCode('');
-      setCpnDesc('');
+      setCpnCode("");
+      setCpnDesc("");
       refreshData();
     } else {
-      toast.error('Error', res.error);
+      toast.error("Error", res.error);
     }
   };
 
   const handleToggleCoupon = (coupon: Coupon) => {
     const res = toggleCouponActive(coupon.id, currentResort.id, user);
     if (res.success) {
-      toast.info('Coupon Toggled', `${coupon.code} is now ${coupon.is_active ? 'Disabled' : 'Enabled'}.`);
+      toast.info(
+        "Coupon Toggled",
+        `${coupon.code} is now ${coupon.is_active ? "Disabled" : "Enabled"}.`,
+      );
       refreshData();
     }
   };
@@ -317,7 +348,7 @@ export const MarketingPage: React.FC = () => {
     if (confirm(`Delete coupon code ${code}?`)) {
       const res = deleteCoupon(id, currentResort.id, user);
       if (res.success) {
-        toast.success('Deleted', 'Coupon removed.');
+        toast.success("Deleted", "Coupon removed.");
         refreshData();
       }
     }
@@ -326,7 +357,7 @@ export const MarketingPage: React.FC = () => {
   const handleCopyCoupon = (code: string) => {
     navigator.clipboard.writeText(code);
     setCopiedCode(code);
-    toast.success('Code Copied', `${code} copied to clipboard.`);
+    toast.success("Code Copied", `${code} copied to clipboard.`);
     setTimeout(() => setCopiedCode(null), 2000);
   };
 
@@ -334,11 +365,15 @@ export const MarketingPage: React.FC = () => {
   // TAB 5: BROADCAST COMPOSER STATE
   // ==========================================
   const [isBroadcastModalOpen, setIsBroadcastModalOpen] = useState(false);
-  const [broadcastTitle, setBroadcastTitle] = useState('');
-  const [broadcastChannel, setBroadcastChannel] = useState<'WhatsApp' | 'Email' | 'SMS'>('WhatsApp');
-  const [broadcastSegmentId, setBroadcastSegmentId] = useState(segments[0]?.id || 'seg-001');
-  const [broadcastTemplateId, setBroadcastTemplateId] = useState<string>('');
-  const [broadcastMessagePreview, setBroadcastMessagePreview] = useState('');
+  const [broadcastTitle, setBroadcastTitle] = useState("");
+  const [broadcastChannel, setBroadcastChannel] = useState<
+    "WhatsApp" | "Email" | "SMS"
+  >("WhatsApp");
+  const [broadcastSegmentId, setBroadcastSegmentId] = useState(
+    segments[0]?.id || "seg-001",
+  );
+  const [broadcastTemplateId, setBroadcastTemplateId] = useState<string>("");
+  const [broadcastMessagePreview, setBroadcastMessagePreview] = useState("");
   const [broadcastOptInChecked, setBroadcastOptInChecked] = useState(false);
 
   const templates = useMemo(() => {
@@ -360,11 +395,14 @@ export const MarketingPage: React.FC = () => {
   const handleSendBroadcast = (e: React.FormEvent) => {
     e.preventDefault();
     if (!broadcastTitle.trim()) {
-      toast.error('Validation Error', 'Broadcast title is required.');
+      toast.error("Validation Error", "Broadcast title is required.");
       return;
     }
     if (!broadcastOptInChecked) {
-      toast.error('Compliance Requirement', 'Please check the TRAI / DND compliance consent box.');
+      toast.error(
+        "Compliance Requirement",
+        "Please check the TRAI / DND compliance consent box.",
+      );
       return;
     }
 
@@ -374,32 +412,33 @@ export const MarketingPage: React.FC = () => {
       {
         resort_id: currentResort.id,
         title: broadcastTitle.trim(),
-        segment_id: selectedSegment?.id || 'seg-custom',
-        segment_name: selectedSegment?.name || 'Selected Audience',
+        segment_id: selectedSegment?.id || "seg-custom",
+        segment_name: selectedSegment?.name || "Selected Audience",
         channel: broadcastChannel,
         template_id: broadcastTemplateId || undefined,
         scheduled_at: new Date().toISOString(),
-        status: 'Sent',
+        status: "Sent",
         estimated_reach: reach,
         opt_in_confirmed: broadcastOptInChecked,
-        message_preview: broadcastMessagePreview || 'Custom seasonal announcement message.',
-        created_by: user?.name || 'Staff Admin',
+        message_preview:
+          broadcastMessagePreview || "Custom seasonal announcement message.",
+        created_by: user?.name || "Staff Admin",
       },
       currentResort.id,
-      user
+      user,
     );
 
     if (res.success) {
       toast.success(
-        'Broadcast Dispatched',
-        `Dispatched to ${reach} verified recipients in ${selectedSegment?.name} via ${broadcastChannel}.`
+        "Broadcast Dispatched",
+        `Dispatched to ${reach} verified recipients in ${selectedSegment?.name} via ${broadcastChannel}.`,
       );
       setIsBroadcastModalOpen(false);
-      setBroadcastTitle('');
+      setBroadcastTitle("");
       setBroadcastOptInChecked(false);
       refreshData();
     } else {
-      toast.error('Failed', res.error);
+      toast.error("Failed", res.error);
     }
   };
 
@@ -413,16 +452,24 @@ export const MarketingPage: React.FC = () => {
   // TAB 6: FORM BUILDER STATE
   // ==========================================
   const activeForm = captureForms[0] || {
-    id: 'form-001',
-    resort_id: currentResort?.id || 'resort-1',
-    title: 'Direct Villa & Staycation Enquiry Form',
-    description: 'Check luxury villa tariff & availability instantly',
-    fields: ['name', 'phone', 'email', 'preferred_date', 'guests', 'interested_in'] as LeadCaptureFieldId[],
-    primary_color: '#0F5132',
-    button_text: 'Request Instant Tariff Proposal',
-    success_message: 'Thank you for your enquiry! Our concierge will call within 15 minutes.',
-    utm_campaign_default: 'website_direct',
-    embed_code: '',
+    id: "form-001",
+    resort_id: currentResort?.id || "resort-1",
+    title: "Direct Villa & Staycation Enquiry Form",
+    description: "Check luxury villa tariff & availability instantly",
+    fields: [
+      "name",
+      "phone",
+      "email",
+      "preferred_date",
+      "guests",
+      "interested_in",
+    ] as LeadCaptureFieldId[],
+    primary_color: "#0F5132",
+    button_text: "Request Instant Tariff Proposal",
+    success_message:
+      "Thank you for your enquiry! Our concierge will call within 15 minutes.",
+    utm_campaign_default: "website_direct",
+    embed_code: "",
     created_at: new Date().toISOString(),
   };
 
@@ -430,12 +477,17 @@ export const MarketingPage: React.FC = () => {
   const [formDesc, setFormDesc] = useState(activeForm.description);
   const [formButtonText, setFormButtonText] = useState(activeForm.button_text);
   const [formColor, setFormColor] = useState(activeForm.primary_color);
-  const [formFields, setFormFields] = useState<LeadCaptureFieldId[]>(activeForm.fields);
+  const [formFields, setFormFields] = useState<LeadCaptureFieldId[]>(
+    activeForm.fields,
+  );
   const [isCopiedIframe, setIsCopiedIframe] = useState(false);
 
   const handleToggleField = (fieldId: LeadCaptureFieldId) => {
-    if (fieldId === 'name' || fieldId === 'phone') {
-      toast.info('Mandatory Field', 'Name and Phone are mandatory lead capture fields.');
+    if (fieldId === "name" || fieldId === "phone") {
+      toast.info(
+        "Mandatory Field",
+        "Name and Phone are mandatory lead capture fields.",
+      );
       return;
     }
     if (formFields.includes(fieldId)) {
@@ -459,21 +511,24 @@ export const MarketingPage: React.FC = () => {
         utm_campaign_default: activeForm.utm_campaign_default,
       },
       currentResort.id,
-      user
+      user,
     );
     if (res.success) {
-      toast.success('Form Saved', 'Embedded widget configuration updated.');
+      toast.success("Form Saved", "Embedded widget configuration updated.");
       refreshData();
     }
   };
 
-  const embedUrl = `${window.location.origin}/enquire/${currentResort?.id || 'resort-1'}`;
+  const embedUrl = `${window.location.origin}/enquire/${currentResort?.id || "resort-1"}`;
   const iframeCode = `<iframe src="${embedUrl}" width="100%" height="700" frameborder="0" style="border:none;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.08);"></iframe>`;
 
   const handleCopyIframe = () => {
     navigator.clipboard.writeText(iframeCode);
     setIsCopiedIframe(true);
-    toast.success('Embed Code Copied', 'Paste into your WordPress, Webflow, or custom website.');
+    toast.success(
+      "Embed Code Copied",
+      "Paste into your WordPress, Webflow, or custom website.",
+    );
     setTimeout(() => setIsCopiedIframe(false), 2500);
   };
 
@@ -481,17 +536,20 @@ export const MarketingPage: React.FC = () => {
   // TAB 7: REFERRALS STATE & MODALS
   // ==========================================
   const [isAddReferralOpen, setIsAddReferralOpen] = useState(false);
-  const [refName, setRefName] = useState('');
-  const [refPhone, setRefPhone] = useState('');
-  const [refEmail, setRefEmail] = useState('');
-  const [refLeadName, setRefLeadName] = useState('');
+  const [refName, setRefName] = useState("");
+  const [refPhone, setRefPhone] = useState("");
+  const [refEmail, setRefEmail] = useState("");
+  const [refLeadName, setRefLeadName] = useState("");
   const [refReward, setRefReward] = useState(2500);
-  const [refNotes, setRefNotes] = useState('');
+  const [refNotes, setRefNotes] = useState("");
 
   const handleAddReferral = (e: React.FormEvent) => {
     e.preventDefault();
     if (!refName.trim() || !refLeadName.trim()) {
-      toast.error('Validation Error', 'Referrer and Referred Guest names are required.');
+      toast.error(
+        "Validation Error",
+        "Referrer and Referred Guest names are required.",
+      );
       return;
     }
     const res = createReferral(
@@ -502,31 +560,34 @@ export const MarketingPage: React.FC = () => {
         referrer_email: refEmail.trim() || undefined,
         referred_lead_name: refLeadName.trim(),
         reward_amount: Number(refReward) || 0,
-        status: 'Pending',
-        notes: refNotes.trim() || 'Guest word-of-mouth referral',
+        status: "Pending",
+        notes: refNotes.trim() || "Guest word-of-mouth referral",
       },
       currentResort.id,
-      user
+      user,
     );
     if (res.success) {
-      toast.success('Referral Recorded', `Referral for ${refLeadName} tracked.`);
+      toast.success(
+        "Referral Recorded",
+        `Referral for ${refLeadName} tracked.`,
+      );
       setIsAddReferralOpen(false);
-      setRefName('');
-      setRefPhone('');
-      setRefLeadName('');
-      setRefNotes('');
+      setRefName("");
+      setRefPhone("");
+      setRefLeadName("");
+      setRefNotes("");
       refreshData();
     }
   };
 
   const handleUpdateReferralStatus = (
     id: string,
-    status: 'Pending' | 'Rewarded' | 'Rejected',
-    notes?: string
+    status: "Pending" | "Rewarded" | "Rejected",
+    notes?: string,
   ) => {
     const res = updateReferralStatus(id, status, currentResort.id, user, notes);
     if (res.success) {
-      toast.info('Referral Status Updated', `Status changed to ${status}.`);
+      toast.info("Referral Status Updated", `Status changed to ${status}.`);
       refreshData();
     }
   };
@@ -537,19 +598,20 @@ export const MarketingPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-[#E5E7EB] shadow-xs">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
-              <Send className="w-6 h-6 text-[#0F5132]" />
+            <h1 className="text-md sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+              <Send className="w-4 h-4 text-[#0F5132]" />
               <span>Marketing & Guest Acquisition</span>
             </h1>
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 text-[#0F5132] font-bold border border-emerald-200">
               {currentResort?.name}
             </span>
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 font-semibold border border-slate-200">
-              Plan: {currentResort?.plan || 'Pro'}
+              Plan: {currentResort?.plan || "Pro"}
             </span>
           </div>
           <p className="text-xs sm:text-sm text-[#6B7280] mt-1">
-            Omnichannel campaigns, promo coupons, audience segments, website lead capture, and referral tracking.
+            Omnichannel campaigns, promo coupons, audience segments, website
+            lead capture, and referral tracking.
           </p>
         </div>
 
@@ -565,7 +627,10 @@ export const MarketingPage: React.FC = () => {
           <button
             onClick={() => {
               if (!isCampaignsUnlocked) {
-                toast.warning('Plan Upgrade Required', 'Campaigns require Pro or Enterprise plan.');
+                toast.warning(
+                  "Plan Upgrade Required",
+                  "Campaigns require Pro or Enterprise plan.",
+                );
                 return;
               }
               setIsCreateCampaignOpen(true);
@@ -581,11 +646,11 @@ export const MarketingPage: React.FC = () => {
       {/* 7-Tab Navigation Bar */}
       <div className="bg-white p-1 rounded-2xl border border-[#E5E7EB] shadow-xs overflow-x-auto flex items-center gap-1 scrollbar-none">
         <button
-          onClick={() => setActiveTab('overview')}
+          onClick={() => setActiveTab("overview")}
           className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
-            activeTab === 'overview'
-              ? 'bg-[#0F5132] text-white shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            activeTab === "overview"
+              ? "bg-[#0F5132] text-white shadow-xs"
+              : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
           }`}
         >
           <BarChart3 className="w-3.5 h-3.5" />
@@ -593,11 +658,11 @@ export const MarketingPage: React.FC = () => {
         </button>
 
         <button
-          onClick={() => setActiveTab('campaigns')}
+          onClick={() => setActiveTab("campaigns")}
           className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
-            activeTab === 'campaigns'
-              ? 'bg-[#0F5132] text-white shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            activeTab === "campaigns"
+              ? "bg-[#0F5132] text-white shadow-xs"
+              : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
           }`}
         >
           <TrendingUp className="w-3.5 h-3.5" />
@@ -605,11 +670,11 @@ export const MarketingPage: React.FC = () => {
         </button>
 
         <button
-          onClick={() => setActiveTab('coupons')}
+          onClick={() => setActiveTab("coupons")}
           className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
-            activeTab === 'coupons'
-              ? 'bg-[#0F5132] text-white shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            activeTab === "coupons"
+              ? "bg-[#0F5132] text-white shadow-xs"
+              : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
           }`}
         >
           <Tag className="w-3.5 h-3.5" />
@@ -617,11 +682,11 @@ export const MarketingPage: React.FC = () => {
         </button>
 
         <button
-          onClick={() => setActiveTab('segments')}
+          onClick={() => setActiveTab("segments")}
           className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
-            activeTab === 'segments'
-              ? 'bg-[#0F5132] text-white shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            activeTab === "segments"
+              ? "bg-[#0F5132] text-white shadow-xs"
+              : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
           }`}
         >
           <Users className="w-3.5 h-3.5" />
@@ -629,11 +694,11 @@ export const MarketingPage: React.FC = () => {
         </button>
 
         <button
-          onClick={() => setActiveTab('broadcasts')}
+          onClick={() => setActiveTab("broadcasts")}
           className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
-            activeTab === 'broadcasts'
-              ? 'bg-[#0F5132] text-white shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            activeTab === "broadcasts"
+              ? "bg-[#0F5132] text-white shadow-xs"
+              : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
           }`}
         >
           <Send className="w-3.5 h-3.5" />
@@ -641,24 +706,26 @@ export const MarketingPage: React.FC = () => {
         </button>
 
         <button
-          onClick={() => setActiveTab('forms')}
+          onClick={() => setActiveTab("forms")}
           className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
-            activeTab === 'forms'
-              ? 'bg-[#0F5132] text-white shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            activeTab === "forms"
+              ? "bg-[#0F5132] text-white shadow-xs"
+              : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
           }`}
         >
           <Globe className="w-3.5 h-3.5" />
           <span>Form Builder</span>
-          {!isFormBuilderUnlocked && <Lock className="w-3 h-3 text-amber-500" />}
+          {!isFormBuilderUnlocked && (
+            <Lock className="w-3 h-3 text-amber-500" />
+          )}
         </button>
 
         <button
-          onClick={() => setActiveTab('referrals')}
+          onClick={() => setActiveTab("referrals")}
           className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
-            activeTab === 'referrals'
-              ? 'bg-[#0F5132] text-white shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            activeTab === "referrals"
+              ? "bg-[#0F5132] text-white shadow-xs"
+              : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
           }`}
         >
           <Gift className="w-3.5 h-3.5" />
@@ -670,7 +737,7 @@ export const MarketingPage: React.FC = () => {
       {/* ======================================================== */}
       {/* TAB 1: OVERVIEW & ROI ANALYTICS DASHBOARD                 */}
       {/* ======================================================== */}
-      {activeTab === 'overview' && (
+      {activeTab === "overview" && (
         <div className="space-y-5">
           {/* 6 Top KPI Metrics */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3.5">
@@ -695,7 +762,10 @@ export const MarketingPage: React.FC = () => {
                 <span>{metrics?.totalBookings || 0}</span>
                 <span className="text-[10px] text-[#64748B] font-medium mt-0.5">
                   {metrics?.totalLeads
-                    ? Math.round(((metrics.totalBookings || 0) / metrics.totalLeads) * 100)
+                    ? Math.round(
+                        ((metrics.totalBookings || 0) / metrics.totalLeads) *
+                          100,
+                      )
                     : 0}
                   % Conversion Rate
                 </span>
@@ -708,7 +778,9 @@ export const MarketingPage: React.FC = () => {
               </span>
               <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-1">
                 <span>{formatINR(metrics?.totalRevenue || 0)}</span>
-                <span className="text-[10px] text-emerald-600 font-medium mt-0.5">Closed leads</span>
+                <span className="text-[10px] text-emerald-600 font-medium mt-0.5">
+                  Closed leads
+                </span>
               </div>
             </div>
 
@@ -718,7 +790,9 @@ export const MarketingPage: React.FC = () => {
               </span>
               <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-1">
                 <span>{formatINR(metrics?.totalMarketingSpend || 0)}</span>
-                <span className="text-[10px] text-[#64748B] font-medium mt-0.5">Active budgets</span>
+                <span className="text-[10px] text-[#64748B] font-medium mt-0.5">
+                  Active budgets
+                </span>
               </div>
             </div>
 
@@ -728,7 +802,9 @@ export const MarketingPage: React.FC = () => {
               </span>
               <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-blue-700 tracking-tight mt-1">
                 <span>{formatINR(metrics?.overallCPL || 0)}</span>
-                <span className="text-[10px] text-[#64748B] font-medium mt-0.5">Acquisition cost</span>
+                <span className="text-[10px] text-[#64748B] font-medium mt-0.5">
+                  Acquisition cost
+                </span>
               </div>
             </div>
 
@@ -771,11 +847,11 @@ export const MarketingPage: React.FC = () => {
               <div className="space-y-3 pt-2">
                 {metrics?.sourcesDistribution.slice(0, 5).map((s, idx) => {
                   const colors = [
-                    'bg-emerald-600',
-                    'bg-blue-600',
-                    'bg-purple-600',
-                    'bg-amber-500',
-                    'bg-rose-500',
+                    "bg-emerald-600",
+                    "bg-blue-600",
+                    "bg-purple-600",
+                    "bg-amber-500",
+                    "bg-rose-500",
                   ];
                   const barColor = colors[idx % colors.length];
 
@@ -790,12 +866,16 @@ export const MarketingPage: React.FC = () => {
                       <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
                         <div
                           className={`h-full ${barColor} rounded-full transition-all duration-500`}
-                          style={{ width: `${Math.max(s.percentageOfLeads, 4)}%` }}
+                          style={{
+                            width: `${Math.max(s.percentageOfLeads, 4)}%`,
+                          }}
                         />
                       </div>
                       <div className="flex justify-between text-[10px] text-slate-500">
                         <span>Est. CPL: {formatINR(s.cpl)}</span>
-                        <span>Conv: {s.conversionRate}% ({s.bookingsCount} bookings)</span>
+                        <span>
+                          Conv: {s.conversionRate}% ({s.bookingsCount} bookings)
+                        </span>
                       </div>
                     </div>
                   );
@@ -812,7 +892,8 @@ export const MarketingPage: React.FC = () => {
                     <span>Outreach Channel Performance Matrix</span>
                   </h3>
                   <p className="text-[11px] text-slate-500 mt-0.5">
-                    Direct comparison of channel efficiency, spend, and generated ROI
+                    Direct comparison of channel efficiency, spend, and
+                    generated ROI
                   </p>
                 </div>
               </div>
@@ -825,11 +906,21 @@ export const MarketingPage: React.FC = () => {
                   >
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-900 flex items-center gap-1.5">
-                        {ch.channel === 'WhatsApp' && <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />}
-                        {ch.channel === 'Google Ads' && <Globe className="w-3.5 h-3.5 text-blue-600" />}
-                        {ch.channel === 'Meta Ads' && <Share2 className="w-3.5 h-3.5 text-pink-600" />}
-                        {ch.channel === 'Email' && <Mail className="w-3.5 h-3.5 text-purple-600" />}
-                        {ch.channel === 'SMS' && <Smartphone className="w-3.5 h-3.5 text-amber-600" />}
+                        {ch.channel === "WhatsApp" && (
+                          <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                        )}
+                        {ch.channel === "Google Ads" && (
+                          <Globe className="w-3.5 h-3.5 text-blue-600" />
+                        )}
+                        {ch.channel === "Meta Ads" && (
+                          <Share2 className="w-3.5 h-3.5 text-pink-600" />
+                        )}
+                        {ch.channel === "Email" && (
+                          <Mail className="w-3.5 h-3.5 text-purple-600" />
+                        )}
+                        {ch.channel === "SMS" && (
+                          <Smartphone className="w-3.5 h-3.5 text-amber-600" />
+                        )}
                         <span>{ch.channel}</span>
                       </span>
                       <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800">
@@ -840,7 +931,9 @@ export const MarketingPage: React.FC = () => {
                     <div className="space-y-1 text-[11px] text-slate-600">
                       <div className="flex justify-between">
                         <span>Spend:</span>
-                        <strong className="text-slate-900">{formatINR(ch.spend)}</strong>
+                        <strong className="text-slate-900">
+                          {formatINR(ch.spend)}
+                        </strong>
                       </div>
                       <div className="flex justify-between">
                         <span>Leads Generated:</span>
@@ -848,7 +941,9 @@ export const MarketingPage: React.FC = () => {
                       </div>
                       <div className="flex justify-between">
                         <span>Attributed Rev:</span>
-                        <strong className="text-emerald-700">{formatINR(ch.revenue)}</strong>
+                        <strong className="text-emerald-700">
+                          {formatINR(ch.revenue)}
+                        </strong>
                       </div>
                     </div>
                   </div>
@@ -861,9 +956,12 @@ export const MarketingPage: React.FC = () => {
           <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
             <div className="p-4 border-b border-slate-200 flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-bold text-slate-900">Lead Sources & Unit Economics</h3>
+                <h3 className="text-sm font-bold text-slate-900">
+                  Lead Sources & Unit Economics
+                </h3>
                 <p className="text-[11px] text-slate-500">
-                  Unit cost per lead, booking conversion, and active status toggle.
+                  Unit cost per lead, booking conversion, and active status
+                  toggle.
                 </p>
               </div>
             </div>
@@ -884,39 +982,62 @@ export const MarketingPage: React.FC = () => {
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {metrics?.sourcesDistribution.map((s) => {
-                    const srcConfig = sources.find((cfg) => cfg.name === s.source);
+                    const srcConfig = sources.find(
+                      (cfg) => cfg.name === s.source,
+                    );
                     const isActive = srcConfig ? srcConfig.is_active : true;
 
                     return (
-                      <tr key={s.source} className="hover:bg-slate-50/70 transition-colors">
-                        <td className="px-4 py-3 font-bold text-slate-900">{s.source}</td>
-                        <td className="px-3 py-3 font-semibold text-slate-800">{s.leadsCount}</td>
-                        <td className="px-3 py-3 font-bold text-[#0F5132]">{s.bookingsCount}</td>
+                      <tr
+                        key={s.source}
+                        className="hover:bg-slate-50/70 transition-colors"
+                      >
+                        <td className="px-4 py-3 font-bold text-slate-900">
+                          {s.source}
+                        </td>
+                        <td className="px-3 py-3 font-semibold text-slate-800">
+                          {s.leadsCount}
+                        </td>
+                        <td className="px-3 py-3 font-bold text-[#0F5132]">
+                          {s.bookingsCount}
+                        </td>
                         <td className="px-3 py-3">
                           <span className="px-2 py-0.5 rounded-md bg-slate-100 font-semibold text-slate-800">
                             {s.conversionRate}%
                           </span>
                         </td>
-                        <td className="px-3 py-3 font-medium text-slate-700">{formatINR(s.cpl)}</td>
-                        <td className="px-3 py-3 font-medium text-slate-700">{formatINR(s.cpb)}</td>
-                        <td className="px-3 py-3 font-bold text-slate-900">{formatINR(s.revenue)}</td>
+                        <td className="px-3 py-3 font-medium text-slate-700">
+                          {formatINR(s.cpl)}
+                        </td>
+                        <td className="px-3 py-3 font-medium text-slate-700">
+                          {formatINR(s.cpb)}
+                        </td>
+                        <td className="px-3 py-3 font-bold text-slate-900">
+                          {formatINR(s.revenue)}
+                        </td>
                         <td className="px-4 py-3 text-right">
                           {srcConfig ? (
                             <button
                               onClick={() => {
-                                toggleLeadSourceActive(srcConfig.id, currentResort.id, user);
+                                toggleLeadSourceActive(
+                                  srcConfig.id,
+                                  currentResort.id,
+                                  user,
+                                );
                                 refreshData();
                               }}
                               className={`px-2 py-0.5 rounded-full text-[10px] font-bold border transition-colors ${
                                 isActive
-                                  ? 'bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100'
-                                  : 'bg-slate-100 text-slate-500 border-slate-200 hover:bg-slate-200'
+                                  ? "bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100"
+                                  : "bg-slate-100 text-slate-500 border-slate-200 hover:bg-slate-200"
                               }`}
                             >
-                              {isActive ? 'Active' : 'Disabled'}
+                              {isActive ? "Active" : "Disabled"}
                             </button>
                           ) : (
-                            <span className="text-[10px] text-slate-400 font-semibold">Standard</span>
+                            <span className="text-[10px] text-slate-400 font-semibold">
+                              Standard
+                            </span>
                           )}
                         </td>
                       </tr>
@@ -932,7 +1053,7 @@ export const MarketingPage: React.FC = () => {
       {/* ======================================================== */}
       {/* TAB 2: CAMPAIGNS MANAGER                                 */}
       {/* ======================================================== */}
-      {activeTab === 'campaigns' && (
+      {activeTab === "campaigns" && (
         <div className="space-y-4">
           {/* Filters & Actions */}
           <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
@@ -987,7 +1108,9 @@ export const MarketingPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredCampaigns.map((camp) => {
               const spendPercentage =
-                camp.budget > 0 ? Math.round((camp.spend / camp.budget) * 100) : 0;
+                camp.budget > 0
+                  ? Math.round((camp.spend / camp.budget) * 100)
+                  : 0;
 
               return (
                 <div
@@ -1001,11 +1124,11 @@ export const MarketingPage: React.FC = () => {
                       </span>
                       <span
                         className={`px-2 py-0.5 rounded-full text-[10px] font-bold shrink-0 ${
-                          camp.status === 'Running'
-                            ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-                            : camp.status === 'Paused'
-                            ? 'bg-amber-50 text-amber-800 border border-amber-200'
-                            : 'bg-slate-100 text-slate-600 border border-slate-200'
+                          camp.status === "Running"
+                            ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                            : camp.status === "Paused"
+                              ? "bg-amber-50 text-amber-800 border border-amber-200"
+                              : "bg-slate-100 text-slate-600 border border-slate-200"
                         }`}
                       >
                         {camp.status}
@@ -1014,17 +1137,21 @@ export const MarketingPage: React.FC = () => {
 
                     <div className="flex items-center gap-2">
                       <span className="px-2 py-0.5 rounded-md bg-slate-100 font-semibold text-slate-700 text-[11px] flex items-center gap-1">
-                        {camp.channel === 'WhatsApp' && (
+                        {camp.channel === "WhatsApp" && (
                           <MessageCircle className="w-3 h-3 text-emerald-600" />
                         )}
-                        {camp.channel === 'Google Ads' && (
+                        {camp.channel === "Google Ads" && (
                           <Globe className="w-3 h-3 text-blue-600" />
                         )}
-                        {camp.channel === 'Meta Ads' && (
+                        {camp.channel === "Meta Ads" && (
                           <Share2 className="w-3 h-3 text-pink-600" />
                         )}
-                        {camp.channel === 'Email' && <Mail className="w-3 h-3 text-purple-600" />}
-                        {camp.channel === 'SMS' && <Smartphone className="w-3 h-3 text-amber-600" />}
+                        {camp.channel === "Email" && (
+                          <Mail className="w-3 h-3 text-purple-600" />
+                        )}
+                        {camp.channel === "SMS" && (
+                          <Smartphone className="w-3 h-3 text-amber-600" />
+                        )}
                         <span>{camp.channel}</span>
                       </span>
 
@@ -1051,7 +1178,9 @@ export const MarketingPage: React.FC = () => {
                       <div className="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden">
                         <div
                           className="h-full bg-[#0F5132] rounded-full"
-                          style={{ width: `${Math.min(spendPercentage, 100)}%` }}
+                          style={{
+                            width: `${Math.min(spendPercentage, 100)}%`,
+                          }}
                         />
                       </div>
                     </div>
@@ -1060,31 +1189,48 @@ export const MarketingPage: React.FC = () => {
                   {/* Campaign Stats */}
                   <div className="pt-2 border-t border-slate-100 grid grid-cols-3 gap-2 text-center">
                     <div className="bg-slate-50 p-2 rounded-xl">
-                      <span className="text-[10px] text-slate-500 block">Leads</span>
-                      <strong className="text-slate-900 text-xs">{camp.leads_generated}</strong>
+                      <span className="text-[10px] text-slate-500 block">
+                        Leads
+                      </span>
+                      <strong className="text-slate-900 text-xs">
+                        {camp.leads_generated}
+                      </strong>
                     </div>
                     <div className="bg-slate-50 p-2 rounded-xl">
-                      <span className="text-[10px] text-slate-500 block">Bookings</span>
-                      <strong className="text-[#0F5132] text-xs">{camp.bookings_generated}</strong>
+                      <span className="text-[10px] text-slate-500 block">
+                        Bookings
+                      </span>
+                      <strong className="text-[#0F5132] text-xs">
+                        {camp.bookings_generated}
+                      </strong>
                     </div>
                     <div className="bg-emerald-50 p-2 rounded-xl">
-                      <span className="text-[10px] text-emerald-700 block">ROI</span>
-                      <strong className="text-emerald-800 text-xs">{camp.roi_percent}%</strong>
+                      <span className="text-[10px] text-emerald-700 block">
+                        ROI
+                      </span>
+                      <strong className="text-emerald-800 text-xs">
+                        {camp.roi_percent}%
+                      </strong>
                     </div>
                   </div>
 
                   {/* Card Actions */}
                   <div className="pt-2 flex items-center justify-between border-t border-slate-100">
                     <span className="text-[10px] text-slate-400">
-                      Dates: {camp.start_date.slice(5)} to {camp.end_date.slice(5)}
+                      Dates: {camp.start_date.slice(5)} to{" "}
+                      {camp.end_date.slice(5)}
                     </span>
                     <div className="flex items-center gap-1">
                       <button
                         onClick={() => handleToggleCampaign(camp)}
-                        title={camp.status === 'Running' ? 'Pause Campaign' : 'Resume Campaign'}
+                        title={
+                          camp.status === "Running"
+                            ? "Pause Campaign"
+                            : "Resume Campaign"
+                        }
                         className="p-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
                       >
-                        {camp.status === 'Running' ? (
+                        {camp.status === "Running" ? (
                           <Pause className="w-3.5 h-3.5 text-amber-600" />
                         ) : (
                           <Play className="w-3.5 h-3.5 text-emerald-600" />
@@ -1109,13 +1255,16 @@ export const MarketingPage: React.FC = () => {
       {/* ======================================================== */}
       {/* TAB 3: OFFERS & COUPONS                                  */}
       {/* ======================================================== */}
-      {activeTab === 'coupons' && (
+      {activeTab === "coupons" && (
         <div className="space-y-4">
           <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex items-center justify-between">
             <div>
-              <h3 className="text-sm font-bold text-slate-900">Promotional Coupons & Voucher Codes</h3>
+              <h3 className="text-sm font-bold text-slate-900">
+                Promotional Coupons & Voucher Codes
+              </h3>
               <p className="text-[11px] text-slate-500">
-                Staff can apply these codes during quotation generation, or guests can enter them on booking links.
+                Staff can apply these codes during quotation generation, or
+                guests can enter them on booking links.
               </p>
             </div>
             <button
@@ -1130,7 +1279,9 @@ export const MarketingPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {coupons.map((cpn) => {
               const usagePercent =
-                cpn.usage_limit > 0 ? Math.round((cpn.used_count / cpn.usage_limit) * 100) : 0;
+                cpn.usage_limit > 0
+                  ? Math.round((cpn.used_count / cpn.usage_limit) * 100)
+                  : 0;
 
               return (
                 <div
@@ -1160,33 +1311,40 @@ export const MarketingPage: React.FC = () => {
                         onClick={() => handleToggleCoupon(cpn)}
                         className={`px-2 py-0.5 rounded-full text-[10px] font-bold border transition-colors ${
                           cpn.is_active
-                            ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                            : 'bg-slate-100 text-slate-500 border-slate-200'
+                            ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                            : "bg-slate-100 text-slate-500 border-slate-200"
                         }`}
                       >
-                        {cpn.is_active ? 'Active' : 'Disabled'}
+                        {cpn.is_active ? "Active" : "Disabled"}
                       </button>
                     </div>
 
-                    <p className="text-[11px] text-slate-600 font-medium">{cpn.description}</p>
+                    <p className="text-[11px] text-slate-600 font-medium">
+                      {cpn.description}
+                    </p>
 
                     <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 space-y-1 text-[11px]">
                       <div className="flex justify-between">
-                        <span className="text-slate-500">Discount Benefit:</span>
+                        <span className="text-slate-500">
+                          Discount Benefit:
+                        </span>
                         <strong className="text-emerald-800">
-                          {cpn.discount_type === 'percentage'
+                          {cpn.discount_type === "percentage"
                             ? `${cpn.discount_value}% Off`
                             : `Flat ${formatINR(cpn.discount_value)} Off`}
                         </strong>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-500">Min Spend:</span>
-                        <strong className="text-slate-800">{formatINR(cpn.min_spend)}</strong>
+                        <strong className="text-slate-800">
+                          {formatINR(cpn.min_spend)}
+                        </strong>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-500">Min Stay:</span>
                         <strong className="text-slate-800">
-                          {cpn.min_stay_nights} Night{cpn.min_stay_nights > 1 ? 's' : ''}
+                          {cpn.min_stay_nights} Night
+                          {cpn.min_stay_nights > 1 ? "s" : ""}
                         </strong>
                       </div>
                     </div>
@@ -1194,7 +1352,9 @@ export const MarketingPage: React.FC = () => {
                     {/* Usage bar */}
                     <div className="space-y-1">
                       <div className="flex justify-between text-[10px] text-slate-500">
-                        <span>Used: {cpn.used_count} of {cpn.usage_limit}</span>
+                        <span>
+                          Used: {cpn.used_count} of {cpn.usage_limit}
+                        </span>
                         <span>{usagePercent}% Claimed</span>
                       </div>
                       <div className="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden">
@@ -1207,7 +1367,9 @@ export const MarketingPage: React.FC = () => {
                   </div>
 
                   <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400">
-                    <span>Valid: {cpn.valid_from} to {cpn.valid_to}</span>
+                    <span>
+                      Valid: {cpn.valid_from} to {cpn.valid_to}
+                    </span>
                     <button
                       onClick={() => handleDeleteCoupon(cpn.id, cpn.code)}
                       className="p-1 rounded text-rose-500 hover:bg-rose-50 transition-colors"
@@ -1226,13 +1388,16 @@ export const MarketingPage: React.FC = () => {
       {/* ======================================================== */}
       {/* TAB 4: AUDIENCE SEGMENTS                                 */}
       {/* ======================================================== */}
-      {activeTab === 'segments' && (
+      {activeTab === "segments" && (
         <div className="space-y-4">
           <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex items-center justify-between">
             <div>
-              <h3 className="text-sm font-bold text-slate-900">Dynamic Audience Segments</h3>
+              <h3 className="text-sm font-bold text-slate-900">
+                Dynamic Audience Segments
+              </h3>
               <p className="text-[11px] text-slate-500">
-                Live evaluated cohorts based on leads, bookings, and enquiry criteria in the database.
+                Live evaluated cohorts based on leads, bookings, and enquiry
+                criteria in the database.
               </p>
             </div>
             <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
@@ -1248,13 +1413,17 @@ export const MarketingPage: React.FC = () => {
               >
                 <div className="space-y-2.5">
                   <div className="flex items-start justify-between gap-2">
-                    <span className="font-bold text-slate-900 text-sm">{seg.name}</span>
+                    <span className="font-bold text-slate-900 text-sm">
+                      {seg.name}
+                    </span>
                     <span className="px-2.5 py-1 rounded-full bg-[#0F5132] text-white text-xs font-extrabold shrink-0">
                       {seg.member_count} Members
                     </span>
                   </div>
 
-                  <p className="text-[11px] text-slate-600 leading-relaxed">{seg.description}</p>
+                  <p className="text-[11px] text-slate-600 leading-relaxed">
+                    {seg.description}
+                  </p>
 
                   {seg.sample_tags && (
                     <div className="flex flex-wrap gap-1.5 pt-1">
@@ -1271,7 +1440,9 @@ export const MarketingPage: React.FC = () => {
                 </div>
 
                 <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[10px] text-slate-400 font-medium">Cohort: {seg.filter_type}</span>
+                  <span className="text-[10px] text-slate-400 font-medium">
+                    Cohort: {seg.filter_type}
+                  </span>
                   <button
                     onClick={() => handleQuickBroadcastSegment(seg)}
                     className="px-3 py-1.5 rounded-lg bg-emerald-50 text-[#0F5132] border border-emerald-200 text-xs font-bold hover:bg-emerald-100 flex items-center gap-1 transition-colors"
@@ -1289,13 +1460,16 @@ export const MarketingPage: React.FC = () => {
       {/* ======================================================== */}
       {/* TAB 5: BROADCAST COMPOSER & HISTORY                      */}
       {/* ======================================================== */}
-      {activeTab === 'broadcasts' && (
+      {activeTab === "broadcasts" && (
         <div className="space-y-4">
           <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div>
-              <h3 className="text-sm font-bold text-slate-900">Direct Broadcast Outreach</h3>
+              <h3 className="text-sm font-bold text-slate-900">
+                Direct Broadcast Outreach
+              </h3>
               <p className="text-[11px] text-slate-500">
-                Compose verified promotional blasts across WhatsApp, Email, or SMS with TRAI compliance.
+                Compose verified promotional blasts across WhatsApp, Email, or
+                SMS with TRAI compliance.
               </p>
             </div>
             <button
@@ -1330,9 +1504,14 @@ export const MarketingPage: React.FC = () => {
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {broadcasts.map((bc) => (
-                    <tr key={bc.id} className="hover:bg-slate-50/70 transition-colors">
+                    <tr
+                      key={bc.id}
+                      className="hover:bg-slate-50/70 transition-colors"
+                    >
                       <td className="px-4 py-3">
-                        <span className="font-bold text-slate-900 block">{bc.title}</span>
+                        <span className="font-bold text-slate-900 block">
+                          {bc.title}
+                        </span>
                         <span className="text-[10px] text-slate-500 line-clamp-1">
                           {bc.message_preview}
                         </span>
@@ -1342,17 +1521,23 @@ export const MarketingPage: React.FC = () => {
                           {bc.channel}
                         </span>
                       </td>
-                      <td className="px-3 py-3 font-medium text-slate-800">{bc.segment_name}</td>
-                      <td className="px-3 py-3 font-bold text-slate-900">
-                        {bc.actual_sent > 0 ? `${bc.actual_sent} Sent` : `${bc.estimated_reach} Est.`}
+                      <td className="px-3 py-3 font-medium text-slate-800">
+                        {bc.segment_name}
                       </td>
-                      <td className="px-3 py-3 text-slate-600">{bc.scheduled_at.slice(0, 16).replace('T', ' ')}</td>
+                      <td className="px-3 py-3 font-bold text-slate-900">
+                        {bc.actual_sent > 0
+                          ? `${bc.actual_sent} Sent`
+                          : `${bc.estimated_reach} Est.`}
+                      </td>
+                      <td className="px-3 py-3 text-slate-600">
+                        {bc.scheduled_at.slice(0, 16).replace("T", " ")}
+                      </td>
                       <td className="px-3 py-3">
                         <span
                           className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                            bc.status === 'Sent'
-                              ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-                              : 'bg-blue-50 text-blue-800 border border-blue-200'
+                            bc.status === "Sent"
+                              ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                              : "bg-blue-50 text-blue-800 border border-blue-200"
                           }`}
                         >
                           {bc.status}
@@ -1373,14 +1558,16 @@ export const MarketingPage: React.FC = () => {
       {/* ======================================================== */}
       {/* TAB 6: LEAD CAPTURE FORM BUILDER                         */}
       {/* ======================================================== */}
-      {activeTab === 'forms' && (
+      {activeTab === "forms" && (
         <div className="space-y-4">
           {!isFormBuilderUnlocked && (
             <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-between gap-3 text-xs text-amber-900">
               <div className="flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />
                 <span>
-                  <strong>Enterprise Plan Feature:</strong> Live website iframe embed generation and custom styling are unlocked for Enterprise properties. (Preview enabled below).
+                  <strong>Enterprise Plan Feature:</strong> Live website iframe
+                  embed generation and custom styling are unlocked for
+                  Enterprise properties. (Preview enabled below).
                 </span>
               </div>
             </div>
@@ -1390,9 +1577,12 @@ export const MarketingPage: React.FC = () => {
             {/* Left: Configuration Panel */}
             <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-4 text-xs">
               <div>
-                <h3 className="text-sm font-bold text-slate-900">Website Embed Form Customizer</h3>
+                <h3 className="text-sm font-bold text-slate-900">
+                  Website Embed Form Customizer
+                </h3>
                 <p className="text-[11px] text-slate-500">
-                  Configure fields and brand styling for your public enquiry portal.
+                  Configure fields and brand styling for your public enquiry
+                  portal.
                 </p>
               </div>
 
@@ -1439,13 +1629,22 @@ export const MarketingPage: React.FC = () => {
                     Resort Brand Accent Color
                   </label>
                   <div className="flex items-center gap-2">
-                    {['#0F5132', '#0284C7', '#7C3AED', '#B45309', '#BE185D', '#111827'].map((c) => (
+                    {[
+                      "#0F5132",
+                      "#0284C7",
+                      "#7C3AED",
+                      "#B45309",
+                      "#BE185D",
+                      "#111827",
+                    ].map((c) => (
                       <button
                         key={c}
                         type="button"
                         onClick={() => setFormColor(c)}
                         className={`w-7 h-7 rounded-full border-2 transition-transform ${
-                          formColor === c ? 'scale-110 ring-2 ring-emerald-500 ring-offset-2' : ''
+                          formColor === c
+                            ? "scale-110 ring-2 ring-emerald-500 ring-offset-2"
+                            : ""
                         }`}
                         style={{ backgroundColor: c }}
                       />
@@ -1466,15 +1665,42 @@ export const MarketingPage: React.FC = () => {
                   </label>
                   <div className="grid grid-cols-2 gap-2 text-[11px]">
                     {[
-                      { id: 'name' as LeadCaptureFieldId, label: 'Full Name (Mandatory)' },
-                      { id: 'phone' as LeadCaptureFieldId, label: 'Mobile Number (Mandatory)' },
-                      { id: 'email' as LeadCaptureFieldId, label: 'Email Address' },
-                      { id: 'city' as LeadCaptureFieldId, label: 'City of Residence' },
-                      { id: 'preferred_date' as LeadCaptureFieldId, label: 'Check-In Date' },
-                      { id: 'guests' as LeadCaptureFieldId, label: 'Guest Count' },
-                      { id: 'budget' as LeadCaptureFieldId, label: 'Budget Slider' },
-                      { id: 'interested_in' as LeadCaptureFieldId, label: 'Experience Type' },
-                      { id: 'remarks' as LeadCaptureFieldId, label: 'Special Requests' },
+                      {
+                        id: "name" as LeadCaptureFieldId,
+                        label: "Full Name (Mandatory)",
+                      },
+                      {
+                        id: "phone" as LeadCaptureFieldId,
+                        label: "Mobile Number (Mandatory)",
+                      },
+                      {
+                        id: "email" as LeadCaptureFieldId,
+                        label: "Email Address",
+                      },
+                      {
+                        id: "city" as LeadCaptureFieldId,
+                        label: "City of Residence",
+                      },
+                      {
+                        id: "preferred_date" as LeadCaptureFieldId,
+                        label: "Check-In Date",
+                      },
+                      {
+                        id: "guests" as LeadCaptureFieldId,
+                        label: "Guest Count",
+                      },
+                      {
+                        id: "budget" as LeadCaptureFieldId,
+                        label: "Budget Slider",
+                      },
+                      {
+                        id: "interested_in" as LeadCaptureFieldId,
+                        label: "Experience Type",
+                      },
+                      {
+                        id: "remarks" as LeadCaptureFieldId,
+                        label: "Special Requests",
+                      },
                     ].map((f) => (
                       <label
                         key={f.id}
@@ -1484,7 +1710,7 @@ export const MarketingPage: React.FC = () => {
                           type="checkbox"
                           checked={formFields.includes(f.id)}
                           onChange={() => handleToggleField(f.id)}
-                          disabled={f.id === 'name' || f.id === 'phone'}
+                          disabled={f.id === "name" || f.id === "phone"}
                           className="accent-[#0F5132]"
                         />
                         <span className="text-slate-800">{f.label}</span>
@@ -1503,7 +1729,7 @@ export const MarketingPage: React.FC = () => {
                 </button>
 
                 <a
-                  href={`/enquire/${currentResort?.id || 'resort-1'}`}
+                  href={`/enquire/${currentResort?.id || "resort-1"}`}
                   target="_blank"
                   rel="noreferrer"
                   className="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-50 font-bold text-xs flex items-center gap-1 transition-colors"
@@ -1525,8 +1751,14 @@ export const MarketingPage: React.FC = () => {
                     onClick={handleCopyIframe}
                     className="px-3 py-1 rounded-lg bg-emerald-50 text-[#0F5132] border border-emerald-200 text-xs font-bold hover:bg-emerald-100 flex items-center gap-1 transition-colors"
                   >
-                    {isCopiedIframe ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                    <span>{isCopiedIframe ? 'Copied!' : 'Copy <iframe> Code'}</span>
+                    {isCopiedIframe ? (
+                      <Check className="w-3.5 h-3.5" />
+                    ) : (
+                      <Copy className="w-3.5 h-3.5" />
+                    )}
+                    <span>
+                      {isCopiedIframe ? "Copied!" : "Copy <iframe> Code"}
+                    </span>
                   </button>
                 </div>
 
@@ -1534,7 +1766,9 @@ export const MarketingPage: React.FC = () => {
                   {iframeCode}
                 </div>
                 <p className="text-[10px] text-slate-500">
-                  Submissions from this embed automatically create a Lead with source <strong>"Website"</strong>, track UTM tags, and alert your reservation desk.
+                  Submissions from this embed automatically create a Lead with
+                  source <strong>"Website"</strong>, track UTM tags, and alert
+                  your reservation desk.
                 </p>
               </div>
 
@@ -1549,7 +1783,9 @@ export const MarketingPage: React.FC = () => {
                     style={{ backgroundColor: formColor }}
                   >
                     <h4 className="font-bold text-sm">{formTitle}</h4>
-                    <p className="text-[11px] text-white/80 mt-0.5">{formDesc}</p>
+                    <p className="text-[11px] text-white/80 mt-0.5">
+                      {formDesc}
+                    </p>
                   </div>
                   <div className="p-4 bg-stone-50 space-y-2.5">
                     <div className="h-7 bg-white rounded-lg border border-stone-200 px-2 flex items-center text-slate-400 text-[11px]">
@@ -1579,14 +1815,16 @@ export const MarketingPage: React.FC = () => {
       {/* ======================================================== */}
       {/* TAB 7: REFERRAL PROGRAM                                  */}
       {/* ======================================================== */}
-      {activeTab === 'referrals' && (
+      {activeTab === "referrals" && (
         <div className="space-y-4">
           {!isReferralsUnlocked && (
             <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-between gap-3 text-xs text-amber-900">
               <div className="flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />
                 <span>
-                  <strong>Enterprise Plan Feature:</strong> Automated referral reward payouts and loyalty voucher tracking require an Enterprise plan.
+                  <strong>Enterprise Plan Feature:</strong> Automated referral
+                  reward payouts and loyalty voucher tracking require an
+                  Enterprise plan.
                 </span>
               </div>
             </div>
@@ -1598,8 +1836,12 @@ export const MarketingPage: React.FC = () => {
               <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">
                 Total Referred Inquiries
               </span>
-              <div className="text-2xl font-bold text-slate-900">{referrals.length}</div>
-              <span className="text-[10px] text-emerald-600 font-medium">Guest word-of-mouth</span>
+              <div className="text-2xl font-bold text-slate-900">
+                {referrals.length}
+              </div>
+              <span className="text-[10px] text-emerald-600 font-medium">
+                Guest word-of-mouth
+              </span>
             </div>
 
             <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-1">
@@ -1609,12 +1851,13 @@ export const MarketingPage: React.FC = () => {
               <div className="text-2xl font-bold text-[#0F5132]">
                 {formatINR(
                   referrals
-                    .filter((r) => r.status === 'Rewarded')
-                    .reduce((acc, r) => acc + r.reward_amount, 0)
+                    .filter((r) => r.status === "Rewarded")
+                    .reduce((acc, r) => acc + r.reward_amount, 0),
                 )}
               </div>
               <span className="text-[10px] text-slate-500 font-medium">
-                {referrals.filter((r) => r.status === 'Rewarded').length} rewarded bookings
+                {referrals.filter((r) => r.status === "Rewarded").length}{" "}
+                rewarded bookings
               </span>
             </div>
 
@@ -1625,11 +1868,13 @@ export const MarketingPage: React.FC = () => {
               <div className="text-2xl font-bold text-amber-600">
                 {formatINR(
                   referrals
-                    .filter((r) => r.status === 'Pending')
-                    .reduce((acc, r) => acc + r.reward_amount, 0)
+                    .filter((r) => r.status === "Pending")
+                    .reduce((acc, r) => acc + r.reward_amount, 0),
                 )}
               </div>
-              <span className="text-[10px] text-slate-500 font-medium">Payable upon check-in</span>
+              <span className="text-[10px] text-slate-500 font-medium">
+                Payable upon check-in
+              </span>
             </div>
           </div>
 
@@ -1637,9 +1882,12 @@ export const MarketingPage: React.FC = () => {
           <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
             <div className="p-4 border-b border-slate-200 flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-bold text-slate-900">Guest Referral Ledger</h3>
+                <h3 className="text-sm font-bold text-slate-900">
+                  Guest Referral Ledger
+                </h3>
                 <p className="text-[11px] text-slate-500">
-                  Track referrers, referred guests, voucher amounts, and reward status.
+                  Track referrers, referred guests, voucher amounts, and reward
+                  status.
                 </p>
               </div>
               <button
@@ -1665,10 +1913,17 @@ export const MarketingPage: React.FC = () => {
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {referrals.map((ref) => (
-                    <tr key={ref.id} className="hover:bg-slate-50/70 transition-colors">
+                    <tr
+                      key={ref.id}
+                      className="hover:bg-slate-50/70 transition-colors"
+                    >
                       <td className="px-4 py-3">
-                        <span className="font-bold text-slate-900 block">{ref.referrer_name}</span>
-                        <span className="text-[10px] text-slate-500">{ref.referrer_phone}</span>
+                        <span className="font-bold text-slate-900 block">
+                          {ref.referrer_name}
+                        </span>
+                        <span className="text-[10px] text-slate-500">
+                          {ref.referrer_phone}
+                        </span>
                       </td>
                       <td className="px-3 py-3 font-semibold text-slate-800">
                         {ref.referred_lead_name}
@@ -1679,37 +1934,43 @@ export const MarketingPage: React.FC = () => {
                       <td className="px-3 py-3">
                         <span
                           className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                            ref.status === 'Rewarded'
-                              ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-                              : ref.status === 'Pending'
-                              ? 'bg-amber-50 text-amber-800 border border-amber-200'
-                              : 'bg-rose-50 text-rose-800 border border-rose-200'
+                            ref.status === "Rewarded"
+                              ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                              : ref.status === "Pending"
+                                ? "bg-amber-50 text-amber-800 border border-amber-200"
+                                : "bg-rose-50 text-rose-800 border border-rose-200"
                           }`}
                         >
                           {ref.status}
                         </span>
                       </td>
                       <td className="px-3 py-3 text-slate-600 max-w-xs truncate">
-                        {ref.notes || '—'}
+                        {ref.notes || "—"}
                       </td>
                       <td className="px-4 py-3 text-right">
-                        {ref.status === 'Pending' ? (
+                        {ref.status === "Pending" ? (
                           <div className="flex items-center justify-end gap-1.5">
                             <button
-                              onClick={() => handleUpdateReferralStatus(ref.id, 'Rewarded')}
+                              onClick={() =>
+                                handleUpdateReferralStatus(ref.id, "Rewarded")
+                              }
                               className="px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-bold text-[10px] hover:bg-emerald-700 transition-colors"
                             >
                               Reward
                             </button>
                             <button
-                              onClick={() => handleUpdateReferralStatus(ref.id, 'Rejected')}
+                              onClick={() =>
+                                handleUpdateReferralStatus(ref.id, "Rejected")
+                              }
                               className="px-2 py-1 rounded-lg bg-slate-100 text-slate-600 hover:text-rose-600 font-bold text-[10px] transition-colors"
                             >
                               Reject
                             </button>
                           </div>
                         ) : (
-                          <span className="text-[10px] text-slate-400 font-medium">Closed</span>
+                          <span className="text-[10px] text-slate-400 font-medium">
+                            Closed
+                          </span>
                         )}
                       </td>
                     </tr>
@@ -1727,7 +1988,24 @@ export const MarketingPage: React.FC = () => {
       {isAddSourceOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
           <div className="bg-white rounded-3xl max-w-md w-full p-5 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200">
-            <h3 className="text-base font-bold text-slate-900">Add Custom Acquisition Source</h3>
+            <div className="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
+              <div>
+                <h3 className="text-base font-bold text-slate-900">
+                  Add Custom Acquisition Source
+                </h3>
+                <p className="text-[11px] text-slate-500 mt-0.5">
+                  Track performance for external and offline lead channels.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsAddSourceOpen(false)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors shrink-0"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
             <form onSubmit={handleAddSource} className="space-y-3.5">
               <div>
                 <label className="block text-[11px] font-bold text-slate-700 mb-1">
@@ -1744,7 +2022,9 @@ export const MarketingPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">Category</label>
+                <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                  Category
+                </label>
                 <select
                   value={newSourceCategory}
                   onChange={(e) => setNewSourceCategory(e.target.value as any)}
@@ -1765,7 +2045,9 @@ export const MarketingPage: React.FC = () => {
                   type="number"
                   min="0"
                   value={newSourceEstCpl}
-                  onChange={(e) => setNewSourceEstCpl(Number(e.target.value) || 0)}
+                  onChange={(e) =>
+                    setNewSourceEstCpl(Number(e.target.value) || 0)
+                  }
                   className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
                 />
               </div>
@@ -1796,11 +2078,23 @@ export const MarketingPage: React.FC = () => {
       {isCreateCampaignOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
           <div className="bg-white rounded-3xl max-w-lg w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
-            <div>
-              <h3 className="text-base font-bold text-slate-900">Launch New Marketing Campaign</h3>
-              <p className="text-[11px] text-slate-500 mt-0.5">
-                Set campaign budget, channel, promo voucher, and target cohort.
-              </p>
+            <div className="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
+              <div>
+                <h3 className="text-base font-bold text-slate-900">
+                  Launch New Marketing Campaign
+                </h3>
+                <p className="text-[11px] text-slate-500 mt-0.5">
+                  Set campaign budget, channel, promo voucher, and target cohort.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsCreateCampaignOpen(false)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors shrink-0"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
 
             <form onSubmit={handleCreateCampaign} className="space-y-3.5">
@@ -1820,7 +2114,9 @@ export const MarketingPage: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Channel</label>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Channel
+                  </label>
                   <select
                     value={campChannel}
                     onChange={(e) => setCampChannel(e.target.value as any)}
@@ -1846,7 +2142,11 @@ export const MarketingPage: React.FC = () => {
                     <option value="">None (Standard)</option>
                     {coupons.map((c) => (
                       <option key={c.id} value={c.code}>
-                        {c.code} ({c.discount_type === 'percentage' ? `${c.discount_value}%` : `₹${c.discount_value}`})
+                        {c.code} (
+                        {c.discount_type === "percentage"
+                          ? `${c.discount_value}%`
+                          : `₹${c.discount_value}`}
+                        )
                       </option>
                     ))}
                   </select>
@@ -1883,7 +2183,9 @@ export const MarketingPage: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Start Date</label>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Start Date
+                  </label>
                   <input
                     type="date"
                     value={campStartDate}
@@ -1893,7 +2195,9 @@ export const MarketingPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">End Date</label>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    End Date
+                  </label>
                   <input
                     type="date"
                     value={campEndDate}
@@ -1955,11 +2259,24 @@ export const MarketingPage: React.FC = () => {
       {isCreateCouponOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
           <div className="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
-            <div>
-              <h3 className="text-base font-bold text-slate-900">Create Promotional Coupon Code</h3>
-              <p className="text-[11px] text-slate-500 mt-0.5">
-                Generate voucher codes with usage thresholds, stay minimums, and discount slabs.
-              </p>
+            <div className="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
+              <div>
+                <h3 className="text-base font-bold text-slate-900">
+                  Create Promotional Coupon Code
+                </h3>
+                <p className="text-[11px] text-slate-500 mt-0.5">
+                  Generate voucher codes with usage thresholds, stay minimums, and
+                  discount slabs.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsCreateCouponOpen(false)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors shrink-0"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
 
             <form onSubmit={handleCreateCoupon} className="space-y-3.5">
@@ -1995,7 +2312,7 @@ export const MarketingPage: React.FC = () => {
 
               <div>
                 <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                  Discount Value {cpnType === 'percentage' ? '(%)' : '(₹)'}
+                  Discount Value {cpnType === "percentage" ? "(%)" : "(₹)"}
                 </label>
                 <input
                   type="number"
@@ -2042,7 +2359,9 @@ export const MarketingPage: React.FC = () => {
                     type="number"
                     min="0"
                     value={cpnMinSpend}
-                    onChange={(e) => setCpnMinSpend(Number(e.target.value) || 0)}
+                    onChange={(e) =>
+                      setCpnMinSpend(Number(e.target.value) || 0)
+                    }
                     className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
                   />
                 </div>
@@ -2062,7 +2381,9 @@ export const MarketingPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Valid To</label>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Valid To
+                  </label>
                   <input
                     type="date"
                     value={cpnValidTo}
@@ -2111,11 +2432,24 @@ export const MarketingPage: React.FC = () => {
       {isBroadcastModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
           <div className="bg-white rounded-3xl max-w-lg w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200 max-h-[92vh] overflow-y-auto">
-            <div>
-              <h3 className="text-base font-bold text-slate-900">Compose Guest Broadcast</h3>
-              <p className="text-[11px] text-slate-500 mt-0.5">
-                Send verified outbound messages with dynamic template interpolation.
-              </p>
+            <div className="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
+              <div>
+                <h3 className="text-base font-bold text-slate-900">
+                  Compose Guest Broadcast
+                </h3>
+                <p className="text-[11px] text-slate-500 mt-0.5">
+                  Send verified outbound messages with dynamic template
+                  interpolation.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsBroadcastModalOpen(false)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors shrink-0"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
 
             <form onSubmit={handleSendBroadcast} className="space-y-3.5">
@@ -2206,7 +2540,9 @@ export const MarketingPage: React.FC = () => {
                   Estimated Audience Reach:
                 </span>
                 <span className="font-extrabold text-[#0F5132] text-xs">
-                  {selectedSegment ? `${selectedSegment.member_count} Verified Contacts` : '25 Contacts'}
+                  {selectedSegment
+                    ? `${selectedSegment.member_count} Verified Contacts`
+                    : "25 Contacts"}
                 </span>
               </div>
 
@@ -2228,7 +2564,10 @@ export const MarketingPage: React.FC = () => {
                   </label>
                 </div>
                 <p className="text-[10px] text-slate-500 leading-relaxed pl-5">
-                  I confirm that all recipients in this segment have explicitly provided consent for hospitality updates in accordance with TRAI Commercial Communications Customer Preference Regulations (TCCCPR 2018).
+                  I confirm that all recipients in this segment have explicitly
+                  provided consent for hospitality updates in accordance with
+                  TRAI Commercial Communications Customer Preference Regulations
+                  (TCCCPR 2018).
                 </p>
               </div>
 
@@ -2245,8 +2584,8 @@ export const MarketingPage: React.FC = () => {
                   disabled={!broadcastOptInChecked}
                   className={`px-4 py-2 rounded-xl text-white font-bold transition-colors ${
                     broadcastOptInChecked
-                      ? 'bg-[#0F5132] hover:bg-[#0D4429]'
-                      : 'bg-slate-300 cursor-not-allowed'
+                      ? "bg-[#0F5132] hover:bg-[#0D4429]"
+                      : "bg-slate-300 cursor-not-allowed"
                   }`}
                 >
                   Dispatch Broadcast
@@ -2263,11 +2602,23 @@ export const MarketingPage: React.FC = () => {
       {isAddReferralOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
           <div className="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200">
-            <div>
-              <h3 className="text-base font-bold text-slate-900">Record Guest Referral</h3>
-              <p className="text-[11px] text-slate-500 mt-0.5">
-                Credit word-of-mouth advocates and allocate reward credits.
-              </p>
+            <div className="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
+              <div>
+                <h3 className="text-base font-bold text-slate-900">
+                  Record Guest Referral
+                </h3>
+                <p className="text-[11px] text-slate-500 mt-0.5">
+                  Credit word-of-mouth advocates and allocate reward credits.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsAddReferralOpen(false)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors shrink-0"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
 
             <form onSubmit={handleAddReferral} className="space-y-3.5">
