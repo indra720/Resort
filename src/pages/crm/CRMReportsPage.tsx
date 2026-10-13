@@ -262,7 +262,7 @@ export const CRMReportsPage: React.FC = () => {
       </div>
 
       {/* Top 7 KPI Summary Ribbon */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-2.5 sm:gap-3.5">
         {/* 1. Total Leads */}
         <div className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-2xs text-left">
           <div className="flex items-center justify-between text-[#64748B]">
@@ -300,7 +300,7 @@ export const CRMReportsPage: React.FC = () => {
         </div>
 
         {/* 4. Total Attributed Revenue */}
-        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-2xs text-left col-span-2 sm:col-span-1">
+        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-2xs text-left">
           <div className="flex items-center justify-between text-[#64748B]">
             <span className="text-[11px] font-bold uppercase tracking-wider">Sales Revenue</span>
             <DollarSign className="w-4 h-4 text-indigo-600" />
@@ -337,7 +337,7 @@ export const CRMReportsPage: React.FC = () => {
         </div>
 
         {/* 7. Follow-up SLA Adherence */}
-        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-2xs text-left col-span-2 sm:col-span-1">
+        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-2xs text-left">
           <div className="flex items-center justify-between text-[#64748B]">
             <span className="text-[11px] font-bold uppercase tracking-wider">SLA Adherence</span>
             <ShieldCheck className="w-4 h-4 text-emerald-600" />

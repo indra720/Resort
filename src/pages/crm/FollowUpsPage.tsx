@@ -140,7 +140,7 @@ export const FollowUpsPage: React.FC = () => {
   }, [currentResort.id, user, followUps]);
 
   return (
-    <div className="space-y-4 text-left text-[#0F172A]">
+    <div className="space-y-4 text-left text-[#0F172A] pb-28 sm:pb-12">
       
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-[#E2E8F0] shadow-2xs">
@@ -160,12 +160,12 @@ export const FollowUpsPage: React.FC = () => {
               </span>
             )}
           </div>
-          <p className="text-xs text-[#64748B] mt-0.5">
+          <p className="text-xs sm:text-sm text-[#64748B] mt-0.5">
             Never lose an inquiry: Schedule calls, WhatsApp touches, site inspections, and client proposals.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap">
+        <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap w-full sm:w-auto justify-between sm:justify-end">
           {/* View Switcher */}
           <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-[#CBD5E1]">
             <button
@@ -191,7 +191,7 @@ export const FollowUpsPage: React.FC = () => {
           <button
             type="button"
             onClick={() => setIsScheduleOpen(true)}
-            className="h-9 px-3.5 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs font-bold shadow-2xs flex items-center gap-1.5 transition-colors"
+            className="h-9 px-3.5 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs font-bold shadow-2xs flex items-center justify-center gap-1.5 transition-colors shrink-0"
           >
             <Plus className="w-4 h-4" />
             <span>Schedule Follow-Up</span>
@@ -200,7 +200,7 @@ export const FollowUpsPage: React.FC = () => {
       </div>
 
       {/* Tabs Row with Real-Time Badges */}
-      <div className="bg-white rounded-2xl border border-[#E2E8F0] p-1.5 sm:p-2 shadow-2xs flex items-center gap-1 overflow-x-auto scrollbar-thin">
+      <div className="bg-white rounded-2xl border border-[#E2E8F0] p-1.5 sm:p-2 shadow-2xs flex items-center gap-1.5 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         {[
           { id: 'today', label: 'Today', count: counts.today, badgeColor: 'bg-amber-100 text-amber-800' },
           { id: 'overdue', label: 'Overdue', count: counts.overdue, badgeColor: 'bg-rose-100 text-rose-800 font-bold' },
@@ -212,7 +212,7 @@ export const FollowUpsPage: React.FC = () => {
             key={tab.id}
             type="button"
             onClick={() => setActiveTab(tab.id as any)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 transition-all whitespace-nowrap ${
+            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all shrink-0 whitespace-nowrap ${
               activeTab === tab.id
                 ? 'bg-[#0F5132] text-white shadow-2xs'
                 : 'text-[#475569] hover:bg-[#F8FAFC]'

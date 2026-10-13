@@ -107,10 +107,10 @@ export const RestaurantDashboard: React.FC = () => {
           </div>
         </div>
 
-        {/* 4 Metric Cards (Responsive spreading cards with top icon layout) */}
+        {/* 4 Metric Cards */}
         <div className="p-3 sm:p-4 bg-white/95 backdrop-blur-md border-t border-[#E2E8F0]">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#22C55E] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <IndianRupee className="w-4 h-4" />
@@ -121,14 +121,14 @@ export const RestaurantDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">Today's F&B Sales</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   ₹1,84,500
+                  <p className="text-[10px] sm:text-[11px] text-[#16A34A] font-semibold mt-0.5">vs yesterday</p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#16A34A] font-semibold mt-0.5 whitespace-nowrap">vs yesterday</p>
               </div>
             </div>
 
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#38BDF8] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <UtensilsCrossed className="w-4 h-4" />
@@ -139,14 +139,14 @@ export const RestaurantDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">Active Tables</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   16 / 22
+                  <p className="text-[10px] sm:text-[11px] text-[#0284C7] mt-0.5">Dining capacity</p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#0284C7] mt-0.5 whitespace-nowrap">Dining capacity</p>
               </div>
             </div>
 
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#F97316] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <Clock className="w-4 h-4" />
@@ -157,14 +157,14 @@ export const RestaurantDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">Kitchen Orders</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   7 Pending
+                  <p className="text-[10px] sm:text-[11px] text-[#D97706] mt-0.5">Live prep queue</p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#D97706] mt-0.5 whitespace-nowrap">Live prep queue</p>
               </div>
             </div>
 
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#8B5CF6] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <CheckCircle2 className="w-4 h-4" />
@@ -175,10 +175,10 @@ export const RestaurantDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">Delivered Today</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   48 Orders
+                  <p className="text-[10px] sm:text-[11px] text-[#7C3AED] mt-0.5">Room & lakeside</p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#7C3AED] mt-0.5 whitespace-nowrap">Room & lakeside</p>
               </div>
             </div>
           </div>
@@ -191,18 +191,52 @@ export const RestaurantDashboard: React.FC = () => {
           <h3 className="text-base font-bold text-[#0F172A]">Live Dining & Room Service Orders</h3>
         </div>
 
-        {/* Mobile / Tablet Horizontal Scroll Notice */}
-        <div className="lg:hidden flex items-center justify-between px-4 py-2 bg-[#F8FAFC] border-b border-[#E2E8F0] text-xs text-[#64748B]">
-          <span className="flex items-center gap-1.5 font-medium">
-            <span className="inline-block w-2 h-2 rounded-full bg-[#0F5132] animate-pulse" />
-            Scroll table horizontally to view order items & actions
-          </span>
-          <span className="text-[10px] font-semibold text-[#0F5132] bg-white px-2 py-0.5 rounded border border-[#E2E8F0] whitespace-nowrap">
-            ↔ Swipe to explore
-          </span>
+        {/* Mobile View: High-End Native App Card Layout */}
+        <div className="lg:hidden p-3.5 space-y-3">
+          {orders.map((o) => (
+            <div
+              key={o.id}
+              className="p-3.5 rounded-2xl bg-white border border-[#E2E8F0] shadow-[0_2px_10px_-2px_rgba(0,0,0,0.04)] space-y-2.5"
+            >
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs font-bold text-[#0F5132] bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-200/60">
+                  {o.id}
+                </span>
+                <span className="text-xs font-bold text-[#0F172A]">{o.table}</span>
+                <span
+                  className={cn(
+                    'px-2 py-0.5 rounded-full text-[11px] font-semibold border',
+                    o.status === 'Served' && 'bg-emerald-50 text-emerald-700 border-emerald-200',
+                    o.status === 'Preparing' && 'bg-amber-50 text-amber-700 border-amber-200',
+                    o.status === 'Pending' && 'bg-sky-50 text-sky-700 border-sky-200'
+                  )}
+                >
+                  {o.status}
+                </span>
+              </div>
+
+              <div className="text-xs text-[#64748B] bg-[#F8FAFC] border border-slate-100 rounded-xl p-2.5 leading-relaxed">
+                {o.items.map((i) => `${i.name} (${i.qty})`).join(', ')}
+              </div>
+
+              <div className="flex items-center justify-between pt-1 border-t border-slate-100">
+                <div className="text-sm font-black text-[#0F172A]">
+                  {formatINR(o.total)}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleUpdateStatus(o.id, 'Served')}
+                  className="px-3 py-1.5 bg-[#0F5132] text-white hover:bg-[#0B3D25] active:scale-95 rounded-xl text-xs font-bold transition-all shadow-2xs"
+                >
+                  Mark Served
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="overflow-x-auto scrollbar-thin">
+        {/* Desktop View: Full Table */}
+        <div className="hidden lg:block overflow-x-auto scrollbar-thin">
           <table className="w-full min-w-[780px] text-left text-xs text-[#1E293B] border-collapse">
             <thead className="bg-[#F8FAFC] border-b border-[#E2E8F0] text-[#64748B] font-semibold whitespace-nowrap">
               <tr>

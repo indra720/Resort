@@ -60,25 +60,26 @@ export const HousekeepingDashboard: React.FC = () => {
 
   return (
     <div className="space-y-4 text-[#111827]">
-      {/* 1. Panoramic Hero Banner with 5 KPI Cards */}
+      {/* 1. Panoramic Hero Banner with 4 KPI Cards */}
       <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-2xs bg-white">
-        <div className="relative h-44 sm:h-52 w-full overflow-hidden flex flex-col justify-between p-5 sm:p-6">
+        <div className="relative min-h-[170px] sm:min-h-[190px] h-auto w-full overflow-hidden flex flex-col justify-between p-4 sm:p-6">
           <img
             src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80"
             alt="Joy Resorts Sanctuary"
             className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.98]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" />
 
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
             <div>
-              <div className="flex flex-col lg:flex-row items-center gap-2">
-                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#0F5132]/10 text-[#0F5132] uppercase tracking-wider">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-50 text-[#0F5132] uppercase tracking-wider border border-emerald-200/80 shadow-2xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0F5132] animate-pulse" />
                   Housekeeping
                 </span>
-                <span className="text-xs text-[#64748B]">Villa Sanitation Hub</span>
+                <span className="text-xs font-medium text-[#64748B]">Villa Sanitation Hub</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] mt-1">
+              <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] mt-1.5">
                 Housekeeping Command Board
               </h1>
               <p className="text-xs sm:text-sm text-[#475569] font-medium mt-0.5">
@@ -86,19 +87,19 @@ export const HousekeepingDashboard: React.FC = () => {
               </p>
             </div>
 
-            <div className="flex items-center gap-2 self-start sm:self-auto">
-              <div className="flex items-center gap-2 px-3.5 py-1.5 bg-white border border-[#E2E8F0] rounded-xl text-xs font-semibold text-[#1E293B] shadow-2xs">
-                <CalendarDays className="w-4 h-4 text-[#64748B]" />
+            <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap">
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-[#E2E8F0] rounded-xl text-xs font-semibold text-[#1E293B] shadow-2xs">
+                <CalendarDays className="w-3.5 h-3.5 text-[#64748B]" />
                 <span>Today: 08 Oct 2026</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* 4 Housekeeping KPI Cards (Responsive spreading cards with top icon layout) */}
+        {/* 4 Housekeeping KPI Cards */}
         <div className="p-3 sm:p-4 bg-white/95 backdrop-blur-md border-t border-[#E2E8F0]">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#22C55E] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <CheckCircle2 className="w-4 h-4" />
@@ -108,15 +109,19 @@ export const HousekeepingDashboard: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B] leading-snug">Clean & Ready</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">
+                  Clean & Ready
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   {availableCount}
+                  <p className="text-[10px] sm:text-[11px] text-[#16A34A] font-semibold mt-0.5 truncate">
+                    Inspected keys
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#16A34A] font-semibold mt-0.5 whitespace-nowrap">Inspected keys</p>
               </div>
             </div>
 
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#F97316] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <Clock className="w-4 h-4" />
@@ -126,15 +131,19 @@ export const HousekeepingDashboard: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B] leading-snug">Needs Cleaning</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">
+                  Needs Cleaning
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   {cleaningCount}
+                  <p className="text-[10px] sm:text-[11px] text-[#D97706] mt-0.5 truncate">
+                    Turnover active
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#D97706] mt-0.5 whitespace-nowrap">Turnover active</p>
               </div>
             </div>
 
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#38BDF8] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <BedDouble className="w-4 h-4" />
@@ -144,15 +153,19 @@ export const HousekeepingDashboard: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B] leading-snug">Occupied Rooms</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">
+                  Occupied Rooms
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   {occupiedCount}
+                  <p className="text-[10px] sm:text-[11px] text-[#0284C7] mt-0.5 truncate">
+                    Stay-over guests
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#0284C7] mt-0.5 whitespace-nowrap">Stay-over guests</p>
               </div>
             </div>
 
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#EF4444] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <Wrench className="w-4 h-4" />
@@ -162,11 +175,15 @@ export const HousekeepingDashboard: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B] leading-snug">Maintenance</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">
+                  Maintenance
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   {maintenanceCount}
+                  <p className="text-[10px] sm:text-[11px] text-[#DC2626] mt-0.5 truncate">
+                    Repair queued
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#DC2626] mt-0.5 whitespace-nowrap">Repair queued</p>
               </div>
             </div>
           </div>
@@ -174,8 +191,8 @@ export const HousekeepingDashboard: React.FC = () => {
       </div>
 
       {/* 2. Filter Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-[#E2E8F0] shadow-2xs">
-        <div className="flex-1 min-w-[240px] max-w-md relative">
+      <div className="flex flex-wrap items-center justify-between gap-2.5 bg-white p-3 rounded-2xl border border-[#E2E8F0] shadow-2xs">
+        <div className="flex-1 min-w-[200px] w-full sm:w-auto relative">
           <Search className="w-4 h-4 text-[#94A3B8] absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
@@ -186,11 +203,11 @@ export const HousekeepingDashboard: React.FC = () => {
           />
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-2">
+        <div className="w-full sm:w-auto">
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="h-9 px-2.5 text-xs bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-[#475569] font-medium focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+            className="w-full sm:w-auto h-9 px-3 text-xs bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-[#475569] font-medium focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
           >
             <option value="All">All Statuses</option>
             <option value="Available">Available (Clean)</option>
@@ -202,20 +219,20 @@ export const HousekeepingDashboard: React.FC = () => {
       </div>
 
       {/* 3. Room Turnover Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {filteredRooms.map((room) => (
           <div
             key={room.id}
-            className="bg-white rounded-2xl border border-[#E2E8F0] p-4 shadow-2xs flex flex-col justify-between hover:shadow-xs transition-shadow"
+            className="bg-white rounded-2xl border border-[#E2E8F0] p-3.5 sm:p-4 shadow-[0_2px_12px_-2px_rgba(0,0,0,0.04)] flex flex-col justify-between hover:shadow-xs transition-shadow space-y-3"
           >
-            <div className="flex items-start justify-between">
-              <div>
-                <span className="text-base font-bold text-[#0F172A]">Room #{room.roomNumber}</span>
-                <p className="text-xs text-[#64748B]">{room.category} • Floor {room.floor}</p>
+            <div className="flex items-start justify-between gap-2">
+              <div className="min-w-0">
+                <span className="text-sm sm:text-base font-bold text-[#0F172A] truncate block">Room #{room.roomNumber}</span>
+                <p className="text-[11px] text-[#64748B] truncate">{room.category} • Floor {room.floor}</p>
               </div>
               <span
                 className={cn(
-                  'px-2.5 py-0.5 rounded-full text-[11px] font-semibold border',
+                  'px-2.5 py-0.5 rounded-full text-[11px] font-semibold border shrink-0',
                   room.status === 'Available' && 'bg-emerald-50 text-emerald-700 border-emerald-200',
                   room.status === 'Cleaning' && 'bg-amber-50 text-amber-700 border-amber-200',
                   room.status === 'Occupied' && 'bg-sky-50 text-sky-700 border-sky-200',
@@ -226,18 +243,18 @@ export const HousekeepingDashboard: React.FC = () => {
               </span>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-[#E2E8F0] flex items-center justify-between">
+            <div className="pt-2.5 border-t border-[#E2E8F0] flex items-center gap-2">
               <button
                 type="button"
                 onClick={() => handleUpdateStatus(room.id, 'Available')}
-                className="px-2.5 py-1 bg-[#0F5132] text-white hover:bg-[#0B3D25] rounded-lg text-xs font-medium transition-colors"
+                className="flex-1 py-1.5 px-2 bg-[#0F5132] text-white hover:bg-[#0B3D25] rounded-xl text-xs font-semibold transition-all shadow-2xs active:scale-[0.98] text-center"
               >
                 Mark Clean
               </button>
               <button
                 type="button"
                 onClick={() => handleUpdateStatus(room.id, 'Cleaning')}
-                className="px-2.5 py-1 bg-[#F8FAFC] text-[#475569] hover:bg-[#F1F5F9] border border-[#E2E8F0] rounded-lg text-xs font-medium transition-colors"
+                className="flex-1 py-1.5 px-2 bg-[#F8FAFC] text-[#475569] hover:bg-[#F1F5F9] border border-[#CBD5E1] rounded-xl text-xs font-semibold transition-all active:scale-[0.98] text-center"
               >
                 Needs Cleaning
               </button>

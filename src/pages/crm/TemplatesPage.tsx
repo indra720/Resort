@@ -181,7 +181,7 @@ export const TemplatesPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-4 sm:space-y-5 text-left text-[#0F172A]">
+    <div className="space-y-4 sm:space-y-5 text-left text-[#0F172A] pb-28 sm:pb-12">
       
       {/* 1. Header Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-[#E2E8F0] shadow-2xs">
@@ -203,7 +203,7 @@ export const TemplatesPage: React.FC = () => {
         <button
           type="button"
           onClick={handleOpenCreate}
-          className="flex items-center gap-1.5 px-4 py-2 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs sm:text-sm font-bold shadow-2xs transition-colors shrink-0 self-start sm:self-auto"
+          className="flex items-center justify-center gap-1.5 px-4 py-2.5 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs sm:text-sm font-bold shadow-2xs transition-colors shrink-0 w-full sm:w-auto"
         >
           <Plus className="w-4 h-4" />
           <span>New Template</span>
@@ -211,8 +211,8 @@ export const TemplatesPage: React.FC = () => {
       </div>
 
       {/* 2. Channel Tabs */}
-      <div className="bg-white rounded-2xl border border-[#E2E8F0] p-1.5 sm:p-2 shadow-2xs overflow-x-auto scrollbar-thin">
-        <div className="flex items-center gap-1 min-w-max">
+      <div className="bg-white rounded-2xl border border-[#E2E8F0] p-1.5 sm:p-2 shadow-2xs overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex items-center gap-1.5 min-w-max">
           {[
             { id: 'ALL', label: 'All Channels', icon: MessageSquare },
             { id: 'whatsapp', label: 'WhatsApp', icon: MessageCircle },
@@ -225,7 +225,7 @@ export const TemplatesPage: React.FC = () => {
                 key={ch.id}
                 type="button"
                 onClick={() => setChannelFilter(ch.id as any)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all shrink-0 whitespace-nowrap ${
                   channelFilter === ch.id
                     ? 'bg-[#0F5132] text-white shadow-2xs'
                     : 'text-[#475569] hover:bg-[#F8FAFC] hover:text-[#0F172A]'

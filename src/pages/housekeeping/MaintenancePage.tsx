@@ -248,36 +248,54 @@ export const MaintenancePage: React.FC = () => {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-rose-600">Critical Outages</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-rose-700 mt-1">{criticalTickets}</p>
-          <span className="text-[10px] text-rose-600 font-medium">Guest impacting</span>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-rose-600">Critical Outages</span>
+            <span className="text-[10px] text-rose-700 font-semibold bg-rose-50 px-2 py-0.5 rounded-full shrink-0">Priority P1</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-rose-700 tracking-tight mt-0.5">
+            <span>{criticalTickets}</span>
+            <p className="text-[11px] font-normal text-rose-600 mt-0.5">Guest impacting</p>
+          </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-amber-600">Open Tickets</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-amber-600 mt-1">{openTickets}</p>
-          <span className="text-[10px] text-amber-600 font-medium">Awaiting assignment</span>
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-amber-700">Open Tickets</span>
+            <span className="text-[10px] text-amber-700 font-semibold bg-amber-50 px-2 py-0.5 rounded-full shrink-0">Unassigned</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-amber-600 tracking-tight mt-0.5">
+            <span>{openTickets}</span>
+            <p className="text-[11px] font-normal text-amber-600 mt-0.5">Awaiting assignment</p>
+          </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-blue-600">In Progress Work</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-blue-600 mt-1">{inProgressTickets}</p>
-          <span className="text-[10px] text-blue-600 font-medium">Technicians on-site</span>
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-blue-700">In Progress Work</span>
+            <span className="text-[10px] text-blue-700 font-semibold bg-blue-50 px-2 py-0.5 rounded-full shrink-0">Active</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-blue-600 tracking-tight mt-0.5">
+            <span>{inProgressTickets}</span>
+            <p className="text-[11px] font-normal text-blue-600 mt-0.5">Technicians on-site</p>
+          </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-emerald-600">Resolved Today</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-[#0F5132] mt-1">
-            {tickets.filter((t) => t.status === 'Resolved').length}
-          </p>
-          <span className="text-[10px] text-emerald-600 font-medium">94% within 2-hour SLA</span>
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-emerald-700">Resolved Today</span>
+            <span className="text-[10px] text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full shrink-0">94% SLA</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F5132] tracking-tight mt-0.5">
+            <span>{tickets.filter((t) => t.status === 'Resolved').length}</span>
+            <p className="text-[11px] font-normal text-emerald-600 mt-0.5">Within 2-hr SLA</p>
+          </div>
         </div>
       </div>
 
       {/* Status Filter */}
-      <div className="w-[320px] min-w-0 md:w-full overflow-x-auto   flex items-center gap-1.5 pb-1">
+      <div className="w-full min-w-0 overflow-x-auto flex items-center gap-1.5 pb-1 scrollbar-none">
         {['All', 'Open', 'In Progress', 'Resolved'].map((st) => (
           <button
             key={st}

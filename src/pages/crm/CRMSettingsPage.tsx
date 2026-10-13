@@ -302,10 +302,10 @@ export const CRMSettingsPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-6 text-left pb-16">
+    <div className="space-y-6 text-left pb-28 sm:pb-16">
       {/* Page Header */}
       <div className="border-b border-[#E2E8F0] pb-4">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <h1 className="text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight">
             CRM Settings & Configuration
           </h1>
@@ -320,7 +320,7 @@ export const CRMSettingsPage: React.FC = () => {
       </div>
 
       {/* Tabs Navigation Bar */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 border-b border-[#E2E8F0] scrollbar-none">
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 border-b border-[#E2E8F0] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -328,7 +328,7 @@ export const CRMSettingsPage: React.FC = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+              className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap shrink-0 transition-all ${
                 isActive
                   ? 'bg-[#0F5132] text-white shadow-2xs'
                   : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9]'
@@ -369,7 +369,7 @@ export const CRMSettingsPage: React.FC = () => {
               <label className="block text-xs font-bold text-[#0F172A]">
                 Target Response Time (Minutes)
               </label>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
                 <input
                   type="number"
                   min="5"
@@ -381,7 +381,7 @@ export const CRMSettingsPage: React.FC = () => {
                       target_response_minutes: parseInt(e.target.value) || 30,
                     })
                   }
-                  className="w-32 px-3 py-2 border border-[#CBD5E1] rounded-xl text-sm font-bold text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#0F5132]"
+                  className="w-28 sm:w-32 px-3 py-2 border border-[#CBD5E1] rounded-xl text-sm font-bold text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#0F5132] shrink-0"
                 />
                 <span className="text-xs text-[#64748B]">
                   Default standard is 30 minutes for hospitality inquiries.
@@ -394,7 +394,7 @@ export const CRMSettingsPage: React.FC = () => {
               <label className="block text-xs font-bold text-[#0F172A]">
                 Warning Threshold (Minutes before Breach)
               </label>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
                 <input
                   type="number"
                   min="3"
@@ -406,7 +406,7 @@ export const CRMSettingsPage: React.FC = () => {
                       warning_threshold_minutes: parseInt(e.target.value) || 15,
                     })
                   }
-                  className="w-32 px-3 py-2 border border-[#CBD5E1] rounded-xl text-sm font-bold text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#0F5132]"
+                  className="w-28 sm:w-32 px-3 py-2 border border-[#CBD5E1] rounded-xl text-sm font-bold text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#0F5132] shrink-0"
                 />
                 <span className="text-xs text-[#64748B]">
                   Highlight lead in amber when approaching deadline.

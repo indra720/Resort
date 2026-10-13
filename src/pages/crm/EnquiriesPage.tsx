@@ -335,31 +335,49 @@ export const EnquiriesPage: React.FC = () => {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-[#64748B]">Total Enquiries</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-[#0F172A] mt-1">{enquiries.length}</p>
-          <span className="text-[10px] text-[#16A34A] font-medium">+4 this week</span>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-[#64748B]">Total Enquiries</span>
+            <span className="text-[10px] text-[#16A34A] font-semibold bg-[#DCFCE7] px-2 py-0.5 rounded-full shrink-0">+4 this week</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+            <span>{enquiries.length}</span>
+            <p className="text-[11px] font-normal text-[#94A3B8] mt-0.5">All received enquiries</p>
+          </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-[#64748B]">Pipeline Value</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-[#0F5132] mt-1">{formatINR(totalPipeline)}</p>
-          <span className="text-[10px] text-[#64748B]">Excl. lost enquiries</span>
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-[#64748B]">Pipeline Value</span>
+            <span className="text-[10px] text-[#64748B] font-semibold bg-slate-100 px-2 py-0.5 rounded-full shrink-0">Excl. lost</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F5132] tracking-tight mt-0.5">
+            <span>{formatINR(totalPipeline)}</span>
+            <p className="text-[11px] font-normal text-[#64748B] mt-0.5">Estimated pipeline</p>
+          </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-[#64748B]">Converted / Won</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-emerald-600 mt-1">{wonCount}</p>
-          <span className="text-[10px] text-[#16A34A] font-medium">32% Conversion rate</span>
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-[#64748B]">Converted / Won</span>
+            <span className="text-[10px] text-[#16A34A] font-semibold bg-[#DCFCE7] px-2 py-0.5 rounded-full shrink-0">32% Win rate</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-emerald-600 tracking-tight mt-0.5">
+            <span>{wonCount}</span>
+            <p className="text-[11px] font-normal text-[#16A34A] mt-0.5">Closed deals</p>
+          </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-[#64748B]">New Awaiting Action</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-amber-600 mt-1">
-            {enquiries.filter((e) => e.status === 'New').length}
-          </p>
-          <span className="text-[10px] text-amber-600 font-medium">&lt; 2 hr SLA response</span>
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-[#64748B]">New Awaiting Action</span>
+            <span className="text-[10px] text-amber-600 font-semibold bg-amber-50 px-2 py-0.5 rounded-full shrink-0">&lt; 2 hr SLA</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-amber-600 tracking-tight mt-0.5">
+            <span>{enquiries.filter((e) => e.status === 'New').length}</span>
+            <p className="text-[11px] font-normal text-amber-600 mt-0.5">Pending first contact</p>
+          </div>
         </div>
       </div>
 

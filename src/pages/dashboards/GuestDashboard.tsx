@@ -22,23 +22,24 @@ export const GuestDashboard: React.FC = () => {
     <div className="space-y-4 text-[#111827]">
       {/* 1. Panoramic Hero Banner */}
       <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-2xs bg-white">
-        <div className="relative h-44 sm:h-52 w-full overflow-hidden flex flex-col justify-between p-5 sm:p-6">
+        <div className="relative min-h-[170px] sm:min-h-[190px] h-auto w-full overflow-hidden flex flex-col justify-between p-4 sm:p-6">
           <img
             src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80"
             alt="Joy Resorts Sanctuary"
             className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.98]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" />
 
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
             <div>
-              <div className="flex flex-col lg:flex-row items-center gap-2">
-                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#0F5132]/10 text-[#0F5132] uppercase tracking-wider">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-50 text-[#0F5132] uppercase tracking-wider border border-emerald-200/80 shadow-2xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0F5132] animate-pulse" />
                   Guest Experience
                 </span>
-                <span className="text-xs text-[#64748B]">Joy Resorts Sanctuary</span>
+                <span className="text-xs font-medium text-[#64748B]">Joy Resorts Sanctuary</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] mt-1">
+              <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] mt-1.5">
                 Welcome, Indrajeet
               </h1>
               <p className="text-xs sm:text-sm text-[#475569] font-medium mt-0.5">
@@ -46,9 +47,9 @@ export const GuestDashboard: React.FC = () => {
               </p>
             </div>
 
-            <div className="flex items-center gap-2 self-start sm:self-auto">
-              <div className="flex items-center gap-2 px-3.5 py-1.5 bg-white border border-[#E2E8F0] rounded-xl text-xs font-semibold text-[#1E293B] shadow-2xs">
-                <CalendarDays className="w-4 h-4 text-[#64748B]" />
+            <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap">
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-[#E2E8F0] rounded-xl text-xs font-semibold text-[#1E293B] shadow-2xs">
+                <CalendarDays className="w-3.5 h-3.5 text-[#64748B]" />
                 <span>Stay: 08 Oct - 12 Oct 2026</span>
               </div>
             </div>
@@ -56,10 +57,9 @@ export const GuestDashboard: React.FC = () => {
         </div>
 
         {/* 4 Guest Highlight Cards */}
-        {/* 4 Guest Metric Cards (Responsive spreading cards with top icon layout) */}
         <div className="p-3 sm:p-4 bg-white/95 backdrop-blur-md border-t border-[#E2E8F0]">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0F5132] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <Key className="w-4 h-4" />
@@ -69,15 +69,19 @@ export const GuestDashboard: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B] leading-snug">Digital RFID Key</p>
-                <div className="text-base sm:text-lg font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">
+                  Digital RFID Key
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   Villa #101
+                  <p className="text-[10px] sm:text-[11px] text-[#16A34A] font-semibold mt-0.5 truncate">
+                    Tap to unlock
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#16A34A] font-semibold mt-0.5 whitespace-nowrap">Tap to unlock</p>
               </div>
             </div>
 
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#38BDF8] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <UtensilsCrossed className="w-4 h-4" />
@@ -87,15 +91,19 @@ export const GuestDashboard: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B] leading-snug">Dining Credit</p>
-                <div className="text-base sm:text-lg font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">
+                  Dining Credit
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   ₹5,000
+                  <p className="text-[10px] sm:text-[11px] text-[#0284C7] mt-0.5 truncate">
+                    Lake Restaurant
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#0284C7] mt-0.5 whitespace-nowrap">Lake Restaurant</p>
               </div>
             </div>
 
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#8B5CF6] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <Compass className="w-4 h-4" />
@@ -105,15 +113,19 @@ export const GuestDashboard: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B] leading-snug">Resort Activities</p>
-                <div className="text-base sm:text-lg font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">
+                  Activities
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   Kayak & Spa
+                  <p className="text-[10px] sm:text-[11px] text-[#7C3AED] mt-0.5 truncate">
+                    Confirmed slot
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#7C3AED] mt-0.5 whitespace-nowrap">Confirmed slot</p>
               </div>
             </div>
 
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#22C55E] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <Clock className="w-4 h-4" />
@@ -123,11 +135,15 @@ export const GuestDashboard: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B] leading-snug">Check-Out</p>
-                <div className="text-base sm:text-lg font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">
+                  Check-Out
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   12 Oct
+                  <p className="text-[10px] sm:text-[11px] text-[#16A34A] font-semibold mt-0.5 truncate">
+                    Express checkout
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#16A34A] font-semibold mt-0.5 whitespace-nowrap">Express checkout</p>
               </div>
             </div>
           </div>

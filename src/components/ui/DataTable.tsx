@@ -85,8 +85,13 @@ export function DataTable<T>({
 
   const [isColumnDropdownOpen, setIsColumnDropdownOpen] = useState(false);
 
-  // View mode state ('table' by default to render full LG multi-column with horizontal scroll)
-  const [viewMode, setViewMode] = useState<'table' | 'cards'>('table');
+  // View mode state (defaults to cards on mobile < 768px, table on desktop)
+  const [viewMode, setViewMode] = useState<'table' | 'cards'>(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      return 'cards';
+    }
+    return 'table';
+  });
 
   // Toggle Column Visibility
   const toggleColumn = (key: string) => {
@@ -209,27 +214,27 @@ export function DataTable<T>({
             </select>
           )}
 
-          {/* View Mode Switcher (Table [Full LG scrollable] vs Cards) */}
+          {/* View Mode Switcher (Table vs Cards) */}
           <div className="flex items-center rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] p-1 shrink-0">
             <button
               type="button"
               onClick={() => setViewMode('table')}
               className={cn(
-                'min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-md flex items-center gap-1.5 transition-colors',
+                'min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-colors',
                 viewMode === 'table'
                   ? 'bg-[#0F5132] text-white shadow-xs'
                   : 'text-[#6B7280] hover:text-[#1F2937]'
               )}
-              title="Table View (Full LG multi-column with clear smooth scroll)"
+              title="Table View (Full multi-column with smooth scroll)"
             >
               <TableIcon className="w-3.5 h-3.5 shrink-0" />
-              <span className="hidden sm:inline">Table</span>
+              <span>Table</span>
             </button>
             <button
               type="button"
               onClick={() => setViewMode('cards')}
               className={cn(
-                'min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-md flex items-center gap-1.5 transition-colors',
+                'min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-colors',
                 viewMode === 'cards'
                   ? 'bg-[#0F5132] text-white shadow-xs'
                   : 'text-[#6B7280] hover:text-[#1F2937]'
@@ -237,7 +242,7 @@ export function DataTable<T>({
               title="Card View (Stacked cards)"
             >
               <LayoutGrid className="w-3.5 h-3.5 shrink-0" />
-              <span className="hidden sm:inline">Cards</span>
+              <span>Cards</span>
             </button>
           </div>
 
@@ -388,28 +393,50 @@ export function DataTable<T>({
               </div>
             </div>
           ) : (
-            /* Mobile Stacked Card View (Optional alternate view) */
+            /* Luxury Mobile App Card View (Polished Stayora-grade visual hierarchy) */
             <div className="space-y-4">
               {paginatedData.map((item) => (
                 <div
                   key={keyExtractor(item)}
-                  className="p-4 rounded-2xl bg-white border border-[#E5E7EB] space-y-3 text-left shadow-sm"
+                  className="rounded-2xl bg-white border border-[#E2E8F0] shadow-[0_2px_12px_-2px_rgba(15,81,50,0.06),0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-[#0F5132]/30 transition-all overflow-hidden text-left"
                 >
-                  {activeColumns.map((col) => (
-                    <div
-                      key={col.key}
-                      className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 py-1.5 border-b border-[#E5E7EB] last:border-b-0"
-                    >
-                      <span className="text-[11px] font-semibold text-[#6B7280] uppercase tracking-wider shrink-0">
-                        {col.header}:
-                      </span>
-                      <div className="text-xs sm:text-sm font-semibold text-[#1F2937]">
-                        {col.accessor(item)}
+                  {/* 1. Card Top Accent Banner */}
+                  {activeColumns.length > 0 && (
+                    <div className="bg-gradient-to-r from-emerald-50/70 via-slate-50/60 to-white px-4 py-3 border-b border-[#E2E8F0]/70 flex items-start justify-between gap-3">
+                      <div className="min-w-0 flex-1">
+                        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#DCFCE7] text-[#0F5132] text-[10px] font-bold uppercase tracking-wider mb-1 border border-emerald-200/60">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#0F5132]" />
+                          <span>{activeColumns[0].header}</span>
+                        </div>
+                        <div className="text-sm sm:text-base font-extrabold text-[#0F172A] tracking-tight break-words">
+                          {activeColumns[0].accessor(item)}
+                        </div>
                       </div>
                     </div>
-                  ))}
+                  )}
+
+                  {/* 2. Structured Secondary Data Capsule Tiles */}
+                  {activeColumns.length > 1 && (
+                    <div className="p-3 sm:p-4 space-y-2">
+                      {activeColumns.slice(1).map((col) => (
+                        <div
+                          key={col.key}
+                          className="px-3 py-2.5 rounded-xl bg-[#F8FAFC] hover:bg-[#F0FDF4]/50 border border-[#E2E8F0]/70 transition-colors flex items-center justify-between gap-3 min-w-0"
+                        >
+                          <span className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider shrink-0">
+                            {col.header}
+                          </span>
+                          <div className="text-xs sm:text-sm font-bold text-[#0F172A] text-right break-words min-w-0 max-w-[70%] flex items-center justify-end flex-wrap gap-1">
+                            {col.accessor(item)}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* 3. Action Footer Tray */}
                   {actions && (
-                    <div className="pt-2.5 border-t border-[#E5E7EB] flex items-center justify-end gap-2">
+                    <div className="px-4 py-3 bg-[#F8FAFC]/90 border-t border-[#E2E8F0]/70 flex items-center justify-end gap-2 flex-wrap">
                       {actions(item)}
                     </div>
                   )}

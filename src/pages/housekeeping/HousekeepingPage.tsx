@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   getHousekeepingTasks,
   updateHousekeepingTaskStatus,
   HousekeepingTask,
-} from '@/api/housekeepingApi';
-import { MOCK_ROOMS } from '@/data/mockData';
-import { useAuthStore } from '@/store/useAuthStore';
-import { Button } from '@/components/ui/Button';
-import { Modal } from '@/components/ui/Modal';
-import { Input } from '@/components/ui/Input';
-import { Select } from '@/components/ui/Select';
-import { toast } from '@/store/useToastStore';
+} from "@/api/housekeepingApi";
+import { MOCK_ROOMS } from "@/data/mockData";
+import { useAuthStore } from "@/store/useAuthStore";
+import { Button } from "@/components/ui/Button";
+import { Modal } from "@/components/ui/Modal";
+import { Input } from "@/components/ui/Input";
+import { Select } from "@/components/ui/Select";
+import { toast } from "@/store/useToastStore";
 import {
   Sparkles,
   Clock,
@@ -20,26 +20,28 @@ import {
   Wrench,
   ArrowRight,
   ArrowLeft,
-} from 'lucide-react';
+} from "lucide-react";
 
 interface MaintenanceTicket {
   id: string;
   roomNumber: string;
   issue: string;
-  priority: 'High' | 'Medium' | 'Low';
-  status: 'Open' | 'In Progress' | 'Resolved';
+  priority: "High" | "Medium" | "Low";
+  status: "Open" | "In Progress" | "Resolved";
   reportedAt: string;
 }
 
 export const HousekeepingPage: React.FC = () => {
   const { currentResort, role } = useAuthStore();
-  const [activeTab, setActiveTab] = useState<'kanban' | 'maintenance'>('kanban');
+  const [activeTab, setActiveTab] = useState<"kanban" | "maintenance">(
+    "kanban",
+  );
 
   // Kanban tasks state
   const [tasks, setTasks] = useState<HousekeepingTask[]>([]);
 
   const loadTasks = () => {
-    const isSuperAdmin = role === 'Super Admin';
+    const isSuperAdmin = role === "Super Admin";
     const list = getHousekeepingTasks(currentResort.id, isSuperAdmin);
     setTasks(list);
   };
@@ -51,39 +53,44 @@ export const HousekeepingPage: React.FC = () => {
   // Maintenance tickets state
   const [tickets, setTickets] = useState<MaintenanceTicket[]>([
     {
-      id: 'TCK-201',
-      roomNumber: 'V-02',
-      issue: 'Private plunge pool heater temperature sensor error.',
-      priority: 'High',
-      status: 'Open',
-      reportedAt: 'Today, 09:30 AM',
+      id: "TCK-201",
+      roomNumber: "V-02",
+      issue: "Private plunge pool heater temperature sensor error.",
+      priority: "High",
+      status: "Open",
+      reportedAt: "Today, 09:30 AM",
     },
     {
-      id: 'TCK-202',
-      roomNumber: '104',
-      issue: 'Balcony sliding door latch needs lubrication.',
-      priority: 'Low',
-      status: 'In Progress',
-      reportedAt: 'Yesterday, 04:15 PM',
+      id: "TCK-202",
+      roomNumber: "104",
+      issue: "Balcony sliding door latch needs lubrication.",
+      priority: "Low",
+      status: "In Progress",
+      reportedAt: "Yesterday, 04:15 PM",
     },
   ]);
 
   // Maintenance ticket modal
   const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
-  const [ticketRoom, setTicketRoom] = useState('102');
-  const [ticketIssue, setTicketIssue] = useState('');
-  const [ticketPriority, setTicketPriority] = useState<'High' | 'Medium' | 'Low'>('Medium');
+  const [ticketRoom, setTicketRoom] = useState("102");
+  const [ticketIssue, setTicketIssue] = useState("");
+  const [ticketPriority, setTicketPriority] = useState<
+    "High" | "Medium" | "Low"
+  >("Medium");
 
-  const moveTask = (taskId: string, targetStatus: 'Dirty' | 'InProgress' | 'Clean') => {
+  const moveTask = (
+    taskId: string,
+    targetStatus: "Dirty" | "InProgress" | "Clean",
+  ) => {
     updateHousekeepingTaskStatus(taskId, targetStatus);
     loadTasks();
-    if (targetStatus === 'Clean') {
+    if (targetStatus === "Clean") {
       toast.success(
-        'Room Sanitized & Inspected',
-        'Room marked Clean. Status synchronized to Available on Front Desk!'
+        "Room Sanitized & Inspected",
+        "Room marked Clean. Status synchronized to Available on Front Desk!",
       );
     } else {
-      toast.info('Housekeeping Stage Updated', `Room moved to ${targetStatus}`);
+      toast.info("Housekeeping Stage Updated", `Room moved to ${targetStatus}`);
     }
   };
 
@@ -94,13 +101,16 @@ export const HousekeepingPage: React.FC = () => {
       roomNumber: ticketRoom,
       issue: ticketIssue,
       priority: ticketPriority,
-      status: 'Open',
-      reportedAt: 'Just now',
+      status: "Open",
+      reportedAt: "Just now",
     };
     setTickets((prev) => [newTck, ...prev]);
-    toast.success('Maintenance Ticket Created', `Ticket ${newTck.id} dispatched to engineering.`);
+    toast.success(
+      "Maintenance Ticket Created",
+      `Ticket ${newTck.id} dispatched to engineering.`,
+    );
     setIsTicketModalOpen(false);
-    setTicketIssue('');
+    setTicketIssue("");
   };
 
   return (
@@ -129,13 +139,13 @@ export const HousekeepingPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex flex-col md:flex-row border-b border-[#E5E7EB] gap-4">
+      <div className="flex flex-col md:flex-row items-center border-b border-[#E5E7EB] gap-4">
         <button
-          onClick={() => setActiveTab('kanban')}
+          onClick={() => setActiveTab("kanban")}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
-            activeTab === 'kanban'
-              ? 'border-[#0F5132] text-[#0F5132]'
-              : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
+            activeTab === "kanban"
+              ? "border-[#0F5132] text-[#0F5132]"
+              : "border-transparent text-[#6B7280] hover:text-[#1F2937]"
           }`}
         >
           <Sparkles className="w-4 h-4" />
@@ -143,11 +153,11 @@ export const HousekeepingPage: React.FC = () => {
         </button>
 
         <button
-          onClick={() => setActiveTab('maintenance')}
+          onClick={() => setActiveTab("maintenance")}
           className={`flex items-center gap-2 pb-3 text-sm font-semibold border-b-2 transition-colors ${
-            activeTab === 'maintenance'
-              ? 'border-[#0F5132] text-[#0F5132]'
-              : 'border-transparent text-[#6B7280] hover:text-[#1F2937]'
+            activeTab === "maintenance"
+              ? "border-[#0F5132] text-[#0F5132]"
+              : "border-transparent text-[#6B7280] hover:text-[#1F2937]"
           }`}
         >
           <Wrench className="w-4 h-4" />
@@ -156,45 +166,64 @@ export const HousekeepingPage: React.FC = () => {
       </div>
 
       {/* KANBAN BOARD VIEW (Swipes horizontally on mobile) */}
-      {activeTab === 'kanban' && (
+      {activeTab === "kanban" && (
         <div className="overflow-x-auto pb-4">
           <div className="flex gap-4 min-w-[850px] md:min-w-0 md:grid md:grid-cols-3">
             {/* Column 1: Dirty / Turnover Needed */}
             <div className="flex-1 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm p-4 flex flex-col space-y-3">
               <div className="flex items-center justify-between pb-2 border-b border-[#E5E7EB]">
-                <div className="flex flex-col lg:flex-row items-center gap-2">
+                <div className="flex  items-center gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#EF4444]" />
-                  <h3 className="text-sm font-bold text-[#1F2937]">Dirty / Turnover</h3>
+                  <h3 className="text-sm font-bold text-[#1F2937]">
+                    Dirty / Turnover
+                  </h3>
                 </div>
                 <span className="text-xs px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 font-semibold border border-rose-200">
-                  {tasks.filter((t) => t.status === 'Dirty').length}
+                  {tasks.filter((t) => t.status === "Dirty").length}
                 </span>
               </div>
 
               <div className="space-y-3 flex-1">
                 {tasks
-                  .filter((t) => t.status === 'Dirty')
+                  .filter((t) => t.status === "Dirty")
                   .map((task) => (
                     <div
                       key={task.id}
-                      className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] space-y-2 text-left"
+                      className="rounded-2xl bg-white border border-[#E2E8F0] shadow-[0_2px_10px_-2px_rgba(0,0,0,0.05)] hover:shadow-md hover:border-[#0F5132]/30 transition-all overflow-hidden text-left"
                     >
-                      <div className="flex justify-between items-start">
-                        <span className="font-bold text-sm text-[#1F2937]">
-                          Room #{task.roomNumber}
+                      {/* Card Header Banner */}
+                      <div className="bg-gradient-to-r from-rose-50/70 via-slate-50/50 to-white px-3.5 py-2.5 border-b border-[#F1F5F9] flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-rose-500 shrink-0" />
+                          <span className="font-extrabold text-sm text-[#0F172A]">
+                            Room #{task.roomNumber}
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white border border-slate-200/80 text-[#64748B] shadow-2xs">
+                          {task.category}
                         </span>
-                        <span className="text-[10px] text-[#6B7280]">{task.category}</span>
                       </div>
-                      <p className="text-xs text-[#6B7280] leading-relaxed">{task.notes}</p>
-                      <span className="text-[11px] text-[#0F5132] font-medium block">
-                        Assigned: {task.assignedTo}
-                      </span>
-                      <div className="pt-2 border-t border-[#E5E7EB] flex justify-end">
+
+                      <div className="p-3.5 space-y-2.5">
+                        <p className="text-xs text-[#475569] leading-relaxed bg-[#F8FAFC] p-2.5 rounded-xl border border-slate-100">
+                          {task.notes}
+                        </p>
+
+                        <div className="flex items-center justify-between text-[11px]">
+                          <span className="text-[#64748B] font-medium">Assigned:</span>
+                          <span className="font-bold text-[#0F5132] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
+                            {task.assignedTo}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="px-3.5 py-2.5 bg-[#F8FAFC]/90 border-t border-[#F1F5F9] flex justify-end">
                         <Button
                           size="sm"
                           variant="secondary"
-                          onClick={() => moveTask(task.id, 'InProgress')}
+                          onClick={() => moveTask(task.id, "InProgress")}
                           rightIcon={<ArrowRight className="w-3.5 h-3.5" />}
+                          className="w-full sm:w-auto"
                         >
                           Start Cleaning
                         </Button>
@@ -207,38 +236,56 @@ export const HousekeepingPage: React.FC = () => {
             {/* Column 2: In Progress */}
             <div className="flex-1 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm p-4 flex flex-col space-y-3">
               <div className="flex items-center justify-between pb-2 border-b border-[#E5E7EB]">
-                <div className="flex flex-col lg:flex-row items-center gap-2">
+                <div className="flex  items-center gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]" />
-                  <h3 className="text-sm font-bold text-[#1F2937]">In Progress</h3>
+                  <h3 className="text-sm font-bold text-[#1F2937]">
+                    In Progress
+                  </h3>
                 </div>
                 <span className="text-xs px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-semibold border border-amber-200">
-                  {tasks.filter((t) => t.status === 'InProgress').length}
+                  {tasks.filter((t) => t.status === "InProgress").length}
                 </span>
               </div>
 
               <div className="space-y-3 flex-1">
                 {tasks
-                  .filter((t) => t.status === 'InProgress')
+                  .filter((t) => t.status === "InProgress")
                   .map((task) => (
                     <div
                       key={task.id}
-                      className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] space-y-2 text-left"
+                      className="rounded-2xl bg-white border border-[#E2E8F0] shadow-[0_2px_10px_-2px_rgba(0,0,0,0.05)] hover:shadow-md hover:border-[#0F5132]/30 transition-all overflow-hidden text-left"
                     >
-                      <div className="flex justify-between items-start">
-                        <span className="font-bold text-sm text-[#1F2937]">
-                          Room #{task.roomNumber}
+                      {/* Card Header Banner */}
+                      <div className="bg-gradient-to-r from-amber-50/70 via-slate-50/50 to-white px-3.5 py-2.5 border-b border-[#F1F5F9] flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
+                          <span className="font-extrabold text-sm text-[#0F172A]">
+                            Room #{task.roomNumber}
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white border border-slate-200/80 text-[#64748B] shadow-2xs">
+                          {task.category}
                         </span>
-                        <span className="text-[10px] text-[#6B7280]">{task.category}</span>
                       </div>
-                      <p className="text-xs text-[#6B7280] leading-relaxed">{task.notes}</p>
-                      <span className="text-[11px] text-amber-700 font-medium block">
-                        Cleaning: {task.assignedTo}
-                      </span>
-                      <div className="pt-2 border-t border-[#E5E7EB] flex items-center justify-between gap-2">
+
+                      <div className="p-3.5 space-y-2.5">
+                        <p className="text-xs text-[#475569] leading-relaxed bg-[#F8FAFC] p-2.5 rounded-xl border border-slate-100">
+                          {task.notes}
+                        </p>
+
+                        <div className="flex items-center justify-between text-[11px]">
+                          <span className="text-[#64748B] font-medium">Cleaning:</span>
+                          <span className="font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-100">
+                            {task.assignedTo}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="px-3.5 py-2.5 bg-[#F8FAFC]/90 border-t border-[#F1F5F9] flex items-center justify-between gap-2">
                         <Button
                           size="sm"
                           variant="ghost"
-                          onClick={() => moveTask(task.id, 'Dirty')}
+                          onClick={() => moveTask(task.id, "Dirty")}
                           leftIcon={<ArrowLeft className="w-3.5 h-3.5" />}
                         >
                           Revert
@@ -246,7 +293,7 @@ export const HousekeepingPage: React.FC = () => {
                         <Button
                           size="sm"
                           variant="primary"
-                          onClick={() => moveTask(task.id, 'Clean')}
+                          onClick={() => moveTask(task.id, "Clean")}
                           rightIcon={<CheckCircle2 className="w-3.5 h-3.5" />}
                         >
                           Mark Clean
@@ -260,38 +307,56 @@ export const HousekeepingPage: React.FC = () => {
             {/* Column 3: Clean & Inspected */}
             <div className="flex-1 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm p-4 flex flex-col space-y-3">
               <div className="flex items-center justify-between pb-2 border-b border-[#E5E7EB]">
-                <div className="flex flex-col lg:flex-row items-center gap-2">
+                <div className="flex  items-center gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#22C55E]" />
-                  <h3 className="text-sm font-bold text-[#1F2937]">Clean & Inspected</h3>
+                  <h3 className="text-sm font-bold text-[#1F2937]">
+                    Clean & Inspected
+                  </h3>
                 </div>
                 <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200">
-                  {tasks.filter((t) => t.status === 'Clean').length}
+                  {tasks.filter((t) => t.status === "Clean").length}
                 </span>
               </div>
 
               <div className="space-y-3 flex-1">
                 {tasks
-                  .filter((t) => t.status === 'Clean')
+                  .filter((t) => t.status === "Clean")
                   .map((task) => (
                     <div
                       key={task.id}
-                      className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] space-y-2 text-left"
+                      className="rounded-2xl bg-white border border-[#E2E8F0] shadow-[0_2px_10px_-2px_rgba(0,0,0,0.05)] hover:shadow-md hover:border-[#0F5132]/30 transition-all overflow-hidden text-left"
                     >
-                      <div className="flex justify-between items-start">
-                        <span className="font-bold text-sm text-[#1F2937]">
-                          Room #{task.roomNumber}
+                      {/* Card Header Banner */}
+                      <div className="bg-gradient-to-r from-emerald-50/70 via-slate-50/50 to-white px-3.5 py-2.5 border-b border-[#F1F5F9] flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-[#22C55E] shrink-0" />
+                          <span className="font-extrabold text-sm text-[#0F172A]">
+                            Room #{task.roomNumber}
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-700 shadow-2xs">
+                          Ready
                         </span>
-                        <span className="text-[10px] text-[#22C55E] font-medium">Ready</span>
                       </div>
-                      <p className="text-xs text-[#6B7280] leading-relaxed">{task.notes}</p>
-                      <span className="text-[11px] text-[#22C55E] block">
-                        Inspected: {task.assignedTo}
-                      </span>
-                      <div className="pt-2 border-t border-[#E5E7EB] flex justify-start">
+
+                      <div className="p-3.5 space-y-2.5">
+                        <p className="text-xs text-[#475569] leading-relaxed bg-[#F8FAFC] p-2.5 rounded-xl border border-slate-100">
+                          {task.notes}
+                        </p>
+
+                        <div className="flex items-center justify-between text-[11px]">
+                          <span className="text-[#64748B] font-medium">Inspected:</span>
+                          <span className="font-bold text-[#0F5132] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
+                            {task.assignedTo}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="px-3.5 py-2.5 bg-[#F8FAFC]/90 border-t border-[#F1F5F9] flex justify-start">
                         <Button
                           size="sm"
                           variant="ghost"
-                          onClick={() => moveTask(task.id, 'InProgress')}
+                          onClick={() => moveTask(task.id, "InProgress")}
                           leftIcon={<ArrowLeft className="w-3.5 h-3.5" />}
                         >
                           Re-open
@@ -306,38 +371,47 @@ export const HousekeepingPage: React.FC = () => {
       )}
 
       {/* MAINTENANCE TICKETS VIEW */}
-      {activeTab === 'maintenance' && (
+      {activeTab === "maintenance" && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {tickets.map((tck) => (
             <div
               key={tck.id}
-              className="p-5 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm space-y-3 text-left"
+              className="rounded-2xl bg-white border border-[#E2E8F0] shadow-[0_2px_12px_-2px_rgba(0,0,0,0.05)] hover:shadow-md transition-all overflow-hidden text-left"
             >
-              <div className="flex items-center justify-between">
+              <div className="bg-gradient-to-r from-slate-50 via-emerald-50/20 to-white px-4 py-3 border-b border-[#F1F5F9] flex items-center justify-between gap-2">
                 <div>
-                  <span className="font-bold text-sm text-[#1F2937]">{tck.id}</span>
-                  <span className="text-xs text-[#0F5132] font-semibold block">
-                    Room #{tck.roomNumber}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="font-extrabold text-sm text-[#0F172A]">{tck.id}</span>
+                    <span className="text-xs font-bold text-[#0F5132] bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-md">
+                      Room #{tck.roomNumber}
+                    </span>
+                  </div>
                 </div>
                 <span
-                  className={`text-[11px] px-2.5 py-0.5 rounded-full font-semibold border ${
-                    tck.priority === 'High'
-                      ? 'bg-rose-50 text-rose-700 border-rose-200'
-                      : 'bg-amber-50 text-amber-700 border-amber-200'
+                  className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border ${
+                    tck.priority === "High"
+                      ? "bg-rose-50 text-rose-700 border-rose-200"
+                      : "bg-amber-50 text-amber-700 border-amber-200"
                   }`}
                 >
                   {tck.priority} Priority
                 </span>
               </div>
 
-              <p className="text-xs text-[#1F2937] bg-[#F8FAFC] p-3 rounded-xl border border-[#E5E7EB]">
-                {tck.issue}
-              </p>
+              <div className="p-4 space-y-3">
+                <p className="text-xs text-[#1E293B] bg-[#F8FAFC] p-3 rounded-xl border border-slate-100 leading-relaxed">
+                  {tck.issue}
+                </p>
 
-              <div className="flex items-center justify-between text-xs pt-1 border-t border-[#E5E7EB]">
-                <span className="text-[#6B7280]">{tck.reportedAt}</span>
-                <span className="font-semibold text-[#3B82F6]">{tck.status}</span>
+                <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100">
+                  <span className="text-[#64748B] flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-slate-400" />
+                    {tck.reportedAt}
+                  </span>
+                  <span className="font-bold text-[#0F5132] bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                    {tck.status}
+                  </span>
+                </div>
               </div>
             </div>
           ))}
@@ -353,10 +427,20 @@ export const HousekeepingPage: React.FC = () => {
         maxWidth="md"
         footer={
           <div className="flex flex-col sm:flex-row items-center justify-end gap-3 w-full">
-            <Button variant="ghost" fullWidth className="sm:w-auto" onClick={() => setIsTicketModalOpen(false)}>
+            <Button
+              variant="ghost"
+              fullWidth
+              className="sm:w-auto"
+              onClick={() => setIsTicketModalOpen(false)}
+            >
               Cancel
             </Button>
-            <Button variant="primary" fullWidth className="sm:w-auto" onClick={handleCreateTicket}>
+            <Button
+              variant="primary"
+              fullWidth
+              className="sm:w-auto"
+              onClick={handleCreateTicket}
+            >
               Dispatch Ticket
             </Button>
           </div>
@@ -377,11 +461,13 @@ export const HousekeepingPage: React.FC = () => {
             <Select
               label="Urgency Priority"
               value={ticketPriority}
-              onChange={(e) => setTicketPriority(e.target.value as 'High' | 'Medium' | 'Low')}
+              onChange={(e) =>
+                setTicketPriority(e.target.value as "High" | "Medium" | "Low")
+              }
               options={[
-                { label: 'High (Guest inconvenience)', value: 'High' },
-                { label: 'Medium (Minor repair)', value: 'Medium' },
-                { label: 'Low (Scheduled preventative)', value: 'Low' },
+                { label: "High (Guest inconvenience)", value: "High" },
+                { label: "Medium (Minor repair)", value: "Medium" },
+                { label: "Low (Scheduled preventative)", value: "Low" },
               ]}
             />
           </div>

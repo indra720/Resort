@@ -1,7 +1,7 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '@/store/useAuthStore';
-import { Lead, LeadStatus, LeadSource, InterestedInType } from '@/types/crm';
+import React, { useState, useMemo, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "@/store/useAuthStore";
+import { Lead, LeadStatus, LeadSource, InterestedInType } from "@/types/crm";
 import {
   getLeads,
   getLeadStats,
@@ -10,16 +10,16 @@ import {
   deleteLead,
   bulkUpdateLeadStatus,
   bulkAssignLeads,
-} from '@/api/leads';
-import { LeadFormData } from '@/features/leads/leadValidation';
-import { LeadDetailDrawer } from '@/features/leads/LeadDetailDrawer';
-import { AddEditLeadModal } from '@/features/leads/AddEditLeadModal';
-import { ConvertToBookingModal } from '@/features/leads/ConvertToBookingModal';
-import { CSVImportModal } from '@/features/leads/CSVImportModal';
-import { SiteVisitModal } from '@/features/leads/SiteVisitModal';
-import { exportLeadsToCSV } from '@/features/leads/CSVExport';
-import { formatINR } from '@/lib/formatINR';
-import { toast } from '@/store/useToastStore';
+} from "@/api/leads";
+import { LeadFormData } from "@/features/leads/leadValidation";
+import { LeadDetailDrawer } from "@/features/leads/LeadDetailDrawer";
+import { AddEditLeadModal } from "@/features/leads/AddEditLeadModal";
+import { ConvertToBookingModal } from "@/features/leads/ConvertToBookingModal";
+import { CSVImportModal } from "@/features/leads/CSVImportModal";
+import { SiteVisitModal } from "@/features/leads/SiteVisitModal";
+import { exportLeadsToCSV } from "@/features/leads/CSVExport";
+import { formatINR } from "@/lib/formatINR";
+import { toast } from "@/store/useToastStore";
 import {
   Users2,
   UserPlus,
@@ -49,9 +49,9 @@ import {
   Kanban,
   FileSpreadsheet,
   AlertTriangle,
-} from 'lucide-react';
-import { computeLeadScore, computeLeadSLA } from '@/api/scoring';
-import { canUse } from '@/lib/permissions';
+} from "lucide-react";
+import { computeLeadScore, computeLeadSLA } from "@/api/scoring";
+import { canUse } from "@/lib/permissions";
 
 export const LeadsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -62,10 +62,10 @@ export const LeadsPage: React.FC = () => {
   const [stats, setStats] = useState(getLeadStats(currentResort.id, user));
 
   // Filters & Search
-  const [activeTab, setActiveTab] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [sourceFilter, setSourceFilter] = useState<string>('ALL');
-  const [interestFilter, setInterestFilter] = useState<string>('ALL');
+  const [activeTab, setActiveTab] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sourceFilter, setSourceFilter] = useState<string>("ALL");
+  const [interestFilter, setInterestFilter] = useState<string>("ALL");
 
   // Table selection & bulk actions
   const [selectedLeadIds, setSelectedLeadIds] = useState<string[]>([]);
@@ -115,15 +115,15 @@ export const LeadsPage: React.FC = () => {
   const filteredLeads = useMemo(() => {
     return leads.filter((l) => {
       // Tab filter
-      if (activeTab !== 'all' && l.status !== activeTab) {
+      if (activeTab !== "all" && l.status !== activeTab) {
         return false;
       }
       // Source filter
-      if (sourceFilter !== 'ALL' && l.source !== sourceFilter) {
+      if (sourceFilter !== "ALL" && l.source !== sourceFilter) {
         return false;
       }
       // Interest filter
-      if (interestFilter !== 'ALL' && l.interested_in !== interestFilter) {
+      if (interestFilter !== "ALL" && l.interested_in !== interestFilter) {
         return false;
       }
       // Search query
@@ -135,7 +135,14 @@ export const LeadsPage: React.FC = () => {
         const matchCity = l.city.toLowerCase().includes(q);
         const matchCode = l.lead_code.toLowerCase().includes(q);
         const matchAssigned = l.assigned_to.toLowerCase().includes(q);
-        if (!matchName && !matchPhone && !matchEmail && !matchCity && !matchCode && !matchAssigned) {
+        if (
+          !matchName &&
+          !matchPhone &&
+          !matchEmail &&
+          !matchCity &&
+          !matchCode &&
+          !matchAssigned
+        ) {
           return false;
         }
       }
@@ -161,23 +168,39 @@ export const LeadsPage: React.FC = () => {
 
   const handleToggleSelect = (id: string) => {
     setSelectedLeadIds((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
     );
   };
 
   // Bulk Actions
   const handleBulkStatusChange = (newStatus: LeadStatus) => {
     if (selectedLeadIds.length === 0) return;
-    const count = bulkUpdateLeadStatus(selectedLeadIds, newStatus, currentResort.id, user);
-    toast.success('Bulk Status Updated', `Updated ${count} leads to ${newStatus}.`);
+    const count = bulkUpdateLeadStatus(
+      selectedLeadIds,
+      newStatus,
+      currentResort.id,
+      user,
+    );
+    toast.success(
+      "Bulk Status Updated",
+      `Updated ${count} leads to ${newStatus}.`,
+    );
     setSelectedLeadIds([]);
     loadLeadsData();
   };
 
   const handleBulkAssign = (assignee: string) => {
     if (selectedLeadIds.length === 0) return;
-    const count = bulkAssignLeads(selectedLeadIds, assignee, currentResort.id, user);
-    toast.success('Bulk Assign Completed', `Assigned ${count} leads to ${assignee}.`);
+    const count = bulkAssignLeads(
+      selectedLeadIds,
+      assignee,
+      currentResort.id,
+      user,
+    );
+    toast.success(
+      "Bulk Assign Completed",
+      `Assigned ${count} leads to ${assignee}.`,
+    );
     setSelectedLeadIds([]);
     loadLeadsData();
   };
@@ -185,7 +208,10 @@ export const LeadsPage: React.FC = () => {
   // Lead CRUD handlers
   const handleSaveLead = (formData: LeadFormData) => {
     const tagsArray = formData.tags
-      ? formData.tags.split(',').map((t) => t.trim()).filter(Boolean)
+      ? formData.tags
+          .split(",")
+          .map((t) => t.trim())
+          .filter(Boolean)
       : [];
 
     if (leadToEdit) {
@@ -206,21 +232,21 @@ export const LeadsPage: React.FC = () => {
           source: formData.source,
           priority: formData.priority,
           status: formData.status,
-          score: formData.score || 'Warm',
+          score: formData.score || "Warm",
           tags: tagsArray,
           assigned_to: formData.assigned_to,
-          remarks: formData.remarks || '',
+          remarks: formData.remarks || "",
           lost_reason: formData.lost_reason,
         },
         currentResort.id,
-        user
+        user,
       );
 
       if (!res.success) {
-        toast.error('Update Failed', res.error);
+        toast.error("Update Failed", res.error);
         return;
       }
-      toast.success('Lead Updated', `Changes saved for ${formData.name}.`);
+      toast.success("Lead Updated", `Changes saved for ${formData.name}.`);
     } else {
       // Create
       const res = createLead(
@@ -238,21 +264,24 @@ export const LeadsPage: React.FC = () => {
           source: formData.source,
           priority: formData.priority,
           status: formData.status,
-          score: formData.score || 'Warm',
+          score: formData.score || "Warm",
           tags: tagsArray,
           assigned_to: formData.assigned_to,
-          remarks: formData.remarks || '',
+          remarks: formData.remarks || "",
           lost_reason: formData.lost_reason,
         },
         currentResort.id,
-        user
+        user,
       );
 
       if (!res.success) {
-        toast.error('Creation Failed', res.error);
+        toast.error("Creation Failed", res.error);
         return;
       }
-      toast.success('Lead Created', `Added ${formData.name} to sales pipeline.`);
+      toast.success(
+        "Lead Created",
+        `Added ${formData.name} to sales pipeline.`,
+      );
     }
 
     setIsAddEditOpen(false);
@@ -263,7 +292,7 @@ export const LeadsPage: React.FC = () => {
   const handleDelete = (id: string, name: string) => {
     if (window.confirm(`Are you sure you want to delete lead for ${name}?`)) {
       deleteLead(id, currentResort.id);
-      toast.success('Lead Deleted', `${name} has been removed.`);
+      toast.success("Lead Deleted", `${name} has been removed.`);
       loadLeadsData();
       if (detailLead?.id === id) {
         setIsDetailOpen(false);
@@ -289,7 +318,6 @@ export const LeadsPage: React.FC = () => {
 
   return (
     <div className="space-y-4 sm:space-y-5 text-left text-[#0F172A]">
-      
       {/* 1. Header Banner & Resort Context */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-[#E2E8F0] shadow-2xs">
         <div>
@@ -301,21 +329,22 @@ export const LeadsPage: React.FC = () => {
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 text-[#0F5132] font-semibold border border-emerald-200">
               {currentResort.name}
             </span>
-            {role === 'Sales Executive' && (
+            {role === "Sales Executive" && (
               <span className="text-[11px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-semibold border border-blue-200">
                 Assigned to: {user?.name}
               </span>
             )}
           </div>
           <p className="text-xs sm:text-sm text-[#64748B] mt-0.5">
-            Capture, nurture, and convert inquiries into confirmed luxury stays and banquet bookings.
+            Capture, nurture, and convert inquiries into confirmed luxury stays
+            and banquet bookings.
           </p>
         </div>
 
         <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap">
           <button
             type="button"
-            onClick={() => navigate('/leads/pipeline')}
+            onClick={() => navigate("/leads/pipeline")}
             className="flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs sm:text-sm font-semibold border border-slate-300 transition-colors shrink-0"
             title="Kanban Pipeline Board"
           >
@@ -323,10 +352,10 @@ export const LeadsPage: React.FC = () => {
             <span>Pipeline Board</span>
           </button>
 
-          {canUse(currentResort, 'quotations') && (
+          {canUse(currentResort, "quotations") && (
             <button
               type="button"
-              onClick={() => navigate('/quotations')}
+              onClick={() => navigate("/quotations")}
               className="flex items-center gap-1.5 px-3 py-2 bg-amber-50 hover:bg-amber-100 text-amber-900 rounded-xl text-xs sm:text-sm font-semibold border border-amber-300 transition-colors shrink-0"
               title="Quotations & Proposals (INR ₹)"
             >
@@ -339,7 +368,10 @@ export const LeadsPage: React.FC = () => {
             type="button"
             onClick={() => {
               exportLeadsToCSV(filteredLeads, currentResort.name);
-              toast.success('CSV Exported', `Exported ${filteredLeads.length} leads.`);
+              toast.success(
+                "CSV Exported",
+                `Exported ${filteredLeads.length} leads.`,
+              );
             }}
             className="flex items-center gap-1.5 px-3 py-2 bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#475569] rounded-xl text-xs sm:text-sm font-semibold border border-[#CBD5E1] transition-colors shrink-0"
             title="Export filtered leads to CSV"
@@ -367,92 +399,112 @@ export const LeadsPage: React.FC = () => {
             className="flex items-center gap-1.5 px-4 py-2 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs sm:text-sm font-bold shadow-2xs transition-colors shrink-0"
           >
             <Plus className="w-4 h-4" />
-            <span>{role === 'Receptionist' ? 'Add Walk-in Lead' : 'Add Lead'}</span>
+            <span>
+              {role === "Receptionist" ? "Add Walk-in Lead" : "Add Lead"}
+            </span>
           </button>
         </div>
       </div>
 
       {/* 2. Top 5 KPI Cards (Matching Screenshot) */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3.5">
         {/* Total Leads */}
         <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between min-w-0">
           <div className="flex items-center justify-between gap-1 mb-1.5">
-            <span className="text-xs font-semibold text-[#64748B] truncate">Total Leads</span>
-            <span className="text-[11px] font-bold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full">
+            <span className="text-xs font-semibold text-[#64748B] truncate">
+              Total Leads
+            </span>
+            <span className="text-[11px] font-bold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full shrink-0">
               {stats.totalLeadsTrend}
             </span>
           </div>
           <div>
-            <div className="text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight">
-              {stats.totalLeads}
+            <div className="flex justify-between items-baseline lg:block text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight">
+              <span>{stats.totalLeads}</span>
+              <p className="text-[11px] font-normal text-[#94A3B8] mt-0.5">
+                All active pipeline leads
+              </p>
             </div>
-            <p className="text-[11px] text-[#94A3B8] mt-0.5">All active pipeline leads</p>
           </div>
         </div>
 
         {/* New Enquiries */}
         <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between min-w-0">
           <div className="flex items-center justify-between gap-1 mb-1.5">
-            <span className="text-xs font-semibold text-[#64748B] truncate">New Enquiries</span>
-            <span className="text-[11px] font-bold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full">
+            <span className="text-xs font-semibold text-[#64748B] truncate">
+              New Enquiries
+            </span>
+            <span className="text-[11px] font-bold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full shrink-0">
               {stats.newEnquiriesTrend}
             </span>
           </div>
           <div>
-            <div className="text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight">
-              {stats.newEnquiries}
+            <div className="flex justify-between items-baseline lg:block text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight">
+              <span>{stats.newEnquiries}</span>
+              <p className="text-[11px] font-normal text-[#94A3B8] mt-0.5">
+                Awaiting initial response
+              </p>
             </div>
-            <p className="text-[11px] text-[#94A3B8] mt-0.5">Awaiting initial response</p>
           </div>
         </div>
 
         {/* Site Visits */}
         <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between min-w-0">
           <div className="flex items-center justify-between gap-1 mb-1.5">
-            <span className="text-xs font-semibold text-[#64748B] truncate">Site Visits</span>
-            <span className="text-[11px] font-bold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full">
+            <span className="text-xs font-semibold text-[#64748B] truncate">
+              Site Visits
+            </span>
+            <span className="text-[11px] font-bold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full shrink-0">
               {stats.siteVisitsTrend}
             </span>
           </div>
           <div>
-            <div className="text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight">
-              {stats.siteVisits}
+            <div className="flex justify-between items-baseline lg:block text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight">
+              <span>{stats.siteVisits}</span>
+              <p className="text-[11px] font-normal text-[#94A3B8] mt-0.5">
+                Banquets & villa tours
+              </p>
             </div>
-            <p className="text-[11px] text-[#94A3B8] mt-0.5">Banquets & villa tours</p>
           </div>
         </div>
 
         {/* Bookings */}
         <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between min-w-0">
           <div className="flex items-center justify-between gap-1 mb-1.5">
-            <span className="text-xs font-semibold text-[#64748B] truncate">Bookings</span>
-            <span className="text-[11px] font-bold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full">
+            <span className="text-xs font-semibold text-[#64748B] truncate">
+              Bookings
+            </span>
+            <span className="text-[11px] font-bold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full shrink-0">
               {stats.bookingsTrend}
             </span>
           </div>
           <div>
-            <div className="text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight">
-              {stats.bookings}
+            <div className="flex justify-between items-baseline lg:block text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight">
+              <span>{stats.bookings}</span>
+              <p className="text-[11px] font-normal text-[#16A34A] mt-0.5">
+                Confirmed reservation files
+              </p>
             </div>
-            <p className="text-[11px] text-[#16A34A] mt-0.5">Confirmed reservation files</p>
           </div>
         </div>
 
         {/* Revenue */}
-        <div className="col-span-2 sm:col-span-1 p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between min-w-0">
+        <div className="col-span-1 sm:col-span-2 lg:col-span-1 p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between min-w-0">
           <div className="flex items-center justify-between gap-1 mb-1.5">
-            <span className="text-xs font-semibold text-[#64748B] truncate">Revenue</span>
-            <span className="text-[11px] font-bold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full">
+            <span className="text-xs font-semibold text-[#64748B] truncate">
+              Revenue
+            </span>
+            <span className="text-[11px] font-bold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full shrink-0">
               {stats.revenueTrend}
             </span>
           </div>
           <div>
-            <div className="text-2xl sm:text-3xl font-black text-[#0F5132] tracking-tight truncate">
-              {stats.revenueFormatted}
+            <div className="flex justify-between items-baseline lg:block text-2xl sm:text-3xl font-black text-[#0F5132] tracking-tight truncate">
+              <span className="truncate">{stats.revenueFormatted}</span>
+              <p className="text-[11px] text-[#0F5132] font-semibold mt-0.5 truncate">
+                {formatINR(stats.revenue)}
+              </p>
             </div>
-            <p className="text-[11px] text-[#0F5132] font-medium mt-0.5 truncate">
-              {formatINR(stats.revenue)}
-            </p>
           </div>
         </div>
       </div>
@@ -461,13 +513,33 @@ export const LeadsPage: React.FC = () => {
       <div className="bg-white rounded-2xl border border-[#E2E8F0] p-1.5 sm:p-2 shadow-2xs overflow-x-auto scrollbar-thin">
         <div className="flex items-center gap-1 min-w-max">
           {[
-            { id: 'all', label: 'All Leads', count: stats.statusCounts.all || 0 },
-            { id: 'New', label: 'New', count: stats.statusCounts.New || 0 },
-            { id: 'Contacted', label: 'Contacted', count: stats.statusCounts.Contacted || 0 },
-            { id: 'Site Visit', label: 'Site Visit', count: stats.statusCounts['Site Visit'] || 0 },
-            { id: 'Interested', label: 'Interested', count: stats.statusCounts.Interested || 0 },
-            { id: 'Booked', label: 'Booked', count: stats.statusCounts.Booked || 0 },
-            { id: 'Lost', label: 'Lost', count: stats.statusCounts.Lost || 0 },
+            {
+              id: "all",
+              label: "All Leads",
+              count: stats.statusCounts.all || 0,
+            },
+            { id: "New", label: "New", count: stats.statusCounts.New || 0 },
+            {
+              id: "Contacted",
+              label: "Contacted",
+              count: stats.statusCounts.Contacted || 0,
+            },
+            {
+              id: "Site Visit",
+              label: "Site Visit",
+              count: stats.statusCounts["Site Visit"] || 0,
+            },
+            {
+              id: "Interested",
+              label: "Interested",
+              count: stats.statusCounts.Interested || 0,
+            },
+            {
+              id: "Booked",
+              label: "Booked",
+              count: stats.statusCounts.Booked || 0,
+            },
+            { id: "Lost", label: "Lost", count: stats.statusCounts.Lost || 0 },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -478,14 +550,16 @@ export const LeadsPage: React.FC = () => {
               }}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
                 activeTab === tab.id
-                  ? 'bg-[#0F5132] text-white shadow-2xs'
-                  : 'text-[#475569] hover:bg-[#F8FAFC] hover:text-[#0F172A]'
+                  ? "bg-[#0F5132] text-white shadow-2xs"
+                  : "text-[#475569] hover:bg-[#F8FAFC] hover:text-[#0F172A]"
               }`}
             >
               <span>{tab.label}</span>
               <span
                 className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
-                  activeTab === tab.id ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'
+                  activeTab === tab.id
+                    ? "bg-white/20 text-white"
+                    : "bg-slate-100 text-slate-700"
                 }`}
               >
                 {tab.count}
@@ -583,7 +657,10 @@ export const LeadsPage: React.FC = () => {
                         type="checkbox"
                         checked={(visibleColumns as any)[colKey]}
                         onChange={(e) =>
-                          setVisibleColumns({ ...visibleColumns, [colKey]: e.target.checked })
+                          setVisibleColumns({
+                            ...visibleColumns,
+                            [colKey]: e.target.checked,
+                          })
                         }
                         className="rounded text-[#0F5132] focus:ring-[#0F5132]"
                       />
@@ -603,13 +680,16 @@ export const LeadsPage: React.FC = () => {
               <span className="w-6 h-6 rounded-full bg-[#0F5132] text-white flex items-center justify-center font-bold text-[11px]">
                 {selectedLeadIds.length}
               </span>
-              <span className="font-semibold text-emerald-950">leads selected for bulk action</span>
+              <span className="font-semibold text-emerald-950">
+                leads selected for bulk action
+              </span>
             </div>
 
             <div className="flex items-center gap-2 flex-wrap">
               <select
                 onChange={(e) => {
-                  if (e.target.value) handleBulkStatusChange(e.target.value as LeadStatus);
+                  if (e.target.value)
+                    handleBulkStatusChange(e.target.value as LeadStatus);
                 }}
                 defaultValue=""
                 className="h-8 px-2.5 bg-white border border-emerald-300 rounded-xl text-xs font-semibold text-emerald-900"
@@ -661,10 +741,12 @@ export const LeadsPage: React.FC = () => {
             <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-[#0F5132] border border-emerald-200 mx-auto flex items-center justify-center">
               <Users2 className="w-6 h-6" />
             </div>
-            <h3 className="text-base font-bold text-[#0F172A]">No Leads Found</h3>
+            <h3 className="text-base font-bold text-[#0F172A]">
+              No Leads Found
+            </h3>
             <p className="text-xs text-[#64748B] max-w-sm mx-auto">
-              {searchQuery || sourceFilter !== 'ALL' || interestFilter !== 'ALL'
-                ? 'No inquiries match the current search or filter filters. Try clearing filters.'
+              {searchQuery || sourceFilter !== "ALL" || interestFilter !== "ALL"
+                ? "No inquiries match the current search or filter filters. Try clearing filters."
                 : 'No leads registered yet for this resort property. Click "Add Lead" to register walk-ins or inquiries.'}
             </p>
           </div>
@@ -686,20 +768,38 @@ export const LeadsPage: React.FC = () => {
                         className="rounded text-[#0F5132] focus:ring-[#0F5132]"
                       />
                     </th>
-                    {visibleColumns.code && <th className="py-3.5 px-3 w-20"># Code</th>}
-                    {visibleColumns.name && <th className="py-3.5 px-4 min-w-[190px]">Lead Name</th>}
-                    {visibleColumns.contact && <th className="py-3.5 px-4 min-w-[170px]">Contact Info</th>}
-                    {visibleColumns.interest && (
-                      <th className="py-3.5 px-4 min-w-[180px]">Interested In</th>
+                    {visibleColumns.code && (
+                      <th className="py-3.5 px-3 w-20"># Code</th>
                     )}
-                    {visibleColumns.status && <th className="py-3.5 px-3 min-w-[110px]">Status</th>}
+                    {visibleColumns.name && (
+                      <th className="py-3.5 px-4 min-w-[190px]">Lead Name</th>
+                    )}
+                    {visibleColumns.contact && (
+                      <th className="py-3.5 px-4 min-w-[170px]">
+                        Contact Info
+                      </th>
+                    )}
+                    {visibleColumns.interest && (
+                      <th className="py-3.5 px-4 min-w-[180px]">
+                        Interested In
+                      </th>
+                    )}
+                    {visibleColumns.status && (
+                      <th className="py-3.5 px-3 min-w-[110px]">Status</th>
+                    )}
                     {visibleColumns.activity && (
-                      <th className="py-3.5 px-3 min-w-[140px]">Last Activity</th>
+                      <th className="py-3.5 px-3 min-w-[140px]">
+                        Last Activity
+                      </th>
                     )}
                     {visibleColumns.assigned && (
-                      <th className="py-3.5 px-3 min-w-[140px]">Assigned Rep</th>
+                      <th className="py-3.5 px-3 min-w-[140px]">
+                        Assigned Rep
+                      </th>
                     )}
-                    <th className="py-3.5 px-4 text-right min-w-[110px]">Actions</th>
+                    <th className="py-3.5 px-4 text-right min-w-[110px]">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
 
@@ -747,7 +847,7 @@ export const LeadsPage: React.FC = () => {
                             ) : (
                               <div
                                 className={`w-8 h-8 rounded-xl ${
-                                    l.initials_bg || 'bg-[#0F5132]'
+                                  l.initials_bg || "bg-[#0F5132]"
                                 } text-white flex items-center justify-center font-bold text-xs shrink-0`}
                               >
                                 {l.initials || l.name.slice(0, 2).toUpperCase()}
@@ -763,23 +863,31 @@ export const LeadsPage: React.FC = () => {
                                   return (
                                     <span
                                       className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full border flex items-center gap-0.5 ${
-                                        sc.rating === 'Hot'
-                                          ? 'bg-rose-50 text-rose-700 border-rose-200'
-                                          : sc.rating === 'Warm'
-                                          ? 'bg-amber-50 text-amber-700 border-amber-200'
-                                          : 'bg-sky-50 text-sky-700 border-sky-200'
+                                        sc.rating === "Hot"
+                                          ? "bg-rose-50 text-rose-700 border-rose-200"
+                                          : sc.rating === "Warm"
+                                            ? "bg-amber-50 text-amber-700 border-amber-200"
+                                            : "bg-sky-50 text-sky-700 border-sky-200"
                                       }`}
                                       title={`AI Score: ${sc.totalScore}/100 (${sc.rating})`}
                                     >
-                                      {sc.rating === 'Hot' && <Flame className="w-2.5 h-2.5 text-rose-600 fill-rose-600" />}
-                                      {sc.rating === 'Warm' && <Zap className="w-2.5 h-2.5 text-amber-600" />}
-                                      {sc.rating === 'Cold' && <Snowflake className="w-2.5 h-2.5 text-sky-600" />}
+                                      {sc.rating === "Hot" && (
+                                        <Flame className="w-2.5 h-2.5 text-rose-600 fill-rose-600" />
+                                      )}
+                                      {sc.rating === "Warm" && (
+                                        <Zap className="w-2.5 h-2.5 text-amber-600" />
+                                      )}
+                                      {sc.rating === "Cold" && (
+                                        <Snowflake className="w-2.5 h-2.5 text-sky-600" />
+                                      )}
                                       <span>{sc.totalScore}</span>
                                     </span>
                                   );
                                 })()}
                               </div>
-                              <span className="text-[11px] text-[#64748B] block">{l.city}</span>
+                              <span className="text-[11px] text-[#64748B] block">
+                                {l.city}
+                              </span>
                             </div>
                           </div>
                         </td>
@@ -789,7 +897,9 @@ export const LeadsPage: React.FC = () => {
                       {visibleColumns.contact && (
                         <td className="py-3.5 px-4 whitespace-nowrap">
                           <div className="flex flex-col">
-                            <span className="font-semibold text-[#0F172A]">{l.phone}</span>
+                            <span className="font-semibold text-[#0F172A]">
+                              {l.phone}
+                            </span>
                             <span className="text-[11px] text-[#64748B] truncate max-w-[160px]">
                               {l.email}
                             </span>
@@ -801,9 +911,12 @@ export const LeadsPage: React.FC = () => {
                       {visibleColumns.interest && (
                         <td className="py-3.5 px-4 whitespace-nowrap">
                           <div>
-                            <span className="font-semibold text-[#0F172A] block">{l.interested_in}</span>
+                            <span className="font-semibold text-[#0F172A] block">
+                              {l.interested_in}
+                            </span>
                             <span className="text-[11px] text-[#0F5132] font-bold">
-                              {formatINR(l.budget_min)} - {formatINR(l.budget_max)}
+                              {formatINR(l.budget_min)} -{" "}
+                              {formatINR(l.budget_max)}
                             </span>
                           </div>
                         </td>
@@ -815,34 +928,42 @@ export const LeadsPage: React.FC = () => {
                           <div className="flex flex-col gap-1 items-start">
                             <span
                               className={`px-2.5 py-0.5 rounded-full font-bold text-[11px] border ${
-                                l.status === 'New'
-                                  ? 'bg-blue-50 text-blue-800 border-blue-200'
-                                  : l.status === 'Contacted'
-                                  ? 'bg-indigo-50 text-indigo-800 border-indigo-200'
-                                  : l.status === 'Site Visit'
-                                  ? 'bg-purple-50 text-purple-800 border-purple-200'
-                                  : l.status === 'Interested'
-                                  ? 'bg-amber-50 text-amber-800 border-amber-200'
-                                  : l.status === 'Booked'
-                                  ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                                  : 'bg-rose-50 text-rose-800 border-rose-200'
+                                l.status === "New"
+                                  ? "bg-blue-50 text-blue-800 border-blue-200"
+                                  : l.status === "Contacted"
+                                    ? "bg-indigo-50 text-indigo-800 border-indigo-200"
+                                    : l.status === "Site Visit"
+                                      ? "bg-purple-50 text-purple-800 border-purple-200"
+                                      : l.status === "Interested"
+                                        ? "bg-amber-50 text-amber-800 border-amber-200"
+                                        : l.status === "Booked"
+                                          ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                                          : "bg-rose-50 text-rose-800 border-rose-200"
                               }`}
                             >
                               {l.status}
                             </span>
                             {(() => {
                               const sla = computeLeadSLA(l);
-                              if (l.status === 'New' && sla.status === 'breached') {
+                              if (
+                                l.status === "New" &&
+                                sla.status === "breached"
+                              ) {
                                 return (
                                   <span className="text-[10px] font-bold text-rose-700 bg-rose-50 px-1.5 py-0.2 rounded border border-rose-200 flex items-center gap-0.5">
-                                    <AlertTriangle className="w-2.5 h-2.5 text-rose-600" /> Overdue
+                                    <AlertTriangle className="w-2.5 h-2.5 text-rose-600" />{" "}
+                                    Overdue
                                   </span>
                                 );
                               }
-                              if (l.status === 'New' && sla.status === 'warning') {
+                              if (
+                                l.status === "New" &&
+                                sla.status === "warning"
+                              ) {
                                 return (
                                   <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.2 rounded border border-amber-200 flex items-center gap-0.5">
-                                    <Clock className="w-2.5 h-2.5 text-amber-600" /> &lt;30m left
+                                    <Clock className="w-2.5 h-2.5 text-amber-600" />{" "}
+                                    &lt;30m left
                                   </span>
                                 );
                               }
@@ -893,7 +1014,7 @@ export const LeadsPage: React.FC = () => {
                             <Phone className="w-3.5 h-3.5" />
                           </a>
                           <a
-                            href={`https://wa.me/91${l.phone.replace(/\D/g, '')}`}
+                            href={`https://wa.me/91${l.phone.replace(/\D/g, "")}`}
                             target="_blank"
                             rel="noreferrer"
                             className="p-1.5 rounded-lg text-[#64748B] hover:text-[#25D366] hover:bg-[#F1F5F9]"
@@ -901,7 +1022,7 @@ export const LeadsPage: React.FC = () => {
                           >
                             <MessageCircle className="w-3.5 h-3.5" />
                           </a>
-                          {l.status !== 'Booked' && (
+                          {l.status !== "Booked" && (
                             <button
                               type="button"
                               onClick={() => openConvert(l)}
@@ -948,56 +1069,67 @@ export const LeadsPage: React.FC = () => {
                     <div className="flex items-center gap-2.5">
                       <div
                         className={`w-9 h-9 rounded-xl ${
-                          l.initials_bg || 'bg-[#0F5132]'
+                          l.initials_bg || "bg-[#0F5132]"
                         } text-white flex items-center justify-center font-bold text-xs shrink-0`}
                       >
                         {l.initials || l.name.slice(0, 2).toUpperCase()}
                       </div>
                       <div>
                         <div className="flex items-center gap-1.5">
-                          <h4 className="font-bold text-[#0F172A] text-sm">{l.name}</h4>
+                          <h4 className="font-bold text-[#0F172A] text-sm">
+                            {l.name}
+                          </h4>
                           {(() => {
                             const sc = computeLeadScore(l);
                             return (
                               <span
                                 className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full border flex items-center gap-0.5 ${
-                                  sc.rating === 'Hot'
-                                    ? 'bg-rose-50 text-rose-700 border-rose-200'
-                                    : sc.rating === 'Warm'
-                                    ? 'bg-amber-50 text-amber-700 border-amber-200'
-                                    : 'bg-sky-50 text-sky-700 border-sky-200'
+                                  sc.rating === "Hot"
+                                    ? "bg-rose-50 text-rose-700 border-rose-200"
+                                    : sc.rating === "Warm"
+                                      ? "bg-amber-50 text-amber-700 border-amber-200"
+                                      : "bg-sky-50 text-sky-700 border-sky-200"
                                 }`}
                               >
-                                {sc.rating === 'Hot' && <Flame className="w-2.5 h-2.5 text-rose-600 fill-rose-600" />}
-                                {sc.rating === 'Warm' && <Zap className="w-2.5 h-2.5 text-amber-600" />}
-                                {sc.rating === 'Cold' && <Snowflake className="w-2.5 h-2.5 text-sky-600" />}
+                                {sc.rating === "Hot" && (
+                                  <Flame className="w-2.5 h-2.5 text-rose-600 fill-rose-600" />
+                                )}
+                                {sc.rating === "Warm" && (
+                                  <Zap className="w-2.5 h-2.5 text-amber-600" />
+                                )}
+                                {sc.rating === "Cold" && (
+                                  <Snowflake className="w-2.5 h-2.5 text-sky-600" />
+                                )}
                                 <span>{sc.totalScore}</span>
                               </span>
                             );
                           })()}
                         </div>
-                        <span className="text-[11px] text-[#64748B]">{l.city}</span>
+                        <span className="text-[11px] text-[#64748B]">
+                          {l.city}
+                        </span>
                       </div>
                     </div>
 
                     <div className="flex flex-col items-end gap-1">
                       <span
                         className={`px-2 py-0.5 rounded-full font-bold text-[10px] border ${
-                          l.status === 'New'
-                            ? 'bg-blue-50 text-blue-800 border-blue-200'
-                            : l.status === 'Booked'
-                            ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                            : 'bg-slate-100 text-slate-800 border-slate-200'
+                          l.status === "New"
+                            ? "bg-blue-50 text-blue-800 border-blue-200"
+                            : l.status === "Booked"
+                              ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                              : "bg-slate-100 text-slate-800 border-slate-200"
                         }`}
                       >
                         {l.status}
                       </span>
                       {(() => {
                         const sla = computeLeadSLA(l);
-                        if (l.status === 'New' && sla.status === 'breached') {
+                        if (l.status === "New" && sla.status === "breached") {
                           return (
                             <span className="text-[9px] font-bold text-rose-700 bg-rose-50 px-1 py-0.2 rounded border border-rose-200 flex items-center gap-0.5">
-                              <AlertTriangle className="w-2.5 h-2.5 text-rose-600" /> Overdue
+                              <AlertTriangle className="w-2.5 h-2.5 text-rose-600" />{" "}
+                              Overdue
                             </span>
                           );
                         }
@@ -1009,19 +1141,27 @@ export const LeadsPage: React.FC = () => {
                   <div className="grid grid-cols-2 gap-2 text-[11px] bg-[#F8FAFC] p-2.5 rounded-xl border border-[#E2E8F0]">
                     <div>
                       <span className="text-[#64748B] block">Requirement:</span>
-                      <span className="font-semibold text-[#0F172A]">{l.interested_in}</span>
+                      <span className="font-semibold text-[#0F172A]">
+                        {l.interested_in}
+                      </span>
                     </div>
                     <div>
                       <span className="text-[#64748B] block">Budget:</span>
-                      <span className="font-bold text-[#0F5132]">{formatINR(l.budget_max)}</span>
+                      <span className="font-bold text-[#0F5132]">
+                        {formatINR(l.budget_max)}
+                      </span>
                     </div>
                     <div>
                       <span className="text-[#64748B] block">Contact:</span>
-                      <span className="font-semibold text-[#0F172A]">{l.phone}</span>
+                      <span className="font-semibold text-[#0F172A]">
+                        {l.phone}
+                      </span>
                     </div>
                     <div>
                       <span className="text-[#64748B] block">Assigned:</span>
-                      <span className="font-medium text-[#475569]">{l.assigned_to}</span>
+                      <span className="font-medium text-[#475569]">
+                        {l.assigned_to}
+                      </span>
                     </div>
                   </div>
 
@@ -1037,16 +1177,17 @@ export const LeadsPage: React.FC = () => {
                         <Phone className="w-3 h-3 text-emerald-600" /> Call
                       </a>
                       <a
-                        href={`https://wa.me/91${l.phone.replace(/\D/g, '')}`}
+                        href={`https://wa.me/91${l.phone.replace(/\D/g, "")}`}
                         target="_blank"
                         rel="noreferrer"
                         className="px-2.5 py-1 rounded-lg bg-[#25D366]/10 border border-[#25D366]/30 text-[11px] font-semibold text-[#075E54] flex items-center gap-1"
                       >
-                        <MessageCircle className="w-3 h-3 text-[#25D366]" /> WhatsApp
+                        <MessageCircle className="w-3 h-3 text-[#25D366]" />{" "}
+                        WhatsApp
                       </a>
                     </div>
 
-                    {l.status !== 'Booked' && (
+                    {l.status !== "Booked" && (
                       <button
                         type="button"
                         onClick={() => openConvert(l)}
@@ -1094,7 +1235,9 @@ export const LeadsPage: React.FC = () => {
                 <button
                   type="button"
                   disabled={currentPage >= totalPages}
-                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  onClick={() =>
+                    setCurrentPage((p) => Math.min(totalPages, p + 1))
+                  }
                   className="p-1.5 rounded-lg border border-[#CBD5E1] bg-white disabled:opacity-40 hover:bg-[#F1F5F9] transition-colors"
                 >
                   <ChevronRight className="w-4 h-4" />

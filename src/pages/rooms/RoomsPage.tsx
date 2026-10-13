@@ -101,7 +101,7 @@ export const RoomsPage: React.FC = () => {
   const isManager = role === 'Resort Manager';
 
   return (
-    <div className="space-y-3.5 sm:space-y-4 text-left">
+    <div className="space-y-3.5 sm:space-y-4 text-left pb-28 sm:pb-12">
       {/* Role-Specific Perspective Top Banner */}
       {isOwner ? (
         <div className="p-4 bg-gradient-to-r from-emerald-50 via-teal-50/50 to-white border border-emerald-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
@@ -110,7 +110,7 @@ export const RoomsPage: React.FC = () => {
               <Crown className="w-5 h-5 text-amber-300" />
             </div>
             <div>
-              <div className="flex flex-col lg:flex-row items-center gap-2">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                 <span className="text-xs font-bold text-[#0F5132] uppercase tracking-wider">
                   Resort Owner Asset Portfolio & Capex Valuation
                 </span>
@@ -123,7 +123,7 @@ export const RoomsPage: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-xs font-bold shrink-0">
+          <div className="flex items-center gap-2 text-xs font-bold shrink-0 self-start sm:self-auto">
             <span className="px-2.5 py-1 rounded-full bg-white border border-emerald-300 text-[#0F5132]">
               ADR: ₹14,200
             </span>
@@ -139,7 +139,7 @@ export const RoomsPage: React.FC = () => {
               <Activity className="w-5 h-5 text-sky-100" />
             </div>
             <div>
-              <div className="flex flex-col lg:flex-row items-center gap-2">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                 <span className="text-xs font-bold text-[#0369A1] uppercase tracking-wider">
                   General Manager Live Inventory & Housekeeping SLA
                 </span>
@@ -152,7 +152,7 @@ export const RoomsPage: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-[11px] font-bold shrink-0">
+          <div className="flex items-center gap-2 text-[11px] font-bold shrink-0 self-start sm:self-auto">
             <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">
               22 Clean & Ready
             </span>
@@ -166,7 +166,7 @@ export const RoomsPage: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132]">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F172A]">
             {isOwner ? 'Resort Keys & Asset Portfolio' : 'Rooms & Operational Villas'}
           </h1>
           <p className="text-xs sm:text-sm text-[#6B7280]">
@@ -176,7 +176,7 @@ export const RoomsPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2.5">
+        <div className="flex items-center justify-between sm:justify-end gap-2.5 w-full sm:w-auto">
           {/* View Mode Toggle */}
           <div className="flex items-center p-1 rounded-xl bg-white border border-[#E5E7EB] shadow-sm">
             <button
@@ -234,17 +234,17 @@ export const RoomsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Category Filter Pills */}
+      {/* Category Filter Pills (Smooth horizontal scroll without ugly scrollbar) */}
       {viewMode !== 'calendar' && (
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {['ALL', 'Deluxe Cottage', 'Luxury Suite', 'Pool Villa'].map((cat) => (
             <button
               key={cat}
               onClick={() => setCategoryFilter(cat)}
-              className={`px-3 py-1.5 text-xs rounded-lg border transition-all ${
+              className={`px-3.5 py-1.5 text-xs rounded-xl border transition-all shrink-0 whitespace-nowrap ${
                 categoryFilter === cat
-                  ? 'bg-[#0F5132] text-white border-[#0F5132] font-semibold'
-                  : 'bg-white text-[#6B7280] border-[#E5E7EB] hover:text-[#1F2937]'
+                  ? 'bg-[#0F5132] text-white border-[#0F5132] font-bold shadow-2xs'
+                  : 'bg-white text-[#64748B] border-[#E2E8F0] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
               }`}
             >
               {cat === 'ALL' ? 'All Accommodations' : cat}
@@ -297,29 +297,33 @@ export const RoomsPage: React.FC = () => {
           {filteredRooms.map((room) => (
             <div
               key={room.id}
-              className="p-4 sm:p-4.5 rounded-xl sm:rounded-2xl bg-white border border-[#E5E7EB] hover:border-[#0F5132]/40 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-3 overflow-hidden"
+              className="rounded-2xl bg-white border border-[#E2E8F0] hover:border-[#0F5132]/40 shadow-[0_2px_10px_-2px_rgba(0,0,0,0.05)] hover:shadow-md transition-all flex flex-col justify-between overflow-hidden text-left"
             >
-              <div className="space-y-2.5">
-                <div className="flex items-start justify-between gap-2">
-                  <div>
-                    <span className="text-base sm:text-lg font-bold text-[#1F2937]">
-                      Room #{room.roomNumber}
-                    </span>
-                    <p className="text-xs text-[#6B7280]">{room.category} • Floor {room.floor}</p>
-                  </div>
-                  <StatusBadge status={room.status} size="sm" />
-                </div>
-
-                <div className="flex items-baseline gap-1">
-                  <span className="text-lg sm:text-xl font-bold text-[#0F5132]">
-                    {formatINR(room.ratePerNight)}
+              {/* Card Header Banner */}
+              <div className="bg-gradient-to-r from-emerald-50/70 via-slate-50/50 to-white px-4 py-3 border-b border-[#F1F5F9] flex items-center justify-between gap-2">
+                <div>
+                  <span className="text-base sm:text-lg font-black text-[#0F172A] block">
+                    Room #{room.roomNumber}
                   </span>
-                  <span className="text-xs text-[#6B7280]">/ night + GST</span>
+                  <p className="text-[11px] font-semibold text-[#64748B]">{room.category} • Floor {room.floor}</p>
+                </div>
+                <StatusBadge status={room.status} size="sm" />
+              </div>
+
+              <div className="p-4 space-y-3 flex-1">
+                <div className="flex items-baseline justify-between gap-1 p-2.5 rounded-xl bg-[#F8FAFC] border border-slate-100">
+                  <div>
+                    <span className="text-[10px] text-[#64748B] uppercase font-bold block">Tariff</span>
+                    <span className="text-lg sm:text-xl font-black text-[#0F5132]">
+                      {formatINR(room.ratePerNight)}
+                    </span>
+                  </div>
+                  <span className="text-[11px] text-[#64748B] font-medium self-end">/ night + GST</span>
                 </div>
 
-                <div className="flex items-center gap-2 text-xs text-[#6B7280]">
-                  <Users className="w-4 h-4 text-[#0F5132]" />
-                  <span>Up to {room.maxGuests} Guests</span>
+                <div className="flex items-center gap-2 text-xs text-[#475569]">
+                  <Users className="w-4 h-4 text-[#0F5132] shrink-0" />
+                  <span>Up to <strong>{room.maxGuests} Guests</strong> capacity</span>
                 </div>
 
                 {/* Amenities Tags */}
@@ -327,7 +331,7 @@ export const RoomsPage: React.FC = () => {
                   {room.amenities.map((am) => (
                     <span
                       key={am}
-                      className="text-[10px] px-2 py-0.5 rounded bg-[#F8FAFC] text-[#6B7280] border border-[#E5E7EB]"
+                      className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-white text-[#475569] border border-slate-200 shadow-2xs"
                     >
                       {am}
                     </span>
@@ -336,7 +340,7 @@ export const RoomsPage: React.FC = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-2.5 border-t border-[#E5E7EB] flex items-center gap-2">
+              <div className="p-3 bg-[#F8FAFC]/90 border-t border-[#F1F5F9] flex items-center gap-2">
                 <Button
                   size="sm"
                   variant="outline"

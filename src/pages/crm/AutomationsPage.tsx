@@ -144,7 +144,7 @@ export const AutomationsPage: React.FC = () => {
   }
 
   return (
-    <div className="space-y-4 sm:space-y-5 text-left text-[#0F172A]">
+    <div className="space-y-4 sm:space-y-5 text-left text-[#0F172A] pb-28 sm:pb-12">
       
       {/* 1. Header Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-[#E2E8F0] shadow-2xs">
@@ -166,7 +166,7 @@ export const AutomationsPage: React.FC = () => {
         <button
           type="button"
           onClick={() => setIsCreateOpen(true)}
-          className="flex items-center gap-1.5 px-4 py-2 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs sm:text-sm font-bold shadow-2xs transition-colors shrink-0 self-start sm:self-auto"
+          className="flex items-center justify-center gap-1.5 px-4 py-2.5 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs sm:text-sm font-bold shadow-2xs transition-colors shrink-0 w-full sm:w-auto"
         >
           <Plus className="w-4 h-4" />
           <span>New Automation Rule</span>
@@ -174,11 +174,11 @@ export const AutomationsPage: React.FC = () => {
       </div>
 
       {/* 2. Sub-tabs */}
-      <div className="bg-white rounded-2xl border border-[#E2E8F0] p-1.5 sm:p-2 shadow-2xs flex items-center gap-1 overflow-x-auto">
+      <div className="bg-white rounded-2xl border border-[#E2E8F0] p-1.5 sm:p-2 shadow-2xs flex items-center gap-1.5 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         <button
           type="button"
           onClick={() => setActiveTab('rules')}
-          className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
+          className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all shrink-0 whitespace-nowrap ${
             activeTab === 'rules'
               ? 'bg-[#0F5132] text-white shadow-2xs'
               : 'text-[#475569] hover:bg-[#F8FAFC]'
@@ -194,7 +194,7 @@ export const AutomationsPage: React.FC = () => {
         <button
           type="button"
           onClick={() => setActiveTab('assignment')}
-          className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
+          className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all shrink-0 whitespace-nowrap ${
             activeTab === 'assignment'
               ? 'bg-[#0F5132] text-white shadow-2xs'
               : 'text-[#475569] hover:bg-[#F8FAFC]'
@@ -207,7 +207,7 @@ export const AutomationsPage: React.FC = () => {
         <button
           type="button"
           onClick={() => setActiveTab('logs')}
-          className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
+          className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all shrink-0 whitespace-nowrap ${
             activeTab === 'logs'
               ? 'bg-[#0F5132] text-white shadow-2xs'
               : 'text-[#475569] hover:bg-[#F8FAFC]'
@@ -267,14 +267,14 @@ export const AutomationsPage: React.FC = () => {
                 <p className="text-xs text-[#64748B] mt-1 leading-relaxed">{rule.description}</p>
 
                 {/* When -> Then Logic Block */}
-                <div className="mt-3 p-3 rounded-xl bg-[#F8FAFC] border border-[#CBD5E1] text-xs space-y-1.5 font-mono">
-                  <div className="flex items-center gap-2 text-indigo-700">
-                    <strong className="text-[11px] uppercase tracking-wider">WHEN:</strong>
-                    <span>{rule.trigger_event} ({rule.trigger_condition || 'All cases'})</span>
+                <div className="mt-3 p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs space-y-2">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 text-indigo-700">
+                    <strong className="text-[10px] uppercase font-bold tracking-wider shrink-0 bg-indigo-50 border border-indigo-200 px-1.5 py-0.5 rounded text-indigo-800">WHEN:</strong>
+                    <span className="font-mono text-[11px] break-all">{rule.trigger_event} ({rule.trigger_condition || 'All cases'})</span>
                   </div>
-                  <div className="flex items-center gap-2 text-emerald-800">
-                    <strong className="text-[11px] uppercase tracking-wider">THEN:</strong>
-                    <span>{rule.action_type}</span>
+                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 text-emerald-800">
+                    <strong className="text-[10px] uppercase font-bold tracking-wider shrink-0 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded text-emerald-800">THEN:</strong>
+                    <span className="font-mono text-[11px] break-all">{rule.action_type}</span>
                   </div>
                 </div>
               </div>

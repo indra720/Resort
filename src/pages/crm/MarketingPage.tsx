@@ -673,75 +673,75 @@ export const MarketingPage: React.FC = () => {
       {activeTab === 'overview' && (
         <div className="space-y-5">
           {/* 6 Top KPI Metrics */}
-          <div className="grid grid-cols-2 lg:grid-cols-6 gap-3 sm:gap-4">
-            <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-1">
-              <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3.5">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+              <span className="text-xs font-semibold text-[#64748B] block truncate">
                 Total Leads Acquired
               </span>
-              <div className="text-xl sm:text-2xl font-bold text-slate-900">
-                {metrics?.totalLeads || 0}
+              <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-1">
+                <span>{metrics?.totalLeads || 0}</span>
+                <span className="text-[10px] text-emerald-600 font-semibold flex items-center gap-1 mt-0.5">
+                  <TrendingUp className="w-3 h-3" />
+                  <span>+14.2% MoM</span>
+                </span>
               </div>
-              <span className="text-[10px] text-emerald-600 font-semibold flex items-center gap-1">
-                <TrendingUp className="w-3 h-3" />
-                <span>+14.2% MoM</span>
-              </span>
             </div>
 
-            <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-1">
-              <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+              <span className="text-xs font-semibold text-[#64748B] block truncate">
                 Direct Bookings
               </span>
-              <div className="text-xl sm:text-2xl font-bold text-[#0F5132]">
-                {metrics?.totalBookings || 0}
+              <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F5132] tracking-tight mt-1">
+                <span>{metrics?.totalBookings || 0}</span>
+                <span className="text-[10px] text-[#64748B] font-medium mt-0.5">
+                  {metrics?.totalLeads
+                    ? Math.round(((metrics.totalBookings || 0) / metrics.totalLeads) * 100)
+                    : 0}
+                  % Conversion Rate
+                </span>
               </div>
-              <span className="text-[10px] text-slate-500 font-medium">
-                {metrics?.totalLeads
-                  ? Math.round(((metrics.totalBookings || 0) / metrics.totalLeads) * 100)
-                  : 0}
-                % Conversion Rate
-              </span>
             </div>
 
-            <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-1">
-              <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+              <span className="text-xs font-semibold text-[#64748B] block truncate">
                 Attributed Revenue
               </span>
-              <div className="text-xl sm:text-2xl font-bold text-slate-900">
-                {formatINR(metrics?.totalRevenue || 0)}
+              <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-1">
+                <span>{formatINR(metrics?.totalRevenue || 0)}</span>
+                <span className="text-[10px] text-emerald-600 font-medium mt-0.5">Closed leads</span>
               </div>
-              <span className="text-[10px] text-emerald-600 font-medium">From verified closed leads</span>
             </div>
 
-            <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-1">
-              <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+              <span className="text-xs font-semibold text-[#64748B] block truncate">
                 Marketing Spend
               </span>
-              <div className="text-xl sm:text-2xl font-bold text-slate-900">
-                {formatINR(metrics?.totalMarketingSpend || 0)}
+              <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-1">
+                <span>{formatINR(metrics?.totalMarketingSpend || 0)}</span>
+                <span className="text-[10px] text-[#64748B] font-medium mt-0.5">Active budgets</span>
               </div>
-              <span className="text-[10px] text-slate-500 font-medium">Active campaign budgets</span>
             </div>
 
-            <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-1">
-              <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+              <span className="text-xs font-semibold text-[#64748B] block truncate">
                 Cost Per Lead (CPL)
               </span>
-              <div className="text-xl sm:text-2xl font-bold text-blue-700">
-                {formatINR(metrics?.overallCPL || 0)}
+              <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-blue-700 tracking-tight mt-1">
+                <span>{formatINR(metrics?.overallCPL || 0)}</span>
+                <span className="text-[10px] text-[#64748B] font-medium mt-0.5">Acquisition cost</span>
               </div>
-              <span className="text-[10px] text-slate-500 font-medium">Blended acquisition cost</span>
             </div>
 
-            <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-1">
-              <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+              <span className="text-xs font-semibold text-[#64748B] block truncate">
                 Blended ROI
               </span>
-              <div className="text-xl sm:text-2xl font-bold text-emerald-700">
-                {metrics?.overallROI || 0}%
+              <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-emerald-700 tracking-tight mt-1">
+                <span>{metrics?.overallROI || 0}%</span>
+                <span className="text-[10px] text-emerald-600 font-bold mt-0.5">
+                  CPB: {formatINR(metrics?.overallCPB || 0)}
+                </span>
               </div>
-              <span className="text-[10px] text-emerald-600 font-bold">
-                CPB: {formatINR(metrics?.overallCPB || 0)}
-              </span>
             </div>
           </div>
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { toast } from '@/store/useToastStore';
+import React, { useState } from "react";
+import { toast } from "@/store/useToastStore";
 import {
   LifeBuoy,
   Search,
@@ -10,16 +10,20 @@ import {
   Building2,
   X,
   Send,
-} from 'lucide-react';
+} from "lucide-react";
 
 interface SupportTicket {
   id: string;
   resortName: string;
   resortCode: string;
   subject: string;
-  category: 'Billing & Invoice' | 'Hardware/KOT Printer' | 'Channel Manager Sync' | 'Staff Role Access';
-  priority: 'Urgent' | 'High' | 'Medium' | 'Low';
-  status: 'Open' | 'In Progress' | 'Resolved';
+  category:
+    | "Billing & Invoice"
+    | "Hardware/KOT Printer"
+    | "Channel Manager Sync"
+    | "Staff Role Access";
+  priority: "Urgent" | "High" | "Medium" | "Low";
+  status: "Open" | "In Progress" | "Resolved";
   submittedBy: string;
   createdAt: string;
   lastReply: string;
@@ -27,64 +31,66 @@ interface SupportTicket {
 
 const INITIAL_TICKETS: SupportTicket[] = [
   {
-    id: 'TCK-1001',
-    resortName: 'Joy Resorts - Lakeview Sanctuary',
-    resortCode: 'JOY-UDR',
-    subject: 'MakeMyTrip OTA API double-booking sync failure investigation',
-    category: 'Channel Manager Sync',
-    priority: 'Urgent',
-    status: 'In Progress',
-    submittedBy: 'Ananya Sharma (Manager)',
-    createdAt: 'Today, 09:30 AM',
-    lastReply: 'Engineering analyzing webhook payloads',
+    id: "TCK-1001",
+    resortName: "Joy Resorts - Lakeview Sanctuary",
+    resortCode: "JOY-UDR",
+    subject: "MakeMyTrip OTA API double-booking sync failure investigation",
+    category: "Channel Manager Sync",
+    priority: "Urgent",
+    status: "In Progress",
+    submittedBy: "Ananya Sharma (Manager)",
+    createdAt: "Today, 09:30 AM",
+    lastReply: "Engineering analyzing webhook payloads",
   },
   {
-    id: 'TCK-1002',
-    resortName: 'Joy Resorts - Pine Heritage Estate',
-    resortCode: 'JOY-SHM',
-    subject: 'Request GST credit note for annual subscription discount',
-    category: 'Billing & Invoice',
-    priority: 'Medium',
-    status: 'Open',
-    submittedBy: 'Rohit Verma (Owner)',
-    createdAt: 'Yesterday, 03:15 PM',
-    lastReply: 'Pending finance review',
+    id: "TCK-1002",
+    resortName: "Joy Resorts - Pine Heritage Estate",
+    resortCode: "JOY-SHM",
+    subject: "Request GST credit note for annual subscription discount",
+    category: "Billing & Invoice",
+    priority: "Medium",
+    status: "Open",
+    submittedBy: "Rohit Verma (Owner)",
+    createdAt: "Yesterday, 03:15 PM",
+    lastReply: "Pending finance review",
   },
   {
-    id: 'TCK-1003',
-    resortName: 'Joy Resorts - Emerald Backwaters',
-    resortCode: 'JOY-KMR',
-    subject: 'Thermal KOT printer IP configuration reset after power surge',
-    category: 'Hardware/KOT Printer',
-    priority: 'High',
-    status: 'Resolved',
-    submittedBy: 'Chef Sanjeev Nair',
-    createdAt: '08 Oct 2026',
-    lastReply: 'Resolved via static IP reassignment',
+    id: "TCK-1003",
+    resortName: "Joy Resorts - Emerald Backwaters",
+    resortCode: "JOY-KMR",
+    subject: "Thermal KOT printer IP configuration reset after power surge",
+    category: "Hardware/KOT Printer",
+    priority: "High",
+    status: "Resolved",
+    submittedBy: "Chef Sanjeev Nair",
+    createdAt: "08 Oct 2026",
+    lastReply: "Resolved via static IP reassignment",
   },
   {
-    id: 'TCK-1004',
-    resortName: 'Joy Resorts - Beachfront Dunes',
-    resortCode: 'JOY-GOA',
-    subject: 'Add 2 additional receptionist user logins under Pro quota',
-    category: 'Staff Role Access',
-    priority: 'Low',
-    status: 'Resolved',
-    submittedBy: 'Anthony Fernandes (Owner)',
-    createdAt: '05 Oct 2026',
-    lastReply: 'User logins created and credentials dispatched',
+    id: "TCK-1004",
+    resortName: "Joy Resorts - Beachfront Dunes",
+    resortCode: "JOY-GOA",
+    subject: "Add 2 additional receptionist user logins under Pro quota",
+    category: "Staff Role Access",
+    priority: "Low",
+    status: "Resolved",
+    submittedBy: "Anthony Fernandes (Owner)",
+    createdAt: "05 Oct 2026",
+    lastReply: "User logins created and credentials dispatched",
   },
 ];
 
 export const AdminSupportTicketsPage: React.FC = () => {
   const [tickets, setTickets] = useState<SupportTicket[]>(INITIAL_TICKETS);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState<'All' | 'Open' | 'In Progress' | 'Resolved'>('All');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<
+    "All" | "Open" | "In Progress" | "Resolved"
+  >("All");
   const [activeTicket, setActiveTicket] = useState<SupportTicket | null>(null);
-  const [replyMessage, setReplyMessage] = useState('');
+  const [replyMessage, setReplyMessage] = useState("");
 
   const filtered = tickets.filter((t) => {
-    if (statusFilter !== 'All' && t.status !== statusFilter) return false;
+    if (statusFilter !== "All" && t.status !== statusFilter) return false;
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
       return (
@@ -104,20 +110,20 @@ export const AdminSupportTicketsPage: React.FC = () => {
     setTickets((prev) =>
       prev.map((t) =>
         t.id === activeTicket.id
-          ? { ...t, status: 'In Progress', lastReply: replyMessage.trim() }
-          : t
-      )
+          ? { ...t, status: "In Progress", lastReply: replyMessage.trim() }
+          : t,
+      ),
     );
     toast.success(`Dispatched support reply to ${activeTicket.resortName}`);
     setActiveTicket(null);
-    setReplyMessage('');
+    setReplyMessage("");
   };
 
   const handleMarkResolved = (id: string) => {
     setTickets((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, status: 'Resolved' } : t))
+      prev.map((t) => (t.id === id ? { ...t, status: "Resolved" } : t)),
     );
-    toast.success('Ticket marked as resolved.');
+    toast.success("Ticket marked as resolved.");
   };
 
   return (
@@ -138,13 +144,16 @@ export const AdminSupportTicketsPage: React.FC = () => {
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#0F5132]/10 text-[#0F5132] uppercase tracking-wider">
                   Platform Operations Desk
                 </span>
-                <span className="text-xs text-[#64748B]">Multi-Tenant Help</span>
+                <span className="text-xs text-[#64748B]">
+                  Multi-Tenant Help
+                </span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] mt-1">
                 Tenant Support & SLA Escalations
               </h1>
               <p className="text-xs sm:text-sm text-[#475569] font-medium mt-0.5">
-                Centralized ticketing for hardware integration, billing inquiries, and channel sync issues
+                Centralized ticketing for hardware integration, billing
+                inquiries, and channel sync issues
               </p>
             </div>
           </div>
@@ -163,11 +172,16 @@ export const AdminSupportTicketsPage: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B]">Open & In Progress</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
-                  {tickets.filter((t) => t.status !== 'Resolved').length} Tickets
+                <p className="text-xs font-semibold text-[#64748B]">
+                  Open & In Progress
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                  {tickets.filter((t) => t.status !== "Resolved").length}{" "}
+                  Tickets
+                  <p className="text-[10px] text-[#DC2626] mt-0.5">
+                    Under SLA response limit
+                  </p>
                 </div>
-                <p className="text-[10px] text-[#DC2626] mt-0.5">Under SLA response limit</p>
               </div>
             </div>
 
@@ -181,11 +195,15 @@ export const AdminSupportTicketsPage: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B]">Resolved This Week</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
-                  {tickets.filter((t) => t.status === 'Resolved').length}
+                <p className="text-xs font-semibold text-[#64748B]">
+                  Resolved This Week
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                  {tickets.filter((t) => t.status === "Resolved").length}
+                  <p className="text-[10px] text-[#16A34A] mt-0.5">
+                    Avg resolution: 2.4 hrs
+                  </p>
                 </div>
-                <p className="text-[10px] text-[#16A34A] mt-0.5">Avg resolution: 2.4 hrs</p>
               </div>
             </div>
 
@@ -199,11 +217,15 @@ export const AdminSupportTicketsPage: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B]">First Response Time</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                <p className="text-xs font-semibold text-[#64748B]">
+                  First Response Time
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   18 Minutes
+                  <p className="text-[10px] text-[#2563EB] mt-0.5">
+                    Enterprise 24/7 desk
+                  </p>
                 </div>
-                <p className="text-[10px] text-[#2563EB] mt-0.5">Enterprise 24/7 desk</p>
               </div>
             </div>
           </div>
@@ -223,16 +245,16 @@ export const AdminSupportTicketsPage: React.FC = () => {
           />
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-2">
-          {(['All', 'Open', 'In Progress', 'Resolved'] as const).map((st) => (
+        <div className="flex flex-wrap  items-center gap-2">
+          {(["All", "Open", "In Progress", "Resolved"] as const).map((st) => (
             <button
               key={st}
               type="button"
               onClick={() => setStatusFilter(st)}
               className={`h-8 px-3 rounded-xl text-xs font-semibold transition-colors ${
                 statusFilter === st
-                  ? 'bg-[#0F5132] text-white shadow-2xs'
-                  : 'bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#475569] border border-[#E2E8F0]'
+                  ? "bg-[#0F5132] text-white shadow-2xs"
+                  : "bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#475569] border border-[#E2E8F0]"
               }`}
             >
               {st}
@@ -244,15 +266,21 @@ export const AdminSupportTicketsPage: React.FC = () => {
       {/* Tickets Table */}
       <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-2xs overflow-hidden">
         <div className="p-4 border-b border-[#E2E8F0] flex flex-col md:flex-row items-center justify-between">
-          <h3 className="text-base font-bold text-[#0F172A]">Tenant Inquiries & Issues</h3>
-          <span className="text-xs text-[#64748B]">{filtered.length} tickets matching</span>
+          <h3 className="text-base font-bold text-[#0F172A]">
+            Tenant Inquiries & Issues
+          </h3>
+          <span className="text-xs text-[#64748B]">
+            {filtered.length} tickets matching
+          </span>
         </div>
 
         {/* Compact Mobile / Tablet Swipe Notice */}
         <div className="lg:hidden flex items-center justify-between gap-2 px-3 sm:px-4 py-1.5 bg-[#F8FAFC] border-b border-[#E2E8F0] text-[11px] text-[#475569]">
           <span className="flex items-center gap-1.5 font-medium min-w-0">
             <span className="w-1.5 h-1.5 rounded-full bg-[#0F5132] animate-pulse shrink-0" />
-            <span className="truncate">Swipe horizontally to see all columns</span>
+            <span className="truncate">
+              Swipe horizontally to see all columns
+            </span>
           </span>
           <span className="text-[10px] font-bold text-[#0F5132] bg-emerald-50/80 px-2 py-0.5 rounded border border-emerald-200 whitespace-nowrap shrink-0">
             ↔ Swipe
@@ -269,7 +297,9 @@ export const AdminSupportTicketsPage: React.FC = () => {
                 <th className="py-3.5 px-4 min-w-[140px]">Category</th>
                 <th className="py-3.5 px-4 min-w-[100px]">Priority</th>
                 <th className="py-3.5 px-4 min-w-[110px]">Status</th>
-                <th className="py-3.5 px-4 text-right min-w-[150px]">Actions</th>
+                <th className="py-3.5 px-4 text-right min-w-[150px]">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#E2E8F0]">
@@ -281,7 +311,9 @@ export const AdminSupportTicketsPage: React.FC = () => {
                   <td className="py-3.5 px-4 whitespace-nowrap">
                     <div>
                       <p className="font-bold text-[#0F172A]">{t.resortName}</p>
-                      <p className="text-[11px] text-[#64748B]">By {t.submittedBy}</p>
+                      <p className="text-[11px] text-[#64748B]">
+                        By {t.submittedBy}
+                      </p>
                     </div>
                   </td>
                   <td className="py-3.5 px-4">
@@ -296,11 +328,11 @@ export const AdminSupportTicketsPage: React.FC = () => {
                   <td className="py-3.5 px-4 whitespace-nowrap">
                     <span
                       className={`px-2 py-0.5 rounded-full font-bold text-[10px] ${
-                        t.priority === 'Urgent'
-                          ? 'bg-rose-100 text-rose-700'
-                          : t.priority === 'High'
-                          ? 'bg-amber-100 text-amber-700'
-                          : 'bg-slate-100 text-slate-700'
+                        t.priority === "Urgent"
+                          ? "bg-rose-100 text-rose-700"
+                          : t.priority === "High"
+                            ? "bg-amber-100 text-amber-700"
+                            : "bg-slate-100 text-slate-700"
                       }`}
                     >
                       {t.priority}
@@ -309,11 +341,11 @@ export const AdminSupportTicketsPage: React.FC = () => {
                   <td className="py-3.5 px-4 whitespace-nowrap">
                     <span
                       className={`px-2.5 py-0.5 rounded-full font-semibold text-[11px] border ${
-                        t.status === 'Resolved'
-                          ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                          : t.status === 'In Progress'
-                          ? 'bg-blue-50 text-blue-700 border-blue-200'
-                          : 'bg-amber-50 text-amber-700 border-amber-200'
+                        t.status === "Resolved"
+                          ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                          : t.status === "In Progress"
+                            ? "bg-blue-50 text-blue-700 border-blue-200"
+                            : "bg-amber-50 text-amber-700 border-amber-200"
                       }`}
                     >
                       {t.status}
@@ -328,7 +360,7 @@ export const AdminSupportTicketsPage: React.FC = () => {
                       >
                         Reply
                       </button>
-                      {t.status !== 'Resolved' && (
+                      {t.status !== "Resolved" && (
                         <button
                           type="button"
                           onClick={() => handleMarkResolved(t.id)}
@@ -353,8 +385,12 @@ export const AdminSupportTicketsPage: React.FC = () => {
           <div className="bg-white rounded-3xl w-full max-w-lg p-6 shadow-2xl border border-[#E2E8F0] space-y-4 text-xs">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
               <div>
-                <h3 className="text-base font-bold text-[#0F172A]">Reply to {activeTicket.id}</h3>
-                <p className="text-xs text-[#64748B]">{activeTicket.resortName}</p>
+                <h3 className="text-base font-bold text-[#0F172A]">
+                  Reply to {activeTicket.id}
+                </h3>
+                <p className="text-xs text-[#64748B]">
+                  {activeTicket.resortName}
+                </p>
               </div>
               <button
                 type="button"
@@ -367,12 +403,16 @@ export const AdminSupportTicketsPage: React.FC = () => {
 
             <div className="bg-[#F8FAFC] p-3 rounded-2xl border border-[#E2E8F0] space-y-1">
               <p className="font-bold text-[#0F172A]">{activeTicket.subject}</p>
-              <p className="text-[11px] text-[#64748B]">Submitted by {activeTicket.submittedBy}</p>
+              <p className="text-[11px] text-[#64748B]">
+                Submitted by {activeTicket.submittedBy}
+              </p>
             </div>
 
             <form onSubmit={handleSendReply} className="space-y-3">
               <div>
-                <label className="block font-semibold text-[#1E293B] mb-1">Your Support Message / Fix:</label>
+                <label className="block font-semibold text-[#1E293B] mb-1">
+                  Your Support Message / Fix:
+                </label>
                 <textarea
                   rows={4}
                   required

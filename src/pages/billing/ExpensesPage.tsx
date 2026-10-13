@@ -262,33 +262,54 @@ export const ExpensesPage: React.FC = () => {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-[#64748B]">Total Monthly OpEx</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-[#0F172A] mt-1">{formatINR(totalOpex)}</p>
-          <span className="text-[10px] text-emerald-600 font-medium">Within budgeted targets</span>
-        </div>
-
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-[#64748B]">Monthly OpEx Cap</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-[#0F5132] mt-1">{formatINR(monthlyBudget)}</p>
-          <span className="text-[10px] text-[#64748B]">Approved property limit</span>
-        </div>
-
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-[#64748B]">Budget Burn Rate</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-blue-600 mt-1">{budgetUtilization}%</p>
-          <div className="w-full h-1.5 bg-slate-100 rounded-full mt-1.5 overflow-hidden">
-            <div className="h-full bg-blue-600 rounded-full" style={{ width: `${budgetUtilization}%` }} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-[#64748B]">Total Monthly OpEx</span>
+            <span className="text-[10px] text-emerald-600 font-semibold bg-[#DCFCE7] px-2 py-0.5 rounded-full shrink-0">On Budget</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+            <span>{formatINR(totalOpex)}</span>
+            <p className="text-[11px] font-normal text-emerald-600 mt-0.5">Within budgeted targets</p>
           </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-amber-600">Pending Authorization</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-amber-600 mt-1">
-            {formatINR(expenses.filter((e) => e.status === 'Pending Approval').reduce((acc, e) => acc + e.amount, 0))}
-          </p>
-          <span className="text-[10px] text-amber-600 font-medium">1 Invoice awaiting sign-off</span>
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-[#64748B]">Monthly OpEx Cap</span>
+            <span className="text-[10px] text-[#64748B] font-semibold bg-slate-100 px-2 py-0.5 rounded-full shrink-0">Approved</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F5132] tracking-tight mt-0.5">
+            <span>{formatINR(monthlyBudget)}</span>
+            <p className="text-[11px] font-normal text-[#64748B] mt-0.5">Approved property limit</p>
+          </div>
+        </div>
+
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-[#64748B]">Budget Burn Rate</span>
+            <span className="text-[10px] text-blue-700 font-semibold bg-blue-50 px-2 py-0.5 rounded-full shrink-0">{budgetUtilization}%</span>
+          </div>
+          <div>
+            <div className="flex justify-between items-baseline text-xl sm:text-2xl font-black text-blue-600 tracking-tight mt-0.5">
+              <span>{budgetUtilization}%</span>
+              <p className="text-[11px] font-normal text-[#64748B]">Monthly pace</p>
+            </div>
+            <div className="w-full h-1.5 bg-slate-100 rounded-full mt-2 overflow-hidden">
+              <div className="h-full bg-blue-600 rounded-full" style={{ width: `${budgetUtilization}%` }} />
+            </div>
+          </div>
+        </div>
+
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-amber-700">Pending Authorization</span>
+            <span className="text-[10px] text-amber-700 font-semibold bg-amber-50 px-2 py-0.5 rounded-full shrink-0">1 sign-off</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-amber-600 tracking-tight mt-0.5">
+            <span>{formatINR(expenses.filter((e) => e.status === 'Pending Approval').reduce((acc, e) => acc + e.amount, 0))}</span>
+            <p className="text-[11px] font-normal text-amber-600 mt-0.5">Awaiting GM sign-off</p>
+          </div>
         </div>
       </div>
 

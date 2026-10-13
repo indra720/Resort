@@ -136,11 +136,12 @@ export const SuperAdminDashboard: React.FC = () => {
           {/* Header row */}
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
             <div>
-              <div className="flex flex-col lg:flex-row items-center gap-2">
-                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#0F5132]/10 text-[#0F5132] uppercase tracking-wider">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-50 text-[#0F5132] uppercase tracking-wider border border-emerald-200/80 shadow-2xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0F5132] animate-pulse" />
                   SaaS Platform Owner
                 </span>
-                <span className="text-xs text-[#64748B]">Multi-Tenant Cloud Control</span>
+                <span className="text-xs font-medium text-[#64748B]">Multi-Tenant Cloud Control</span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] mt-1">
                 Platform Operations & Tenants
@@ -161,19 +162,20 @@ export const SuperAdminDashboard: React.FC = () => {
                 className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs font-semibold shadow-2xs transition-colors"
               >
                 <Plus className="w-4 h-4" />
-                <span>Onboard Resort</span>
+                <span className='hidden md:flex'>Onboard Resort</span>
+                <span className='md:hidden'>Onboard</span>
               </button>
             </div>
           </div>
         </div>
 
-        {/* 5 SaaS Platform KPI Cards (Responsive spreading cards with top icon layout) */}
+        {/* 5 SaaS Platform KPI Cards */}
         <div className="p-3 sm:p-4 bg-white/95 backdrop-blur-md border-t border-[#E2E8F0]">
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3.5">
             {/* KPI 1: Total Resorts */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-h-[148px] sm:min-h-[160px] min-w-0">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#22C55E] flex items-center justify-center text-white shrink-0 shadow-2xs">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#22C55E] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <Building2 className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <span className="text-[10px] sm:text-[11px] font-semibold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full flex items-center shrink-0">
@@ -181,21 +183,23 @@ export const SuperAdminDashboard: React.FC = () => {
                   +{metrics.trialCount} New
                 </span>
               </div>
-              <div className="min-w-0">
-                <p className="text-xs font-semibold text-[#64748B] leading-snug truncate">Total Resorts</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
-                  {metrics.totalResorts}
-                </div>
-                <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
-                  {metrics.activeCount} Active, {metrics.trialCount} Trial
+              <div>
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">
+                  Total Resorts
                 </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                  {metrics.totalResorts}
+                  <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
+                    {metrics.activeCount} Active, {metrics.trialCount} Trial
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* KPI 2: Active Subscriptions */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-h-[148px] sm:min-h-[160px] min-w-0">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#38BDF8] flex items-center justify-center text-white shrink-0 shadow-2xs">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#38BDF8] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <span className="text-[10px] sm:text-[11px] font-semibold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full flex items-center shrink-0">
@@ -203,21 +207,23 @@ export const SuperAdminDashboard: React.FC = () => {
                   100% Paid
                 </span>
               </div>
-              <div className="min-w-0">
-                <p className="text-xs font-semibold text-[#64748B] leading-snug truncate">Active Subscriptions</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
-                  {metrics.activeCount}
-                </div>
-                <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
-                  Paid Multi-Tenant
+              <div>
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">
+                  Active Subs
                 </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                  {metrics.activeCount}
+                  <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
+                    Paid Multi-Tenant
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* KPI 3: Monthly Recurring Revenue (MRR) - Spans 2 cols on mobile, 1 col on desktop */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-h-[140px] sm:min-h-[160px] min-w-0 col-span-2 lg:col-span-1">
+            {/* KPI 3: Monthly Recurring Revenue (MRR) */}
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#F97316] flex items-center justify-center text-white shrink-0 shadow-2xs">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#F97316] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <IndianRupee className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <span className="text-[10px] sm:text-[11px] font-semibold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full flex items-center shrink-0">
@@ -225,21 +231,21 @@ export const SuperAdminDashboard: React.FC = () => {
                   +18.4%
                 </span>
               </div>
-              <div className="min-w-0">
-                <p className="text-xs font-semibold text-[#64748B] leading-snug truncate">Platform MRR</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 truncate">
+              <div>
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">Platform MRR</p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   {formatINR(metrics.totalMRR)}
+                  <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
+                    ARR: {formatINR(metrics.totalARR)}
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
-                  ARR: {formatINR(metrics.totalARR)}
-                </p>
               </div>
             </div>
 
             {/* KPI 4: Total Platform Bookings */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-h-[148px] sm:min-h-[160px] min-w-0">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#8B5CF6] flex items-center justify-center text-white shrink-0 shadow-2xs">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#8B5CF6] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <span className="text-[10px] sm:text-[11px] font-semibold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full flex items-center shrink-0">
@@ -247,35 +253,35 @@ export const SuperAdminDashboard: React.FC = () => {
                   +15.2%
                 </span>
               </div>
-              <div className="min-w-0">
-                <p className="text-xs font-semibold text-[#64748B] leading-snug truncate">Total Bookings</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+              <div>
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">Total Bookings</p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   1,240
+                  <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
+                    Across all tenants
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
-                  Across all tenants
-                </p>
               </div>
             </div>
 
             {/* KPI 5: Churn Rate */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-h-[148px] sm:min-h-[160px] min-w-0">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0 sm:col-span-2 lg:col-span-1">
               <div className="flex items-center justify-between gap-1 mb-2">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#84CC16] flex items-center justify-center text-white shrink-0 shadow-2xs">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#84CC16] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <span className="text-[10px] sm:text-[11px] font-semibold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full flex items-center shrink-0">
-                  -0.4% MoM
+                  -0.4%
                 </span>
               </div>
-              <div className="min-w-0">
-                <p className="text-xs font-semibold text-[#64748B] leading-snug truncate">Platform Churn</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+              <div>
+                <p className="text-xs font-semibold text-[#64748B] leading-snug">Platform Churn</p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   0.8%
+                  <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
+                    Industry top 5%
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
-                  Industry top 5%
-                </p>
               </div>
             </div>
           </div>
@@ -367,7 +373,7 @@ export const SuperAdminDashboard: React.FC = () => {
       {/* 4. Multi-Tenant Resorts List Table */}
       {activeTab !== 'plans' ? (
         <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-2xs overflow-hidden">
-          <div className="p-4 border-b border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="p-2 border-b border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <div className="flex flex-col lg:flex-row items-center gap-2">
                 <h3 className="text-base font-bold text-[#0F172A]">Onboarded Resort Properties</h3>
@@ -381,18 +387,81 @@ export const SuperAdminDashboard: React.FC = () => {
             </div>
           </div>
 
-          {/* Mobile / Tablet Horizontal Scroll Notice */}
-          <div className="lg:hidden flex items-center justify-between gap-2 px-3 sm:px-4 py-1.5 bg-[#F8FAFC] border-b border-[#E2E8F0] text-[11px] text-[#475569]">
-            <span className="flex items-center gap-1.5 font-medium min-w-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0F5132] animate-pulse shrink-0" />
-              <span className="truncate">Swipe horizontally to see all columns</span>
-            </span>
-            <span className="text-[10px] font-bold text-[#0F5132] bg-emerald-50/80 px-2 py-0.5 rounded border border-emerald-200 whitespace-nowrap shrink-0">
-              ↔ Swipe
-            </span>
+          {/* Mobile Standalone Tenant Cards (Stayora Luxury Native App Style) */}
+          <div className="block lg:hidden space-y-3 p-1 bg-[#F8FAFC]/50">
+            {filteredResorts.map((r) => (
+              <div
+                key={r.id}
+                className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-[0_2px_12px_-2px_rgba(0,0,0,0.04)] space-y-3 hover:border-[#0F5132]/30 transition-all text-left"
+              >
+                {/* Top Row: Code badge left, Status badge right (Only 2 badges for 320px safety) */}
+                <div className="flex items-center justify-between gap-2">
+                  <span className="px-2.5 py-0.5 rounded-md font-mono text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                    {r.code}
+                  </span>
+                  <span
+                    className={cn(
+                      'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border shrink-0',
+                      r.status === 'Active'
+                        ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                        : 'bg-amber-50 text-amber-700 border-amber-200'
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        'w-1.5 h-1.5 rounded-full',
+                        r.status === 'Active' ? 'bg-emerald-500' : 'bg-amber-500'
+                      )}
+                    />
+                    {r.status}
+                  </span>
+                </div>
+
+                {/* Property Details */}
+                <div className="flex items-start gap-2.5">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#0F5132] to-[#15803D] text-white flex items-center justify-center font-black text-xs shrink-0 shadow-2xs">
+                    {r.code.slice(4, 6) || 'JY'}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="font-bold text-[#0F172A] text-sm truncate">{r.name}</h4>
+                    <p className="text-[11px] text-[#64748B] truncate">{r.city}, {r.state} • {r.tagline}</p>
+                    <p className="text-[11px] text-[#475569] mt-0.5 font-medium truncate">
+                      Owner: <span className="text-[#0F172A] font-semibold">{r.ownerName}</span> ({r.ownerEmail})
+                    </p>
+                  </div>
+                </div>
+
+                {/* Tier & Yield Metric Row */}
+                <div className="grid grid-cols-3 gap-2 p-2.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
+                  <div>
+                    <span className="text-[10px] text-[#64748B] block font-medium">SaaS Tier</span>
+                    <span className="text-xs font-bold text-[#0F172A]">{r.plan}</span>
+                  </div>
+                  <div className="border-x border-[#E2E8F0]">
+                    <span className="text-[10px] text-[#64748B] block font-medium">Keys / Staff</span>
+                    <span className="text-xs font-bold text-[#0F172A]">{r.totalRooms}k • {r.activeUsers}u</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-[#64748B] block font-medium">MRR Yield</span>
+                    <span className="text-xs font-bold text-[#0F5132]">{formatINR(r.mrr)}</span>
+                  </div>
+                </div>
+
+                {/* Action Button */}
+                <button
+                  type="button"
+                  onClick={() => handleImpersonate(r)}
+                  className="w-full flex items-center justify-center gap-2 py-2 px-3 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs font-bold shadow-2xs transition-all active:scale-[0.98]"
+                >
+                  <LogIn className="w-3.5 h-3.5" />
+                  <span>Login as Resort</span>
+                </button>
+              </div>
+            ))}
           </div>
 
-          <div className="overflow-x-auto scrollbar-thin">
+          {/* Desktop Table View */}
+          <div className="hidden lg:block overflow-x-auto scrollbar-thin">
             <table className="w-full min-w-[1020px] text-left text-xs text-[#1E293B] border-collapse">
               <thead>
                 <tr className="bg-[#F8FAFC] border-b border-[#E2E8F0] text-[#64748B] font-semibold whitespace-nowrap">

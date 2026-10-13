@@ -290,7 +290,7 @@ export const StaffListPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-4 sm:space-y-5 text-left">
+    <div className="space-y-4 sm:space-y-5 text-left pb-16 sm:pb-8">
       {/* Role-Specific Perspective Top Banner */}
       {isOwner ? (
         <div className="p-4 bg-gradient-to-r from-emerald-50 via-teal-50/50 to-white border border-emerald-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
@@ -299,7 +299,7 @@ export const StaffListPage: React.FC = () => {
               <Crown className="w-5 h-5 text-amber-300" />
             </div>
             <div>
-              <div className="flex flex-col lg:flex-row items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs font-bold text-[#0F5132] uppercase tracking-wider">
                   Resort Owner Root Administration
                 </span>
@@ -323,7 +323,7 @@ export const StaffListPage: React.FC = () => {
               <ClipboardList className="w-5 h-5 text-sky-100" />
             </div>
             <div>
-              <div className="flex flex-col lg:flex-row items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs font-bold text-[#0369A1] uppercase tracking-wider">
                   General Manager Operations & Shift Roster View
                 </span>
@@ -345,7 +345,7 @@ export const StaffListPage: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <div className="flex flex-col lg:flex-row items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132]">
               {isOwner ? 'Staff Personnel & Access Delegation' : 'Staff Duty Roster & Attendance'}
             </h1>
@@ -358,10 +358,11 @@ export const StaffListPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-2 self-start sm:self-auto">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
           <Button
             variant="primary"
             size="md"
+            className="w-full sm:w-auto justify-center"
             onClick={() => {
               setGeneratedUrl(null);
               setIsInviteOpen(true);
@@ -375,25 +376,25 @@ export const StaffListPage: React.FC = () => {
 
       {/* Plan Usage & Quota Banner */}
       <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0F5132] flex items-center justify-center font-bold">
+        <div className="flex items-start sm:items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0F5132] flex items-center justify-center font-bold shrink-0">
             <Users className="w-5 h-5" />
           </div>
           <div>
-            <div className="flex flex-col lg:flex-row items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="text-xs font-bold text-[#0F172A]">Staff User Quota</span>
               <span className="text-[10px] px-2 py-0.5 rounded-full font-bold bg-[#DCFCE7] text-[#0F5132]">
                 {limits.plan} Plan
               </span>
             </div>
-            <p className="text-xs text-[#64748B]">
+            <p className="text-xs text-[#64748B] mt-0.5">
               Currently using <strong>{limits.usersUsed}</strong> of{' '}
               <strong>{limits.userLimit === Infinity ? 'Unlimited' : limits.userLimit}</strong> allowed team members.
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between md:justify-end gap-3 pt-2 md:pt-0 border-t md:border-t-0 border-[#E2E8F0]">
           {limits.isUserLimitReached && (
             <span className="text-xs font-bold text-red-600 flex items-center gap-1">
               <AlertTriangle className="w-3.5 h-3.5" /> Quota Reached
@@ -410,7 +411,7 @@ export const StaffListPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="w-[300px] min-w-0 md:w-full overflow-x-auto flex items-center gap-2 border-b border-[#E2E8F0] pb-2">
+      <div className="w-full min-w-0 overflow-x-auto flex items-center gap-2 border-b border-[#E2E8F0] pb-2 scrollbar-none">
         <button
           type="button"
           onClick={() => setActiveTab('active')}

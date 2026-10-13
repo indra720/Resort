@@ -128,7 +128,7 @@ export const QuotationsPage: React.FC = () => {
   }
 
   return (
-    <div className="space-y-4 sm:space-y-5 text-left text-[#0F172A]">
+    <div className="space-y-4 sm:space-y-5 text-left text-[#0F172A] pb-28 sm:pb-12">
       
       {/* 1. Header Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-[#E2E8F0] shadow-2xs">
@@ -153,7 +153,7 @@ export const QuotationsPage: React.FC = () => {
             setQuotationToEdit(null);
             setIsBuilderOpen(true);
           }}
-          className="flex items-center gap-1.5 px-4 py-2 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs sm:text-sm font-bold shadow-2xs transition-colors shrink-0 self-start sm:self-auto"
+          className="flex items-center justify-center gap-1.5 px-4 py-2.5 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs sm:text-sm font-bold shadow-2xs transition-colors shrink-0 w-full sm:w-auto"
         >
           <Plus className="w-4 h-4" />
           <span>New Quotation</span>
@@ -161,7 +161,7 @@ export const QuotationsPage: React.FC = () => {
       </div>
 
       {/* 2. Top KPI Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
         <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
           <span className="text-xs font-semibold text-[#64748B]">Total Proposals</span>
           <div className="text-2xl sm:text-3xl font-black text-[#0F172A] mt-1">{totalCount}</div>
@@ -188,8 +188,8 @@ export const QuotationsPage: React.FC = () => {
       </div>
 
       {/* 3. Status Tabs */}
-      <div className="bg-white rounded-2xl border border-[#E2E8F0] p-1.5 sm:p-2 shadow-2xs overflow-x-auto scrollbar-thin">
-        <div className="flex items-center gap-1 min-w-max">
+      <div className="bg-white rounded-2xl border border-[#E2E8F0] p-1.5 sm:p-2 shadow-2xs overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex items-center gap-1.5 min-w-max">
           {[
             { id: 'ALL', label: 'All Quotations', count: allQuotations.length },
             { id: 'Draft', label: 'Draft', count: allQuotations.filter((q) => q.status === 'Draft').length },
@@ -202,7 +202,7 @@ export const QuotationsPage: React.FC = () => {
               key={tab.id}
               type="button"
               onClick={() => setActiveTab(tab.id)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all shrink-0 whitespace-nowrap ${
                 activeTab === tab.id
                   ? 'bg-[#0F5132] text-white shadow-2xs'
                   : 'text-[#475569] hover:bg-[#F8FAFC] hover:text-[#0F172A]'
@@ -339,17 +339,18 @@ export const QuotationsPage: React.FC = () => {
             </div>
 
             {/* Mobile Cards View */}
-            <div className="md:hidden divide-y divide-[#E2E8F0]">
+            <div className="md:hidden space-y-3 p-3">
               {filteredQuotations.map((q) => (
-                <div key={q.id} className="p-4 space-y-2.5">
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <span className="font-bold text-[#0F5132] text-xs block">{q.quotation_number}</span>
-                      <h4 className="font-bold text-sm text-[#0F172A]">{q.guest_name}</h4>
-                      <p className="text-xs text-[#64748B]">{q.guest_phone}</p>
-                    </div>
+                <div
+                  key={q.id}
+                  className="rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow overflow-hidden text-left"
+                >
+                  <div className="bg-gradient-to-r from-emerald-50/70 via-slate-50/50 to-white px-3.5 py-2.5 border-b border-[#F1F5F9] flex items-center justify-between gap-2">
+                    <span className="font-extrabold text-[#0F5132] text-xs">
+                      {q.quotation_number}
+                    </span>
                     <span
-                      className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
+                      className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold ${
                         q.status === 'Accepted'
                           ? 'bg-emerald-100 text-emerald-800'
                           : q.status === 'Sent'
@@ -361,16 +362,23 @@ export const QuotationsPage: React.FC = () => {
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between text-xs pt-1 border-t border-[#F1F5F9]">
-                    <span className="text-[#64748B]">{q.interested_in || 'Stay Package'}</span>
-                    <span className="font-black text-sm text-[#0F172A]">{formatINR(q.grand_total)}</span>
+                  <div className="p-3.5 space-y-2.5">
+                    <div>
+                      <h4 className="font-bold text-sm text-[#0F172A]">{q.guest_name}</h4>
+                      <p className="text-xs text-[#64748B]">{q.guest_phone}</p>
+                    </div>
+
+                    <div className="px-3 py-2 rounded-xl bg-[#F8FAFC] border border-slate-100 flex items-center justify-between text-xs">
+                      <span className="text-[#64748B]">{q.interested_in || 'Stay Package'}</span>
+                      <span className="font-black text-sm text-[#0F5132]">{formatINR(q.grand_total)}</span>
+                    </div>
                   </div>
 
-                  <div className="flex items-center justify-end gap-2 pt-2">
+                  <div className="px-3.5 py-2.5 bg-[#F8FAFC]/90 border-t border-[#F1F5F9] flex items-center justify-end gap-2">
                     <button
                       type="button"
                       onClick={() => openPreview(q)}
-                      className="px-3 py-1.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs font-semibold text-[#334155] flex items-center gap-1"
+                      className="px-3 py-1.5 bg-white border border-[#CBD5E1] rounded-xl text-xs font-semibold text-[#334155] flex items-center gap-1 shadow-2xs"
                     >
                       <Eye className="w-3.5 h-3.5" />
                       <span>Preview</span>
@@ -378,7 +386,7 @@ export const QuotationsPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => openEdit(q)}
-                      className="px-3 py-1.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs font-semibold text-[#334155] flex items-center gap-1"
+                      className="px-3 py-1.5 bg-white border border-[#CBD5E1] rounded-xl text-xs font-semibold text-[#334155] flex items-center gap-1 shadow-2xs"
                     >
                       <Edit className="w-3.5 h-3.5" />
                       <span>Edit</span>

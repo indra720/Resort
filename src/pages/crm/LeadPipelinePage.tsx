@@ -1,5 +1,5 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useMemo, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Kanban,
   Search,
@@ -16,29 +16,31 @@ import {
   TrendingUp,
   X,
   Sparkles,
-} from 'lucide-react';
-import { useAuthStore } from '@/store/useAuthStore';
-import { getLeads, updateLead } from '@/api/leads';
-import { Lead, LeadStatus } from '@/types/crm';
-import { formatINR } from '@/lib/formatINR';
-import { toast } from '@/store/useToastStore';
-import { canUse } from '@/lib/permissions';
-import { AddEditLeadModal } from '@/features/leads/AddEditLeadModal';
-import { LeadDetailDrawer } from '@/features/leads/LeadDetailDrawer';
-import { ConvertToBookingModal } from '@/features/leads/ConvertToBookingModal';
+} from "lucide-react";
+import { useAuthStore } from "@/store/useAuthStore";
+import { getLeads, updateLead } from "@/api/leads";
+import { Lead, LeadStatus } from "@/types/crm";
+import { formatINR } from "@/lib/formatINR";
+import { toast } from "@/store/useToastStore";
+import { canUse } from "@/lib/permissions";
+import { AddEditLeadModal } from "@/features/leads/AddEditLeadModal";
+import { LeadDetailDrawer } from "@/features/leads/LeadDetailDrawer";
+import { ConvertToBookingModal } from "@/features/leads/ConvertToBookingModal";
 
 export const LeadPipelinePage: React.FC = () => {
   const navigate = useNavigate();
   const { currentResort, user, role } = useAuthStore();
   const [leads, setLeads] = useState<Lead[]>([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [executiveFilter, setExecutiveFilter] = useState('ALL');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [executiveFilter, setExecutiveFilter] = useState("ALL");
   const [draggedLeadId, setDraggedLeadId] = useState<string | null>(null);
 
   // Lost Reason Modal State
   const [isLostReasonOpen, setIsLostReasonOpen] = useState(false);
-  const [pendingLostLeadId, setPendingLostLeadId] = useState<string | null>(null);
-  const [lostReason, setLostReason] = useState('Too expensive');
+  const [pendingLostLeadId, setPendingLostLeadId] = useState<string | null>(
+    null,
+  );
+  const [lostReason, setLostReason] = useState("Too expensive");
 
   // Modals
   const [isAddOpen, setIsAddOpen] = useState(false);
@@ -56,20 +58,44 @@ export const LeadPipelinePage: React.FC = () => {
   }, [currentResort.id, user, role]);
 
   // Plan gating check
-  const isPipelineUnlocked = canUse(currentResort, 'pipeline');
+  const isPipelineUnlocked = canUse(currentResort, "pipeline");
 
   const columns: { id: LeadStatus; label: string; bgBadge: string }[] = [
-    { id: 'New', label: '1. New Enquiries', bgBadge: 'bg-blue-50 text-blue-800 border-blue-200' },
-    { id: 'Contacted', label: '2. Contacted', bgBadge: 'bg-indigo-50 text-indigo-800 border-indigo-200' },
-    { id: 'Site Visit', label: '3. Site Visit', bgBadge: 'bg-purple-50 text-purple-800 border-purple-200' },
-    { id: 'Interested', label: '4. Interested', bgBadge: 'bg-amber-50 text-amber-800 border-amber-200' },
-    { id: 'Booked', label: '5. Booked', bgBadge: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
-    { id: 'Lost', label: '6. Lost', bgBadge: 'bg-rose-50 text-rose-800 border-rose-200' },
+    {
+      id: "New",
+      label: "1. New Enquiries",
+      bgBadge: "bg-blue-50 text-blue-800 border-blue-200",
+    },
+    {
+      id: "Contacted",
+      label: "2. Contacted",
+      bgBadge: "bg-indigo-50 text-indigo-800 border-indigo-200",
+    },
+    {
+      id: "Site Visit",
+      label: "3. Site Visit",
+      bgBadge: "bg-purple-50 text-purple-800 border-purple-200",
+    },
+    {
+      id: "Interested",
+      label: "4. Interested",
+      bgBadge: "bg-amber-50 text-amber-800 border-amber-200",
+    },
+    {
+      id: "Booked",
+      label: "5. Booked",
+      bgBadge: "bg-emerald-50 text-emerald-800 border-emerald-200",
+    },
+    {
+      id: "Lost",
+      label: "6. Lost",
+      bgBadge: "bg-rose-50 text-rose-800 border-rose-200",
+    },
   ];
 
   const filteredLeads = useMemo(() => {
     return leads.filter((l) => {
-      if (executiveFilter !== 'ALL' && l.assigned_to !== executiveFilter) {
+      if (executiveFilter !== "ALL" && l.assigned_to !== executiveFilter) {
         return false;
       }
       if (searchQuery.trim()) {
@@ -98,31 +124,41 @@ export const LeadPipelinePage: React.FC = () => {
   const handleDrop = (targetStatus: LeadStatus) => {
     if (!draggedLeadId) return;
 
-    if (targetStatus === 'Lost') {
+    if (targetStatus === "Lost") {
       setPendingLostLeadId(draggedLeadId);
       setIsLostReasonOpen(true);
       setDraggedLeadId(null);
       return;
     }
 
-    const res = updateLead(draggedLeadId, { status: targetStatus }, currentResort.id, user);
+    const res = updateLead(
+      draggedLeadId,
+      { status: targetStatus },
+      currentResort.id,
+      user,
+    );
     if (res.success) {
-      toast.success('Lead Status Updated', `Advanced to ${targetStatus}`);
+      toast.success("Lead Status Updated", `Advanced to ${targetStatus}`);
       loadData();
     }
     setDraggedLeadId(null);
   };
 
   const handleMoveTo = (leadId: string, newStatus: LeadStatus) => {
-    if (newStatus === 'Lost') {
+    if (newStatus === "Lost") {
       setPendingLostLeadId(leadId);
       setIsLostReasonOpen(true);
       return;
     }
 
-    const res = updateLead(leadId, { status: newStatus }, currentResort.id, user);
+    const res = updateLead(
+      leadId,
+      { status: newStatus },
+      currentResort.id,
+      user,
+    );
     if (res.success) {
-      toast.success('Pipeline Updated', `Moved to ${newStatus}`);
+      toast.success("Pipeline Updated", `Moved to ${newStatus}`);
       loadData();
     }
   };
@@ -133,11 +169,11 @@ export const LeadPipelinePage: React.FC = () => {
 
     updateLead(
       pendingLostLeadId,
-      { status: 'Lost', lost_reason: lostReason },
+      { status: "Lost", lost_reason: lostReason },
       currentResort.id,
-      user
+      user,
     );
-    toast.info('Lead Marked as Lost', `Reason logged: ${lostReason}`);
+    toast.info("Lead Marked as Lost", `Reason logged: ${lostReason}`);
     setIsLostReasonOpen(false);
     setPendingLostLeadId(null);
     loadData();
@@ -157,19 +193,22 @@ export const LeadPipelinePage: React.FC = () => {
           Pipeline Kanban Board is Locked
         </h2>
         <p className="text-xs sm:text-sm text-[#64748B] max-w-md mb-6 leading-relaxed">
-          The visual Drag & Drop Pipeline Kanban board is part of the <strong>Pro Plan</strong>. Your current resort property (<strong>{currentResort.name}</strong>) is on the <strong>{currentResort.plan} Plan</strong>.
+          The visual Drag & Drop Pipeline Kanban board is part of the{" "}
+          <strong>Pro Plan</strong>. Your current resort property (
+          <strong>{currentResort.name}</strong>) is on the{" "}
+          <strong>{currentResort.plan} Plan</strong>.
         </p>
         <div className="flex gap-3">
           <button
             type="button"
-            onClick={() => navigate('/leads')}
+            onClick={() => navigate("/leads")}
             className="px-4 py-2 bg-white border border-[#CBD5E1] rounded-xl text-xs font-semibold text-[#334155] hover:bg-[#F8FAFC]"
           >
             Back to Leads List
           </button>
           <button
             type="button"
-            onClick={() => navigate('/subscription')}
+            onClick={() => navigate("/subscription")}
             className="px-5 py-2 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs font-bold shadow-2xs transition-colors"
           >
             Upgrade to Pro
@@ -181,7 +220,6 @@ export const LeadPipelinePage: React.FC = () => {
 
   return (
     <div className="space-y-4 text-left text-[#0F172A]">
-      
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-[#E2E8F0] shadow-2xs">
         <div>
@@ -195,14 +233,15 @@ export const LeadPipelinePage: React.FC = () => {
             </span>
           </div>
           <p className="text-xs text-[#64748B] mt-0.5">
-            Drag & drop leads across sales stages. Real-time stage totals computed in ₹.
+            Drag & drop leads across sales stages. Real-time stage totals
+            computed in ₹.
           </p>
         </div>
 
         <div className="flex items-center gap-2 self-start sm:self-auto">
           <button
             type="button"
-            onClick={() => navigate('/leads')}
+            onClick={() => navigate("/leads")}
             className="h-9 px-3.5 bg-[#F8FAFC] hover:bg-[#F1F5F9] border border-[#CBD5E1] rounded-xl text-xs font-semibold text-[#475569] transition-colors"
           >
             Table View
@@ -248,7 +287,7 @@ export const LeadPipelinePage: React.FC = () => {
       </div>
 
       {/* Mobile Swipe Notice (< 1024px) */}
-      <div className="lg:hidden flex items-center justify-between gap-2 px-3.5 py-2 bg-emerald-50/80 rounded-xl border border-emerald-200 text-xs text-emerald-950 font-medium">
+      <div className="lg:hidden flex flex-col md:flex-row items-center justify-between gap-2 px-3.5 py-2 bg-emerald-50/80 rounded-xl border border-emerald-200 text-xs text-emerald-950 font-medium">
         <span>↔ Swipe horizontally to view all pipeline stages</span>
         <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-white text-[#0F5132] border border-emerald-300">
           6 Stages
@@ -263,7 +302,7 @@ export const LeadPipelinePage: React.FC = () => {
               const colLeads = filteredLeads.filter((l) => l.status === col.id);
               const colTotal = colLeads.reduce(
                 (acc, l) => acc + (l.budget_max || l.budget_min || 0),
-                0
+                0,
               );
 
               return (
@@ -276,7 +315,9 @@ export const LeadPipelinePage: React.FC = () => {
                   {/* Column Header */}
                   <div className="pb-3 border-b border-[#E2E8F0] mb-3">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-xs text-[#0F172A]">{col.label}</span>
+                      <span className="font-bold text-xs text-[#0F172A]">
+                        {col.label}
+                      </span>
                       <span className="px-2 py-0.5 rounded-full bg-white border border-[#CBD5E1] text-[11px] font-bold text-[#475569]">
                         {colLeads.length}
                       </span>
@@ -303,7 +344,7 @@ export const LeadPipelinePage: React.FC = () => {
                           <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-semibold border border-slate-200">
                             {l.lead_code}
                           </span>
-                          {l.score === 'Hot' && (
+                          {l.score === "Hot" && (
                             <span className="text-[10px] font-bold text-rose-600 flex items-center gap-0.5">
                               <Flame className="w-3 h-3 fill-rose-600" /> Hot
                             </span>
@@ -333,10 +374,14 @@ export const LeadPipelinePage: React.FC = () => {
                           className="pt-1.5 border-t border-[#F8FAFC] flex items-center justify-between gap-1 text-[11px]"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <span className="text-[10px] text-[#94A3B8]">Move to:</span>
+                          <span className="text-[10px] text-[#94A3B8]">
+                            Move to:
+                          </span>
                           <select
                             value={l.status}
-                            onChange={(e) => handleMoveTo(l.id, e.target.value as LeadStatus)}
+                            onChange={(e) =>
+                              handleMoveTo(l.id, e.target.value as LeadStatus)
+                            }
                             className="h-6 px-1.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded text-[10px] font-semibold text-[#334155]"
                           >
                             <option value="New">New</option>
@@ -368,7 +413,9 @@ export const LeadPipelinePage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-black/60 backdrop-blur-xs">
           <div className="bg-white rounded-3xl w-full max-w-md p-5 sm:p-6 shadow-2xl border border-[#E2E8F0] text-left text-xs text-[#0F172A] animate-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3 mb-3">
-              <h3 className="text-base font-bold text-[#0F172A]">Reason for Lost Lead</h3>
+              <h3 className="text-base font-bold text-[#0F172A]">
+                Reason for Lost Lead
+              </h3>
               <button
                 type="button"
                 onClick={() => {
@@ -383,11 +430,14 @@ export const LeadPipelinePage: React.FC = () => {
 
             <form onSubmit={handleConfirmLostReason} className="space-y-3.5">
               <p className="text-xs text-[#64748B]">
-                Please record why this inquiry could not be closed so sales conversion metrics remain accurate.
+                Please record why this inquiry could not be closed so sales
+                conversion metrics remain accurate.
               </p>
 
               <div>
-                <label className="block font-semibold text-[#1E293B] mb-1">Select Lost Reason *</label>
+                <label className="block font-semibold text-[#1E293B] mb-1">
+                  Select Lost Reason *
+                </label>
                 <select
                   required
                   value={lostReason}
@@ -395,9 +445,13 @@ export const LeadPipelinePage: React.FC = () => {
                   className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
                 >
                   <option value="Too expensive">Too expensive</option>
-                  <option value="No response after follow-up">No response after follow-up</option>
+                  <option value="No response after follow-up">
+                    No response after follow-up
+                  </option>
                   <option value="Chose competitor">Chose competitor</option>
-                  <option value="Dates not available">Dates not available</option>
+                  <option value="Dates not available">
+                    Dates not available
+                  </option>
                   <option value="Location too far">Location too far</option>
                 </select>
               </div>

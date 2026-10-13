@@ -46,9 +46,11 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
           onOpenMobileDrawer={() => setIsMobileDrawerOpen(true)}
         />
 
-        {/* Scrollable Main Content Area with 1px flush padding (Exact Screenshot Match) */}
-        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden w-full p-1 sm:p-1.5 pb-20 md:pb-2 flex flex-col bg-[#F8FAFC]">
-          <PageTransition>{children}</PageTransition>
+        {/* Scrollable Main Content Area with generous mobile gutters and luxury framing */}
+        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden w-full px-2.5 py-3 sm:px-6 sm:py-5 pb-24 md:pb-6 flex flex-col bg-[#F8FAFC]">
+          <div className="w-full max-w-[1600px] mx-auto flex-1 flex flex-col">
+            <PageTransition>{children}</PageTransition>
+          </div>
         </main>
       </div>
 

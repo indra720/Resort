@@ -47,7 +47,7 @@ export const ReportsPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-4 sm:space-y-5 text-left">
+    <div className="space-y-4 sm:space-y-5 text-left pb-16 sm:pb-8">
       {/* Role-Specific Perspective Top Banner */}
       {isOwner ? (
         <div className="p-4 bg-gradient-to-r from-emerald-50 via-teal-50/50 to-white border border-emerald-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
@@ -56,7 +56,7 @@ export const ReportsPage: React.FC = () => {
               <Crown className="w-5 h-5 text-amber-300" />
             </div>
             <div>
-              <div className="flex flex-col lg:flex-row items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs font-bold text-[#0F5132] uppercase tracking-wider">
                   Resort Owner Executive Financial Desk
                 </span>
@@ -69,8 +69,8 @@ export const ReportsPage: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="text-right shrink-0">
-            <span className="text-xs text-[#64748B] block">Current Net Profit</span>
+          <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center border-t sm:border-t-0 pt-2 sm:pt-0 border-emerald-200/60 shrink-0">
+            <span className="text-xs text-[#64748B]">Current Net Profit</span>
             <span className="text-base font-black text-[#0F5132]">{formatINR(3390000)}</span>
           </div>
         </div>
@@ -81,7 +81,7 @@ export const ReportsPage: React.FC = () => {
               <ClipboardList className="w-5 h-5 text-sky-100" />
             </div>
             <div>
-              <div className="flex flex-col lg:flex-row items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs font-bold text-[#0369A1] uppercase tracking-wider">
                   Resort General Manager Operational Audit
                 </span>
@@ -94,8 +94,8 @@ export const ReportsPage: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="text-right shrink-0">
-            <span className="text-xs text-[#64748B] block">Avg Room Turnaround</span>
+          <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center border-t sm:border-t-0 pt-2 sm:pt-0 border-blue-200/60 shrink-0">
+            <span className="text-xs text-[#64748B]">Avg Room Turnaround</span>
             <span className="text-base font-black text-[#0284C7]">38 mins</span>
           </div>
         </div>
@@ -111,7 +111,7 @@ export const ReportsPage: React.FC = () => {
               ? 'Operations & Velocity Analytics'
               : 'Financial & Operational Reports'}
           </h1>
-          <p className="text-xs sm:text-sm text-[#6B7280]">
+          <p className="text-xs sm:text-sm text-[#6B7280] mt-0.5">
             {isOwner
               ? 'Multi-property Capex yield, EBITDA margins, and statutory tax compliance.'
               : isManager
@@ -120,10 +120,11 @@ export const ReportsPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2.5">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
           <Button
             variant="outline"
             size="md"
+            className="flex-1 sm:flex-initial justify-center"
             onClick={handleExportCSV}
             leftIcon={<FileSpreadsheet className="w-4 h-4 text-[#22C55E]" />}
           >
@@ -133,6 +134,7 @@ export const ReportsPage: React.FC = () => {
           <Button
             variant="primary"
             size="md"
+            className="flex-1 sm:flex-initial justify-center"
             onClick={handleExportPDF}
             leftIcon={<Download className="w-4 h-4" />}
           >
@@ -142,13 +144,13 @@ export const ReportsPage: React.FC = () => {
       </div>
 
       {/* Date Range Selector & Report Tabs */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-white border border-[#E5E7EB] shadow-sm">
-        <div className="flex flex-wrap gap-2">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-3.5 rounded-xl bg-white border border-[#E5E7EB] shadow-sm">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none w-full min-w-0">
           {/* Owner Exclusive Tab */}
           {isOwner && (
             <button
               onClick={() => setReportType('investor_pnl')}
-              className={`px-3 py-2 text-xs rounded-lg flex items-center gap-1.5 transition-all ${
+              className={`shrink-0 whitespace-nowrap px-3 py-2 text-xs rounded-lg flex items-center gap-1.5 transition-all ${
                 reportType === 'investor_pnl'
                   ? 'bg-[#0F5132] text-white font-semibold shadow-xs'
                   : 'bg-emerald-50/60 text-[#0F5132] hover:bg-emerald-100/50'
@@ -163,7 +165,7 @@ export const ReportsPage: React.FC = () => {
           {isManager && (
             <button
               onClick={() => setReportType('operations_sla')}
-              className={`px-3 py-2 text-xs rounded-lg flex items-center gap-1.5 transition-all ${
+              className={`shrink-0 whitespace-nowrap px-3 py-2 text-xs rounded-lg flex items-center gap-1.5 transition-all ${
                 reportType === 'operations_sla'
                   ? 'bg-[#0284C7] text-white font-semibold shadow-xs'
                   : 'bg-sky-50 text-[#0284C7] hover:bg-sky-100'
@@ -186,9 +188,9 @@ export const ReportsPage: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setReportType(tab.id as typeof reportType)}
-                className={`px-3 py-2 text-xs rounded-lg flex items-center gap-1.5 transition-all ${
+                className={`shrink-0 whitespace-nowrap px-3 py-2 text-xs rounded-lg flex items-center gap-1.5 transition-all ${
                   isSelected
-                    ? 'bg-[#0F5132] text-white font-semibold'
+                    ? 'bg-[#0F5132] text-white font-semibold shadow-xs'
                     : 'bg-[#F8FAFC] text-[#6B7280] hover:text-[#1F2937]'
                 }`}
               >
@@ -199,7 +201,7 @@ export const ReportsPage: React.FC = () => {
           })}
         </div>
 
-        <div className="flex items-center gap-2 text-xs">
+        <div className="flex items-center justify-between sm:justify-end gap-2 text-xs pt-2 sm:pt-0 border-t sm:border-t-0 border-[#E5E7EB] shrink-0">
           <Calendar className="w-4 h-4 text-[#0F5132]" />
           <select
             value={dateRange}
@@ -255,19 +257,19 @@ export const ReportsPage: React.FC = () => {
             {/* Owner Statement Card */}
             <Card className="lg:col-span-2">
               <CardHeader>
-                <CardTitle className="flex flex-col md:flex-row items-center justify-between">
-                  <div className="flex flex-col lg:flex-row items-center gap-2">
+                <CardTitle className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
                     <Crown className="w-4 h-4 text-amber-500" />
                     <span>Executive P&L Statement (FY 2026-27 YTD)</span>
                   </div>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold self-start sm:self-auto">
                     Statutory Audited
                   </span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="overflow-x-auto">
-                  <table className="w-[300px] min-w-0 md:w-full overflow-x-auto text-left text-xs border-collapse">
+                  <table className="w-full text-left text-xs border-collapse">
                     <thead>
                       <tr className="border-b border-[#E2E8F0] text-[#64748B] font-semibold">
                         <th className="py-2.5 px-3">Revenue / Cost Head</th>

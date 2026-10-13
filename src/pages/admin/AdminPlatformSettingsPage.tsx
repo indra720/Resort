@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { toast } from '@/store/useToastStore';
+import React, { useState } from "react";
+import { toast } from "@/store/useToastStore";
 import {
   Settings,
   CreditCard,
@@ -12,27 +12,27 @@ import {
   Building2,
   Mail,
   Lock,
-} from 'lucide-react';
+} from "lucide-react";
 
 export const AdminPlatformSettingsPage: React.FC = () => {
   const [config, setConfig] = useState({
-    platformName: 'Joy Resorts SaaS Engine',
-    supportEmail: 'platform-support@joyresorts.com',
-    supportHotline: '+91 80000 12345',
+    platformName: "Joy Resorts SaaS Engine",
+    supportEmail: "platform-support@joyresorts.com",
+    supportHotline: "+91 80000 12345",
     defaultTrialDays: 14,
-    platformGSTIN: '27AABCT1334M1Z2',
-    razorpayKeyId: 'rzp_live_9921JoyResorts',
-    razorpaySecret: '••••••••••••••••••••••••',
-    stripeWebhookSecret: 'whsec_88192JoySecretKeyLive',
-    smsGateway: 'Twilio Cloud SMS API',
-    whatsappProvider: 'Gupshup Enterprise Verified WhatsApp',
+    platformGSTIN: "27AABCT1334M1Z2",
+    razorpayKeyId: "rzp_live_9921JoyResorts",
+    razorpaySecret: "••••••••••••••••••••••••",
+    stripeWebhookSecret: "whsec_88192JoySecretKeyLive",
+    smsGateway: "Twilio Cloud SMS API",
+    whatsappProvider: "Gupshup Enterprise Verified WhatsApp",
     maintenanceMode: false,
     autoBackupDaily: true,
   });
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Global SaaS platform configuration saved successfully!');
+    toast.success("Global SaaS platform configuration saved successfully!");
   };
 
   return (
@@ -59,7 +59,8 @@ export const AdminPlatformSettingsPage: React.FC = () => {
                 Global SaaS Platform Configuration
               </h1>
               <p className="text-xs sm:text-sm text-[#475569] font-medium mt-0.5">
-                Central payment rails, GST compliance parameters, multi-tenant isolation, and SMS gateways
+                Central payment rails, GST compliance parameters, multi-tenant
+                isolation, and SMS gateways
               </p>
             </div>
           </div>
@@ -71,35 +72,49 @@ export const AdminPlatformSettingsPage: React.FC = () => {
         <div className="bg-white rounded-3xl p-5 border border-[#E2E8F0] shadow-2xs space-y-4 text-xs">
           <div className="flex items-center gap-2 border-b border-[#E2E8F0] pb-3">
             <Building2 className="w-4 h-4 text-[#0F5132]" />
-            <h3 className="text-sm font-bold text-[#0F172A]">Platform Brand & General Settings</h3>
+            <h3 className="text-sm font-bold text-[#0F172A]">
+              Platform Brand & General Settings
+            </h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block font-semibold text-[#1E293B] mb-1">Platform Brand Name</label>
+              <label className="block font-semibold text-[#1E293B] mb-1">
+                Platform Brand Name
+              </label>
               <input
                 type="text"
                 value={config.platformName}
-                onChange={(e) => setConfig({ ...config, platformName: e.target.value })}
+                onChange={(e) =>
+                  setConfig({ ...config, platformName: e.target.value })
+                }
                 className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
               />
             </div>
             <div>
-              <label className="block font-semibold text-[#1E293B] mb-1">Platform Support Email</label>
+              <label className="block font-semibold text-[#1E293B] mb-1">
+                Platform Support Email
+              </label>
               <input
                 type="email"
                 value={config.supportEmail}
-                onChange={(e) => setConfig({ ...config, supportEmail: e.target.value })}
+                onChange={(e) =>
+                  setConfig({ ...config, supportEmail: e.target.value })
+                }
                 className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
               />
             </div>
             <div>
-              <label className="block font-semibold text-[#1E293B] mb-1">Support Hotline</label>
+              <label className="block font-semibold text-[#1E293B] mb-1">
+                Support Hotline
+              </label>
               <input
                 type="text"
                 maxLength={10}
                 value={config.supportHotline}
-                onChange={(e) => setConfig({ ...config, supportHotline: e.target.value })}
+                onChange={(e) =>
+                  setConfig({ ...config, supportHotline: e.target.value })
+                }
                 className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
               />
             </div>
@@ -107,20 +122,31 @@ export const AdminPlatformSettingsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block font-semibold text-[#1E293B] mb-1">Default Trial Period (Days)</label>
+              <label className="block font-semibold text-[#1E293B] mb-1">
+                Default Trial Period (Days)
+              </label>
               <input
                 type="number"
                 value={config.defaultTrialDays}
-                onChange={(e) => setConfig({ ...config, defaultTrialDays: Number(e.target.value) })}
+                onChange={(e) =>
+                  setConfig({
+                    ...config,
+                    defaultTrialDays: Number(e.target.value),
+                  })
+                }
                 className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
               />
             </div>
             <div>
-              <label className="block font-semibold text-[#1E293B] mb-1">Platform Master GSTIN</label>
+              <label className="block font-semibold text-[#1E293B] mb-1">
+                Platform Master GSTIN
+              </label>
               <input
                 type="text"
                 value={config.platformGSTIN}
-                onChange={(e) => setConfig({ ...config, platformGSTIN: e.target.value })}
+                onChange={(e) =>
+                  setConfig({ ...config, platformGSTIN: e.target.value })
+                }
                 className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
               />
             </div>
@@ -131,34 +157,48 @@ export const AdminPlatformSettingsPage: React.FC = () => {
         <div className="bg-white rounded-3xl p-5 border border-[#E2E8F0] shadow-2xs space-y-4 text-xs">
           <div className="flex items-center gap-2 border-b border-[#E2E8F0] pb-3">
             <CreditCard className="w-4 h-4 text-[#0F5132]" />
-            <h3 className="text-sm font-bold text-[#0F172A]">Payment Gateways & Subscription Webhooks</h3>
+            <h3 className="text-sm font-bold text-[#0F172A]">
+              Payment Gateways & Subscription Webhooks
+            </h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block font-semibold text-[#1E293B] mb-1">Razorpay Live Key ID</label>
+              <label className="block font-semibold text-[#1E293B] mb-1">
+                Razorpay Live Key ID
+              </label>
               <input
                 type="text"
                 value={config.razorpayKeyId}
-                onChange={(e) => setConfig({ ...config, razorpayKeyId: e.target.value })}
+                onChange={(e) =>
+                  setConfig({ ...config, razorpayKeyId: e.target.value })
+                }
                 className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30 font-mono text-[11px]"
               />
             </div>
             <div>
-              <label className="block font-semibold text-[#1E293B] mb-1">Razorpay API Secret</label>
+              <label className="block font-semibold text-[#1E293B] mb-1">
+                Razorpay API Secret
+              </label>
               <input
                 type="password"
                 value={config.razorpaySecret}
-                onChange={(e) => setConfig({ ...config, razorpaySecret: e.target.value })}
+                onChange={(e) =>
+                  setConfig({ ...config, razorpaySecret: e.target.value })
+                }
                 className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30 font-mono text-[11px]"
               />
             </div>
             <div>
-              <label className="block font-semibold text-[#1E293B] mb-1">Stripe Webhook Secret</label>
+              <label className="block font-semibold text-[#1E293B] mb-1">
+                Stripe Webhook Secret
+              </label>
               <input
                 type="text"
                 value={config.stripeWebhookSecret}
-                onChange={(e) => setConfig({ ...config, stripeWebhookSecret: e.target.value })}
+                onChange={(e) =>
+                  setConfig({ ...config, stripeWebhookSecret: e.target.value })
+                }
                 className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30 font-mono text-[11px]"
               />
             </div>
@@ -169,25 +209,35 @@ export const AdminPlatformSettingsPage: React.FC = () => {
         <div className="bg-white rounded-3xl p-5 border border-[#E2E8F0] shadow-2xs space-y-4 text-xs">
           <div className="flex items-center gap-2 border-b border-[#E2E8F0] pb-3">
             <Bell className="w-4 h-4 text-[#0F5132]" />
-            <h3 className="text-sm font-bold text-[#0F172A]">Messaging & Automated Notifications</h3>
+            <h3 className="text-sm font-bold text-[#0F172A]">
+              Messaging & Automated Notifications
+            </h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block font-semibold text-[#1E293B] mb-1">Primary SMS Gateway</label>
+              <label className="block font-semibold text-[#1E293B] mb-1">
+                Primary SMS Gateway
+              </label>
               <input
                 type="text"
                 value={config.smsGateway}
-                onChange={(e) => setConfig({ ...config, smsGateway: e.target.value })}
+                onChange={(e) =>
+                  setConfig({ ...config, smsGateway: e.target.value })
+                }
                 className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
               />
             </div>
             <div>
-              <label className="block font-semibold text-[#1E293B] mb-1">WhatsApp Business Provider</label>
+              <label className="block font-semibold text-[#1E293B] mb-1">
+                WhatsApp Business Provider
+              </label>
               <input
                 type="text"
                 value={config.whatsappProvider}
-                onChange={(e) => setConfig({ ...config, whatsappProvider: e.target.value })}
+                onChange={(e) =>
+                  setConfig({ ...config, whatsappProvider: e.target.value })
+                }
                 className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
               />
             </div>
@@ -198,19 +248,27 @@ export const AdminPlatformSettingsPage: React.FC = () => {
         <div className="bg-white rounded-3xl p-5 border border-[#E2E8F0] shadow-2xs space-y-4 text-xs">
           <div className="flex items-center gap-2 border-b border-[#E2E8F0] pb-3">
             <Server className="w-4 h-4 text-[#0F5132]" />
-            <h3 className="text-sm font-bold text-[#0F172A]">Tenant Schema Security & Backups</h3>
+            <h3 className="text-sm font-bold text-[#0F172A]">
+              Tenant Schema Security & Backups
+            </h3>
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-3 bg-[#F8FAFC] rounded-2xl border border-[#E2E8F0]">
             <div>
-              <p className="font-bold text-[#0F172A]">Daily Automated Cloud Snapshots</p>
-              <p className="text-[11px] text-[#64748B]">Backs up isolated tenant databases to encrypted AWS S3 buckets</p>
+              <p className="font-bold text-[#0F172A]">
+                Daily Automated Cloud Snapshots
+              </p>
+              <p className="text-[11px] text-[#64748B]">
+                Backs up isolated tenant databases to encrypted AWS S3 buckets
+              </p>
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input
                 type="checkbox"
                 checked={config.autoBackupDaily}
-                onChange={(e) => setConfig({ ...config, autoBackupDaily: e.target.checked })}
+                onChange={(e) =>
+                  setConfig({ ...config, autoBackupDaily: e.target.checked })
+                }
                 className="sr-only peer"
               />
               <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#0F5132]" />
@@ -219,14 +277,21 @@ export const AdminPlatformSettingsPage: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-3 bg-[#F8FAFC] rounded-2xl border border-[#E2E8F0]">
             <div>
-              <p className="font-bold text-[#0F172A]">Platform Maintenance Mode</p>
-              <p className="text-[11px] text-[#64748B]">Displays planned maintenance message to all non-Super Admin users</p>
+              <p className="font-bold text-[#0F172A]">
+                Platform Maintenance Mode
+              </p>
+              <p className="text-[11px] text-[#64748B]">
+                Displays planned maintenance message to all non-Super Admin
+                users
+              </p>
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input
                 type="checkbox"
                 checked={config.maintenanceMode}
-                onChange={(e) => setConfig({ ...config, maintenanceMode: e.target.checked })}
+                onChange={(e) =>
+                  setConfig({ ...config, maintenanceMode: e.target.checked })
+                }
                 className="sr-only peer"
               />
               <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#DC2626]" />

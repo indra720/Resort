@@ -101,28 +101,29 @@ export const ResortOwnerDashboard: React.FC = () => {
   return (
     <div className="space-y-4 text-[#111827] w-full pb-8">
       {/* 1. Executive Top Header */}
-      <div className="bg-white border border-[#E2E8F0] rounded-2xl p-4 sm:p-6 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white border border-[#E2E8F0] rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)] flex flex-col md:flex-row md:items-center justify-between gap-3.5">
         <div>
-          <div className="flex flex-col lg:flex-row items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-full bg-[#0F5132]/10 text-[#0F5132] text-[11px] font-bold uppercase tracking-wider">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-emerald-50 text-[#0F5132] text-[10px] sm:text-[11px] font-bold uppercase tracking-wider border border-emerald-200/80 shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0F5132] animate-pulse" />
               Resort Owner Executive Suite
             </span>
-            <span className="text-xs text-[#64748B]">Property Ownership & Capital Hub</span>
+            <span className="text-[11px] sm:text-xs font-medium text-[#64748B]">Property Ownership & Capital Hub</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-1">
+          <h1 className="text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-1 sm:mt-1.5 leading-snug">
             {currentResort?.name}
           </h1>
-          <p className="text-xs text-[#64748B] mt-0.5">
+          <p className="text-[11px] sm:text-xs text-[#64748B] mt-0.5 leading-relaxed">
             P&L performance, capital capex authorizations & multi-branch oversight
           </p>
         </div>
 
         {/* Property Switcher & Quarter Selector */}
-        <div className="flex flex-wrap items-center gap-2.5">
+        <div className="w-full md:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
           <select
             value={currentResort?.id}
             onChange={(e) => switchResort(e.target.value)}
-            className="px-3 py-1.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-semibold text-[#1E293B] focus:outline-none focus:border-[#0F5132]"
+            className="w-full sm:w-auto px-3 py-2 rounded-xl bg-[#F8FAFC] hover:bg-slate-100/80 border border-[#E2E8F0] text-xs font-semibold text-[#1E293B] focus:outline-none focus:border-[#0F5132] transition-colors shadow-2xs"
             aria-label="Switch Resort Branch"
           >
             {allResorts.map((r) => (
@@ -135,7 +136,7 @@ export const ResortOwnerDashboard: React.FC = () => {
           <select
             value={selectedQuarter}
             onChange={(e) => setSelectedQuarter(e.target.value)}
-            className="px-3 py-1.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-semibold text-[#1E293B] focus:outline-none focus:border-[#0F5132]"
+            className="w-full sm:w-auto px-3 py-2 rounded-xl bg-[#F8FAFC] hover:bg-slate-100/80 border border-[#E2E8F0] text-xs font-semibold text-[#1E293B] focus:outline-none focus:border-[#0F5132] transition-colors shadow-2xs"
             aria-label="Select Financial Period"
           >
             <option value="Q3 FY26">Q3 FY26 (Current)</option>
@@ -146,7 +147,7 @@ export const ResortOwnerDashboard: React.FC = () => {
           <button
             type="button"
             onClick={() => navigate('/reports')}
-            className="px-3.5 py-1.5 rounded-xl bg-[#0F5132] hover:bg-[#0A3622] text-white text-xs font-bold transition-all shadow-xs flex items-center gap-1.5"
+            className="w-full sm:w-auto px-3.5 py-2 rounded-xl bg-[#0F5132] hover:bg-[#0A3622] active:scale-[0.98] text-white text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-2 shrink-0"
           >
             <FileSpreadsheet className="w-3.5 h-3.5" />
             <span>P&L Ledger</span>
@@ -154,136 +155,137 @@ export const ResortOwnerDashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* 2. Top 5 Executive Owner KPI Cards (Responsive spreading cards with top icon layout) */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3.5">
-        <div className="p-3 sm:p-4 bg-white border border-[#E2E8F0] rounded-2xl shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+      {/* 2. Top 5 Executive Owner KPI Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3.5">
+        <div className="p-3 sm:p-4 bg-white border border-[#E2E8F0] rounded-2xl shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between min-w-0">
           <div className="flex items-center justify-between gap-1 mb-2">
             <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-emerald-50 text-[#0F5132] flex items-center justify-center shrink-0 shadow-2xs">
               <DollarSign className="w-4 h-4" />
             </div>
-            <span className="text-[10px] sm:text-[11px] font-semibold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full flex items-center shrink-0">
+            <span className="text-[10px] sm:text-[11px] font-bold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full flex items-center shrink-0">
               <TrendingUp className="w-3 h-3 mr-0.5" />
               +14.2%
             </span>
           </div>
           <div>
             <p className="text-xs font-semibold text-[#64748B] leading-snug">Gross Revenue (MTD)</p>
-            <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+            <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
               {formatINR(6840000)}
+              <p className="text-[10px] sm:text-[11px] text-[#16A34A] font-semibold mt-0.5 truncate">
+                vs last month
+              </p>
             </div>
-            <p className="text-[10px] sm:text-[11px] text-[#16A34A] font-semibold mt-0.5 whitespace-nowrap">
-              vs last month
-            </p>
           </div>
         </div>
 
-        <div className="p-3 sm:p-4 bg-white border border-[#E2E8F0] rounded-2xl shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+        <div className="p-3 sm:p-4 bg-white border border-[#E2E8F0] rounded-2xl shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between min-w-0">
           <div className="flex items-center justify-between gap-1 mb-2">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-emerald-50 text-[#0F5132] flex items-center justify-center shrink-0 shadow-2xs">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center shrink-0 shadow-2xs">
               <Sparkles className="w-4 h-4" />
             </div>
-            <span className="text-[10px] sm:text-[11px] font-semibold text-[#0F5132] bg-emerald-50 px-2 py-0.5 rounded-full shrink-0">
+            <span className="text-[10px] sm:text-[11px] font-bold text-[#0F5132] bg-emerald-50 px-2 py-0.5 rounded-full shrink-0">
               49.5% Net
             </span>
           </div>
           <div>
             <p className="text-xs font-semibold text-[#64748B] leading-snug">Net Profit (Margin)</p>
-            <div className="text-xl sm:text-2xl font-black text-[#0F5132] tracking-tight mt-0.5 whitespace-nowrap">
+            <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F5132] tracking-tight mt-0.5">
               {formatINR(3390000)}
+              <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
+                After GST & Ops
+              </p>
             </div>
-            <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 whitespace-nowrap">
-              After GST & Operations
-            </p>
           </div>
         </div>
 
-        <div className="p-3 sm:p-4 bg-white border border-[#E2E8F0] rounded-2xl shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+        <div className="p-3 sm:p-4 bg-white border border-[#E2E8F0] rounded-2xl shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between min-w-0">
           <div className="flex items-center justify-between gap-1 mb-2">
             <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0 shadow-2xs">
               <Building2 className="w-4 h-4" />
             </div>
-            <span className="text-[10px] sm:text-[11px] font-semibold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full shrink-0">
+            <span className="text-[10px] sm:text-[11px] font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full shrink-0">
               High Season
             </span>
           </div>
           <div>
             <p className="text-xs font-semibold text-[#64748B] leading-snug">Average Occupancy</p>
-            <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+            <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
               87.5%
+              <p className="text-[10px] sm:text-[11px] text-[#64748B] font-medium mt-0.5 truncate">
+                28 of 32 occupied
+              </p>
             </div>
-            <p className="text-[10px] sm:text-[11px] text-[#64748B] font-medium mt-0.5 whitespace-nowrap">
-              28 of 32 villas occupied
-            </p>
           </div>
         </div>
 
-        <div className="p-3 sm:p-4 bg-white border border-[#E2E8F0] rounded-2xl shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+        <div className="p-3 sm:p-4 bg-white border border-[#E2E8F0] rounded-2xl shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between min-w-0">
           <div className="flex items-center justify-between gap-1 mb-2">
             <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 shadow-2xs">
               <Layers className="w-4 h-4" />
             </div>
-            <span className="text-[10px] sm:text-[11px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full shrink-0">
+            <span className="text-[10px] sm:text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full shrink-0">
               RevPAR +8%
             </span>
           </div>
           <div>
             <p className="text-xs font-semibold text-[#64748B] leading-snug">Average Tariff (ADR)</p>
-            <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+            <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
               {formatINR(18200)}
+              <p className="text-[10px] sm:text-[11px] text-[#64748B] font-medium mt-0.5 truncate">
+                Per villa / night
+              </p>
             </div>
-            <p className="text-[10px] sm:text-[11px] text-[#64748B] font-medium mt-0.5 whitespace-nowrap">
-              Per villa / per night
-            </p>
           </div>
         </div>
 
-        <div className="p-3 sm:p-4 bg-white border border-[#E2E8F0] rounded-2xl shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between col-span-2 lg:col-span-1">
+        {/* Priority Approvals Card */}
+        <div className="p-3 sm:p-4 bg-white border border-[#E2E8F0] rounded-2xl shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between min-w-0 sm:col-span-2 lg:col-span-1">
           <div className="flex items-center justify-between gap-1 mb-2">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 shadow-2xs">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 shadow-2xs">
               <Clock className="w-4 h-4" />
             </div>
-            <span className="text-[10px] sm:text-[11px] font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full shrink-0">
+            <span className="text-[10px] sm:text-[11px] font-bold text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded-full shrink-0 border border-amber-200/70">
               Requires Sign-off
             </span>
           </div>
           <div>
-            <p className="text-xs font-semibold text-[#64748B] leading-snug">Pending Approvals</p>
-            <div className="text-xl sm:text-2xl font-black text-amber-600 tracking-tight mt-0.5 whitespace-nowrap">
+            <p className="text-xs font-semibold text-amber-900 leading-snug">Pending Approvals</p>
+            <div className="flex justify-between text-lg sm:text-2xl font-black text-amber-600 tracking-tight mt-0.5">
               {pendingApprovals.length} Action Items
+              <p className="text-[10px] sm:text-[11px] text-amber-700 font-medium mt-0.5 truncate">
+                Needs Owner Sign-off
+              </p>
             </div>
-            <p className="text-[10px] sm:text-[11px] text-amber-700 font-medium mt-0.5 whitespace-nowrap">
-              Needs Owner Sign-off
-            </p>
           </div>
         </div>
       </div>
 
       {/* 3. Middle Section: Revenue vs Profit Chart & Branch Portfolio */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4">
         {/* Revenue & Profit Area Chart */}
-        <div className="lg:col-span-2 bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-2xs space-y-3">
-          <div className="flex items-center justify-between">
+        <div className="lg:col-span-2 bg-white border border-[#E2E8F0] rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 shadow-[0_2px_12px_-2px_rgba(0,0,0,0.04)] space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-              <h3 className="text-sm font-bold text-[#0F172A]">
+              <h3 className="text-xs sm:text-sm font-bold text-[#0F172A]">
                 6-Month Revenue, Operating Expense & Net Profit
               </h3>
-              <p className="text-xs text-[#64748B]">
+              <p className="text-[11px] sm:text-xs text-[#64748B]">
                 Financial trajectory in INR across this property
               </p>
             </div>
-            <div className="flex items-center gap-3 text-xs">
-              <span className="flex items-center gap-1.5 text-[#0F5132] font-semibold">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#0F5132]" /> Revenue
+            <div className="flex items-center gap-2 sm:gap-3 text-xs">
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-emerald-50 text-[#0F5132] text-[11px] font-semibold border border-emerald-100">
+                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#0F5132]" /> Revenue
               </span>
-              <span className="flex items-center gap-1.5 text-emerald-500 font-semibold">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" /> Net Profit
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-teal-50 text-teal-700 text-[11px] font-semibold border border-teal-100">
+                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400" /> Net Profit
               </span>
             </div>
           </div>
 
-          <div className="h-64 w-full">
+          <div className="h-52 sm:h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={OWNER_REVENUE_CHART} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+              <AreaChart data={OWNER_REVENUE_CHART} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="ownerRev" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#0F5132" stopOpacity={0.3} />
@@ -294,16 +296,16 @@ export const ResortOwnerDashboard: React.FC = () => {
                     <stop offset="95%" stopColor="#10B981" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <XAxis dataKey="month" stroke="#94A3B8" fontSize={11} tickLine={false} />
+                <XAxis dataKey="month" stroke="#94A3B8" fontSize={10} tickLine={false} />
                 <YAxis
                   stroke="#94A3B8"
-                  fontSize={11}
+                  fontSize={10}
                   tickLine={false}
                   tickFormatter={(val) => `₹${val / 100000}L`}
                 />
                 <Tooltip
                   formatter={(value: number) => [formatINR(value), 'Amount']}
-                  contentStyle={{ backgroundColor: '#0F172A', color: '#fff', borderRadius: '12px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#0F172A', color: '#fff', borderRadius: '12px', fontSize: '11px' }}
                 />
                 <Area type="monotone" dataKey="revenue" stroke="#0F5132" strokeWidth={2.5} fillOpacity={1} fill="url(#ownerRev)" />
                 <Area type="monotone" dataKey="profit" stroke="#10B981" strokeWidth={2} fillOpacity={1} fill="url(#ownerProfit)" />
@@ -313,40 +315,42 @@ export const ResortOwnerDashboard: React.FC = () => {
         </div>
 
         {/* Multi-Branch Resort Portfolio Cards */}
-        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-2xs space-y-3">
+        <div className="bg-white border border-[#E2E8F0] rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 shadow-[0_2px_12px_-2px_rgba(0,0,0,0.04)] space-y-2.5">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-bold text-[#0F172A]">Resort Group Branches</h3>
-            <span className="text-[11px] font-semibold text-[#0F5132]">3 Properties Active</span>
+            <h3 className="text-xs sm:text-sm font-bold text-[#0F172A]">Resort Group Branches</h3>
+            <span className="text-[10px] sm:text-[11px] font-semibold text-[#0F5132] bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">
+              3 Active
+            </span>
           </div>
 
-          <div className="space-y-2.5">
+          <div className="space-y-2">
             {allResorts.map((branch) => {
               const isCurrent = branch.id === currentResort?.id;
               return (
                 <div
                   key={branch.id}
                   onClick={() => switchResort(branch.id)}
-                  className={`p-3 rounded-xl border transition-all cursor-pointer ${
+                  className={`p-2.5 sm:p-3 rounded-2xl border transition-all cursor-pointer active:scale-[0.99] ${
                     isCurrent
-                      ? 'bg-emerald-50/60 border-emerald-300 ring-1 ring-emerald-300'
-                      : 'bg-[#F8FAFC] border-[#E2E8F0] hover:border-emerald-200'
+                      ? 'bg-emerald-50/70 border-emerald-300 ring-1 ring-emerald-300 shadow-2xs'
+                      : 'bg-[#F8FAFC] border-[#E2E8F0] hover:border-emerald-200 hover:bg-white'
                   }`}
                 >
                   <div className="flex items-start justify-between">
                     <div>
                       <h4 className="text-xs font-bold text-[#0F172A]">{branch.name}</h4>
-                      <p className="text-[11px] text-[#64748B]">{branch.city}, {branch.state}</p>
+                      <p className="text-[10px] sm:text-[11px] text-[#64748B]">{branch.city}, {branch.state}</p>
                     </div>
                     {isCurrent && (
-                      <span className="px-1.5 py-0.5 rounded bg-[#0F5132] text-white text-[9px] font-bold">
-                        Active View
+                      <span className="px-1.5 py-0.5 rounded-full bg-[#0F5132] text-white text-[9px] font-bold shadow-2xs">
+                        Active
                       </span>
                     )}
                   </div>
 
-                  <div className="mt-2 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[11px]">
+                  <div className="mt-1.5 pt-1.5 border-t border-slate-200/60 flex items-center justify-between text-[10px] sm:text-[11px]">
                     <span className="text-[#64748B]">Capacity: <strong>{branch.totalRooms} Villas</strong></span>
-                    <span className="font-semibold text-[#0F5132]">{formatINR(branch.mrr)} /mo</span>
+                    <span className="font-bold text-[#0F5132]">{formatINR(branch.mrr)} /mo</span>
                   </div>
                 </div>
               );
@@ -355,35 +359,125 @@ export const ResortOwnerDashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* 4. Executive Approvals Queue (Refunds, Capex, VIP Discounts) */}
-      <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-2xs space-y-3">
-        <div className="flex items-center justify-between">
+      {/* 4. Executive Approvals Queue (Stayora Pure Card Design for Mobile) */}
+      <div className="space-y-2.5 pt-1">
+        {/* Section Header on Canvas */}
+        <div className="flex items-center justify-between px-1">
           <div>
-            <h3 className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
+            <h3 className="text-xs sm:text-sm font-bold text-[#0F172A] flex items-center gap-1.5">
               <ShieldAlert className="w-4 h-4 text-amber-500" />
               <span>Executive Approvals Queue</span>
             </h3>
-            <p className="text-xs text-[#64748B]">
-              Manager and Sales proposals requiring Owner sign-off before settlement
+            <p className="text-[10px] sm:text-xs text-[#64748B]">
+              Manager and Sales proposals requiring Owner sign-off
             </p>
           </div>
-          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
-            {pendingApprovals.length} Pending Actions
+          <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 shrink-0">
+            {pendingApprovals.length} Pending
           </span>
         </div>
 
-        {/* Mobile / Tablet Horizontal Scroll Notice */}
-        <div className="lg:hidden flex items-center justify-between px-4 py-2 bg-[#F8FAFC] border-b border-[#E2E8F0] text-xs text-[#64748B]">
-          <span className="flex items-center gap-1.5 font-medium">
-            <span className="inline-block w-2 h-2 rounded-full bg-[#0F5132] animate-pulse" />
-            Scroll table horizontally to review proposals
-          </span>
-          <span className="text-[10px] font-semibold text-[#0F5132] bg-white px-2 py-0.5 rounded border border-[#E2E8F0] whitespace-nowrap">
-            ↔ Swipe to explore
-          </span>
+        {/* Mobile View: High-End Native App Card Layout (Screen 4 Stayora Style - Fits 320px!) */}
+        <div className="lg:hidden space-y-2.5">
+          {approvals.map((app) => (
+            <div
+              key={app.id}
+              className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-[0_2px_12px_-2px_rgba(0,0,0,0.04)] space-y-2.5"
+            >
+              {/* Row 1: Type Badge on Left, Status Badge on Right (Only 2 Badges - Fits 320px Perfectly) */}
+              <div className="flex items-center justify-between gap-2">
+                <span
+                  className={`px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-wider ${
+                    app.type === 'Refund'
+                      ? 'bg-rose-50 text-rose-700 border border-rose-200'
+                      : app.type === 'Capex'
+                      ? 'bg-blue-50 text-blue-700 border border-blue-200'
+                      : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                  }`}
+                >
+                  {app.type}
+                </span>
+
+                <span
+                  className={`inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full ${
+                    app.status === 'Approved'
+                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                      : app.status === 'Rejected'
+                      ? 'bg-rose-50 text-rose-700 border border-rose-200'
+                      : 'bg-amber-50 text-amber-700 border border-amber-200'
+                  }`}
+                >
+                  {app.status === 'Approved' ? (
+                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                  ) : app.status === 'Rejected' ? (
+                    <XCircle className="w-3 h-3 text-rose-600" />
+                  ) : (
+                    <Clock className="w-3 h-3 text-amber-600" />
+                  )}
+                  {app.status}
+                </span>
+              </div>
+
+              {/* Row 2: Title and Prominent Amount */}
+              <div>
+                <div className="flex items-start justify-between gap-2">
+                  <h4 className="text-xs sm:text-sm font-bold text-[#0F172A] leading-snug flex-1">
+                    {app.title}
+                  </h4>
+                  <div className="text-xs sm:text-sm font-black text-[#0F172A] bg-slate-50 px-2 py-1 rounded-xl border border-slate-200/70 shrink-0">
+                    {formatINR(app.amount)}
+                  </div>
+                </div>
+                <p className="text-[11px] text-[#64748B] bg-[#F8FAFC] border border-slate-100 rounded-xl p-2.5 mt-2 leading-relaxed">
+                  {app.reason}
+                </p>
+              </div>
+
+              {/* Row 3: Requester & Date Info */}
+              <div className="flex flex-wrap items-center justify-between gap-1 text-[10px] sm:text-[11px] text-[#64748B] pt-1.5 border-t border-slate-100">
+                <div className="flex items-center gap-1 font-medium truncate max-w-[170px]">
+                  <Users2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                  <span className="truncate">{app.requestedBy}</span>
+                </div>
+                <div className="flex items-center gap-1 text-slate-400 shrink-0">
+                  <Clock className="w-3 h-3" />
+                  <span>{app.requestedDate}</span>
+                </div>
+              </div>
+
+              {/* Row 4: Owner Sign-off Buttons */}
+              <div className="pt-0.5">
+                {app.status === 'Pending' ? (
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => handleAction(app.id, 'Approved')}
+                      className="h-9 rounded-xl bg-[#0F5132] hover:bg-[#0A3622] active:scale-[0.98] text-white text-xs font-bold transition-all shadow-2xs flex items-center justify-center gap-1"
+                    >
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>Approve</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleAction(app.id, 'Rejected')}
+                      className="h-9 rounded-xl bg-rose-50 hover:bg-rose-100 active:scale-[0.98] text-rose-700 text-xs font-bold border border-rose-200 transition-all flex items-center justify-center gap-1"
+                    >
+                      <XCircle className="w-3.5 h-3.5" />
+                      <span>Reject</span>
+                    </button>
+                  </div>
+                ) : (
+                  <div className="w-full text-center py-2 text-xs text-[#94A3B8] font-medium italic bg-[#F8FAFC] rounded-xl border border-slate-100">
+                    Owner Sign-off: Decided ({app.status})
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="overflow-x-auto scrollbar-thin">
+        {/* Desktop View: Full Tabular Layout */}
+        <div className="hidden lg:block bg-white border border-[#E2E8F0] rounded-2xl sm:rounded-3xl p-5 shadow-[0_2px_12px_-2px_rgba(0,0,0,0.04)] overflow-x-auto scrollbar-thin">
           <table className="w-full min-w-[860px] text-left text-xs border-collapse">
             <thead className="bg-[#F8FAFC] text-[#64748B] uppercase text-[10px] font-semibold border-y border-[#E2E8F0] whitespace-nowrap">
               <tr>

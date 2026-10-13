@@ -231,31 +231,49 @@ export const PaymentsPage: React.FC = () => {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-[#64748B]">Total Captured</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-[#0F5132] mt-1">{formatINR(totalCaptured)}</p>
-          <span className="text-[10px] text-emerald-600 font-medium">100% Settled</span>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-[#64748B]">Total Captured</span>
+            <span className="text-[10px] text-emerald-600 font-semibold bg-[#DCFCE7] px-2 py-0.5 rounded-full shrink-0">100% Settled</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F5132] tracking-tight mt-0.5">
+            <span>{formatINR(totalCaptured)}</span>
+            <p className="text-[11px] font-normal text-[#94A3B8] mt-0.5">All verified payments</p>
+          </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-[#64748B]">UPI Collections</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-[#0F172A] mt-1">{formatINR(upiTotal)}</p>
-          <span className="text-[10px] text-[#64748B]">GPay, PhonePe, Paytm</span>
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-[#64748B]">UPI Collections</span>
+            <span className="text-[10px] text-[#64748B] font-semibold bg-slate-100 px-2 py-0.5 rounded-full shrink-0">Instant QR</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+            <span>{formatINR(upiTotal)}</span>
+            <p className="text-[11px] font-normal text-[#64748B] mt-0.5">GPay, PhonePe, Paytm</p>
+          </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-[#64748B]">Card POS Terminal</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-[#0F172A] mt-1">{formatINR(cardTotal)}</p>
-          <span className="text-[10px] text-[#64748B]">Visa, Mastercard, Amex</span>
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-[#64748B]">Card POS Terminal</span>
+            <span className="text-[10px] text-[#64748B] font-semibold bg-slate-100 px-2 py-0.5 rounded-full shrink-0">POS Swipes</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+            <span>{formatINR(cardTotal)}</span>
+            <p className="text-[11px] font-normal text-[#64748B] mt-0.5">Visa, Mastercard, Amex</p>
+          </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
-          <p className="text-[11px] font-semibold text-amber-600">Pending Clearances</p>
-          <p className="text-xl sm:text-2xl font-extrabold text-amber-600 mt-1">
-            {formatINR(payments.filter((p) => p.status === 'Pending').reduce((acc, p) => acc + p.amount, 0))}
-          </p>
-          <span className="text-[10px] text-amber-600 font-medium">1 Transaction pending</span>
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+          <div className="flex items-center justify-between gap-1 mb-1.5">
+            <span className="text-xs font-semibold text-amber-700">Pending Clearances</span>
+            <span className="text-[10px] text-amber-700 font-semibold bg-amber-50 px-2 py-0.5 rounded-full shrink-0">1 pending</span>
+          </div>
+          <div className="flex justify-between items-baseline lg:block text-xl sm:text-2xl font-black text-amber-600 tracking-tight mt-0.5">
+            <span>{formatINR(payments.filter((p) => p.status === 'Pending').reduce((acc, p) => acc + p.amount, 0))}</span>
+            <p className="text-[11px] font-normal text-amber-600 mt-0.5">Awaiting bank settlement</p>
+          </div>
         </div>
       </div>
 

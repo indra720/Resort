@@ -98,11 +98,11 @@ export const ReceptionistDashboard: React.FC = () => {
           </div>
         </div>
 
-        {/* 5 Reception Metric Cards (Responsive spreading cards with top icon layout) */}
+        {/* 5 Reception Metric Cards */}
         <div className="p-3 sm:p-4 bg-white/95 backdrop-blur-md border-t border-[#E2E8F0]">
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3.5">
             {/* Card 1 */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#22C55E] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <UserCheck className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -113,17 +113,17 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">Today's Check-Ins</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   18
+                  <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
+                    Scheduled today
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 whitespace-nowrap">
-                  Scheduled today
-                </p>
               </div>
             </div>
 
             {/* Card 2 */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#38BDF8] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <UserX className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -134,17 +134,17 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">Today's Check-Outs</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   12
+                  <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
+                    By 11:00 AM
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 whitespace-nowrap">
-                  By 11:00 AM
-                </p>
               </div>
             </div>
 
             {/* Card 3 */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#F97316] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <BedDouble className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -155,17 +155,17 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">Available Villas</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   6
+                  <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
+                    Sanitized & Clean
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 whitespace-nowrap">
-                  Sanitized & Clean
-                </p>
               </div>
             </div>
 
             {/* Card 4 */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#8B5CF6] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -176,17 +176,17 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">In-House Guests</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   76
+                  <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
+                    24 occupied keys
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 whitespace-nowrap">
-                  24 occupied keys
-                </p>
               </div>
             </div>
 
             {/* Card 5 */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between col-span-2 lg:col-span-1">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0 sm:col-span-2 lg:col-span-1">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#84CC16] flex items-center justify-center text-white shrink-0 shadow-2xs">
                   <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -197,12 +197,12 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">Pending Folios</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5 whitespace-nowrap">
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   ₹84,000
+                  <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
+                    At Check-Out
+                  </p>
                 </div>
-                <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 whitespace-nowrap">
-                  At Check-Out
-                </p>
               </div>
             </div>
           </div>
@@ -302,18 +302,84 @@ export const ReceptionistDashboard: React.FC = () => {
       {/* 4. Split View: Arrivals Table + Selected Guest Action Card */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-start">
         <div className="lg:col-span-8 bg-white rounded-2xl border border-[#E2E8F0] shadow-2xs overflow-hidden flex flex-col">
-          {/* Mobile / Tablet Horizontal Scroll Notice */}
-          <div className="lg:hidden flex items-center justify-between px-4 py-2 bg-[#F8FAFC] border-b border-[#E2E8F0] text-xs text-[#64748B]">
-            <span className="flex items-center gap-1.5 font-medium">
-              <span className="inline-block w-2 h-2 rounded-full bg-[#0F5132] animate-pulse" />
-              Scroll table horizontally for full reservation details
-            </span>
-            <span className="text-[10px] font-semibold text-[#0F5132] bg-white px-2 py-0.5 rounded border border-[#E2E8F0] whitespace-nowrap">
-              ↔ Swipe to explore
-            </span>
+          {/* Mobile View: High-End Native App Card Layout */}
+          <div className="lg:hidden p-3.5 space-y-3">
+            {filteredBookings.map((b) => {
+              const isSelected = selectedBookingId === b.id;
+              return (
+                <div
+                  key={b.id}
+                  onClick={() => setSelectedBookingId(b.id)}
+                  className={cn(
+                    'p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-[0_2px_10px_-2px_rgba(0,0,0,0.04)] space-y-3 transition-all cursor-pointer active:scale-[0.99]',
+                    isSelected && 'ring-2 ring-[#0F5132] border-[#0F5132]'
+                  )}
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-bold text-xs text-[#0F5132] bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-200/60">
+                      {b.bookingCode}
+                    </span>
+                    <span
+                      className={cn(
+                        'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border',
+                        b.paymentStatus === 'Paid'
+                          ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                          : 'bg-amber-50 text-amber-700 border-amber-200'
+                      )}
+                    >
+                      <span
+                        className={cn(
+                          'w-1.5 h-1.5 rounded-full',
+                          b.paymentStatus === 'Paid' ? 'bg-emerald-500' : 'bg-amber-500'
+                        )}
+                      />
+                      {b.paymentStatus}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#0F5132]/10 text-[#0F5132] font-bold text-sm flex items-center justify-center shrink-0">
+                      {b.guestName.charAt(0)}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-bold text-sm text-[#0F172A] truncate">{b.guestName}</p>
+                      <p className="text-xs text-[#64748B] truncate">{b.guestPhone}</p>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <span className="text-xs font-bold text-[#1E293B] block">Room #{b.roomNumber}</span>
+                      <span className="text-[10px] text-[#64748B] block">Deluxe Villa Suite</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
+                    <div>
+                      <span className="text-slate-400 text-[11px]">Check-in: </span>
+                      <span className="font-semibold text-slate-700">{formatDate(b.checkIn)}</span>
+                    </div>
+                    <div className="text-right">
+                      <span className="font-black text-slate-900 text-sm">{formatINR(b.totalAmount)}</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-1">
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate('/check-in-out');
+                      }}
+                      className="w-full h-10 rounded-xl bg-[#0F5132] text-white font-bold text-xs hover:bg-[#0B3D25] active:scale-[0.98] transition-all shadow-2xs flex items-center justify-center gap-2"
+                    >
+                      Proceed to Check-In
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
-          <div className="overflow-x-auto scrollbar-thin">
+          {/* Desktop View: Full Table */}
+          <div className="hidden lg:block overflow-x-auto scrollbar-thin">
             <table className="w-full min-w-[880px] text-left text-xs text-[#1E293B] border-collapse">
               <thead>
                 <tr className="bg-[#F8FAFC] border-b border-[#E2E8F0] text-[#64748B] font-semibold whitespace-nowrap">

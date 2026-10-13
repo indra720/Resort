@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useAuthStore } from '@/store/useAuthStore';
-import { toast } from '@/store/useToastStore';
+import React, { useState } from "react";
+import { useAuthStore } from "@/store/useAuthStore";
+import { toast } from "@/store/useToastStore";
 import {
   ShieldCheck,
   Search,
@@ -12,15 +12,18 @@ import {
   User,
   Building2,
   RefreshCw,
-} from 'lucide-react';
+} from "lucide-react";
 
 export const AdminAuditLogsPage: React.FC = () => {
   const { auditLogs, addAuditLog } = useAuthStore();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [severityFilter, setSeverityFilter] = useState<'All' | 'Info' | 'Warning' | 'Critical'>('All');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [severityFilter, setSeverityFilter] = useState<
+    "All" | "Info" | "Warning" | "Critical"
+  >("All");
 
   const filteredLogs = auditLogs.filter((log) => {
-    if (severityFilter !== 'All' && log.severity !== severityFilter) return false;
+    if (severityFilter !== "All" && log.severity !== severityFilter)
+      return false;
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
       return (
@@ -38,8 +41,14 @@ export const AdminAuditLogsPage: React.FC = () => {
   };
 
   const handleRunSecurityCheck = () => {
-    addAuditLog('System Health Verification', 'Super Admin executed automated platform security diagnostics', 'Info');
-    toast.success('Security diagnostics completed: All tenant database schemas healthy.');
+    addAuditLog(
+      "System Health Verification",
+      "Super Admin executed automated platform security diagnostics",
+      "Info",
+    );
+    toast.success(
+      "Security diagnostics completed: All tenant database schemas healthy.",
+    );
   };
 
   return (
@@ -66,7 +75,8 @@ export const AdminAuditLogsPage: React.FC = () => {
                 Platform Security & Audit Trail
               </h1>
               <p className="text-xs sm:text-sm text-[#475569] font-medium mt-0.5">
-                Timestamped logs of every tenant provision, persona switch, role change, and capex authorization
+                Timestamped logs of every tenant provision, persona switch, role
+                change, and capex authorization
               </p>
             </div>
 
@@ -77,7 +87,8 @@ export const AdminAuditLogsPage: React.FC = () => {
                 className="flex items-center gap-1.5 px-3.5 py-2 bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#E2E8F0] rounded-xl text-xs font-semibold shadow-2xs transition-colors"
               >
                 <RefreshCw className="w-3.5 h-3.5 text-[#0F5132]" />
-                <span>Run Diagnostics</span>
+                <span className="hidden md:flex">Run Diagnostics</span>
+                <span className="md:hidden">Run</span>
               </button>
               <button
                 type="button"
@@ -104,11 +115,15 @@ export const AdminAuditLogsPage: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B]">Total Trail Entries</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                <p className="text-xs font-semibold text-[#64748B]">
+                  Total Trail Entries
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   {auditLogs.length} Events
+                  <p className="text-[10px] text-[#94A3B8] mt-0.5">
+                    Recorded in session
+                  </p>
                 </div>
-                <p className="text-[10px] text-[#94A3B8] mt-0.5">Recorded in session</p>
               </div>
             </div>
 
@@ -122,11 +137,15 @@ export const AdminAuditLogsPage: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B]">Impersonations & Alerts</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
-                  {auditLogs.filter((l) => l.severity === 'Warning').length}
+                <p className="text-xs font-semibold text-[#64748B]">
+                  Impersonations & Alerts
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                  {auditLogs.filter((l) => l.severity === "Warning").length}
+                  <p className="text-[10px] text-[#D97706] mt-0.5">
+                    Requires audit sign-off
+                  </p>
                 </div>
-                <p className="text-[10px] text-[#D97706] mt-0.5">Requires audit sign-off</p>
               </div>
             </div>
 
@@ -140,11 +159,15 @@ export const AdminAuditLogsPage: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#64748B]">System & Tenant Actions</p>
-                <div className="text-xl sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
-                  {auditLogs.filter((l) => l.severity === 'Info').length}
+                <p className="text-xs font-semibold text-[#64748B]">
+                  System & Tenant Actions
+                </p>
+                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                  {auditLogs.filter((l) => l.severity === "Info").length}
+                  <p className="text-[10px] text-[#2563EB] mt-0.5">
+                    Provisioning & sign-ins
+                  </p>
                 </div>
-                <p className="text-[10px] text-[#2563EB] mt-0.5">Provisioning & sign-ins</p>
               </div>
             </div>
           </div>
@@ -164,16 +187,16 @@ export const AdminAuditLogsPage: React.FC = () => {
           />
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-2">
-          {(['All', 'Info', 'Warning', 'Critical'] as const).map((sev) => (
+        <div className="flex  items-center gap-2">
+          {(["All", "Info", "Warning", "Critical"] as const).map((sev) => (
             <button
               key={sev}
               type="button"
               onClick={() => setSeverityFilter(sev)}
               className={`h-8 px-3 rounded-xl text-xs font-semibold transition-colors ${
                 severityFilter === sev
-                  ? 'bg-[#0F5132] text-white shadow-2xs'
-                  : 'bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#475569] border border-[#E2E8F0]'
+                  ? "bg-[#0F5132] text-white shadow-2xs"
+                  : "bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#475569] border border-[#E2E8F0]"
               }`}
             >
               {sev}
@@ -185,15 +208,21 @@ export const AdminAuditLogsPage: React.FC = () => {
       {/* Audit Logs Table */}
       <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-2xs overflow-hidden">
         <div className="p-4 border-b border-[#E2E8F0] flex flex-col md:flex-row items-center justify-between">
-          <h3 className="text-base font-bold text-[#0F172A]">Chronological Event Feed</h3>
-          <span className="text-xs text-[#64748B]">{filteredLogs.length} events logged</span>
+          <h3 className="text-base font-bold text-[#0F172A]">
+            Chronological Event Feed
+          </h3>
+          <span className="text-xs text-[#64748B]">
+            {filteredLogs.length} events logged
+          </span>
         </div>
 
         {/* Compact Mobile / Tablet Swipe Notice */}
         <div className="lg:hidden flex items-center justify-between gap-2 px-3 sm:px-4 py-1.5 bg-[#F8FAFC] border-b border-[#E2E8F0] text-[11px] text-[#475569]">
           <span className="flex items-center gap-1.5 font-medium min-w-0">
             <span className="w-1.5 h-1.5 rounded-full bg-[#0F5132] animate-pulse shrink-0" />
-            <span className="truncate">Swipe horizontally to see all columns</span>
+            <span className="truncate">
+              Swipe horizontally to see all columns
+            </span>
           </span>
           <span className="text-[10px] font-bold text-[#0F5132] bg-emerald-50/80 px-2 py-0.5 rounded border border-emerald-200 whitespace-nowrap shrink-0">
             ↔ Swipe
@@ -221,7 +250,9 @@ export const AdminAuditLogsPage: React.FC = () => {
                   <td className="py-3.5 px-4 whitespace-nowrap">
                     <div>
                       <p className="font-bold text-[#0F172A]">{l.actorName}</p>
-                      <p className="text-[11px] text-[#64748B]">{l.actorRole}</p>
+                      <p className="text-[11px] text-[#64748B]">
+                        {l.actorRole}
+                      </p>
                     </div>
                   </td>
                   <td className="py-3.5 px-4 whitespace-nowrap font-semibold text-[#0F172A]">
@@ -231,19 +262,19 @@ export const AdminAuditLogsPage: React.FC = () => {
                     {l.details}
                   </td>
                   <td className="py-3.5 px-4 whitespace-nowrap text-[#334155]">
-                    {l.resortName || 'Platform Global'}
+                    {l.resortName || "Platform Global"}
                   </td>
                   <td className="py-3.5 px-4 whitespace-nowrap">
                     <span
                       className={`px-2.5 py-0.5 rounded-full font-semibold text-[11px] border ${
-                        l.severity === 'Critical'
-                          ? 'bg-rose-50 text-rose-700 border-rose-200'
-                          : l.severity === 'Warning'
-                          ? 'bg-amber-50 text-amber-700 border-amber-200'
-                          : 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                        l.severity === "Critical"
+                          ? "bg-rose-50 text-rose-700 border-rose-200"
+                          : l.severity === "Warning"
+                            ? "bg-amber-50 text-amber-700 border-amber-200"
+                            : "bg-emerald-50 text-emerald-700 border-emerald-200"
                       }`}
                     >
-                      {l.severity || 'Info'}
+                      {l.severity || "Info"}
                     </span>
                   </td>
                 </tr>

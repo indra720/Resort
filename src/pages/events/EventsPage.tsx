@@ -238,7 +238,7 @@ export const EventsPage: React.FC = () => {
       </div>
 
       {/* Venue Spaces Strip */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
         {VENUE_CATALOG.map((v) => (
           <div
             key={v.name}
@@ -248,7 +248,7 @@ export const EventsPage: React.FC = () => {
               {v.type}
             </span>
             <p className="font-bold text-xs sm:text-sm text-[#0F172A]">{v.name}</p>
-            <div className="flex flex-col md:flex-row items-center justify-between text-[11px] text-[#64748B] pt-1">
+            <div className="flex flex-row items-center justify-between text-[11px] text-[#64748B] pt-1">
               <span>{v.capacity}</span>
               <span className="font-semibold text-[#0F5132]">{formatINR(v.basePrice)}/day</span>
             </div>
