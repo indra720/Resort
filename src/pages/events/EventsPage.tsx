@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useAuthStore } from '@/store/useAuthStore';
-import { DataTable, Column } from '@/components/ui/DataTable';
-import { Button } from '@/components/ui/Button';
-import { Modal } from '@/components/ui/Modal';
-import { Input } from '@/components/ui/Input';
-import { Select } from '@/components/ui/Select';
-import { toast } from '@/store/useToastStore';
-import { formatINR } from '@/lib/formatINR';
+import React, { useState } from "react";
+import { useAuthStore } from "@/store/useAuthStore";
+import { DataTable, Column } from "@/components/ui/DataTable";
+import { Button } from "@/components/ui/Button";
+import { Modal } from "@/components/ui/Modal";
+import { Input } from "@/components/ui/Input";
+import { Select } from "@/components/ui/Select";
+import { toast } from "@/store/useToastStore";
+import { formatINR } from "@/lib/formatINR";
 import {
   PartyPopper,
   PlusCircle,
@@ -17,7 +17,7 @@ import {
   Clock,
   Sparkles,
   MapPin,
-} from 'lucide-react';
+} from "lucide-react";
 
 export interface EventBooking {
   id: string;
@@ -29,75 +29,79 @@ export interface EventBooking {
   pax: number;
   totalCost: number;
   depositPaid: number;
-  status: 'Confirmed' | 'Tentative' | 'Completed';
-  eventType: 'Wedding' | 'Corporate Offsite' | 'Birthday Gala' | 'Cocktail Reception';
+  status: "Confirmed" | "Tentative" | "Completed";
+  eventType:
+    | "Wedding"
+    | "Corporate Offsite"
+    | "Birthday Gala"
+    | "Cocktail Reception";
 }
 
 const INITIAL_EVENTS: EventBooking[] = [
   {
-    id: 'EVT-901',
-    title: 'Mehta & Singhal Destination Wedding',
-    hostName: 'Girish Mehta',
-    phone: '+91 98110 99887',
-    venue: 'Oceanfront Coconut Lawn',
-    eventDate: '2026-11-20',
+    id: "EVT-901",
+    title: "Mehta & Singhal Destination Wedding",
+    hostName: "Girish Mehta",
+    phone: "+91 98110 99887",
+    venue: "Oceanfront Coconut Lawn",
+    eventDate: "2026-11-20",
     pax: 450,
     totalCost: 1450000,
     depositPaid: 500000,
-    status: 'Confirmed',
-    eventType: 'Wedding',
+    status: "Confirmed",
+    eventType: "Wedding",
   },
   {
-    id: 'EVT-902',
-    title: 'Tata Consumer Leadership Annual Summit',
-    hostName: 'Sanjay Deshmukh',
-    phone: '+91 98200 44332',
-    venue: 'Royal Grand Ballroom',
-    eventDate: '2026-10-28',
+    id: "EVT-902",
+    title: "Tata Consumer Leadership Annual Summit",
+    hostName: "Sanjay Deshmukh",
+    phone: "+91 98200 44332",
+    venue: "Royal Grand Ballroom",
+    eventDate: "2026-10-28",
     pax: 120,
     totalCost: 580000,
     depositPaid: 250000,
-    status: 'Confirmed',
-    eventType: 'Corporate Offsite',
+    status: "Confirmed",
+    eventType: "Corporate Offsite",
   },
   {
-    id: 'EVT-903',
-    title: 'Silver Jubilee Cocktail Soirée',
-    hostName: 'Vikramaditya Oberoi',
-    phone: '+91 98330 22119',
-    venue: 'Poolside Sunset Deck',
-    eventDate: '2026-10-18',
+    id: "EVT-903",
+    title: "Silver Jubilee Cocktail Soirée",
+    hostName: "Vikramaditya Oberoi",
+    phone: "+91 98330 22119",
+    venue: "Poolside Sunset Deck",
+    eventDate: "2026-10-18",
     pax: 80,
     totalCost: 240000,
     depositPaid: 100000,
-    status: 'Tentative',
-    eventType: 'Cocktail Reception',
+    status: "Tentative",
+    eventType: "Cocktail Reception",
   },
 ];
 
 const VENUE_CATALOG = [
   {
-    name: 'Oceanfront Coconut Lawn',
-    capacity: '800 Pax',
-    type: 'Outdoor Beachfront',
+    name: "Oceanfront Coconut Lawn",
+    capacity: "800 Pax",
+    type: "Outdoor Beachfront",
     basePrice: 380000,
   },
   {
-    name: 'Royal Grand Ballroom',
-    capacity: '500 Pax',
-    type: 'Air-Conditioned Indoor',
+    name: "Royal Grand Ballroom",
+    capacity: "500 Pax",
+    type: "Air-Conditioned Indoor",
     basePrice: 250000,
   },
   {
-    name: 'Poolside Sunset Deck',
-    capacity: '150 Pax',
-    type: 'Open-Air Poolside',
+    name: "Poolside Sunset Deck",
+    capacity: "150 Pax",
+    type: "Open-Air Poolside",
     basePrice: 120000,
   },
   {
-    name: 'Regal Boardroom',
-    capacity: '35 Pax',
-    type: 'Executive Meeting Room',
+    name: "Regal Boardroom",
+    capacity: "35 Pax",
+    type: "Executive Meeting Room",
     basePrice: 60000,
   },
 ];
@@ -108,13 +112,14 @@ export const EventsPage: React.FC = () => {
   const [isAddOpen, setIsAddOpen] = useState(false);
 
   // Form
-  const [title, setTitle] = useState('');
-  const [hostName, setHostName] = useState('');
-  const [phone, setPhone] = useState('+91 ');
+  const [title, setTitle] = useState("");
+  const [hostName, setHostName] = useState("");
+  const [phone, setPhone] = useState("+91 ");
   const [venue, setVenue] = useState(VENUE_CATALOG[0].name);
-  const [eventDate, setEventDate] = useState('2026-11-15');
+  const [eventDate, setEventDate] = useState("2026-11-15");
   const [pax, setPax] = useState(150);
-  const [eventType, setEventType] = useState<EventBooking['eventType']>('Wedding');
+  const [eventType, setEventType] =
+    useState<EventBooking["eventType"]>("Wedding");
   const [totalCost, setTotalCost] = useState(350000);
   const [depositPaid, setDepositPaid] = useState(100000);
 
@@ -134,21 +139,24 @@ export const EventsPage: React.FC = () => {
       pax: Number(pax) || 50,
       totalCost: Number(totalCost) || 100000,
       depositPaid: Number(depositPaid) || 25000,
-      status: 'Confirmed',
+      status: "Confirmed",
       eventType,
     };
 
     setEvents([newEvt, ...events]);
     setIsAddOpen(false);
-    toast.success('Event Venue Booked', `${newEvt.title} confirmed for ${newEvt.eventDate}`);
-    setTitle('');
-    setHostName('');
+    toast.success(
+      "Event Venue Booked",
+      `${newEvt.title} confirmed for ${newEvt.eventDate}`,
+    );
+    setTitle("");
+    setHostName("");
   };
 
   const columns: Column<EventBooking>[] = [
     {
-      key: 'title',
-      header: 'Event Name & Host',
+      key: "title",
+      header: "Event Name & Host",
       accessor: (e) => (
         <div>
           <span className="font-bold text-[#0F172A] block">{e.title}</span>
@@ -161,20 +169,21 @@ export const EventsPage: React.FC = () => {
       sortValue: (e) => e.title,
     },
     {
-      key: 'venue',
-      header: 'Assigned Venue & Date',
+      key: "venue",
+      header: "Assigned Venue & Date",
       accessor: (e) => (
         <div className="text-xs">
           <span className="font-semibold text-slate-800 block">{e.venue}</span>
           <span className="text-[11px] text-[#64748B] flex items-center gap-1">
-            <Calendar className="w-3 h-3 text-[#0F5132]" /> {e.eventDate} • {e.pax} Guests
+            <Calendar className="w-3 h-3 text-[#0F5132]" /> {e.eventDate} •{" "}
+            {e.pax} Guests
           </span>
         </div>
       ),
     },
     {
-      key: 'eventType',
-      header: 'Event Category',
+      key: "eventType",
+      header: "Event Category",
       accessor: (e) => (
         <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 font-semibold border border-slate-200">
           {e.eventType}
@@ -182,24 +191,28 @@ export const EventsPage: React.FC = () => {
       ),
     },
     {
-      key: 'totalCost',
-      header: 'Package Value & Deposit',
+      key: "totalCost",
+      header: "Package Value & Deposit",
       accessor: (e) => (
         <div>
-          <span className="font-bold text-[#0F5132] text-sm block">{formatINR(e.totalCost)}</span>
-          <span className="text-[11px] text-emerald-700">Advance: {formatINR(e.depositPaid)}</span>
+          <span className="font-bold text-[#0F5132] text-sm block">
+            {formatINR(e.totalCost)}
+          </span>
+          <span className="text-[11px] text-emerald-700">
+            Advance: {formatINR(e.depositPaid)}
+          </span>
         </div>
       ),
     },
     {
-      key: 'status',
-      header: 'Booking Status',
+      key: "status",
+      header: "Booking Status",
       accessor: (e) => (
         <span
           className={`text-[11px] px-2.5 py-0.5 rounded-full font-bold border ${
-            e.status === 'Confirmed'
-              ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-              : 'bg-amber-50 text-amber-800 border-amber-200'
+            e.status === "Confirmed"
+              ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+              : "bg-amber-50 text-amber-800 border-amber-200"
           }`}
         >
           {e.status}
@@ -223,7 +236,8 @@ export const EventsPage: React.FC = () => {
             </span>
           </div>
           <p className="text-xs sm:text-sm text-[#6B7280] mt-0.5">
-            Lawn reservations, banquet halls, corporate summits, and event deposit management.
+            Lawn reservations, banquet halls, corporate summits, and event
+            deposit management.
           </p>
         </div>
 
@@ -238,7 +252,7 @@ export const EventsPage: React.FC = () => {
       </div>
 
       {/* Venue Spaces Strip */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         {VENUE_CATALOG.map((v) => (
           <div
             key={v.name}
@@ -247,10 +261,14 @@ export const EventsPage: React.FC = () => {
             <span className="text-[10px] font-bold text-[#0F5132] uppercase tracking-wider block">
               {v.type}
             </span>
-            <p className="font-bold text-xs sm:text-sm text-[#0F172A]">{v.name}</p>
-            <div className="flex flex-row items-center justify-between text-[11px] text-[#64748B] pt-1">
+            <p className="font-bold text-xs sm:text-sm text-[#0F172A]">
+              {v.name}
+            </p>
+            <div className="flex flex-col md:flex-row items-center justify-between text-[11px] text-[#64748B] pt-1">
               <span>{v.capacity}</span>
-              <span className="font-semibold text-[#0F5132]">{formatINR(v.basePrice)}/day</span>
+              <span className="font-semibold text-[#0F5132]">
+                {formatINR(v.basePrice)}/day
+              </span>
             </div>
           </div>
         ))}
@@ -304,17 +322,26 @@ export const EventsPage: React.FC = () => {
               label="Venue Location"
               value={venue}
               onChange={(e) => setVenue(e.target.value)}
-              options={VENUE_CATALOG.map((v) => ({ label: `${v.name} (${v.capacity})`, value: v.name }))}
+              options={VENUE_CATALOG.map((v) => ({
+                label: `${v.name} (${v.capacity})`,
+                value: v.name,
+              }))}
             />
             <Select
               label="Event Nature"
               value={eventType}
               onChange={(e) => setEventType(e.target.value as any)}
               options={[
-                { label: 'Destination Wedding', value: 'Wedding' },
-                { label: 'Corporate Offsite / Summit', value: 'Corporate Offsite' },
-                { label: 'Birthday Gala / Anniversary', value: 'Birthday Gala' },
-                { label: 'Cocktail Reception', value: 'Cocktail Reception' },
+                { label: "Destination Wedding", value: "Wedding" },
+                {
+                  label: "Corporate Offsite / Summit",
+                  value: "Corporate Offsite",
+                },
+                {
+                  label: "Birthday Gala / Anniversary",
+                  value: "Birthday Gala",
+                },
+                { label: "Cocktail Reception", value: "Cocktail Reception" },
               ]}
             />
           </div>
@@ -354,10 +381,18 @@ export const EventsPage: React.FC = () => {
           </div>
 
           <div className="pt-2 flex justify-end gap-2">
-            <Button variant="ghost" type="button" onClick={() => setIsAddOpen(false)}>
+            <Button
+              variant="ghost"
+              type="button"
+              onClick={() => setIsAddOpen(false)}
+            >
               Cancel
             </Button>
-            <Button variant="primary" type="submit" rightIcon={<Sparkles className="w-4 h-4" />}>
+            <Button
+              variant="primary"
+              type="submit"
+              rightIcon={<Sparkles className="w-4 h-4" />}
+            >
               Confirm Venue Reservation
             </Button>
           </div>

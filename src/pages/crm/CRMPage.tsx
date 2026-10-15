@@ -158,13 +158,13 @@ export const CRMPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 self-start sm:self-auto w-full sm:w-auto">
               {/* View Switcher */}
-              <div className="flex flex-wrap items-center gap-1 bg-white/90 backdrop-blur-md p-1 rounded-xl border border-[#E2E8F0] shadow-2xs overflow-x-auto max-w-full">
+              <div className="flex items-center gap-1 bg-white/90 backdrop-blur-md p-1 rounded-xl border border-[#E2E8F0] shadow-2xs overflow-x-auto max-w-full scrollbar-none">
                 <button
                   type="button"
                   onClick={() => setViewMode("kanban")}
-                  className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                  className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 ${
                     viewMode === "kanban"
                       ? "bg-[#0F5132] text-white shadow-2xs"
                       : "text-[#64748B] hover:text-[#0F172A]"
@@ -176,7 +176,7 @@ export const CRMPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setViewMode("list")}
-                  className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                  className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 ${
                     viewMode === "list"
                       ? "bg-[#0F5132] text-white shadow-2xs"
                       : "text-[#64748B] hover:text-[#0F172A]"
@@ -188,7 +188,7 @@ export const CRMPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setViewMode("funnel")}
-                  className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                  className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 ${
                     viewMode === "funnel"
                       ? "bg-[#0F5132] text-white shadow-2xs"
                       : "text-[#64748B] hover:text-[#0F172A]"
@@ -200,7 +200,7 @@ export const CRMPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setViewMode("leaderboard")}
-                  className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                  className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 ${
                     viewMode === "leaderboard"
                       ? "bg-[#0F5132] text-white shadow-2xs"
                       : "text-[#64748B] hover:text-[#0F172A]"
@@ -211,60 +211,60 @@ export const CRMPage: React.FC = () => {
                 </button>
               </div>
 
-              {/* Quick links to Phase 3 modules */}
-              <div className="flex items-center gap-1.5 flex-wrap">
+              {/* Quick links to Phase 3 modules (Horizontally scrollable on mobile) */}
+              <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none max-w-full py-0.5">
+                <button
+                  type="button"
+                  onClick={() => navigate("/leads")}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs font-semibold shadow-2xs transition-colors shrink-0 whitespace-nowrap"
+                >
+                  <UserPlus className="w-3.5 h-3.5" />
+                  <span>Leads</span>
+                </button>
+
                 <button
                   type="button"
                   onClick={() => navigate("/quotations")}
-                  className="px-2.5 sm:px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-semibold border border-slate-300 transition-colors flex items-center gap-1"
+                  className="px-2.5 sm:px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-semibold border border-slate-300 transition-colors flex items-center gap-1 shrink-0 whitespace-nowrap"
                 >
                   <FileText className="w-3.5 h-3.5 text-[#0F5132]" />
-                  <span className="hidden sm:inline">Quotations</span>
+                  <span>Quotations</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => navigate("/templates")}
-                  className="px-2.5 sm:px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-semibold border border-slate-300 transition-colors flex items-center gap-1"
+                  className="px-2.5 sm:px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-semibold border border-slate-300 transition-colors flex items-center gap-1 shrink-0 whitespace-nowrap"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-[#0F5132]" />
-                  <span className="hidden sm:inline">Templates</span>
+                  <span>Templates</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => navigate("/automations")}
-                  className="px-2.5 sm:px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-semibold border border-slate-300 transition-colors flex items-center gap-1"
+                  className="px-2.5 sm:px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-semibold border border-slate-300 transition-colors flex items-center gap-1 shrink-0 whitespace-nowrap"
                 >
                   <Zap className="w-3.5 h-3.5 text-[#0F5132]" />
-                  <span className="hidden sm:inline">Automations</span>
+                  <span>Automations</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => navigate("/crm/reports")}
-                  className="px-2.5 sm:px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-semibold border border-slate-300 transition-colors flex items-center gap-1"
+                  className="px-2.5 sm:px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-semibold border border-slate-300 transition-colors flex items-center gap-1 shrink-0 whitespace-nowrap"
                 >
                   <FileBarChart className="w-3.5 h-3.5 text-[#0F5132]" />
-                  <span className="hidden sm:inline">Reports</span>
+                  <span>Reports</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => navigate("/crm/settings")}
-                  className="px-2.5 sm:px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-semibold border border-slate-300 transition-colors flex items-center gap-1"
+                  className="px-2.5 sm:px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-semibold border border-slate-300 transition-colors flex items-center gap-1 shrink-0 whitespace-nowrap"
                 >
                   <Settings className="w-3.5 h-3.5 text-[#0F5132]" />
-                  <span className="hidden sm:inline">Settings</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => navigate("/leads")}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs font-semibold shadow-2xs transition-colors shrink-0"
-                >
-                  <UserPlus className="w-3.5 h-3.5" />
-                  <span>Leads</span>
+                  <span>Settings</span>
                 </button>
               </div>
             </div>
@@ -273,7 +273,7 @@ export const CRMPage: React.FC = () => {
 
         {/* 4 Pipeline Metric Cards (Calculated from Leads store) */}
         <div className="p-3 sm:p-4 bg-white/95 backdrop-blur-md border-t border-[#E2E8F0]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
             <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0F5132] flex items-center justify-center text-white shrink-0 shadow-2xs">
@@ -287,7 +287,7 @@ export const CRMPage: React.FC = () => {
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">
                   Active Pipeline
                 </p>
-                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                <div className="flex justify-between items-baseline text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   {formatINR(totalPipelineValue)}
                   <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
                     {
@@ -314,7 +314,7 @@ export const CRMPage: React.FC = () => {
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">
                   Won Bookings
                 </p>
-                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                <div className="flex justify-between items-baseline text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   {formatINR(totalWonValue)}
                   <p className="text-[10px] sm:text-[11px] text-[#16A34A] mt-0.5 truncate">
                     {stats.bookings} confirmed
@@ -336,7 +336,7 @@ export const CRMPage: React.FC = () => {
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">
                   Avg Budget
                 </p>
-                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                <div className="flex justify-between items-baseline text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   {formatINR(
                     Math.round(totalPipelineValue / (leads.length || 1)),
                   )}
@@ -360,7 +360,7 @@ export const CRMPage: React.FC = () => {
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">
                   Win Conversion
                 </p>
-                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                <div className="flex justify-between items-baseline text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   {leads.length > 0
                     ? ((stats.bookings / leads.length) * 100).toFixed(1)
                     : "0.0"}
@@ -376,8 +376,8 @@ export const CRMPage: React.FC = () => {
       </div>
 
       {/* Search and Navigation Bar */}
-      <div className="flex items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-[#E2E8F0] shadow-2xs">
-        <div className="flex-1 max-w-md relative">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-[#E2E8F0] shadow-2xs">
+        <div className="flex-1 w-full sm:max-w-md relative">
           <Search className="w-4 h-4 text-[#94A3B8] absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
@@ -391,7 +391,7 @@ export const CRMPage: React.FC = () => {
         <button
           type="button"
           onClick={() => navigate("/leads")}
-          className="h-9 px-3.5 bg-[#F8FAFC] hover:bg-[#F1F5F9] border border-[#CBD5E1] rounded-xl text-xs font-semibold text-[#0F5132] flex items-center gap-1.5 transition-colors"
+          className="h-9 px-3.5 bg-[#F8FAFC] hover:bg-[#F1F5F9] border border-[#CBD5E1] rounded-xl text-xs font-semibold text-[#0F5132] flex items-center justify-center gap-1.5 transition-colors shrink-0"
         >
           <span>Full Leads Directory</span>
           <ChevronRight className="w-3.5 h-3.5" />
@@ -762,9 +762,85 @@ export const CRMPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Leaderboard Table */}
-            <div className="overflow-x-auto rounded-xl border border-[#E2E8F0]">
-              <table className="w-full text-left border-collapse text-xs">
+            {/* Mobile Standalone Leaderboard Cards (Stayora Luxury Native App Style) */}
+            <div className="block lg:hidden space-y-3">
+              {leaderboard.map((exec) => (
+                <div
+                  key={exec.executiveName}
+                  className="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 shadow-[0_2px_12px_-2px_rgba(0,0,0,0.04)] space-y-3 hover:border-[#0F5132]/30 transition-all text-left"
+                >
+                  {/* Top Row: Rank badge left, Win Rate pill right */}
+                  <div className="flex items-center justify-between gap-2">
+                    <span
+                      className={`px-2.5 py-0.5 rounded-full font-black text-xs inline-flex items-center gap-1 ${
+                        exec.rank === 1
+                          ? "bg-amber-100 text-amber-900 border border-amber-300"
+                          : exec.rank === 2
+                            ? "bg-slate-200 text-slate-800 border border-slate-300"
+                            : "bg-orange-100 text-orange-900 border border-orange-300"
+                      }`}
+                    >
+                      <Trophy className="w-3 h-3" /> Rank #{exec.rank}
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-full font-bold text-[11px] bg-emerald-50 text-emerald-800 border border-emerald-200 shrink-0">
+                      {exec.winRate}% Win Rate
+                    </span>
+                  </div>
+
+                  {/* Rep Name & Revenue */}
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0 flex-1">
+                      <h4 className="font-bold text-[#0F172A] text-sm truncate">{exec.executiveName}</h4>
+                      <p className="text-[11px] text-[#64748B] truncate">Target: {formatINR(exec.targetRevenue)}</p>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <span className="text-[10px] text-[#64748B] block font-medium">Achieved</span>
+                      <span className="text-sm font-black text-[#0F5132]">{formatINR(exec.revenue)}</span>
+                    </div>
+                  </div>
+
+                  {/* Target Progress Bar */}
+                  <div className="p-2.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-1.5">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-[10px] font-bold text-[#64748B]">Quota Progress</span>
+                      <span className="font-black text-[#0F172A]">{exec.targetProgressPercent}%</span>
+                    </div>
+                    <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full rounded-full transition-all duration-500 ${
+                          exec.targetProgressPercent >= 100
+                            ? "bg-emerald-600"
+                            : exec.targetProgressPercent >= 60
+                              ? "bg-[#0F5132]"
+                              : "bg-amber-500"
+                        }`}
+                        style={{ width: `${Math.min(100, exec.targetProgressPercent)}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* 3-Column Metrics */}
+                  <div className="grid grid-cols-3 gap-2 p-2 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center text-xs">
+                    <div>
+                      <span className="text-[10px] text-[#64748B] block font-medium">Leads</span>
+                      <span className="font-bold text-[#0F172A]">{exec.assignedLeads}</span>
+                    </div>
+                    <div className="border-x border-[#E2E8F0]">
+                      <span className="text-[10px] text-[#64748B] block font-medium">Booked</span>
+                      <span className="font-bold text-[#16A34A]">{exec.bookedCount}</span>
+                    </div>
+                    <div>
+                      <span className="text-[10px] text-[#64748B] block font-medium">Avg Speed</span>
+                      <span className="font-bold text-[#0F172A]">{exec.avgResponseMinutes}m</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Leaderboard Table */}
+            <div className="hidden lg:block overflow-x-auto rounded-xl border border-[#E2E8F0] scrollbar-thin">
+              <table className="w-full min-w-[780px] text-left border-collapse text-xs whitespace-nowrap">
                 <thead>
                   <tr className="bg-[#F8FAFC] border-b border-[#E2E8F0] text-[#64748B] font-bold">
                     <th className="py-3 px-3 text-center">Rank</th>

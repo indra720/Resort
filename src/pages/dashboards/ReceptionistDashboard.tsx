@@ -10,15 +10,14 @@ import {
   CalendarDays,
   Plus,
   Filter,
-  List,
   Phone,
   Mail,
-  MoreVertical,
   CheckCircle2,
   Clock,
   Sparkles,
   CreditCard,
-  ChevronDown,
+  ChevronRight,
+  PhoneCall,
 } from 'lucide-react';
 import { MOCK_BOOKINGS } from '@/data/mockData';
 import { Booking } from '@/types';
@@ -54,34 +53,35 @@ export const ReceptionistDashboard: React.FC = () => {
   }, [activeTab, statusFilter, searchQuery]);
 
   return (
-    <div className="space-y-4 text-[#111827]">
+    <div className="space-y-4 text-[#111827] w-full pb-8">
       {/* 1. Panoramic Hero Section with Header & 5 Reception KPI Cards */}
       <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-2xs bg-white">
-        <div className="relative h-44 sm:h-52 w-full overflow-hidden flex flex-col justify-between p-5 sm:p-6">
+        <div className="relative min-h-[180px] sm:min-h-[200px] h-auto w-full overflow-hidden flex flex-col justify-between p-4 sm:p-6">
           <img
             src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80"
             alt="Joy Resorts Sanctuary"
             className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.98]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 sm:via-white/60 to-white/30 sm:to-transparent" />
 
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
             <div>
-              <div className="flex flex-col lg:flex-row items-center gap-2">
-                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#0F5132]/10 text-[#0F5132] uppercase tracking-wider">
-                  Front Desk
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-50 text-[#0F5132] uppercase tracking-wider border border-emerald-200/80 shadow-2xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0F5132] animate-pulse" />
+                  Front Desk Reception
                 </span>
-                <span className="text-xs text-[#64748B]">Guest Hospitality</span>
+                <span className="text-xs font-medium text-[#64748B]">Guest Hospitality</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] mt-1">
-                Front Desk Reception
+              <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] mt-1.5">
+                Front Desk Operations & Guests
               </h1>
-              <p className="text-xs sm:text-sm text-[#475569] font-medium mt-0.5">
+              <p className="text-xs sm:text-sm text-[#475569] font-medium mt-0.5 max-w-2xl">
                 Instant guest check-ins, villa key cards, and luxury concierge services
               </p>
             </div>
 
-            <div className="flex items-center gap-2 self-start sm:self-auto">
+            <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap">
               <div className="flex items-center gap-2 px-3.5 py-1.5 bg-white border border-[#E2E8F0] rounded-xl text-xs font-semibold text-[#1E293B] shadow-2xs">
                 <CalendarDays className="w-4 h-4 text-[#64748B]" />
                 <span>Today: 08 Oct 2026</span>
@@ -89,10 +89,11 @@ export const ReceptionistDashboard: React.FC = () => {
               <button
                 type="button"
                 onClick={() => navigate('/check-in-out')}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs font-semibold shadow-2xs transition-colors"
+                className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs font-semibold shadow-2xs transition-colors shrink-0"
               >
                 <Key className="w-4 h-4" />
-                <span>Check-In Desk</span>
+                <span className="hidden sm:inline">Check-In Desk</span>
+                <span className="sm:hidden">Check-In</span>
               </button>
             </div>
           </div>
@@ -101,7 +102,7 @@ export const ReceptionistDashboard: React.FC = () => {
         {/* 5 Reception Metric Cards */}
         <div className="p-3 sm:p-4 bg-white/95 backdrop-blur-md border-t border-[#E2E8F0]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3.5">
-            {/* Card 1 */}
+            {/* Card 1: Today's Check-Ins */}
             <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#22C55E] flex items-center justify-center text-white shrink-0 shadow-2xs">
@@ -113,7 +114,7 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">Today's Check-Ins</p>
-                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                <div className="flex justify-between items-baseline text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   18
                   <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
                     Scheduled today
@@ -122,7 +123,7 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 2 */}
+            {/* Card 2: Today's Check-Outs */}
             <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#38BDF8] flex items-center justify-center text-white shrink-0 shadow-2xs">
@@ -134,7 +135,7 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">Today's Check-Outs</p>
-                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                <div className="flex justify-between items-baseline text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   12
                   <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
                     By 11:00 AM
@@ -143,7 +144,7 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 3 */}
+            {/* Card 3: Available Villas */}
             <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#F97316] flex items-center justify-center text-white shrink-0 shadow-2xs">
@@ -155,8 +156,8 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">Available Villas</p>
-                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
-                  6
+                <div className="flex justify-between items-baseline text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                  6 Keys
                   <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
                     Sanitized & Clean
                   </p>
@@ -164,7 +165,7 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 4 */}
+            {/* Card 4: In-House Guests */}
             <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#8B5CF6] flex items-center justify-center text-white shrink-0 shadow-2xs">
@@ -176,8 +177,8 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">In-House Guests</p>
-                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
-                  76
+                <div className="flex justify-between items-baseline text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                  76 Guests
                   <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
                     24 occupied keys
                   </p>
@@ -185,7 +186,7 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 5 */}
+            {/* Card 5: Pending Folios */}
             <div className="p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between min-w-0 sm:col-span-2 lg:col-span-1">
               <div className="flex items-center justify-between gap-1 mb-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#84CC16] flex items-center justify-center text-white shrink-0 shadow-2xs">
@@ -197,7 +198,7 @@ export const ReceptionistDashboard: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[#64748B] leading-snug">Pending Folios</p>
-                <div className="flex justify-between text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
+                <div className="flex justify-between items-baseline text-lg sm:text-2xl font-black text-[#0F172A] tracking-tight mt-0.5">
                   ₹84,000
                   <p className="text-[10px] sm:text-[11px] text-[#94A3B8] mt-0.5 truncate">
                     At Check-Out
@@ -209,9 +210,9 @@ export const ReceptionistDashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* 2. Filter Tabs */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-[#E2E8F0] pb-2">
-        <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto scrollbar-none py-1">
+      {/* 2. Filter Tabs Row */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E2E8F0] pb-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none py-1 max-w-full">
           {[
             { id: 'all', label: 'All Reservations', count: MOCK_BOOKINGS.length },
             { id: 'arrivals', label: 'Expected Arrivals', count: 18 },
@@ -224,7 +225,7 @@ export const ReceptionistDashboard: React.FC = () => {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
-                  'relative flex items-center gap-2 px-3 py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap rounded-lg',
+                  'relative flex items-center gap-2 px-3 py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap rounded-lg shrink-0',
                   isActive
                     ? 'text-[#0F5132] font-bold'
                     : 'text-[#64748B] hover:text-[#1E293B] hover:bg-[#F1F5F9]'
@@ -253,7 +254,7 @@ export const ReceptionistDashboard: React.FC = () => {
         <button
           type="button"
           onClick={() => navigate('/check-in-out')}
-          className="flex items-center gap-2 px-4 py-2 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs sm:text-sm font-semibold shadow-2xs self-end md:self-auto"
+          className="flex items-center gap-2 px-4 py-2 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs sm:text-sm font-semibold shadow-2xs self-end sm:self-auto shrink-0 whitespace-nowrap active:scale-[0.98] transition-all"
         >
           <Plus className="w-4 h-4" />
           <span>Walk-In Guest</span>
@@ -261,8 +262,8 @@ export const ReceptionistDashboard: React.FC = () => {
       </div>
 
       {/* 3. Search & Filters Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-[#E2E8F0] shadow-2xs">
-        <div className="flex-1 min-w-[240px] max-w-md relative">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-[#E2E8F0] shadow-2xs">
+        <div className="flex-1 w-full sm:max-w-md relative">
           <Search className="w-4 h-4 text-[#94A3B8] absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
@@ -273,11 +274,11 @@ export const ReceptionistDashboard: React.FC = () => {
           />
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-2">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="h-9 px-2.5 text-xs bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-[#475569] font-medium focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+            className="flex-1 sm:flex-initial h-9 px-3 text-xs bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-[#475569] font-medium focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
           >
             <option value="All">All Status</option>
             <option value="Paid">Paid</option>
@@ -289,12 +290,13 @@ export const ReceptionistDashboard: React.FC = () => {
             onClick={() => {
               setSearchQuery('');
               setStatusFilter('All');
+              setActiveTab('all');
               toast.info('Filters reset.');
             }}
-            className="h-9 px-3 bg-[#F8FAFC] hover:bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl text-xs font-semibold text-[#475569] flex items-center gap-1.5 transition-colors"
+            className="h-9 px-3 bg-[#F8FAFC] hover:bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl text-xs font-semibold text-[#475569] flex items-center gap-1.5 transition-colors shrink-0"
           >
             <Filter className="w-3.5 h-3.5" />
-            <span>Filter</span>
+            <span>Reset</span>
           </button>
         </div>
       </div>
@@ -302,8 +304,23 @@ export const ReceptionistDashboard: React.FC = () => {
       {/* 4. Split View: Arrivals Table + Selected Guest Action Card */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-start">
         <div className="lg:col-span-8 bg-white rounded-2xl border border-[#E2E8F0] shadow-2xs overflow-hidden flex flex-col">
-          {/* Mobile View: High-End Native App Card Layout */}
-          <div className="lg:hidden p-3.5 space-y-3">
+          {/* Section Subheader */}
+          <div className="p-3.5 border-b border-[#E2E8F0] flex items-center justify-between">
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="text-sm font-bold text-[#0F172A]">Arrivals & In-House Registry</h3>
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#DCFCE7] text-[#0F5132]">
+                  {filteredBookings.length} Guests
+                </span>
+              </div>
+              <p className="text-[11px] text-[#64748B] mt-0.5">
+                Real-time booking confirmations and villa assignments
+              </p>
+            </div>
+          </div>
+
+          {/* Mobile View: High-End Native App Card Layout (Stayora Luxury Native App Style) */}
+          <div className="block lg:hidden p-2.5 sm:p-3.5 space-y-3 bg-[#F8FAFC]/50">
             {filteredBookings.map((b) => {
               const isSelected = selectedBookingId === b.id;
               return (
@@ -311,17 +328,18 @@ export const ReceptionistDashboard: React.FC = () => {
                   key={b.id}
                   onClick={() => setSelectedBookingId(b.id)}
                   className={cn(
-                    'p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-[0_2px_10px_-2px_rgba(0,0,0,0.04)] space-y-3 transition-all cursor-pointer active:scale-[0.99]',
+                    'p-3.5 rounded-2xl bg-white border border-[#E2E8F0] shadow-[0_2px_12px_-2px_rgba(0,0,0,0.04)] space-y-3 transition-all cursor-pointer text-left',
                     isSelected && 'ring-2 ring-[#0F5132] border-[#0F5132]'
                   )}
                 >
+                  {/* Top Row: Booking Code on Left, Status Badge on Right (2 Badges - Fits 320px) */}
                   <div className="flex items-center justify-between gap-2">
-                    <span className="font-bold text-xs text-[#0F5132] bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-200/60">
+                    <span className="font-mono text-[10px] font-bold text-[#0F5132] bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200/60">
                       {b.bookingCode}
                     </span>
                     <span
                       className={cn(
-                        'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border',
+                        'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border shrink-0',
                         b.paymentStatus === 'Paid'
                           ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                           : 'bg-amber-50 text-amber-700 border-amber-200'
@@ -337,41 +355,58 @@ export const ReceptionistDashboard: React.FC = () => {
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#0F5132]/10 text-[#0F5132] font-bold text-sm flex items-center justify-center shrink-0">
+                  {/* Guest Identity */}
+                  <div className="flex items-start gap-2.5">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#0F5132] to-[#15803D] text-white flex items-center justify-center font-black text-xs shrink-0 shadow-2xs">
                       {b.guestName.charAt(0)}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="font-bold text-sm text-[#0F172A] truncate">{b.guestName}</p>
-                      <p className="text-xs text-[#64748B] truncate">{b.guestPhone}</p>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <span className="text-xs font-bold text-[#1E293B] block">Room #{b.roomNumber}</span>
-                      <span className="text-[10px] text-[#64748B] block">Deluxe Villa Suite</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
-                    <div>
-                      <span className="text-slate-400 text-[11px]">Check-in: </span>
-                      <span className="font-semibold text-slate-700">{formatDate(b.checkIn)}</span>
-                    </div>
-                    <div className="text-right">
-                      <span className="font-black text-slate-900 text-sm">{formatINR(b.totalAmount)}</span>
+                      <h4 className="font-bold text-[#0F172A] text-sm truncate">{b.guestName}</h4>
+                      <p className="text-[11px] text-[#64748B] truncate">{b.guestPhone}</p>
+                      <p className="text-[11px] text-[#475569] mt-0.5 font-medium truncate">
+                        {b.guestEmail}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="pt-1">
+                  {/* 3-Column Stayora Stat Box */}
+                  <div className="grid grid-cols-3 gap-2 p-2.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center">
+                    <div className="min-w-0">
+                      <span className="text-[10px] text-[#64748B] block font-medium">Assigned Key</span>
+                      <span className="text-xs font-bold text-[#0F172A] truncate block">Villa #{b.roomNumber}</span>
+                    </div>
+                    <div className="border-x border-[#E2E8F0] min-w-0">
+                      <span className="text-[10px] text-[#64748B] block font-medium">Arrival Date</span>
+                      <span className="text-xs font-bold text-[#0F172A] truncate block">{formatDate(b.checkIn)}</span>
+                    </div>
+                    <div className="min-w-0">
+                      <span className="text-[10px] text-[#64748B] block font-medium">Folio Total</span>
+                      <span className="text-xs font-bold text-[#0F5132] truncate block">{formatINR(b.totalAmount)}</span>
+                    </div>
+                  </div>
+
+                  {/* Action Buttons Row */}
+                  <div className="pt-0.5 flex items-center gap-2">
                     <button
                       type="button"
                       onClick={(e) => {
                         e.stopPropagation();
+                        toast.success(`Check-In key issued for Room #${b.roomNumber}!`);
                         navigate('/check-in-out');
                       }}
-                      className="w-full h-10 rounded-xl bg-[#0F5132] text-white font-bold text-xs hover:bg-[#0B3D25] active:scale-[0.98] transition-all shadow-2xs flex items-center justify-center gap-2"
+                      className="flex-1 h-10 rounded-xl bg-[#0F5132] text-white font-bold text-xs hover:bg-[#0B3D25] active:scale-[0.98] transition-all shadow-2xs flex items-center justify-center gap-2"
                     >
-                      Proceed to Check-In
+                      <Key className="w-3.5 h-3.5" />
+                      <span>Issue RFID Key</span>
                     </button>
+
+                    <a
+                      href={`tel:${b.guestPhone}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="h-10 px-3.5 rounded-xl bg-white hover:bg-slate-50 border border-[#CBD5E1] text-[#0F5132] active:scale-[0.98] transition-all shadow-2xs flex items-center justify-center shrink-0"
+                    >
+                      <PhoneCall className="w-4 h-4" />
+                    </a>
                   </div>
                 </div>
               );
@@ -409,8 +444,8 @@ export const ReceptionistDashboard: React.FC = () => {
                       </td>
 
                       <td className="py-3 px-3 whitespace-nowrap">
-                        <div className="flex flex-col lg:flex-row items-center gap-2">
-                          <div className="w-7 h-7 rounded-full bg-[#0F5132]/10 text-[#0F5132] font-bold text-xs flex items-center justify-center shrink-0">
+                        <div className="flex items-center gap-2.5">
+                          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#0F5132] to-[#15803D] text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-2xs">
                             {b.guestName.charAt(0)}
                           </div>
                           <div>
@@ -459,7 +494,7 @@ export const ReceptionistDashboard: React.FC = () => {
                             e.stopPropagation();
                             navigate('/check-in-out');
                           }}
-                          className="px-2.5 py-1 rounded-lg bg-[#0F5132] text-white font-medium hover:bg-[#0B3D25] text-xs transition-colors"
+                          className="px-3 py-1.5 rounded-xl bg-[#0F5132] text-white font-semibold hover:bg-[#0B3D25] text-xs transition-colors shadow-2xs"
                         >
                           Check-In
                         </button>
@@ -472,12 +507,12 @@ export const ReceptionistDashboard: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Selected Guest Action Card */}
+        {/* Right Column: Selected Guest Action Card (Desktop Only to prevent mobile duplication) */}
         {activeBooking && (
-          <div className="lg:col-span-4 bg-white rounded-2xl border border-[#E2E8F0] shadow-2xs p-4 sm:p-5 space-y-4">
+          <div className="hidden lg:block lg:col-span-4 bg-white rounded-2xl border border-[#E2E8F0] shadow-2xs p-4 sm:p-5 space-y-4">
             <div className="flex items-start justify-between pb-3 border-b border-[#E2E8F0]">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-[#0F5132]/10 text-[#0F5132] font-bold text-base flex items-center justify-center ring-2 ring-[#0F5132]/20">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#0F5132] to-[#15803D] text-white font-bold text-base flex items-center justify-center shadow-2xs">
                   {activeBooking.guestName.charAt(0)}
                 </div>
                 <div>
@@ -504,7 +539,7 @@ export const ReceptionistDashboard: React.FC = () => {
                 toast.success(`Check-In key issued for Room #${activeBooking.roomNumber}!`);
                 navigate('/check-in-out');
               }}
-              className="w-full py-2.5 px-4 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-2xs transition-colors"
+              className="w-full py-2.5 px-4 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-2xs transition-colors active:scale-[0.98]"
             >
               <Key className="w-4 h-4" />
               <span>Issue Villa RFID Key</span>
