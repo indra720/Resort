@@ -207,7 +207,7 @@ export const PaymentsPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <div className="flex flex-col lg:flex-row items-center gap-2">
-            <h1 className="text-md sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+            <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
               <CreditCard className="w-6 h-6 text-[#0F5132]" />
               <span>Payments & Settlements Ledger</span>
             </h1>

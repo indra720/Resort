@@ -342,7 +342,7 @@ export const GuestDashboard: React.FC = () => {
           </div>
           <button
             type="button"
-            onClick={() => navigate('/services')}
+            onClick={() => navigate('/activities')}
             className="w-full py-2.5 bg-[#0F5132] text-white hover:bg-[#0B3D25] rounded-xl text-xs font-bold transition-all shadow-2xs active:scale-[0.98]"
           >
             Explore Activities →

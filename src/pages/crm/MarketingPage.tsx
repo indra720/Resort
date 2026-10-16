@@ -598,7 +598,7 @@ export const MarketingPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-[#E5E7EB] shadow-xs">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <h1 className="text-md sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+            <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
               <Send className="w-4 h-4 text-[#0F5132]" />
               <span>Marketing & Guest Acquisition</span>
             </h1>

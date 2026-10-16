@@ -287,23 +287,49 @@ export const AppRoutes: React.FC = () => {
         path="/activities"
         element={
           <ProtectedRoute>
-            <AppLayout>
-              <ActivitiesPage />
-            </AppLayout>
+            <RoleGuard
+              allowedRoles={[
+                'Super Admin',
+                'Resort Owner',
+                'Resort Manager',
+                'Sales Executive',
+                'Receptionist',
+                'Guest',
+              ]}
+            >
+              <AppLayout>
+                <ActivitiesPage />
+              </AppLayout>
+            </RoleGuard>
           </ProtectedRoute>
         }
       />
+      <Route path="/activity" element={<Navigate to="/activities" replace />} />
 
       <Route
         path="/events"
         element={
           <ProtectedRoute>
-            <AppLayout>
-              <EventsPage />
-            </AppLayout>
+            <RoleGuard
+              allowedRoles={[
+                'Super Admin',
+                'Resort Owner',
+                'Resort Manager',
+                'Sales Executive',
+                'Receptionist',
+                'Guest',
+              ]}
+            >
+              <AppLayout>
+                <EventsPage />
+              </AppLayout>
+            </RoleGuard>
           </ProtectedRoute>
         }
       />
+      <Route path="/banquets" element={<Navigate to="/events" replace />} />
+      <Route path="/banquet" element={<Navigate to="/events" replace />} />
+      <Route path="/event" element={<Navigate to="/events" replace />} />
 
       {/* Rooms Module */}
       <Route

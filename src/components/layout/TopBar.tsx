@@ -39,7 +39,7 @@ export const TopBar: React.FC<TopBarProps> = ({
 
   // Notifications state
   const [notifications, setNotifications] = useState<NotificationItem[]>(MOCK_NOTIFICATIONS);
-  const unreadCount = 3; // Exactly 3 notifications as shown in screenshot
+  const unreadCount = notifications.filter((n) => !n.read).length;
 
   const notifRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);

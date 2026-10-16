@@ -10,8 +10,8 @@ export interface BottomNavProps {
 }
 
 export const BottomNav: React.FC<BottomNavProps> = ({ onOpenMore }) => {
-  const { role } = useAuthStore();
-  const primaryItems = getBottomNavItemsForRole(role);
+  const { role, isImpersonating } = useAuthStore();
+  const primaryItems = getBottomNavItemsForRole(role, isImpersonating);
 
   return (
     <nav
@@ -34,6 +34,9 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onOpenMore }) => {
             if (label.includes('Housekeeping')) return 'Cleaning';
             if (label.includes('Restaurant')) return 'Dining';
             if (label.includes('Staff')) return 'Staff';
+            if (label.includes('Events')) return 'Events';
+            if (label.includes('Activities')) return 'Activities';
+            if (label.includes('Services') || label.includes('Concierge')) return 'Services';
             return label.length > 9 ? label.split(' ')[0] : label;
           };
 

@@ -335,14 +335,14 @@ export const RESORT_NAV_ITEMS: NavItem[] = [
     label: 'Activities',
     path: '/activities',
     icon: Compass,
-    allowedRoles: ['Super Admin', 'Resort Owner', 'Resort Manager', 'Receptionist', 'Guest'],
+    allowedRoles: ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive', 'Receptionist', 'Guest'],
   },
   {
     id: 'events',
     label: 'Events & Banquets',
     path: '/events',
     icon: PartyPopper,
-    allowedRoles: ['Super Admin', 'Resort Owner', 'Resort Manager', 'Receptionist', 'Guest'],
+    allowedRoles: ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive', 'Receptionist', 'Guest'],
   },
   {
     id: 'reports',
@@ -460,6 +460,8 @@ export const PERMISSIONS = {
     ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive'].includes(role),
   canManageAutomations: (role: UserRole) =>
     ['Super Admin', 'Resort Owner', 'Resort Manager'].includes(role),
+  canManageEvents: (role: UserRole) =>
+    ['Super Admin', 'Resort Owner', 'Resort Manager', 'Sales Executive', 'Receptionist'].includes(role),
 };
 
 /**

@@ -23,7 +23,12 @@ import { GuestDashboard } from './GuestDashboard';
  * - Guest: VIP Guest Sanctuary & In-Room Concierge
  */
 export const DashboardRouter: React.FC = () => {
-  const { role } = useAuthStore();
+  const { role, isImpersonating } = useAuthStore();
+
+  // In tenant impersonation mode, show the resort operational dashboard
+  if (role === 'Super Admin' && isImpersonating) {
+    return <ResortOwnerDashboard />;
+  }
 
   switch (role) {
     case 'Super Admin':

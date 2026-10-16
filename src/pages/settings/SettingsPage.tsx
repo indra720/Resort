@@ -102,7 +102,7 @@ export const SettingsPage: React.FC = () => {
     <div className="w-full space-y-4 sm:space-y-5 text-left">
       <div>
         <div className="flex flex-col lg:flex-row items-center gap-2">
-          <h1 className="text-md sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+          <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
             <Settings className="w-6 h-6 text-[#0F5132]" />
             <span>Resort Settings & GST Taxation</span>
           </h1>

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { toast } from '@/store/useToastStore';
@@ -85,7 +85,7 @@ export const FeedbackPage: React.FC = () => {
     <div className="w-full space-y-6 text-left">
       {/* Page Header */}
       <div>
-        <h1 className="text-md sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+        <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
           <MessageSquareHeart className="w-6 h-6 text-[#0F5132]" />
           <span>Guest Stay Review & Feedback Center</span>
         </h1>

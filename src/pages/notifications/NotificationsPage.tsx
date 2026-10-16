@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { MOCK_NOTIFICATIONS, NotificationItem } from '@/data/mockNotifications';
 import { Button } from '@/components/ui/Button';
 import { toast } from '@/store/useToastStore';
@@ -50,7 +50,7 @@ export const NotificationsPage: React.FC = () => {
     <div className="w-full space-y-6 text-left">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-md sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
+          <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-[#0F5132] flex items-center gap-2">
             <Bell className="w-6 h-6 text-[#0F5132]" />
             <span>Resort Notifications Center</span>
           </h1>
