@@ -34,7 +34,7 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
   }, []);
 
   return (
-    <div className="h-screen w-full bg-[#F8FAFC] text-[#111827] flex font-sans selection:bg-[#0F5132] selection:text-white overflow-hidden">
+    <div className="h-full w-full bg-[#F8FAFC] text-[#111827] flex font-sans selection:bg-[#0F5132] selection:text-white overflow-hidden">
       {/* Desktop Collapsible Sidebar */}
       <Sidebar isCollapsed={isSidebarCollapsed} />
 
@@ -79,8 +79,8 @@ export const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
         </div>
 
         {/* Scrollable Main Area with comfortable mobile gutters */}
-        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden w-full px-2.5 py-3 sm:px-6 sm:py-5 pb-24 md:pb-6 flex flex-col bg-[#F8FAFC]">
-          <div className="w-full max-w-[1600px] mx-auto flex-1 flex flex-col">
+        <main className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden w-full px-2.5 py-3 sm:px-6 sm:py-5 pb-24 md:pb-12 bg-[#F8FAFC]">
+          <div className="w-full max-w-[1600px] mx-auto">
             <PageTransition>{children}</PageTransition>
           </div>
         </main>

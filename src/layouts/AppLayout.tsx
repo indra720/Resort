@@ -37,7 +37,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex flex-col h-screen w-full overflow-hidden">
+    <div className="flex flex-col h-screen h-[100dvh] w-full overflow-hidden">
       <ImpersonationBanner />
       <TrialBanner />
       <div className="flex-1 w-full min-h-0 overflow-hidden">

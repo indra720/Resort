@@ -138,9 +138,9 @@ export const CRMPage: React.FC = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" />
 
-          <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
-            <div>
-              <div className="flex flex-wrap items-center gap-2">
+          <div className="relative z-10 flex flex-col  sm:items-start justify-between gap-3">
+            <div className="">
+              <div className="flex flex-wrap  items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-50 text-[#0F5132] uppercase tracking-wider border border-emerald-200/80 shadow-2xs">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#0F5132] animate-pulse" />
                   CRM Overview & Pipeline
@@ -433,7 +433,7 @@ export const CRMPage: React.FC = () => {
                     </div>
 
                     {/* Cards */}
-                    <div className="space-y-3 flex-1 overflow-y-auto max-h-[600px] scrollbar-thin">
+                    <div className="space-y-3 flex-1 overflow-y-auto max-h-[600px] scrollbar-thin overscroll-contain">
                       {stageLeads.map((l) => (
                         <div
                           key={l.id}
@@ -790,20 +790,32 @@ export const CRMPage: React.FC = () => {
                   {/* Rep Name & Revenue */}
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0 flex-1">
-                      <h4 className="font-bold text-[#0F172A] text-sm truncate">{exec.executiveName}</h4>
-                      <p className="text-[11px] text-[#64748B] truncate">Target: {formatINR(exec.targetRevenue)}</p>
+                      <h4 className="font-bold text-[#0F172A] text-sm truncate">
+                        {exec.executiveName}
+                      </h4>
+                      <p className="text-[11px] text-[#64748B] truncate">
+                        Target: {formatINR(exec.targetRevenue)}
+                      </p>
                     </div>
                     <div className="text-right shrink-0">
-                      <span className="text-[10px] text-[#64748B] block font-medium">Achieved</span>
-                      <span className="text-sm font-black text-[#0F5132]">{formatINR(exec.revenue)}</span>
+                      <span className="text-[10px] text-[#64748B] block font-medium">
+                        Achieved
+                      </span>
+                      <span className="text-sm font-black text-[#0F5132]">
+                        {formatINR(exec.revenue)}
+                      </span>
                     </div>
                   </div>
 
                   {/* Target Progress Bar */}
                   <div className="p-2.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-1.5">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-[10px] font-bold text-[#64748B]">Quota Progress</span>
-                      <span className="font-black text-[#0F172A]">{exec.targetProgressPercent}%</span>
+                      <span className="text-[10px] font-bold text-[#64748B]">
+                        Quota Progress
+                      </span>
+                      <span className="font-black text-[#0F172A]">
+                        {exec.targetProgressPercent}%
+                      </span>
                     </div>
                     <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
                       <div
@@ -814,7 +826,9 @@ export const CRMPage: React.FC = () => {
                               ? "bg-[#0F5132]"
                               : "bg-amber-500"
                         }`}
-                        style={{ width: `${Math.min(100, exec.targetProgressPercent)}%` }}
+                        style={{
+                          width: `${Math.min(100, exec.targetProgressPercent)}%`,
+                        }}
                       />
                     </div>
                   </div>
@@ -822,16 +836,28 @@ export const CRMPage: React.FC = () => {
                   {/* 3-Column Metrics */}
                   <div className="grid grid-cols-3 gap-2 p-2 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center text-xs">
                     <div>
-                      <span className="text-[10px] text-[#64748B] block font-medium">Leads</span>
-                      <span className="font-bold text-[#0F172A]">{exec.assignedLeads}</span>
+                      <span className="text-[10px] text-[#64748B] block font-medium">
+                        Leads
+                      </span>
+                      <span className="font-bold text-[#0F172A]">
+                        {exec.assignedLeads}
+                      </span>
                     </div>
                     <div className="border-x border-[#E2E8F0]">
-                      <span className="text-[10px] text-[#64748B] block font-medium">Booked</span>
-                      <span className="font-bold text-[#16A34A]">{exec.bookedCount}</span>
+                      <span className="text-[10px] text-[#64748B] block font-medium">
+                        Booked
+                      </span>
+                      <span className="font-bold text-[#16A34A]">
+                        {exec.bookedCount}
+                      </span>
                     </div>
                     <div>
-                      <span className="text-[10px] text-[#64748B] block font-medium">Avg Speed</span>
-                      <span className="font-bold text-[#0F172A]">{exec.avgResponseMinutes}m</span>
+                      <span className="text-[10px] text-[#64748B] block font-medium">
+                        Avg Speed
+                      </span>
+                      <span className="font-bold text-[#0F172A]">
+                        {exec.avgResponseMinutes}m
+                      </span>
                     </div>
                   </div>
                 </div>

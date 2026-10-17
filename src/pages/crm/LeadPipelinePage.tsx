@@ -328,7 +328,7 @@ export const LeadPipelinePage: React.FC = () => {
                   </div>
 
                   {/* Cards in this stage */}
-                  <div className="space-y-3 flex-1 overflow-y-auto max-h-[640px] scrollbar-thin">
+                  <div className="space-y-3 flex-1 overflow-y-auto max-h-[640px] scrollbar-thin overscroll-contain">
                     {colLeads.map((l) => (
                       <div
                         key={l.id}

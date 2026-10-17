@@ -122,10 +122,10 @@ export const SuperAdminDashboard: React.FC = () => {
   };
 
   return (
-    <div className="space-y-3.5 text-[#111827] w-full">
+    <div className="space-y-4 text-[#111827] w-full pb-8">
       {/* 1. Panoramic Hero Section with Header & 5 SaaS Platform Owner KPI Cards */}
       <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-2xs bg-white">
-        <div className="relative h-54  w-full overflow-hidden flex flex-col justify-between p-5 sm:p-6">
+        <div className="relative min-h-[180px] sm:min-h-[200px] h-auto w-full overflow-hidden flex flex-col justify-between p-5 sm:p-6">
           <img
             src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80"
             alt="Joy Resorts Sanctuary"
