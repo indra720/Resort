@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Invoice } from '@/types';
 import { DataTable, Column } from '@/components/ui/DataTable';
 import { StatusBadge } from '@/components/ui/StatusBadge';
@@ -9,9 +9,14 @@ import { ConfirmDialog } from '@/components/ui/ConfirmDialog';
 import { formatINR } from '@/lib/formatINR';
 import { formatDate } from '@/lib/utils';
 import { toast } from '@/store/useToastStore';
-import { Receipt, CreditCard, RotateCcw, Eye } from 'lucide-react';
+import { useAuthStore } from '@/store/useAuthStore';
+import { Receipt, CreditCard, RotateCcw, Eye, ShieldCheck, Download, CheckCircle2 } from 'lucide-react';
 
 export const BillingPage: React.FC = () => {
+  const { role } = useAuthStore();
+  const isAccountant = role === 'Accountant';
+  const isReceptionist = role === 'Receptionist';
+
   const [invoices, setInvoices] = useState<Invoice[]>([
     {
       id: 'inv-1',
@@ -133,9 +138,56 @@ export const BillingPage: React.FC = () => {
 
   return (
     <div className="space-y-4 sm:space-y-5 text-left">
+      {isAccountant && (
+        <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#0F5132] text-white flex items-center justify-center font-bold">
+              <Receipt className="w-5 h-5 text-emerald-200" />
+            </div>
+            <div>
+              <span className="text-xs font-bold text-[#0F5132] uppercase tracking-wider">
+                Chief Accountant GST Ledger & Monthly Tax Audit
+              </span>
+              <p className="text-xs text-[#475569] mt-0.5">
+                Hospitality Tax Split: CGST 6%/9% + SGST 6%/9%. Total Invoiced: <strong>{formatINR(invoices.reduce((acc, i) => acc + i.grandTotal, 0))}</strong> | Collected: <strong>{formatINR(invoices.filter((i) => i.status === 'Paid').reduce((acc, i) => acc + i.grandTotal, 0))}</strong>
+              </p>
+            </div>
+          </div>
+          <Button
+            size="sm"
+            variant="primary"
+            onClick={() => toast.success('Tally XML Exported', 'GSTR-1 JSON and Tally Ledger exported.')}
+            leftIcon={<Download className="w-3.5 h-3.5" />}
+          >
+            Export GSTR-1
+          </Button>
+        </div>
+      )}
+
+      {isReceptionist && (
+        <div className="p-4 bg-blue-50 border border-blue-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold">
+              <CreditCard className="w-5 h-5 text-blue-100" />
+            </div>
+            <div>
+              <span className="text-xs font-bold text-blue-800 uppercase tracking-wider">
+                Front Desk Express Checkout & Folio Settlement
+              </span>
+              <p className="text-xs text-[#475569] mt-0.5">
+                Collect pending room charges, dining bills, and issue electronic GST tax invoices before key return.
+              </p>
+            </div>
+          </div>
+          <span className="text-xs font-bold text-rose-700 bg-rose-50 px-2.5 py-1 rounded-full border border-rose-200">
+            {invoices.filter((i) => i.status === 'Pending').length} Pending Settlement
+          </span>
+        </div>
+      )}
+
       <div>
         <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F5132]">
-          Billing & GST Tax Invoices
+          {isAccountant ? 'GST Tax Invoices & Ledger Accounting' : 'Billing & Guest Tax Invoices'}
         </h1>
         <p className="text-xs sm:text-sm text-[#6B7280]">
           Compliant GST invoices, UPI payments, and hospitality refunds.

@@ -39,7 +39,8 @@ import { getCRMAnalyticsReport, exportCRMReportCSV } from "@/api/crmReports";
 import { DateRangeOption, DateRangeFilter } from "@/types/crm";
 
 export const CRMReportsPage: React.FC = () => {
-  const { currentResort } = useAuthStore();
+  const { currentResort, user, role } = useAuthStore();
+  const isSalesExecutive = role === "Sales Executive";
   const [dateRange, setDateRange] = useState<DateRangeOption>("all_time");
   const [customStart, setCustomStart] = useState<string>("");
   const [customEnd, setCustomEnd] = useState<string>("");
@@ -141,24 +142,43 @@ export const CRMReportsPage: React.FC = () => {
 
   return (
     <div className="space-y-6 text-left pb-16 print:p-0 print:space-y-4">
+      {/* Sales Executive Specific Alert */}
+      {isSalesExecutive && (
+        <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#0F5132] text-white flex items-center justify-center font-bold">
+              <Award className="w-5 h-5 text-amber-300" />
+            </div>
+            <div>
+              <span className="text-xs font-bold text-[#0F5132] uppercase tracking-wider">
+                Sales Executive Individual Performance Tracker
+              </span>
+              <p className="text-xs text-[#475569] mt-0.5">
+                Active Persona: <strong>{user?.name || "Sameer Verma"}</strong> • Target: <strong>₹18,00,000</strong> • Achieved: <strong>₹12,40,000 (68.8%)</strong> • Incentive: <strong>₹42,000</strong>
+              </p>
+            </div>
+          </div>
+          <span className="px-3 py-1 rounded-full bg-emerald-100 text-[#0F5132] text-xs font-bold border border-emerald-300">
+            Rank #2 on Property
+          </span>
+        </div>
+      )}
+
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#E2E8F0] pb-4">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-lg sm:text-3xl font-black text-[#0F172A] tracking-tight">
-              Sales Reports & Analytics
+              {isSalesExecutive ? "My Sales Performance & Analytics" : "Sales Reports & Analytics"}
             </h1>
             <span className="bg-emerald-100 text-[#0F5132] text-xs font-bold px-2.5 py-0.5 rounded-full border border-emerald-300">
               Live BI
             </span>
           </div>
           <p className="text-xs sm:text-sm text-[#64748B] mt-1">
-            Conversion metrics, sales velocity, executive performance, and
-            source attribution for{" "}
-            <strong className="text-[#0F172A]">
-              {currentResort?.name || "Resort"}
-            </strong>
-            .
+            {isSalesExecutive
+              ? `Personal quota achievement, lead closure velocity, and incentive tracking for ${user?.name || "Sameer Verma"}.`
+              : `Conversion metrics, sales velocity, executive performance, and source attribution for ${currentResort?.name || "Resort"}.`}
           </p>
         </div>
 

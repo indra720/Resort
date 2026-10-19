@@ -26,6 +26,7 @@ import {
   Clock,
   Building2,
   ShieldCheck,
+  Sparkles,
 } from 'lucide-react';
 
 export const RoomsPage: React.FC = () => {
@@ -99,6 +100,9 @@ export const RoomsPage: React.FC = () => {
 
   const isOwner = role === 'Resort Owner' || role === 'Super Admin';
   const isManager = role === 'Resort Manager';
+  const isReceptionist = role === 'Receptionist';
+  const isHousekeeping = role === 'Housekeeping';
+  const isGuest = role === 'Guest';
 
   return (
     <div className="space-y-3.5 sm:space-y-4 text-left pb-28 sm:pb-12">
@@ -159,6 +163,79 @@ export const RoomsPage: React.FC = () => {
             <span className="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800">
               2 In Cleaning
             </span>
+          </div>
+        </div>
+      ) : isHousekeeping ? (
+        <div className="p-4 bg-gradient-to-r from-amber-50 via-orange-50/50 to-white border border-amber-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+          <div className="flex items-start sm:items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
+              <Sparkles className="w-5 h-5 text-amber-100" />
+            </div>
+            <div>
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                <span className="text-xs font-bold text-amber-900 uppercase tracking-wider">
+                  Housekeeping Villa Inspection & Cleaning Roster
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded-full font-bold bg-amber-100 text-amber-900">
+                  Daily Shift Board
+                </span>
+              </div>
+              <p className="text-xs text-[#475569] mt-0.5">
+                Check sanitized linen replenishment, mini-bar restocking, and room readiness before front desk check-in.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 text-[11px] font-bold shrink-0 self-start sm:self-auto">
+            <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">
+              Available Clean ({rooms.filter((r) => r.status === 'Available').length})
+            </span>
+            <span className="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800">
+              Cleaning In-Progress ({rooms.filter((r) => r.status === 'Cleaning').length})
+            </span>
+          </div>
+        </div>
+      ) : isReceptionist ? (
+        <div className="p-4 bg-gradient-to-r from-indigo-50 via-blue-50/50 to-white border border-indigo-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+          <div className="flex items-start sm:items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
+              <Building2 className="w-5 h-5 text-indigo-100" />
+            </div>
+            <div>
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                <span className="text-xs font-bold text-indigo-900 uppercase tracking-wider">
+                  Front Desk Room Keys & Allocation Availability
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded-full font-bold bg-indigo-100 text-indigo-900">
+                  Ready for Arrival
+                </span>
+              </div>
+              <p className="text-xs text-[#475569] mt-0.5">
+                Available rooms ready for immediate guest key programming and walk-in reservation assignment.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 text-[11px] font-bold shrink-0 self-start sm:self-auto">
+            <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">
+              {rooms.filter((r) => r.status === 'Available').length} Ready for Check-In
+            </span>
+          </div>
+        </div>
+      ) : isGuest ? (
+        <div className="p-4 bg-gradient-to-r from-emerald-50 via-teal-50/50 to-white border border-emerald-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+          <div className="flex items-start sm:items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#0F5132] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
+              <Sparkles className="w-5 h-5 text-amber-300" />
+            </div>
+            <div>
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                <span className="text-xs font-bold text-[#0F5132] uppercase tracking-wider">
+                  Luxury Villas & Private Pool Cottages Gallery
+                </span>
+              </div>
+              <p className="text-xs text-[#475569] mt-0.5">
+                Explore our signature Goan architecture, private plunge pools, and open-air rainforest showers.
+              </p>
+            </div>
           </div>
         </div>
       ) : null}

@@ -57,17 +57,17 @@ const INITIAL_ENQUIRIES: Enquiry[] = [
   },
   {
     id: 'ENQ-802',
-    guestName: 'Ananya Deshmukh',
+    guestName: 'Ananya Deshmukh (Infosys Retreat)',
     phone: '+91 97665 44332',
     email: 'ananya.d@tcs.com',
     checkIn: '2026-11-05',
     checkOut: '2026-11-08',
-    category: 'Luxury Suite',
-    pax: 2,
-    budget: 65000,
+    category: 'Pool Villa',
+    pax: 24,
+    budget: 950000,
     source: 'WhatsApp',
     status: 'New',
-    assignedTo: 'Vikram Singh',
+    assignedTo: 'Sameer Verma',
     createdAt: 'Today, 10:15 AM',
   },
   {
@@ -87,24 +87,25 @@ const INITIAL_ENQUIRIES: Enquiry[] = [
   },
   {
     id: 'ENQ-804',
-    guestName: 'Gaurav Kapoor',
+    guestName: 'Gaurav Kapoor (Luxe Family Holiday)',
     phone: '+91 98450 77665',
     email: 'gaurav.k@zomato.in',
     checkIn: '2026-10-18',
     checkOut: '2026-10-20',
     category: 'Deluxe Cottage',
-    pax: 2,
-    budget: 28000,
-    source: 'MakeMyTrip',
+    pax: 4,
+    budget: 78000,
+    source: 'Website',
     status: 'Won',
-    assignedTo: 'Kavita Iyer (Sales)',
+    assignedTo: 'Sameer Verma',
     createdAt: '3 days ago',
   },
 ];
 
 export const EnquiriesPage: React.FC = () => {
-  const { currentResort, user } = useAuthStore();
+  const { currentResort, user, role } = useAuthStore();
   const [enquiries, setEnquiries] = useState<Enquiry[]>(INITIAL_ENQUIRIES);
+  const [activeTab, setActiveTab] = useState<string>(role === 'Sales Executive' ? 'my-assigned' : 'all');
   const [statusFilter, setStatusFilter] = useState<string>('All');
   const [isAddOpen, setIsAddOpen] = useState(false);
 
@@ -119,6 +120,10 @@ export const EnquiriesPage: React.FC = () => {
   const [source, setSource] = useState<Enquiry['source']>('Website');
 
   const filtered = enquiries.filter((e) => {
+    if (role === 'Sales Executive' && activeTab === 'my-assigned') {
+      const myName = (user?.name || 'Sameer Verma').toLowerCase();
+      if (!e.assignedTo.toLowerCase().includes(myName)) return false;
+    }
     if (statusFilter !== 'All' && e.status !== statusFilter) return false;
     return true;
   });
@@ -380,6 +385,34 @@ export const EnquiriesPage: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Role-Specific Perspective Tabs & Alerts */}
+      {role === 'Sales Executive' && (
+        <div className="flex items-center gap-2 border-b border-[#E2E8F0] pb-2">
+          <button
+            type="button"
+            onClick={() => setActiveTab('my-assigned')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
+              activeTab === 'my-assigned'
+                ? 'bg-[#0F5132] text-white shadow-xs'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+            }`}
+          >
+            Assigned to Me ({enquiries.filter((e) => e.assignedTo.includes('Sameer Verma')).length})
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab('all')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
+              activeTab === 'all'
+                ? 'bg-[#0F5132] text-white shadow-xs'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+            }`}
+          >
+            All Resort Inquiries ({enquiries.length})
+          </button>
+        </div>
+      )}
 
       {/* Status Filter Pill Bar */}
       <div className="flex items-center gap-1.5 overflow-x-auto pb-1">

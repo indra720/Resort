@@ -3,7 +3,7 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { SuperAdminDashboard } from './SuperAdminDashboard';
 import { ResortOwnerDashboard } from './ResortOwnerDashboard';
 import { ResortManagerDashboard } from './ResortManagerDashboard';
-import { CRMPage } from '@/pages/crm/CRMPage';
+import { SalesExecutiveDashboard } from './SalesExecutiveDashboard';
 import { ReceptionistDashboard } from './ReceptionistDashboard';
 import { HousekeepingDashboard } from './HousekeepingDashboard';
 import { RestaurantDashboard } from './RestaurantDashboard';
@@ -15,7 +15,7 @@ import { GuestDashboard } from './GuestDashboard';
  * - Super Admin: SaaS Platform Owner Hub (MRR, Tenants, Audit Trail)
  * - Resort Owner: Business, Profit, Multi-Branch, Capex Approvals Hub
  * - Resort Manager: General Operations Hub (Arrivals, Departures, Shift Pulse)
- * - Sales Executive: CRM & Corporate Retreats Lead Pipeline
+ * - Sales Executive: Personal Sales Targets, My Pipeline & Incentive Hub
  * - Receptionist: Front Desk & Room Key Board
  * - Housekeeping: Room Cleaning & Inspection Board
  * - Restaurant/F&B: Dining Tables & Kitchen KOT Live Orders
@@ -38,7 +38,7 @@ export const DashboardRouter: React.FC = () => {
     case 'Resort Manager':
       return <ResortManagerDashboard />;
     case 'Sales Executive':
-      return <CRMPage />;
+      return <SalesExecutiveDashboard />;
     case 'Receptionist':
       return <ReceptionistDashboard />;
     case 'Housekeeping':
