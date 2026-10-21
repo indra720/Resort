@@ -393,50 +393,56 @@ export function DataTable<T>({
               </div>
             </div>
           ) : (
-            /* Luxury Mobile App Card View (Polished Stayora-grade visual hierarchy) */
-            <div className="space-y-4">
+            /* Responsive Luxury Cards Grid (Multi-column responsive grid instead of stretched single-column) */
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {paginatedData.map((item) => (
                 <div
                   key={keyExtractor(item)}
-                  className="rounded-2xl bg-white border border-[#E2E8F0] shadow-[0_2px_12px_-2px_rgba(15,81,50,0.06),0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-[#0F5132]/30 transition-all overflow-hidden text-left"
+                  className="rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:shadow-md hover:border-[#0F5132]/35 transition-all overflow-hidden text-left flex flex-col justify-between"
                 >
                   {/* 1. Card Top Accent Banner */}
                   {activeColumns.length > 0 && (
-                    <div className="bg-gradient-to-r from-emerald-50/70 via-slate-50/60 to-white px-4 py-3 border-b border-[#E2E8F0]/70 flex items-start justify-between gap-3">
-                      <div className="min-w-0 flex-1">
-                        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#DCFCE7] text-[#0F5132] text-[10px] font-bold uppercase tracking-wider mb-1 border border-emerald-200/60">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#0F5132]" />
-                          <span>{activeColumns[0].header}</span>
-                        </div>
-                        <div className="text-sm sm:text-base font-extrabold text-[#0F172A] tracking-tight break-words">
-                          {activeColumns[0].accessor(item)}
-                        </div>
+                    <div className="bg-gradient-to-r from-emerald-50/80 via-slate-50/50 to-white px-4 py-3 border-b border-[#E2E8F0]/80">
+                      <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#DCFCE7] text-[#0F5132] text-[10px] font-bold uppercase tracking-wider mb-1.5 border border-emerald-200/60">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0F5132]" />
+                        <span>{activeColumns[0].header}</span>
+                      </div>
+                      <div className="text-sm font-bold text-[#0F172A] tracking-tight break-words">
+                        {activeColumns[0].accessor(item)}
                       </div>
                     </div>
                   )}
 
-                  {/* 2. Structured Secondary Data Capsule Tiles */}
+                  {/* 2. Structured Secondary Data Capsule Tiles (Neat 2-Column Grid) */}
                   {activeColumns.length > 1 && (
-                    <div className="p-3 sm:p-4 space-y-2">
-                      {activeColumns.slice(1).map((col) => (
-                        <div
-                          key={col.key}
-                          className="px-3 py-2.5 rounded-xl bg-[#F8FAFC] hover:bg-[#F0FDF4]/50 border border-[#E2E8F0]/70 transition-colors flex items-center justify-between gap-3 min-w-0"
-                        >
-                          <span className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider shrink-0">
-                            {col.header}
-                          </span>
-                          <div className="text-xs sm:text-sm font-bold text-[#0F172A] text-right break-words min-w-0 max-w-[70%] flex items-center justify-end flex-wrap gap-1">
-                            {col.accessor(item)}
-                          </div>
-                        </div>
-                      ))}
+                    <div className="p-3.5 flex-1">
+                      <div className="grid grid-cols-2 gap-2">
+                        {activeColumns.slice(1).map((col, idx, arr) => {
+                          const isLastOdd = arr.length % 2 !== 0 && idx === arr.length - 1;
+                          return (
+                            <div
+                              key={col.key}
+                              className={cn(
+                                "p-2.5 rounded-xl bg-[#F8FAFC] hover:bg-[#F0FDF4]/50 border border-[#E2E8F0]/80 transition-colors flex flex-col justify-between gap-1 min-w-0",
+                                isLastOdd && "col-span-2"
+                              )}
+                            >
+                              <span className="text-[10px] font-bold text-[#64748B] uppercase tracking-wider truncate">
+                                {col.header}
+                              </span>
+                              <div className="text-xs font-semibold text-[#0F172A] break-words">
+                                {col.accessor(item)}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   )}
 
                   {/* 3. Action Footer Tray */}
                   {actions && (
-                    <div className="px-4 py-3 bg-[#F8FAFC]/90 border-t border-[#E2E8F0]/70 flex items-center justify-end gap-2 flex-wrap">
+                    <div className="px-4 py-2.5 bg-[#F8FAFC]/90 border-t border-[#E2E8F0]/80 flex items-center justify-end gap-2 flex-wrap mt-auto">
                       {actions(item)}
                     </div>
                   )}

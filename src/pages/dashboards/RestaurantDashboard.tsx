@@ -592,33 +592,47 @@ export const RestaurantDashboard: React.FC = () => {
       {/* New KOT Order Modal */}
       {isNewOrderOpen && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-2xl max-w-md w-full p-6 space-y-4">
+          <div className="bg-white rounded-3xl border border-[#E2E8F0] shadow-2xl max-w-2xl lg:max-w-3xl w-full p-6 sm:p-7 space-y-4">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
-              <h3 className="text-base font-bold text-[#0F172A]">Generate Kitchen KOT Order</h3>
+              <h3 className="text-base sm:text-lg font-bold text-[#0F172A]">Generate Kitchen KOT Order</h3>
               <button
                 type="button"
                 onClick={() => setIsNewOrderOpen(false)}
-                className="text-[#64748B] hover:text-[#0F172A] text-lg font-bold"
+                className="w-8 h-8 rounded-full hover:bg-[#F1F5F9] flex items-center justify-center text-[#64748B] hover:text-[#0F172A] font-bold"
               >
                 ✕
               </button>
             </div>
 
-            <form onSubmit={handleCreateOrder} className="space-y-3 text-xs">
-              <div>
-                <label className="font-semibold text-[#334155] block mb-1">Table / Villa Destination</label>
-                <select
-                  value={newTable}
-                  onChange={(e) => setNewTable(e.target.value)}
-                  className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
-                >
-                  <option value="Lake Deck Table #1">Lake Deck Table #1</option>
-                  <option value="Lake Deck Table #2">Lake Deck Table #2</option>
-                  <option value="Gazebo Lounge #1">Gazebo Lounge #1</option>
-                  <option value="Indoor Bistro Table #3">Indoor Bistro Table #3</option>
-                  <option value="Room Service Villa #101">Room Service Villa #101</option>
-                  <option value="Room Service Villa #105">Room Service Villa #105</option>
-                </select>
+            <form onSubmit={handleCreateOrder} className="space-y-4 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="font-semibold text-[#334155] block mb-1">Table / Villa Destination</label>
+                  <select
+                    value={newTable}
+                    onChange={(e) => setNewTable(e.target.value)}
+                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+                  >
+                    <option value="Lake Deck Table #1">Lake Deck Table #1</option>
+                    <option value="Lake Deck Table #2">Lake Deck Table #2</option>
+                    <option value="Gazebo Lounge #1">Gazebo Lounge #1</option>
+                    <option value="Indoor Bistro Table #3">Indoor Bistro Table #3</option>
+                    <option value="Room Service Villa #101">Room Service Villa #101</option>
+                    <option value="Room Service Villa #105">Room Service Villa #105</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="font-semibold text-[#334155] block mb-1">Estimated Amount (₹)</label>
+                  <input
+                    type="number"
+                    required
+                    value={newAmount}
+                    onChange={(e) => setNewAmount(e.target.value)}
+                    placeholder="1200"
+                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+                  />
+                </div>
               </div>
 
               <div>
@@ -629,33 +643,21 @@ export const RestaurantDashboard: React.FC = () => {
                   value={newItems}
                   onChange={(e) => setNewItems(e.target.value)}
                   placeholder="e.g. 2x Grilled Lake Trout, 1x Naan"
-                  className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+                  className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
                 />
               </div>
 
-              <div>
-                <label className="font-semibold text-[#334155] block mb-1">Estimated Amount (₹)</label>
-                <input
-                  type="number"
-                  required
-                  value={newAmount}
-                  onChange={(e) => setNewAmount(e.target.value)}
-                  placeholder="1200"
-                  className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
-                />
-              </div>
-
-              <div className="pt-3 border-t border-[#E2E8F0] flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-[#E2E8F0] flex items-center justify-end gap-2.5">
                 <button
                   type="button"
                   onClick={() => setIsNewOrderOpen(false)}
-                  className="px-3.5 py-2 bg-[#F8FAFC] hover:bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl font-semibold text-[#475569]"
+                  className="px-4 py-2.5 bg-[#F8FAFC] hover:bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl font-semibold text-[#475569]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl font-semibold shadow-2xs"
+                  className="px-5 py-2.5 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl font-bold shadow-2xs"
                 >
                   Send to Kitchen KOT
                 </button>

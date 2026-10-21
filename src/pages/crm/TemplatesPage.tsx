@@ -355,41 +355,41 @@ export const TemplatesPage: React.FC = () => {
       {/* Edit / Create Modal */}
       {isEditModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-white rounded-3xl max-w-xl w-full p-5 sm:p-6 shadow-2xl border border-[#CBD5E1] space-y-4 animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-white rounded-3xl max-w-2xl lg:max-w-3xl w-full p-6 sm:p-7 shadow-2xl border border-[#CBD5E1] space-y-4 animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
-              <h3 className="text-base font-bold text-[#0F172A] flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-[#0F172A] flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#0F5132]" />
                 <span>{templateToEdit ? 'Edit Template' : 'Create New Template'}</span>
               </h3>
               <button
                 type="button"
                 onClick={() => setIsEditModalOpen(false)}
-                className="p-1 rounded-xl text-[#64748B] hover:text-[#0F172A]"
+                className="w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center text-[#64748B] hover:text-[#0F172A]"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleSaveForm} className="space-y-3.5 text-xs">
-              <div>
-                <label className="block text-[11px] font-semibold text-[#475569] mb-1">Template Name *</label>
-                <input
-                  type="text"
-                  required
-                  value={formName}
-                  onChange={(e) => setFormName(e.target.value)}
-                  placeholder="e.g. Luxury Villa Welcome"
-                  className="w-full h-9 px-3 rounded-xl bg-white border border-[#CBD5E1] font-medium focus:outline-none focus:border-[#0F5132]"
-                />
-              </div>
+            <form onSubmit={handleSaveForm} className="space-y-4 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] font-semibold text-[#475569] mb-1">Template Name *</label>
+                  <input
+                    type="text"
+                    required
+                    value={formName}
+                    onChange={(e) => setFormName(e.target.value)}
+                    placeholder="e.g. Luxury Villa Welcome"
+                    className="w-full h-10 px-3 rounded-xl bg-white border border-[#CBD5E1] font-medium focus:outline-none focus:border-[#0F5132]"
+                  />
+                </div>
 
-              <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[11px] font-semibold text-[#475569] mb-1">Channel</label>
                   <select
                     value={formChannel}
                     onChange={(e) => setFormChannel(e.target.value as any)}
-                    className="w-full h-9 px-3 rounded-xl bg-white border border-[#CBD5E1] font-medium focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl bg-white border border-[#CBD5E1] font-medium focus:outline-none"
                   >
                     <option value="whatsapp">WhatsApp</option>
                     <option value="email">Email</option>

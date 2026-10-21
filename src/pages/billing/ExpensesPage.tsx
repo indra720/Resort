@@ -328,61 +328,66 @@ export const ExpensesPage: React.FC = () => {
         onClose={() => setIsAddOpen(false)}
         title="Record Property Operational Expense"
         description="Log vendor procurement, diesel refills, or petty cash outlays"
-        maxWidth="md"
+        maxWidth="2xl"
       >
         <form onSubmit={handleCreate} className="space-y-4 text-left">
-          <Input
-            label="Expense Description / Item"
-            placeholder="e.g. Organic Produce & Dairy Delivery"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-3.5">
+              <Input
+                label="Expense Description / Item"
+                placeholder="e.g. Organic Produce & Dairy Delivery"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
 
-          <div className="grid grid-cols-2 gap-3">
-            <Select
-              label="Expense Category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value as any)}
-              options={[
-                { label: 'F&B & Kitchen Provisions', value: 'F&B & Kitchen' },
-                { label: 'Generator Fuel & Power', value: 'Generator Fuel & Power' },
-                { label: 'Pool & Chemical Supplies', value: 'Pool & Chemical Supplies' },
-                { label: 'Linens & Laundry', value: 'Linens & Laundry' },
-                { label: 'Landscape & Gardens', value: 'Landscape & Gardens' },
-                { label: 'Maintenance & Hardware', value: 'Maintenance & Hardware' },
-              ]}
-            />
-            <Input
-              label="Amount Paid (₹ INR)"
-              type="number"
-              value={String(amount)}
-              onChange={(e) => setAmount(Number(e.target.value) || 0)}
-              required
-            />
+              <Select
+                label="Expense Category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value as any)}
+                options={[
+                  { label: 'F&B & Kitchen Provisions', value: 'F&B & Kitchen' },
+                  { label: 'Generator Fuel & Power', value: 'Generator Fuel & Power' },
+                  { label: 'Pool & Chemical Supplies', value: 'Pool & Chemical Supplies' },
+                  { label: 'Linens & Laundry', value: 'Linens & Laundry' },
+                  { label: 'Landscape & Gardens', value: 'Landscape & Gardens' },
+                  { label: 'Maintenance & Hardware', value: 'Maintenance & Hardware' },
+                ]}
+              />
+            </div>
+
+            <div className="space-y-3.5">
+              <Input
+                label="Amount Paid (₹ INR)"
+                type="number"
+                value={String(amount)}
+                onChange={(e) => setAmount(Number(e.target.value) || 0)}
+                required
+              />
+
+              <div className="grid grid-cols-2 gap-2">
+                <Input
+                  label="Vendor / Payee Name"
+                  placeholder="e.g. Indian Oil Corp"
+                  value={vendorName}
+                  onChange={(e) => setVendorName(e.target.value)}
+                  required
+                />
+                <Select
+                  label="Disbursement Mode"
+                  value={paidVia}
+                  onChange={(e) => setPaidVia(e.target.value as any)}
+                  options={[
+                    { label: 'Petty Cash', value: 'Petty Cash' },
+                    { label: 'Corporate Card', value: 'Corporate Credit Card' },
+                    { label: 'Vendor NEFT', value: 'Direct Vendor NEFT' },
+                  ]}
+                />
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <Input
-              label="Vendor / Payee Name"
-              placeholder="e.g. Indian Oil Corporation"
-              value={vendorName}
-              onChange={(e) => setVendorName(e.target.value)}
-              required
-            />
-            <Select
-              label="Disbursement Mode"
-              value={paidVia}
-              onChange={(e) => setPaidVia(e.target.value as any)}
-              options={[
-                { label: 'Front Desk Petty Cash', value: 'Petty Cash' },
-                { label: 'Corporate Credit Card', value: 'Corporate Credit Card' },
-                { label: 'Direct Vendor NEFT', value: 'Direct Vendor NEFT' },
-              ]}
-            />
-          </div>
-
-          <div className="pt-2 flex justify-end gap-2">
+          <div className="pt-2 border-t border-[#E2E8F0] flex justify-end gap-2">
             <Button variant="ghost" type="button" onClick={() => setIsAddOpen(false)}>
               Cancel
             </Button>

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Modal } from '@/components/ui/Modal';
 import { Button } from '@/components/ui/Button';
 import { StatusBadge } from '@/components/ui/StatusBadge';
@@ -32,7 +32,7 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
       onClose={onClose}
       title="Tax Invoice"
       description={`GST Compliance Voucher • ${invoice.invoiceNumber}`}
-      maxWidth="xl"
+      maxWidth="3xl"
       footer={
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 w-full">
           <Button

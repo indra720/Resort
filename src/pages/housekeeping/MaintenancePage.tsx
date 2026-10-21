@@ -327,72 +327,78 @@ export const MaintenancePage: React.FC = () => {
         onClose={() => setIsAddOpen(false)}
         title="Raise Technical Maintenance Ticket"
         description="Dispatch engineering technicians for HVAC, plumbing, or plunge pool repair"
-        maxWidth="md"
+        maxWidth="3xl"
       >
         <form onSubmit={handleCreate} className="space-y-4 text-left">
-          <div className="grid grid-cols-2 gap-3">
-            <Input
-              label="Room / Facility Location"
-              placeholder="e.g. Pool Villa V-01"
-              value={roomOrArea}
-              onChange={(e) => setRoomOrArea(e.target.value)}
-              required
-            />
-            <Select
-              label="Engineering Trade"
-              value={category}
-              onChange={(e) => setCategory(e.target.value as any)}
-              options={[
-                { label: 'Air Conditioning (VRV / Split)', value: 'Air Conditioning' },
-                { label: 'Plumbing & Hot Water Geyser', value: 'Plumbing & Water' },
-                { label: 'Plunge Pool Filter & Heater', value: 'Plunge Pool Filter' },
-                { label: 'Electrical & Power Supply', value: 'Electrical' },
-                { label: 'RFID Door Keycard Lock', value: 'Keycard Lock' },
-                { label: 'Carpentry & Furniture', value: 'Carpentry' },
-              ]}
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-3.5">
+              <div className="grid grid-cols-2 gap-3">
+                <Input
+                  label="Room / Location"
+                  placeholder="e.g. Pool Villa V-01"
+                  value={roomOrArea}
+                  onChange={(e) => setRoomOrArea(e.target.value)}
+                  required
+                />
+                <Select
+                  label="Engineering Trade"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value as any)}
+                  options={[
+                    { label: 'Air Conditioning', value: 'Air Conditioning' },
+                    { label: 'Plumbing & Geyser', value: 'Plumbing & Water' },
+                    { label: 'Plunge Pool Filter', value: 'Plunge Pool Filter' },
+                    { label: 'Electrical', value: 'Electrical' },
+                    { label: 'Keycard Lock', value: 'Keycard Lock' },
+                    { label: 'Carpentry', value: 'Carpentry' },
+                  ]}
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <Select
+                  label="Severity Priority"
+                  value={priority}
+                  onChange={(e) => setPriority(e.target.value as any)}
+                  options={[
+                    { label: 'Critical (Occupied Down)', value: 'Critical' },
+                    { label: 'High (Guest Issue)', value: 'High' },
+                    { label: 'Medium (Routine Fix)', value: 'Medium' },
+                    { label: 'Low (Cosmetic)', value: 'Low' },
+                  ]}
+                />
+                <Select
+                  label="Assign Technician"
+                  value={technician}
+                  onChange={(e) => setTechnician(e.target.value)}
+                  options={[
+                    { label: 'Suresh Kumar (Chief Eng)', value: 'Suresh Kumar (Chief Engineer)' },
+                    { label: 'Ramesh Sharma (HVAC)', value: 'Ramesh Sharma (HVAC Tech)' },
+                    { label: 'Gopal Patil (Electrician)', value: 'Gopal Patil (Electrician)' },
+                    { label: 'Duty Maintenance Tech', value: 'Duty Maintenance Tech' },
+                  ]}
+                />
+              </div>
+            </div>
+
+            <div className="space-y-3.5">
+              <div>
+                <label className="font-semibold text-xs text-[#334155] block mb-1">
+                  Issue Diagnosis & Symptoms *
+                </label>
+                <textarea
+                  rows={4}
+                  required
+                  value={issue}
+                  onChange={(e) => setIssue(e.target.value)}
+                  placeholder="e.g. AC unit leaking condensate water onto wooden floor. Filter clean, needs drain line flush."
+                  className="w-full text-xs p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+                />
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <Select
-              label="Severity Priority"
-              value={priority}
-              onChange={(e) => setPriority(e.target.value as any)}
-              options={[
-                { label: 'Critical (Occupied Villa Down)', value: 'Critical' },
-                { label: 'High (Guest Inconvenience)', value: 'High' },
-                { label: 'Medium (Routine Fix)', value: 'Medium' },
-                { label: 'Low (Cosmetic / Hardware)', value: 'Low' },
-              ]}
-            />
-            <Select
-              label="Assign Technician"
-              value={technician}
-              onChange={(e) => setTechnician(e.target.value)}
-              options={[
-                { label: 'Suresh Kumar (Chief Engineer)', value: 'Suresh Kumar (Chief Engineer)' },
-                { label: 'Ramesh Sharma (HVAC Specialist)', value: 'Ramesh Sharma (HVAC Tech)' },
-                { label: 'Gopal Patil (Electrician)', value: 'Gopal Patil (Electrician)' },
-                { label: 'On-Duty Maintenance Assistant', value: 'Duty Maintenance Tech' },
-              ]}
-            />
-          </div>
-
-          <div>
-            <label className="font-semibold text-xs text-[#334155] block mb-1">
-              Issue Diagnosis & Symptoms
-            </label>
-            <textarea
-              rows={3}
-              required
-              value={issue}
-              onChange={(e) => setIssue(e.target.value)}
-              placeholder="e.g. AC unit leaking condensate water onto wooden floor. Filter clean, needs drain line flush."
-              className="w-full text-xs p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
-            />
-          </div>
-
-          <div className="pt-2 flex justify-end gap-2">
+          <div className="pt-2 border-t border-[#E2E8F0] flex justify-end gap-2">
             <Button variant="ghost" type="button" onClick={() => setIsAddOpen(false)}>
               Cancel
             </Button>

@@ -829,7 +829,7 @@ export const LeadDetailDrawer: React.FC<LeadDetailDrawerProps> = ({
       {/* Phase 3: Template Dispatch Modal */}
       {isTemplateModalOpen && (
         <div className="fixed inset-0 z-60 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-[#CBD5E1] overflow-hidden animate-in zoom-in-95 duration-150">
+          <div className="w-full max-w-2xl lg:max-w-3xl bg-white rounded-2xl shadow-2xl border border-[#CBD5E1] overflow-hidden animate-in zoom-in-95 duration-150">
             <div className="p-4 border-b border-[#E2E8F0] bg-[#F8FAFC] flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#0F5132]" />

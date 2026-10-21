@@ -490,7 +490,7 @@ export const EventsPage: React.FC = () => {
         columns={columns}
         keyExtractor={(e) => e.id}
         searchPlaceholder="Search events by name, host, or venue..."
-        pageSize={5}
+        pageSize={6}
         actions={(e) => (
           <div className="flex items-center gap-1.5">
             <Button
@@ -521,114 +521,122 @@ export const EventsPage: React.FC = () => {
         onClose={() => setIsAddOpen(false)}
         title="Reserve Banquet Venue Space"
         description="Book beachfront lawns, grand ballrooms, or poolside decks for private gatherings"
-        maxWidth="md"
+        maxWidth="3xl"
       >
         <form onSubmit={handleCreate} className="space-y-4 text-left">
-          <Input
-            label="Event Name / Occasion"
-            placeholder="e.g. Singhal Silver Jubilee Gala"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Left Column: Event & Host Information */}
+            <div className="space-y-3.5">
+              <Input
+                label="Event Name / Occasion"
+                placeholder="e.g. Singhal Silver Jubilee Gala"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
 
-          <div className="grid grid-cols-2 gap-3">
-            <Input
-              label="Host Full Name"
-              placeholder="e.g. Girish Mehta"
-              value={hostName}
-              onChange={(e) => setHostName(e.target.value)}
-              required
-            />
-            <Input
-              label="Contact Phone"
-              placeholder="+91 98000 11223"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              required
-            />
+              <div className="grid grid-cols-2 gap-3">
+                <Input
+                  label="Host Full Name"
+                  placeholder="e.g. Girish Mehta"
+                  value={hostName}
+                  onChange={(e) => setHostName(e.target.value)}
+                  required
+                />
+                <Input
+                  label="Contact Phone"
+                  placeholder="+91 98000 11223"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <Select
+                  label="Venue Location"
+                  value={venue}
+                  onChange={(e) => setVenue(e.target.value)}
+                  options={VENUE_CATALOG.map((v) => ({
+                    label: `${v.name} (${v.capacity})`,
+                    value: v.name,
+                  }))}
+                />
+                <Select
+                  label="Event Nature"
+                  value={eventType}
+                  onChange={(e) => setEventType(e.target.value as any)}
+                  options={[
+                    { label: "Destination Wedding", value: "Wedding" },
+                    {
+                      label: "Corporate Offsite / Summit",
+                      value: "Corporate Offsite",
+                    },
+                    {
+                      label: "Birthday Gala / Anniversary",
+                      value: "Birthday Gala",
+                    },
+                    { label: "Cocktail Reception", value: "Cocktail Reception" },
+                  ]}
+                />
+              </div>
+            </div>
+
+            {/* Right Column: Schedule, Financials & Notes */}
+            <div className="space-y-3.5">
+              <div className="grid grid-cols-2 gap-3">
+                <Input
+                  label="Event Date"
+                  type="date"
+                  value={eventDate}
+                  onChange={(e) => setEventDate(e.target.value)}
+                  required
+                />
+                <Input
+                  label="Expected Guest Pax"
+                  type="number"
+                  value={pax}
+                  onChange={(e) => setPax(e.target.value)}
+                  placeholder="e.g. 150"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <Input
+                  label="Total Package Tariff (₹ INR)"
+                  type="number"
+                  value={totalCost}
+                  onChange={(e) => setTotalCost(e.target.value)}
+                  placeholder="e.g. 350000"
+                  required
+                />
+                <Input
+                  label="Advance Deposit Collected (₹ INR)"
+                  type="number"
+                  value={depositPaid}
+                  onChange={(e) => setDepositPaid(e.target.value)}
+                  placeholder="e.g. 100000"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-[#1F2937] block mb-1">
+                  Event Notes & Special Arrangements
+                </label>
+                <textarea
+                  rows={2}
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                  placeholder="Catering preferences, live music/DJ, decor setup requirements..."
+                  className="w-full p-2.5 text-xs rounded-xl bg-white text-[#1F2937] placeholder:text-[#64748B] border border-[#E2E8F0] focus:outline-none focus:border-[#0F5132]"
+                />
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <Select
-              label="Venue Location"
-              value={venue}
-              onChange={(e) => setVenue(e.target.value)}
-              options={VENUE_CATALOG.map((v) => ({
-                label: `${v.name} (${v.capacity})`,
-                value: v.name,
-              }))}
-            />
-            <Select
-              label="Event Nature"
-              value={eventType}
-              onChange={(e) => setEventType(e.target.value as any)}
-              options={[
-                { label: "Destination Wedding", value: "Wedding" },
-                {
-                  label: "Corporate Offsite / Summit",
-                  value: "Corporate Offsite",
-                },
-                {
-                  label: "Birthday Gala / Anniversary",
-                  value: "Birthday Gala",
-                },
-                { label: "Cocktail Reception", value: "Cocktail Reception" },
-              ]}
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            <Input
-              label="Event Date"
-              type="date"
-              value={eventDate}
-              onChange={(e) => setEventDate(e.target.value)}
-              required
-            />
-            <Input
-              label="Expected Guest Pax"
-              type="number"
-              value={pax}
-              onChange={(e) => setPax(e.target.value)}
-              placeholder="e.g. 150"
-              required
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            <Input
-              label="Total Package Tariff (₹ INR)"
-              type="number"
-              value={totalCost}
-              onChange={(e) => setTotalCost(e.target.value)}
-              placeholder="e.g. 350000"
-              required
-            />
-            <Input
-              label="Advance Deposit Collected (₹ INR)"
-              type="number"
-              value={depositPaid}
-              onChange={(e) => setDepositPaid(e.target.value)}
-              placeholder="e.g. 100000"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="text-xs font-semibold text-[#1F2937] block mb-1">
-              Event Notes & Special Arrangements
-            </label>
-            <textarea
-              rows={2}
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="Catering preferences, live music/DJ, decor setup requirements..."
-              className="w-full p-2.5 text-xs rounded-xl bg-white text-[#1F2937] placeholder:text-[#64748B] border border-[#E2E8F0] focus:outline-none focus:border-[#0F5132]"
-            />
-          </div>
-
-          <div className="pt-2 flex justify-end gap-2">
+          <div className="pt-2 border-t border-[#E2E8F0] flex justify-end gap-2">
             <Button
               variant="ghost"
               type="button"
@@ -654,7 +662,7 @@ export const EventsPage: React.FC = () => {
           onClose={() => setSelectedEvent(null)}
           title={selectedEvent.title}
           description={`Reservation ID: ${selectedEvent.id} • ${selectedEvent.eventType}`}
-          maxWidth="lg"
+          maxWidth="2xl"
         >
           <div className="space-y-4 text-left">
             {/* Top Snapshot */}

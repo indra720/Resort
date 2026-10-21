@@ -33,7 +33,7 @@ export const BookingDetailsModal: React.FC<BookingDetailsModalProps> = ({
         onClose={onClose}
         title={`Reservation Details • ${booking.bookingCode}`}
         description="Comprehensive guest stay voucher and billing summary"
-        maxWidth="lg"
+        maxWidth="2xl"
         footer={
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 w-full">
             {booking.paymentStatus !== 'Cancelled' ? (

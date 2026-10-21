@@ -1987,26 +1987,26 @@ export const MarketingPage: React.FC = () => {
       {/* ======================================================== */}
       {isAddSourceOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-white rounded-3xl max-w-md w-full p-5 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-white rounded-3xl max-w-xl lg:max-w-2xl w-full p-6 sm:p-7 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
               <div>
-                <h3 className="text-base font-bold text-slate-900">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">
                   Add Custom Acquisition Source
                 </h3>
-                <p className="text-[11px] text-slate-500 mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Track performance for external and offline lead channels.
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setIsAddSourceOpen(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors shrink-0"
+                className="w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-700 transition-colors shrink-0"
                 aria-label="Close"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <form onSubmit={handleAddSource} className="space-y-3.5">
+            <form onSubmit={handleAddSource} className="space-y-4">
               <div>
                 <label className="block text-[11px] font-bold text-slate-700 mb-1">
                   Source Channel Name *
@@ -2017,52 +2017,54 @@ export const MarketingPage: React.FC = () => {
                   placeholder="e.g. WeddingWire, Outdoor Billboard"
                   value={newSourceName}
                   onChange={(e) => setNewSourceName(e.target.value)}
-                  className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none focus:border-[#0F5132]"
+                  className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none focus:border-[#0F5132]"
                 />
               </div>
 
-              <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                  Category
-                </label>
-                <select
-                  value={newSourceCategory}
-                  onChange={(e) => setNewSourceCategory(e.target.value as any)}
-                  className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium bg-white focus:outline-none"
-                >
-                  <option value="Digital">Digital Marketing</option>
-                  <option value="Offline">Offline / Event</option>
-                  <option value="Referral">Referral / Partnership</option>
-                  <option value="Direct">Direct / Walk-In</option>
-                </select>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Category
+                  </label>
+                  <select
+                    value={newSourceCategory}
+                    onChange={(e) => setNewSourceCategory(e.target.value as any)}
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium bg-white focus:outline-none"
+                  >
+                    <option value="Digital">Digital Marketing</option>
+                    <option value="Offline">Offline / Event</option>
+                    <option value="Referral">Referral / Partnership</option>
+                    <option value="Direct">Direct / Walk-In</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Estimated Unit CPL (₹)
+                  </label>
+                  <input
+                    type="number"
+                    min="0"
+                    value={newSourceEstCpl}
+                    onChange={(e) =>
+                      setNewSourceEstCpl(Number(e.target.value) || 0)
+                    }
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                  Estimated Unit CPL (₹)
-                </label>
-                <input
-                  type="number"
-                  min="0"
-                  value={newSourceEstCpl}
-                  onChange={(e) =>
-                    setNewSourceEstCpl(Number(e.target.value) || 0)
-                  }
-                  className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
-                />
-              </div>
-
-              <div className="pt-2 flex justify-end gap-2 border-t border-slate-100">
+              <div className="pt-3 flex justify-end gap-2.5 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setIsAddSourceOpen(false)}
-                  className="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-bold"
+                  className="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 font-bold"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-xl bg-[#0F5132] text-white font-bold hover:bg-[#0D4429]"
+                  className="px-5 py-2.5 rounded-xl bg-[#0F5132] text-white font-bold hover:bg-[#0D4429]"
                 >
                   Save Source
                 </button>
@@ -2077,42 +2079,42 @@ export const MarketingPage: React.FC = () => {
       {/* ======================================================== */}
       {isCreateCampaignOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-3xl max-w-2xl lg:max-w-3xl w-full p-6 sm:p-7 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200 max-h-[92vh] overflow-y-auto">
             <div className="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
               <div>
-                <h3 className="text-base font-bold text-slate-900">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">
                   Launch New Marketing Campaign
                 </h3>
-                <p className="text-[11px] text-slate-500 mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Set campaign budget, channel, promo voucher, and target cohort.
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setIsCreateCampaignOpen(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors shrink-0"
+                className="w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-700 transition-colors shrink-0"
                 aria-label="Close"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleCreateCampaign} className="space-y-3.5">
-              <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                  Campaign Title *
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Winter Snowfall Luxury Villa Retreat"
-                  value={campName}
-                  onChange={(e) => setCampName(e.target.value)}
-                  className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none focus:border-[#0F5132]"
-                />
-              </div>
+            <form onSubmit={handleCreateCampaign} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Campaign Title *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Winter Snowfall Luxury Villa Retreat"
+                    value={campName}
+                    onChange={(e) => setCampName(e.target.value)}
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none focus:border-[#0F5132]"
+                  />
+                </div>
 
-              <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Channel
@@ -2120,7 +2122,7 @@ export const MarketingPage: React.FC = () => {
                   <select
                     value={campChannel}
                     onChange={(e) => setCampChannel(e.target.value as any)}
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium bg-white focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium bg-white focus:outline-none"
                   >
                     <option value="WhatsApp">WhatsApp</option>
                     <option value="Google Ads">Google Ads</option>
@@ -2137,7 +2139,7 @@ export const MarketingPage: React.FC = () => {
                   <select
                     value={campOfferCode}
                     onChange={(e) => setCampOfferCode(e.target.value)}
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium bg-white focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium bg-white focus:outline-none"
                   >
                     <option value="">None (Standard)</option>
                     {coupons.map((c) => (
@@ -2151,9 +2153,7 @@ export const MarketingPage: React.FC = () => {
                     ))}
                   </select>
                 </div>
-              </div>
 
-              <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Budget (₹)
@@ -2163,7 +2163,7 @@ export const MarketingPage: React.FC = () => {
                     min="0"
                     value={campBudget}
                     onChange={(e) => setCampBudget(Number(e.target.value) || 0)}
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
                   />
                 </div>
 
@@ -2176,12 +2176,10 @@ export const MarketingPage: React.FC = () => {
                     min="0"
                     value={campSpend}
                     onChange={(e) => setCampSpend(Number(e.target.value) || 0)}
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
                   />
                 </div>
-              </div>
 
-              <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Start Date
@@ -2190,7 +2188,7 @@ export const MarketingPage: React.FC = () => {
                     type="date"
                     value={campStartDate}
                     onChange={(e) => setCampStartDate(e.target.value)}
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
                   />
                 </div>
 
@@ -2202,48 +2200,48 @@ export const MarketingPage: React.FC = () => {
                     type="date"
                     value={campEndDate}
                     onChange={(e) => setCampEndDate(e.target.value)}
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Target Audience Persona
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Metro tech executives, couples looking for anniversary packages"
+                    value={campAudience}
+                    onChange={(e) => setCampAudience(e.target.value)}
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Promotional Message Text
+                  </label>
+                  <textarea
+                    rows={2}
+                    placeholder="✨ Escape the city rush! Book your villa with complimentary spa..."
+                    value={campMessage}
+                    onChange={(e) => setCampMessage(e.target.value)}
+                    className="w-full p-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                  Target Audience Persona
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g. Metro tech executives, couples looking for anniversary packages"
-                  value={campAudience}
-                  onChange={(e) => setCampAudience(e.target.value)}
-                  className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                  Promotional Message Text
-                </label>
-                <textarea
-                  rows={2}
-                  placeholder="✨ Escape the city rush! Book your villa with complimentary spa..."
-                  value={campMessage}
-                  onChange={(e) => setCampMessage(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 font-medium focus:outline-none"
-                />
-              </div>
-
-              <div className="pt-2 flex justify-end gap-2 border-t border-slate-100">
+              <div className="pt-3 flex justify-end gap-2.5 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setIsCreateCampaignOpen(false)}
-                  className="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-bold"
+                  className="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 font-bold"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-xl bg-[#0F5132] text-white font-bold hover:bg-[#0D4429]"
+                  className="px-5 py-2.5 rounded-xl bg-[#0F5132] text-white font-bold hover:bg-[#0D4429]"
                 >
                   Launch Campaign
                 </button>
@@ -2258,29 +2256,28 @@ export const MarketingPage: React.FC = () => {
       {/* ======================================================== */}
       {isCreateCouponOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-3xl max-w-2xl lg:max-w-3xl w-full p-6 sm:p-7 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200 max-h-[92vh] overflow-y-auto">
             <div className="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
               <div>
-                <h3 className="text-base font-bold text-slate-900">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">
                   Create Promotional Coupon Code
                 </h3>
-                <p className="text-[11px] text-slate-500 mt-0.5">
-                  Generate voucher codes with usage thresholds, stay minimums, and
-                  discount slabs.
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Generate voucher codes with usage thresholds, stay minimums, and discount slabs.
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setIsCreateCouponOpen(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors shrink-0"
+                className="w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-700 transition-colors shrink-0"
                 aria-label="Close"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleCreateCoupon} className="space-y-3.5">
-              <div className="grid grid-cols-2 gap-3">
+            <form onSubmit={handleCreateCoupon} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
                   <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Coupon Code *
@@ -2291,7 +2288,7 @@ export const MarketingPage: React.FC = () => {
                     placeholder="e.g. DIWALI25"
                     value={cpnCode}
                     onChange={(e) => setCpnCode(e.target.value.toUpperCase())}
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-mono font-bold uppercase focus:outline-none focus:border-[#0F5132]"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-mono font-bold uppercase focus:outline-none focus:border-[#0F5132]"
                   />
                 </div>
 
@@ -2302,42 +2299,53 @@ export const MarketingPage: React.FC = () => {
                   <select
                     value={cpnType}
                     onChange={(e) => setCpnType(e.target.value as any)}
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium bg-white focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium bg-white focus:outline-none"
                   >
                     <option value="percentage">% Percentage</option>
                     <option value="fixed">₹ Flat INR</option>
                   </select>
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                  Discount Value {cpnType === "percentage" ? "(%)" : "(₹)"}
-                </label>
-                <input
-                  type="number"
-                  min="1"
-                  required
-                  value={cpnValue}
-                  onChange={(e) => setCpnValue(Number(e.target.value) || 0)}
-                  className="w-full h-9 px-3 rounded-xl border border-slate-200 font-bold text-slate-900 focus:outline-none"
-                />
-              </div>
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Discount Value {cpnType === "percentage" ? "(%)" : "(₹)"}
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    required
+                    value={cpnValue}
+                    onChange={(e) => setCpnValue(Number(e.target.value) || 0)}
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-bold text-slate-900 focus:outline-none"
+                  />
+                </div>
 
-              <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                  Offer Description
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g. 25% Off on luxury private pool villas"
-                  value={cpnDesc}
-                  onChange={(e) => setCpnDesc(e.target.value)}
-                  className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
-                />
-              </div>
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Usage Limit (Redemption Cap)
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    value={cpnLimit}
+                    onChange={(e) => setCpnLimit(Number(e.target.value) || 100)}
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                  />
+                </div>
 
-              <div className="grid grid-cols-2 gap-3">
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Offer Description
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. 25% Off on luxury private pool villas"
+                    value={cpnDesc}
+                    onChange={(e) => setCpnDesc(e.target.value)}
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                  />
+                </div>
+
                 <div>
                   <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Min Stay (Nights)
@@ -2347,7 +2355,7 @@ export const MarketingPage: React.FC = () => {
                     min="1"
                     value={cpnMinStay}
                     onChange={(e) => setCpnMinStay(Number(e.target.value) || 1)}
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
                   />
                 </div>
 
@@ -2362,12 +2370,10 @@ export const MarketingPage: React.FC = () => {
                     onChange={(e) =>
                       setCpnMinSpend(Number(e.target.value) || 0)
                     }
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
                   />
                 </div>
-              </div>
 
-              <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Valid From
@@ -2376,7 +2382,7 @@ export const MarketingPage: React.FC = () => {
                     type="date"
                     value={cpnValidFrom}
                     onChange={(e) => setCpnValidFrom(e.target.value)}
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
                   />
                 </div>
 
@@ -2388,35 +2394,22 @@ export const MarketingPage: React.FC = () => {
                     type="date"
                     value={cpnValidTo}
                     onChange={(e) => setCpnValidTo(e.target.value)}
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                  Usage Limit (Redemption Cap)
-                </label>
-                <input
-                  type="number"
-                  min="1"
-                  value={cpnLimit}
-                  onChange={(e) => setCpnLimit(Number(e.target.value) || 100)}
-                  className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
-                />
-              </div>
-
-              <div className="pt-2 flex justify-end gap-2 border-t border-slate-100">
+              <div className="pt-3 flex justify-end gap-2.5 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setIsCreateCouponOpen(false)}
-                  className="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-bold"
+                  className="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 font-bold"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-xl bg-[#0F5132] text-white font-bold hover:bg-[#0D4429]"
+                  className="px-5 py-2.5 rounded-xl bg-[#0F5132] text-white font-bold hover:bg-[#0D4429]"
                 >
                   Save Coupon
                 </button>
@@ -2431,15 +2424,14 @@ export const MarketingPage: React.FC = () => {
       {/* ======================================================== */}
       {isBroadcastModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200 max-h-[92vh] overflow-y-auto">
+          <div className="bg-white rounded-3xl max-w-2xl lg:max-w-3xl w-full p-6 sm:p-7 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200 max-h-[92vh] overflow-y-auto">
             <div className="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
               <div>
-                <h3 className="text-base font-bold text-slate-900">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">
                   Compose Guest Broadcast
                 </h3>
-                <p className="text-[11px] text-slate-500 mt-0.5">
-                  Send verified outbound messages with dynamic template
-                  interpolation.
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Send verified outbound messages with dynamic template interpolation.
                 </p>
               </div>
               <button
@@ -2601,42 +2593,56 @@ export const MarketingPage: React.FC = () => {
       {/* ======================================================== */}
       {isAddReferralOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-white rounded-3xl max-w-xl lg:max-w-2xl w-full p-6 sm:p-7 shadow-2xl border border-slate-200 space-y-4 text-xs animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
               <div>
-                <h3 className="text-base font-bold text-slate-900">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">
                   Record Guest Referral
                 </h3>
-                <p className="text-[11px] text-slate-500 mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Credit word-of-mouth advocates and allocate reward credits.
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setIsAddReferralOpen(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors shrink-0"
+                className="w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-700 transition-colors shrink-0"
                 aria-label="Close"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleAddReferral} className="space-y-3.5">
-              <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                  Advocate / Referrer Name *
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Dr. Radhika Sen"
-                  value={refName}
-                  onChange={(e) => setRefName(e.target.value)}
-                  className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none focus:border-[#0F5132]"
-                />
-              </div>
+            <form onSubmit={handleAddReferral} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Advocate / Referrer Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Dr. Radhika Sen"
+                    value={refName}
+                    onChange={(e) => setRefName(e.target.value)}
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none focus:border-[#0F5132]"
+                  />
+                </div>
 
-              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Referred Guest / Inquiring Lead *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Vikramaditya Singhania"
+                    value={refLeadName}
+                    onChange={(e) => setRefLeadName(e.target.value)}
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none focus:border-[#0F5132]"
+                  />
+                </div>
+
                 <div>
                   <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Referrer Mobile
@@ -2646,7 +2652,7 @@ export const MarketingPage: React.FC = () => {
                     placeholder="+91 98450 11223"
                     value={refPhone}
                     onChange={(e) => setRefPhone(e.target.value)}
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
                   />
                 </div>
 
@@ -2659,49 +2665,35 @@ export const MarketingPage: React.FC = () => {
                     min="500"
                     value={refReward}
                     onChange={(e) => setRefReward(Number(e.target.value) || 0)}
-                    className="w-full h-9 px-3 rounded-xl border border-slate-200 font-bold text-slate-900 focus:outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-slate-200 font-bold text-slate-900 focus:outline-none"
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    Referral Inclusions / Notes
+                  </label>
+                  <textarea
+                    rows={2}
+                    placeholder="Referred for 3-day anniversary getaway..."
+                    value={refNotes}
+                    onChange={(e) => setRefNotes(e.target.value)}
+                    className="w-full p-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                  Referred Guest / Inquiring Lead *
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Vikramaditya Singhania"
-                  value={refLeadName}
-                  onChange={(e) => setRefLeadName(e.target.value)}
-                  className="w-full h-9 px-3 rounded-xl border border-slate-200 font-medium focus:outline-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                  Referral Inclusions / Notes
-                </label>
-                <textarea
-                  rows={2}
-                  placeholder="Referred for 3-day anniversary getaway..."
-                  value={refNotes}
-                  onChange={(e) => setRefNotes(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 font-medium focus:outline-none"
-                />
-              </div>
-
-              <div className="pt-2 flex justify-end gap-2 border-t border-slate-100">
+              <div className="pt-3 flex justify-end gap-2.5 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setIsAddReferralOpen(false)}
-                  className="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-bold"
+                  className="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 font-bold"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-xl bg-[#0F5132] text-white font-bold hover:bg-[#0D4429]"
+                  className="px-5 py-2.5 rounded-xl bg-[#0F5132] text-white font-bold hover:bg-[#0D4429]"
                 >
                   Save Referral
                 </button>

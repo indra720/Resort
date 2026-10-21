@@ -68,7 +68,7 @@ export const SiteVisitModal: React.FC<SiteVisitModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs overflow-y-auto">
-      <div className="bg-white rounded-3xl w-full max-w-lg p-5 sm:p-6 shadow-2xl border border-[#E2E8F0] my-auto text-left text-xs text-[#0F172A] animate-in zoom-in-95 duration-200">
+      <div className="bg-white rounded-3xl w-full max-w-2xl lg:max-w-3xl p-6 sm:p-7 shadow-2xl border border-[#E2E8F0] my-auto text-left text-xs text-[#0F172A] animate-in zoom-in-95 duration-200">
         
         {/* Header */}
         <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3 mb-4">
@@ -77,7 +77,7 @@ export const SiteVisitModal: React.FC<SiteVisitModalProps> = ({
               <MapPin className="w-5 h-5" />
             </span>
             <div>
-              <h2 className="text-base font-bold text-[#0F172A]">Schedule Property Site Visit</h2>
+              <h2 className="text-base sm:text-lg font-bold text-[#0F172A]">Schedule Property Site Visit</h2>
               <p className="text-xs text-[#64748B]">
                 Organize guided property tour for <strong>{lead.name}</strong>
               </p>
@@ -95,18 +95,18 @@ export const SiteVisitModal: React.FC<SiteVisitModalProps> = ({
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Summary Box */}
-          <div className="p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-1">
-            <div className="flex justify-between font-bold text-[#0F172A]">
+          <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-1">
+            <div className="flex justify-between font-bold text-sm text-[#0F172A]">
               <span>{lead.name}</span>
               <span className="text-[#0F5132] font-semibold">{lead.lead_code}</span>
             </div>
-            <p className="text-[#64748B]">
-              {lead.phone} • {lead.city} • Interested: <strong>{lead.interested_in}</strong>
+            <p className="text-xs text-[#64748B]">
+              {lead.phone} • {lead.city} • Interested: <strong className="text-[#0F172A]">{lead.interested_in}</strong>
             </p>
           </div>
 
-          {/* Date & Time Picker */}
-          <div className="grid grid-cols-2 gap-3">
+          {/* Form Fields Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block font-semibold text-[#1E293B] mb-1">Inspection Date *</label>
               <input
@@ -114,7 +114,7 @@ export const SiteVisitModal: React.FC<SiteVisitModalProps> = ({
                 required
                 value={visitDate}
                 onChange={(e) => setVisitDate(e.target.value)}
-                className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+                className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
               />
             </div>
             <div>
@@ -122,7 +122,7 @@ export const SiteVisitModal: React.FC<SiteVisitModalProps> = ({
               <select
                 value={visitTime}
                 onChange={(e) => setVisitTime(e.target.value)}
-                className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+                className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
               >
                 <option value="10:00 AM">10:00 AM (Morning Tour)</option>
                 <option value="11:30 AM">11:30 AM (Pre-Lunch)</option>
@@ -131,49 +131,47 @@ export const SiteVisitModal: React.FC<SiteVisitModalProps> = ({
                 <option value="06:00 PM">06:00 PM (Banquet Lighting Demo)</option>
               </select>
             </div>
-          </div>
 
-          {/* Assigned Executive */}
-          <div>
-            <label className="block font-semibold text-[#1E293B] mb-1">Lead Guide / Rep *</label>
-            <select
-              value={assignedTo}
-              onChange={(e) => setAssignedTo(e.target.value)}
-              className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
-            >
-              <option value="Rohit Kumar">Rohit Kumar (Site Specialist)</option>
-              <option value="Amit Singh">Amit Singh</option>
-              <option value="Neha Gupta">Neha Gupta</option>
-              <option value="Sameer Verma">Sameer Verma (Sales Executive)</option>
-              <option value="Pooja Soni">Pooja Soni</option>
-            </select>
-          </div>
+            <div className="sm:col-span-2">
+              <label className="block font-semibold text-[#1E293B] mb-1">Lead Guide / Rep *</label>
+              <select
+                value={assignedTo}
+                onChange={(e) => setAssignedTo(e.target.value)}
+                className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+              >
+                <option value="Rohit Kumar">Rohit Kumar (Site Specialist)</option>
+                <option value="Amit Singh">Amit Singh</option>
+                <option value="Neha Gupta">Neha Gupta</option>
+                <option value="Sameer Verma">Sameer Verma (Sales Executive)</option>
+                <option value="Pooja Soni">Pooja Soni</option>
+              </select>
+            </div>
 
-          {/* Inspection Instructions */}
-          <div>
-            <label className="block font-semibold text-[#1E293B] mb-1">Inspection Notes / Prep</label>
-            <textarea
-              rows={2}
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="e.g. Keep master suite unlocked, prepare tasting menu sample..."
-              className="w-full p-2.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
-            />
+            <div className="sm:col-span-2">
+              <label className="block font-semibold text-[#1E293B] mb-1">Inspection Notes / Prep</label>
+              <textarea
+                rows={2}
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="e.g. Keep master suite unlocked, prepare tasting menu sample..."
+                className="w-full p-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+              />
+            </div>
           </div>
 
           {/* Actions */}
-          <div className="flex items-center justify-end gap-2.5 pt-2 border-t border-[#E2E8F0]">
+          <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-[#E2E8F0]">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#F1F5F9] text-[#475569] hover:bg-[#E2E8F0]"
+              className="px-4 py-2.5 rounded-xl text-xs font-semibold bg-[#F1F5F9] text-[#475569] hover:bg-[#E2E8F0]"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-5 py-2 rounded-xl text-xs font-bold bg-[#0F5132] hover:bg-[#0B3D25] text-white shadow-2xs flex items-center gap-1.5 transition-colors"
+              className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0F5132] hover:bg-[#0B3D25] text-white shadow-2xs flex items-center gap-1.5 transition-colors"
             >
               <CheckCircle2 className="w-4 h-4" />
               <span>Confirm Site Visit</span>

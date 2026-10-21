@@ -200,7 +200,7 @@ export const AdminPlansPage: React.FC = () => {
       {/* Edit Plan Modal */}
       {editingPlan && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="bg-white rounded-3xl w-full max-w-md p-6 shadow-2xl border border-[#E2E8F0] space-y-4 text-xs">
+          <div className="bg-white rounded-3xl w-full max-w-lg p-6 shadow-2xl border border-[#E2E8F0] space-y-4 text-xs">
             <h3 className="text-base font-bold text-[#0F172A]">Edit Pricing for {editingPlan.name}</h3>
 
             <div className="space-y-3">

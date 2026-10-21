@@ -321,97 +321,103 @@ export const RefundsPage: React.FC = () => {
         onClose={() => setIsAddOpen(false)}
         title="Initiate Cancellation Refund"
         description="Compute cancellation penalty and queue for executive authorization"
-        maxWidth="md"
+        maxWidth="3xl"
       >
         <form onSubmit={handleCreate} className="space-y-4 text-left">
-          <Input
-            label="Guest Full Name"
-            placeholder="e.g. Anandita Roy"
-            value={guestName}
-            onChange={(e) => setGuestName(e.target.value)}
-            required
-          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-3.5">
+              <Input
+                label="Guest Full Name"
+                placeholder="e.g. Anandita Roy"
+                value={guestName}
+                onChange={(e) => setGuestName(e.target.value)}
+                required
+              />
 
-          <div className="grid grid-cols-2 gap-3">
-            <Input
-              label="Booking Reference Code"
-              placeholder="e.g. RES-9912"
-              value={bookingRef}
-              onChange={(e) => setBookingRef(e.target.value)}
-              required
-            />
-            <Input
-              label="Contact Phone"
-              placeholder="+91 98000 11223"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              required
-            />
+              <div className="grid grid-cols-2 gap-3">
+                <Input
+                  label="Booking Reference Code"
+                  placeholder="e.g. RES-9912"
+                  value={bookingRef}
+                  onChange={(e) => setBookingRef(e.target.value)}
+                  required
+                />
+                <Input
+                  label="Contact Phone"
+                  placeholder="+91 98000 11223"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <Input
+                  label="Original Booking Amount (₹ INR)"
+                  type="number"
+                  value={String(originalAmount)}
+                  onChange={(e) => setOriginalAmount(Number(e.target.value) || 0)}
+                  required
+                />
+                <Select
+                  label="Cancellation Notice Window"
+                  value={daysNotice}
+                  onChange={(e) => setDaysNotice(e.target.value)}
+                  options={[
+                    {
+                      label: "7+ Days (10% Fee)",
+                      value: "7+ Days (10% Fee)",
+                    },
+                    {
+                      label: "2 to 7 Days (50% Fee)",
+                      value: "2 to 7 Days (50% Fee)",
+                    },
+                    {
+                      label: "<48 Hours (100% Fee)",
+                      value: "Less than 48 Hours (100% Fee)",
+                    },
+                  ]}
+                />
+              </div>
+            </div>
+
+            <div className="space-y-3.5">
+              <Select
+                label="Original Payment Method for Reversal"
+                value={refundMethod}
+                onChange={(e) => setRefundMethod(e.target.value as any)}
+                options={[
+                  {
+                    label: "Original UPI ID (Instant Payout)",
+                    value: "Original UPI",
+                  },
+                  {
+                    label: "Original Credit Card (3-5 Banking Days)",
+                    value: "Original Credit Card",
+                  },
+                  {
+                    label: "NEFT Direct Bank Account Transfer",
+                    value: "NEFT Transfer",
+                  },
+                ]}
+              />
+
+              <div>
+                <label className="font-semibold text-xs text-[#334155] block mb-1">
+                  Cancellation Rationale / Medical Notes
+                </label>
+                <textarea
+                  rows={3}
+                  value={reason}
+                  onChange={(e) => setReason(e.target.value)}
+                  placeholder="e.g. Flight cancellation / medical emergency document submitted."
+                  className="w-full text-xs p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+                />
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <Input
-              label="Original Booking Amount (₹ INR)"
-              type="number"
-              value={String(originalAmount)}
-              onChange={(e) => setOriginalAmount(Number(e.target.value) || 0)}
-              required
-            />
-            <Select
-              label="Cancellation Notice Window"
-              value={daysNotice}
-              onChange={(e) => setDaysNotice(e.target.value)}
-              options={[
-                {
-                  label: "7+ Days Before (10% Fee, 90% Refund)",
-                  value: "7+ Days (10% Fee)",
-                },
-                {
-                  label: "2 to 7 Days (50% Deduction)",
-                  value: "2 to 7 Days (50% Fee)",
-                },
-                {
-                  label: "Less than 48 Hours (100% Non-refundable)",
-                  value: "Less than 48 Hours (100% Fee)",
-                },
-              ]}
-            />
-          </div>
-
-          <Select
-            label="Original Payment Method for Reversal"
-            value={refundMethod}
-            onChange={(e) => setRefundMethod(e.target.value as any)}
-            options={[
-              {
-                label: "Original UPI ID (Instant Payout)",
-                value: "Original UPI",
-              },
-              {
-                label: "Original Credit Card (3-5 Banking Days)",
-                value: "Original Credit Card",
-              },
-              {
-                label: "NEFT Direct Bank Account Transfer",
-                value: "NEFT Transfer",
-              },
-            ]}
-          />
-
-          <div>
-            <label className="font-semibold text-xs text-[#334155] block mb-1">
-              Cancellation Rationale / Medical Notes
-            </label>
-            <textarea
-              rows={3}
-              value={reason}
-              onChange={(e) => setReason(e.target.value)}
-              placeholder="e.g. Flight cancellation / medical emergency document submitted."
-              className="w-full text-xs p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
-            />
-          </div>
-
-          <div className="pt-2 flex justify-end gap-2">
+          <div className="pt-2 border-t border-[#E2E8F0] flex justify-end gap-2">
             <Button
               variant="ghost"
               type="button"

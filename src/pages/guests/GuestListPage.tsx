@@ -304,7 +304,7 @@ export const GuestListPage: React.FC = () => {
           onClose={() => setSelectedGuest(null)}
           title={`Guest Profile: ${selectedGuest.name}`}
           description={`Resident at ${selectedGuest.currentRoom} • ${selectedGuest.loyaltyTier}`}
-          maxWidth="lg"
+          maxWidth="2xl"
           footer={
             <div className="flex justify-between w-full">
               {selectedGuest.kycStatus !== 'Verified' && isReceptionist ? (
@@ -347,33 +347,33 @@ export const GuestListPage: React.FC = () => {
               </div>
             </div>
 
-            {/* VIP Preferences Note */}
-            {selectedGuest.vipNote && (
-              <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900">
-                <span className="font-bold block mb-0.5">Concierge & Butler VIP Note:</span>
-                {selectedGuest.vipNote}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* VIP Preferences Note */}
+              <div className="p-3.5 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900">
+                <span className="font-bold block mb-1">Concierge & Butler VIP Note:</span>
+                <p>{selectedGuest.vipNote || 'Standard guest profile with no special butler requests.'}</p>
               </div>
-            )}
 
-            {/* Government ID KYC Verification Section */}
-            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="font-bold text-slate-800">
-                  Government Photo ID: {selectedGuest.idType}
-                </span>
-                <span
-                  className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                    selectedGuest.kycStatus === 'Verified'
-                      ? 'bg-emerald-100 text-emerald-800'
-                      : 'bg-rose-100 text-rose-800'
-                  }`}
-                >
-                  {selectedGuest.kycStatus}
-                </span>
+              {/* Government ID KYC Verification Section */}
+              <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-slate-800">
+                    Government Photo ID: {selectedGuest.idType}
+                  </span>
+                  <span
+                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                      selectedGuest.kycStatus === 'Verified'
+                        ? 'bg-emerald-100 text-emerald-800'
+                        : 'bg-rose-100 text-rose-800'
+                    }`}
+                  >
+                    {selectedGuest.kycStatus}
+                  </span>
+                </div>
+                <p className="text-slate-600 text-[11px] leading-relaxed">
+                  ID Proof verified against UIDAI / Ministry of External Affairs records. Stored encrypted per Indian Digital Data Protection Act.
+                </p>
               </div>
-              <p className="text-slate-600 text-[11px]">
-                ID Proof verified against UIDAI / Ministry of External Affairs records. Stored encrypted per Indian Digital Data Protection Act.
-              </p>
             </div>
           </div>
         </Modal>

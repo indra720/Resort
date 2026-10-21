@@ -382,7 +382,7 @@ export const AdminSupportTicketsPage: React.FC = () => {
       {/* Reply Modal */}
       {activeTicket && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="bg-white rounded-3xl w-full max-w-lg p-6 shadow-2xl border border-[#E2E8F0] space-y-4 text-xs">
+          <div className="bg-white rounded-3xl w-full max-w-2xl lg:max-w-3xl p-6 sm:p-7 shadow-2xl border border-[#E2E8F0] space-y-4 text-xs">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
               <div>
                 <h3 className="text-base font-bold text-[#0F172A]">

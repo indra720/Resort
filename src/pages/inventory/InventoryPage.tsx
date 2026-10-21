@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import { DataTable, Column } from "@/components/ui/DataTable";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
@@ -189,7 +189,7 @@ export const InventoryPage: React.FC = () => {
         onClose={() => setIsPurchaseModalOpen(false)}
         title="Create Material Purchase Request (PO)"
         description="Notify purchase manager and accountant for restocking"
-        maxWidth="md"
+        maxWidth="xl"
         footer={
           <div className="flex justify-end gap-3 w-full">
             <Button

@@ -310,61 +310,64 @@ export const PaymentsPage: React.FC = () => {
         onClose={() => setIsAddOpen(false)}
         title="Record Offline Payment"
         description="Capture manual cash, POS swipe, or direct bank transfer"
-        maxWidth="md"
+        maxWidth="2xl"
       >
         <form onSubmit={handleRecord} className="space-y-4 text-left">
-          <Input
-            label="Guest Full Name"
-            placeholder="e.g. Vikramaditya Oberoi"
-            value={guestName}
-            onChange={(e) => setGuestName(e.target.value)}
-            required
-          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-3.5">
+              <Input
+                label="Guest Full Name"
+                placeholder="e.g. Vikramaditya Oberoi"
+                value={guestName}
+                onChange={(e) => setGuestName(e.target.value)}
+                required
+              />
+              <Input
+                label="Room / Folio Allocation"
+                placeholder="e.g. Room #104"
+                value={roomOrBooking}
+                onChange={(e) => setRoomOrBooking(e.target.value)}
+                required
+              />
+            </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <Input
-              label="Room / Folio Allocation"
-              placeholder="e.g. Room #104"
-              value={roomOrBooking}
-              onChange={(e) => setRoomOrBooking(e.target.value)}
-              required
-            />
-            <Input
-              label="Amount Paid (₹ INR)"
-              type="number"
-              value={String(amount)}
-              onChange={(e) => setAmount(Number(e.target.value) || 0)}
-              required
-            />
+            <div className="space-y-3.5">
+              <Input
+                label="Amount Paid (₹ INR)"
+                type="number"
+                value={String(amount)}
+                onChange={(e) => setAmount(Number(e.target.value) || 0)}
+                required
+              />
+              <div className="grid grid-cols-2 gap-2">
+                <Select
+                  label="Payment Channel"
+                  value={method}
+                  onChange={(e) => setMethod(e.target.value as any)}
+                  options={[
+                    { label: 'UPI (QR Code)', value: 'UPI' },
+                    { label: 'Credit Card (POS)', value: 'Credit Card' },
+                    { label: 'Debit Card', value: 'Debit Card' },
+                    { label: 'Front Desk Cash', value: 'Cash' },
+                    { label: 'NEFT / RTGS', value: 'NetBanking' },
+                  ]}
+                />
+                <Select
+                  label="Gateway / Processor"
+                  value={gateway}
+                  onChange={(e) => setGateway(e.target.value as any)}
+                  options={[
+                    { label: 'Razorpay Gateway', value: 'Razorpay' },
+                    { label: 'Pine Labs POS', value: 'Pine Labs POS' },
+                    { label: 'Direct Cash Register', value: 'Direct Cash' },
+                    { label: 'HDFC Banking', value: 'HDFC NetBanking' },
+                  ]}
+                />
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <Select
-              label="Payment Channel"
-              value={method}
-              onChange={(e) => setMethod(e.target.value as any)}
-              options={[
-                { label: 'UPI (QR Code / Dynamic)', value: 'UPI' },
-                { label: 'Credit Card (POS Terminal)', value: 'Credit Card' },
-                { label: 'Debit Card', value: 'Debit Card' },
-                { label: 'Front Desk Cash', value: 'Cash' },
-                { label: 'NEFT / RTGS Bank Transfer', value: 'NetBanking' },
-              ]}
-            />
-            <Select
-              label="Gateway / Processor"
-              value={gateway}
-              onChange={(e) => setGateway(e.target.value as any)}
-              options={[
-                { label: 'Razorpay Payment Gateway', value: 'Razorpay' },
-                { label: 'Pine Labs POS EDC Machine', value: 'Pine Labs POS' },
-                { label: 'Direct Cash Register', value: 'Direct Cash' },
-                { label: 'HDFC Corporate Banking', value: 'HDFC NetBanking' },
-              ]}
-            />
-          </div>
-
-          <div className="pt-2 flex justify-end gap-2">
+          <div className="pt-2 border-t border-[#E2E8F0] flex justify-end gap-2">
             <Button variant="ghost" type="button" onClick={() => setIsAddOpen(false)}>
               Cancel
             </Button>

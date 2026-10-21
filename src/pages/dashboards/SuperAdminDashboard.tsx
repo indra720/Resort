@@ -713,115 +713,135 @@ export const SuperAdminDashboard: React.FC = () => {
       {/* Onboard Resort Modal */}
       {isAddResortOpen && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-2xl max-w-md w-full p-6 space-y-4">
+          <div className="bg-white rounded-3xl border border-[#E2E8F0] shadow-2xl max-w-2xl lg:max-w-3xl w-full p-6 sm:p-7 space-y-4">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
-              <h3 className="text-base font-bold text-[#0F172A]">Onboard New Resort Tenant</h3>
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-[#0F172A]">Onboard New Resort Tenant</h3>
+                <p className="text-xs text-[#64748B] mt-0.5">Provision isolated tenant database workspace and issue credentials</p>
+              </div>
               <button
                 type="button"
                 onClick={() => setIsAddResortOpen(false)}
-                className="text-[#64748B] hover:text-[#0F172A] text-lg font-bold"
+                className="text-[#64748B] hover:text-[#0F172A] w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center font-bold"
               >
                 ✕
               </button>
             </div>
 
-            <form onSubmit={handleCreateResort} className="space-y-3 text-xs">
-              <div>
-                <label className="font-semibold text-[#334155] block mb-1">Resort Name</label>
-                <input
-                  type="text"
-                  required
-                  value={newResortForm.name}
-                  onChange={(e) => setNewResortForm({ ...newResortForm, name: e.target.value })}
-                  placeholder="e.g. Joy Resorts - Whispering Palms"
-                  className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
-                />
-              </div>
+            <form onSubmit={handleCreateResort} className="space-y-4 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Left Column */}
+                <div className="space-y-3">
+                  <div>
+                    <label className="font-semibold text-[#334155] block mb-1">Resort Name *</label>
+                    <input
+                      type="text"
+                      required
+                      value={newResortForm.name}
+                      onChange={(e) => setNewResortForm({ ...newResortForm, name: e.target.value })}
+                      placeholder="e.g. Joy Resorts - Whispering Palms"
+                      className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+                    />
+                  </div>
 
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="font-semibold text-[#334155] block mb-1">City</label>
-                  <input
-                    type="text"
-                    required
-                    value={newResortForm.city}
-                    onChange={(e) => setNewResortForm({ ...newResortForm, city: e.target.value })}
-                    placeholder="e.g. Manali"
-                    className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
-                  />
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="font-semibold text-[#334155] block mb-1">City *</label>
+                      <input
+                        type="text"
+                        required
+                        value={newResortForm.city}
+                        onChange={(e) => setNewResortForm({ ...newResortForm, city: e.target.value })}
+                        placeholder="e.g. Manali"
+                        className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+                      />
+                    </div>
+                    <div>
+                      <label className="font-semibold text-[#334155] block mb-1">State *</label>
+                      <input
+                        type="text"
+                        required
+                        value={newResortForm.state}
+                        onChange={(e) => setNewResortForm({ ...newResortForm, state: e.target.value })}
+                        placeholder="e.g. Himachal"
+                        className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="font-semibold text-[#334155] block mb-1">Subscription Plan</label>
+                      <select
+                        value={newResortForm.plan}
+                        onChange={(e) => setNewResortForm({ ...newResortForm, plan: e.target.value as any })}
+                        className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+                      >
+                        <option value="Basic">Basic (₹14,999/mo)</option>
+                        <option value="Pro">Pro (₹27,999/mo)</option>
+                        <option value="Enterprise">Enterprise (₹49,999/mo)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="font-semibold text-[#334155] block mb-1">Total Keys / Rooms</label>
+                      <input
+                        type="number"
+                        value={newResortForm.totalRooms}
+                        onChange={(e) => setNewResortForm({ ...newResortForm, totalRooms: Number(e.target.value) })}
+                        className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <label className="font-semibold text-[#334155] block mb-1">State</label>
-                  <input
-                    type="text"
-                    required
-                    value={newResortForm.state}
-                    onChange={(e) => setNewResortForm({ ...newResortForm, state: e.target.value })}
-                    placeholder="e.g. Himachal"
-                    className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
-                  />
+
+                {/* Right Column */}
+                <div className="space-y-3">
+                  <div>
+                    <label className="font-semibold text-[#334155] block mb-1">Owner Full Name *</label>
+                    <input
+                      type="text"
+                      required
+                      value={newResortForm.ownerName}
+                      onChange={(e) => setNewResortForm({ ...newResortForm, ownerName: e.target.value })}
+                      placeholder="e.g. Rajesh Singhal"
+                      className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="font-semibold text-[#334155] block mb-1">Owner Email *</label>
+                    <input
+                      type="email"
+                      required
+                      value={newResortForm.ownerEmail}
+                      onChange={(e) => setNewResortForm({ ...newResortForm, ownerEmail: e.target.value })}
+                      placeholder="e.g. rajesh@singhalresorts.com"
+                      className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
+                    />
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-emerald-50/60 border border-emerald-200/80 text-[11px] text-emerald-900 space-y-1">
+                    <span className="font-bold flex items-center gap-1.5 text-[#0F5132]">
+                      Tenant Workspace Provisioning
+                    </span>
+                    <p className="text-slate-600 leading-relaxed">
+                      Creates dedicated database isolation, custom branding subdomain, and issues owner login credentials automatically.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="font-semibold text-[#334155] block mb-1">Subscription Plan</label>
-                  <select
-                    value={newResortForm.plan}
-                    onChange={(e) => setNewResortForm({ ...newResortForm, plan: e.target.value as any })}
-                    className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
-                  >
-                    <option value="Basic">Basic (₹14,999/mo)</option>
-                    <option value="Pro">Pro (₹27,999/mo)</option>
-                    <option value="Enterprise">Enterprise (₹49,999/mo)</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="font-semibold text-[#334155] block mb-1">Total Keys / Rooms</label>
-                  <input
-                    type="number"
-                    value={newResortForm.totalRooms}
-                    onChange={(e) => setNewResortForm({ ...newResortForm, totalRooms: Number(e.target.value) })}
-                    className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="font-semibold text-[#334155] block mb-1">Owner Full Name</label>
-                <input
-                  type="text"
-                  required
-                  value={newResortForm.ownerName}
-                  onChange={(e) => setNewResortForm({ ...newResortForm, ownerName: e.target.value })}
-                  placeholder="e.g. Rajesh Singhal"
-                  className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
-                />
-              </div>
-
-              <div>
-                <label className="font-semibold text-[#334155] block mb-1">Owner Email</label>
-                <input
-                  type="email"
-                  required
-                  value={newResortForm.ownerEmail}
-                  onChange={(e) => setNewResortForm({ ...newResortForm, ownerEmail: e.target.value })}
-                  placeholder="e.g. rajesh@singhalresorts.com"
-                  className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-1 focus:ring-[#0F5132]"
-                />
-              </div>
-
-              <div className="pt-3 border-t border-[#E2E8F0] flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-[#E2E8F0] flex items-center justify-end gap-2.5">
                 <button
                   type="button"
                   onClick={() => setIsAddResortOpen(false)}
-                  className="px-3.5 py-2 bg-[#F8FAFC] hover:bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl font-semibold text-[#475569]"
+                  className="px-4 py-2.5 bg-[#F8FAFC] hover:bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl font-semibold text-[#475569] text-xs transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl font-semibold"
+                  className="px-5 py-2.5 bg-[#0F5132] hover:bg-[#0B3D25] text-white rounded-xl font-semibold text-xs shadow-xs transition-colors"
                 >
                   Onboard & Launch Tenant
                 </button>

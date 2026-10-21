@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -10,7 +10,7 @@ export interface ModalProps {
   description?: string;
   children: React.ReactNode;
   footer?: React.ReactNode;
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl';
 }
 
 /**
@@ -25,7 +25,7 @@ export const Modal: React.FC<ModalProps> = ({
   description,
   children,
   footer,
-  maxWidth = 'md',
+  maxWidth = 'lg',
 }) => {
   // Prevent background scroll when modal is open
   useEffect(() => {
@@ -51,11 +51,14 @@ export const Modal: React.FC<ModalProps> = ({
   }, [isOpen, onClose]);
 
   const maxWidthClasses = {
-    sm: 'sm:max-w-sm',
-    md: 'sm:max-w-md',
-    lg: 'sm:max-w-lg',
-    xl: 'sm:max-w-xl',
-    '2xl': 'sm:max-w-2xl',
+    sm: 'sm:max-w-md',
+    md: 'sm:max-w-lg md:max-w-xl lg:max-w-2xl',
+    lg: 'sm:max-w-xl md:max-w-2xl lg:max-w-3xl',
+    xl: 'sm:max-w-2xl md:max-w-3xl lg:max-w-4xl',
+    '2xl': 'sm:max-w-3xl md:max-w-4xl lg:max-w-5xl',
+    '3xl': 'sm:max-w-4xl md:max-w-5xl lg:max-w-6xl',
+    '4xl': 'sm:max-w-5xl md:max-w-6xl lg:max-w-7xl',
+    '5xl': 'sm:max-w-6xl md:max-w-7xl',
   };
 
   return (

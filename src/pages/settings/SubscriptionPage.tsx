@@ -456,7 +456,7 @@ export const SubscriptionPage: React.FC = () => {
       {/* Simulated Indian Payment Gateway Modal */}
       {isCheckoutOpen && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white border border-[#E2E8F0] rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-5 text-left">
+          <div className="bg-white border border-[#E2E8F0] rounded-3xl p-6 sm:p-8 max-w-2xl lg:max-w-3xl w-full shadow-2xl space-y-5 text-left">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
               <div>
                 <h3 className="text-lg font-bold text-[#0F172A]">

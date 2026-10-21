@@ -471,7 +471,7 @@ export const RestaurantPage: React.FC = () => {
         onClose={() => setIsNewOrderModalOpen(false)}
         title="Generate Kitchen Order Ticket (KOT)"
         description="Dispatch order to master chef kitchen display"
-        maxWidth="md"
+        maxWidth="xl"
         footer={
           <div className="flex justify-end gap-3 w-full">
             <Button

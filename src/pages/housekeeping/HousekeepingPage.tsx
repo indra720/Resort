@@ -424,7 +424,7 @@ export const HousekeepingPage: React.FC = () => {
         onClose={() => setIsTicketModalOpen(false)}
         title="Raise Maintenance Ticket"
         description="Notify engineering and facility maintenance crew"
-        maxWidth="md"
+        maxWidth="2xl"
         footer={
           <div className="flex flex-col sm:flex-row items-center justify-end gap-3 w-full">
             <Button

@@ -85,7 +85,7 @@ export const NewBookingModal: React.FC<NewBookingModalProps> = ({
       onClose={onClose}
       title="Create New Reservation"
       description={`Step ${currentStep} of 4: ${steps[currentStep - 1]}`}
-      maxWidth="lg"
+      maxWidth="2xl"
       footer={
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 w-full">
           <Button

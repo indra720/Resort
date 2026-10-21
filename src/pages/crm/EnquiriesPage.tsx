@@ -447,83 +447,90 @@ export const EnquiriesPage: React.FC = () => {
         onClose={() => setIsAddOpen(false)}
         title="Record New Guest Enquiry"
         description="Log prospective reservation details and quote budget"
-        maxWidth="md"
+        maxWidth="3xl"
       >
         <form onSubmit={handleCreate} className="space-y-4 text-left">
-          <Input
-            label="Prospective Guest Name"
-            placeholder="e.g. Vikramaditya Oberoi"
-            value={guestName}
-            onChange={(e) => setGuestName(e.target.value)}
-            required
-          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Left Column */}
+            <div className="space-y-3.5">
+              <Input
+                label="Prospective Guest Name"
+                placeholder="e.g. Vikramaditya Oberoi"
+                value={guestName}
+                onChange={(e) => setGuestName(e.target.value)}
+                required
+              />
 
-          <div className="grid grid-cols-2 gap-3">
-            <Input
-              label="Contact Phone"
-              placeholder="+91 98000 11223"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              required
-            />
-            <Input
-              label="Email Address"
-              type="email"
-              placeholder="guest@domain.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+              <div className="grid grid-cols-2 gap-3">
+                <Input
+                  label="Contact Phone"
+                  placeholder="+91 98000 11223"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                />
+                <Input
+                  label="Email Address"
+                  type="email"
+                  placeholder="guest@domain.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+
+              <Select
+                label="Villa Category Desired"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                options={[
+                  { label: 'Pool Villa', value: 'Pool Villa' },
+                  { label: 'Luxury Suite', value: 'Luxury Suite' },
+                  { label: 'Deluxe Cottage', value: 'Deluxe Cottage' },
+                  { label: 'Full Resort Buyout', value: 'Full Resort Buyout' },
+                ]}
+              />
+            </div>
+
+            {/* Right Column */}
+            <div className="space-y-3.5">
+              <div className="grid grid-cols-2 gap-3">
+                <Input
+                  label="Preferred Check-In"
+                  type="date"
+                  value={checkIn}
+                  onChange={(e) => setCheckIn(e.target.value)}
+                />
+                <Input
+                  label="Preferred Check-Out"
+                  type="date"
+                  value={checkOut}
+                  onChange={(e) => setCheckOut(e.target.value)}
+                />
+              </div>
+
+              <Input
+                label="Estimated Budget (₹ INR)"
+                type="number"
+                value={String(budget)}
+                onChange={(e) => setBudget(Number(e.target.value) || 0)}
+              />
+
+              <Select
+                label="Lead Acquisition Channel"
+                value={source}
+                onChange={(e) => setSource(e.target.value as any)}
+                options={[
+                  { label: 'Official Website', value: 'Website' },
+                  { label: 'WhatsApp Concierge', value: 'WhatsApp' },
+                  { label: 'MakeMyTrip / OTA', value: 'MakeMyTrip' },
+                  { label: 'Word of Mouth / Referral', value: 'Referral' },
+                  { label: 'Front Desk Walk-in', value: 'Walk-in' },
+                ]}
+              />
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <Input
-              label="Preferred Check-In"
-              type="date"
-              value={checkIn}
-              onChange={(e) => setCheckIn(e.target.value)}
-            />
-            <Input
-              label="Preferred Check-Out"
-              type="date"
-              value={checkOut}
-              onChange={(e) => setCheckOut(e.target.value)}
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            <Select
-              label="Villa Category Desired"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              options={[
-                { label: 'Pool Villa', value: 'Pool Villa' },
-                { label: 'Luxury Suite', value: 'Luxury Suite' },
-                { label: 'Deluxe Cottage', value: 'Deluxe Cottage' },
-                { label: 'Full Resort Buyout', value: 'Full Resort Buyout' },
-              ]}
-            />
-            <Input
-              label="Estimated Budget (₹ INR)"
-              type="number"
-              value={String(budget)}
-              onChange={(e) => setBudget(Number(e.target.value) || 0)}
-            />
-          </div>
-
-          <Select
-            label="Lead Acquisition Channel"
-            value={source}
-            onChange={(e) => setSource(e.target.value as any)}
-            options={[
-              { label: 'Official Website', value: 'Website' },
-              { label: 'WhatsApp Concierge', value: 'WhatsApp' },
-              { label: 'MakeMyTrip / OTA', value: 'MakeMyTrip' },
-              { label: 'Word of Mouth / Referral', value: 'Referral' },
-              { label: 'Front Desk Walk-in', value: 'Walk-in' },
-            ]}
-          />
-
-          <div className="pt-2 flex justify-end gap-2">
+          <div className="pt-2 border-t border-[#E2E8F0] flex justify-end gap-2">
             <Button variant="ghost" type="button" onClick={() => setIsAddOpen(false)}>
               Cancel
             </Button>

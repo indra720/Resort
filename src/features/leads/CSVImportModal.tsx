@@ -194,7 +194,7 @@ export const CSVImportModal: React.FC<CSVImportModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs overflow-y-auto">
-      <div className="bg-white rounded-3xl w-full max-w-2xl p-5 sm:p-6 shadow-2xl border border-[#E2E8F0] my-auto text-left text-xs text-[#0F172A] animate-in zoom-in-95 duration-200">
+      <div className="bg-white rounded-3xl w-full max-w-3xl lg:max-w-4xl p-6 sm:p-7 shadow-2xl border border-[#E2E8F0] my-auto text-left text-xs text-[#0F172A] animate-in zoom-in-95 duration-200">
         
         {/* Header */}
         <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3 mb-4">

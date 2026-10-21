@@ -91,7 +91,7 @@ export const AddEditRoomModal: React.FC<AddEditRoomModalProps> = ({
       onClose={onClose}
       title={initialRoom ? `Edit Room #${initialRoom.roomNumber}` : 'Add New Resort Room'}
       description="Configure tariff rates in Indian Rupees (₹), category, and inventory status."
-      maxWidth="lg"
+      maxWidth="2xl"
       footer={
         <div className="flex flex-col sm:flex-row items-center justify-end gap-3 w-full">
           <Button variant="ghost" fullWidth className="sm:w-auto" onClick={onClose}>

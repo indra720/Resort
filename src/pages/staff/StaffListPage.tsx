@@ -702,7 +702,7 @@ export const StaffListPage: React.FC = () => {
         onClose={() => setIsInviteOpen(false)}
         title="Invite New Staff Member"
         description={`Send a 7-day secure onboarding link for ${currentResort.name}`}
-        maxWidth="md"
+        maxWidth="xl"
       >
         <div className="space-y-4 text-left">
           {limits.isUserLimitReached ? (

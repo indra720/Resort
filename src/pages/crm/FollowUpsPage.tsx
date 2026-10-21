@@ -438,54 +438,54 @@ export const FollowUpsPage: React.FC = () => {
       {/* Schedule Follow-up Modal */}
       {isScheduleOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs overflow-y-auto">
-          <div className="bg-white rounded-3xl w-full max-w-lg p-5 sm:p-6 shadow-2xl border border-[#E2E8F0] my-auto text-left text-xs text-[#0F172A] animate-in zoom-in-95 duration-200">
+          <div className="bg-white rounded-3xl w-full max-w-2xl lg:max-w-3xl p-6 sm:p-7 shadow-2xl border border-[#E2E8F0] my-auto text-left text-xs text-[#0F172A] animate-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3 mb-4">
-              <h2 className="text-base font-bold text-[#0F172A]">Schedule Sales Follow-Up</h2>
+              <h2 className="text-base sm:text-lg font-bold text-[#0F172A]">Schedule Sales Follow-Up</h2>
               <button
                 type="button"
                 onClick={() => setIsScheduleOpen(false)}
-                className="w-8 h-8 rounded-full hover:bg-[#F1F5F9] flex items-center justify-center text-[#64748B]"
+                className="w-8 h-8 rounded-full hover:bg-[#F1F5F9] flex items-center justify-center text-[#64748B] hover:text-[#0F172A]"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleCreateFollowUp} className="space-y-3.5">
-              <div>
-                <label className="block font-semibold text-[#1E293B] mb-1">Select Guest Lead *</label>
-                <select
-                  required
-                  value={selectedLeadId}
-                  onChange={(e) => setSelectedLeadId(e.target.value)}
-                  className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs font-medium focus:outline-none"
-                >
-                  {leads.map((l) => (
-                    <option key={l.id} value={l.id}>
-                      {l.lead_code}: {l.name} ({l.phone}) - {l.interested_in}
-                    </option>
-                  ))}
-                </select>
-              </div>
+            <form onSubmit={handleCreateFollowUp} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="sm:col-span-2">
+                  <label className="block font-semibold text-[#1E293B] mb-1">Select Guest Lead *</label>
+                  <select
+                    required
+                    value={selectedLeadId}
+                    onChange={(e) => setSelectedLeadId(e.target.value)}
+                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs font-medium focus:outline-none"
+                  >
+                    {leads.map((l) => (
+                      <option key={l.id} value={l.id}>
+                        {l.lead_code}: {l.name} ({l.phone}) - {l.interested_in}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-              <div>
-                <label className="block font-semibold text-[#1E293B] mb-1">Follow-Up Action Title *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Call to discuss wedding catering menu tasting"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
-                />
-              </div>
+                <div className="sm:col-span-2">
+                  <label className="block font-semibold text-[#1E293B] mb-1">Follow-Up Action Title *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Call to discuss wedding catering menu tasting"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+                  />
+                </div>
 
-              <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block font-semibold text-[#1E293B] mb-1">Touch Channel *</label>
                   <select
                     value={channel}
                     onChange={(e) => setChannel(e.target.value as any)}
-                    className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs font-medium focus:outline-none"
+                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs font-medium focus:outline-none"
                   >
                     <option value="call">Phone Call</option>
                     <option value="whatsapp">WhatsApp Message</option>
@@ -499,7 +499,7 @@ export const FollowUpsPage: React.FC = () => {
                   <select
                     value={assignedTo}
                     onChange={(e) => setAssignedTo(e.target.value)}
-                    className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs font-medium focus:outline-none"
+                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs font-medium focus:outline-none"
                   >
                     <option value="Sameer Verma">Sameer Verma (Sales Executive)</option>
                     <option value="Amit Singh">Amit Singh</option>
@@ -508,9 +508,7 @@ export const FollowUpsPage: React.FC = () => {
                     <option value="Pooja Soni">Pooja Soni</option>
                   </select>
                 </div>
-              </div>
 
-              <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block font-semibold text-[#1E293B] mb-1">Due Date *</label>
                   <input
@@ -518,7 +516,7 @@ export const FollowUpsPage: React.FC = () => {
                     required
                     value={dueDate}
                     onChange={(e) => setDueDate(e.target.value)}
-                    className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
                   />
                 </div>
                 <div>
@@ -528,33 +526,33 @@ export const FollowUpsPage: React.FC = () => {
                     value={dueTime}
                     onChange={(e) => setDueTime(e.target.value)}
                     placeholder="11:30 AM"
-                    className="w-full h-9 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="block font-semibold text-[#1E293B] mb-1">Task Memo / Notes</label>
+                  <textarea
+                    rows={2}
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    placeholder="Points to discuss, special package discounts, or villa pictures..."
+                    className="w-full p-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="block font-semibold text-[#1E293B] mb-1">Task Memo / Notes</label>
-                <textarea
-                  rows={2}
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  placeholder="Points to discuss, special package discounts, or villa pictures..."
-                  className="w-full p-2.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
-                />
-              </div>
-
-              <div className="flex items-center justify-end gap-2 pt-2 border-t border-[#E2E8F0]">
+              <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-[#E2E8F0]">
                 <button
                   type="button"
                   onClick={() => setIsScheduleOpen(false)}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#F1F5F9] text-[#475569] hover:bg-[#E2E8F0]"
+                  className="px-4 py-2.5 rounded-xl text-xs font-semibold bg-[#F1F5F9] text-[#475569] hover:bg-[#E2E8F0]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl text-xs font-bold bg-[#0F5132] hover:bg-[#0B3D25] text-white shadow-2xs"
+                  className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0F5132] hover:bg-[#0B3D25] text-white shadow-2xs"
                 >
                   Confirm Reminder
                 </button>

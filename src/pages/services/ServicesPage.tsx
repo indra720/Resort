@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { Input } from "@/components/ui/Input";
@@ -233,7 +233,7 @@ export const ServicesPage: React.FC = () => {
           onClose={() => setBookingService(null)}
           title={`Reserve: ${bookingService.name}`}
           description={`Category: ${bookingService.category} • ${formatINR(bookingService.price)}`}
-          maxWidth="md"
+          maxWidth="xl"
           footer={
             <div className="flex justify-end gap-3 w-full">
               <Button variant="ghost" onClick={() => setBookingService(null)}>

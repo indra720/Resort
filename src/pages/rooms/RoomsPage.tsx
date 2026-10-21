@@ -452,6 +452,7 @@ export const RoomsPage: React.FC = () => {
           onClose={() => setSelectedRoomDetails(null)}
           title={`Room #${selectedRoomDetails.roomNumber} Details`}
           description={selectedRoomDetails.category}
+          maxWidth="xl"
           footer={
             <div className="flex justify-end gap-3 w-full">
               <Button

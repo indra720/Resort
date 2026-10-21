@@ -449,14 +449,14 @@ export const AdminResortsPage: React.FC = () => {
       {/* Provision New Resort Modal */}
       {isAddModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="bg-white rounded-3xl w-full max-w-lg p-6 shadow-2xl border border-[#E2E8F0] space-y-4">
+          <div className="bg-white rounded-3xl w-full max-w-2xl lg:max-w-3xl p-6 sm:p-7 shadow-2xl border border-[#E2E8F0] space-y-4">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
               <div>
-                <h3 className="text-base font-bold text-[#0F172A]">
+                <h3 className="text-base sm:text-lg font-bold text-[#0F172A]">
                   Provision New Resort Tenant
                 </h3>
                 <p className="text-xs text-[#64748B]">
-                  Set up an isolated database workspace
+                  Set up an isolated database workspace and configure property limits
                 </p>
               </div>
               <button
@@ -468,136 +468,152 @@ export const AdminResortsPage: React.FC = () => {
               </button>
             </div>
 
-            <form onSubmit={handleCreateResort} className="space-y-3.5 text-xs">
-              <div>
-                <label className="block font-semibold text-[#1E293B] mb-1">
-                  Resort Property Name *
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Joy Heritage Palace, Jaipur"
-                  value={newResort.name}
-                  onChange={(e) =>
-                    setNewResort({ ...newResort, name: e.target.value })
-                  }
-                  className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
-                />
+            <form onSubmit={handleCreateResort} className="space-y-4 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Left Column */}
+                <div className="space-y-3">
+                  <div>
+                    <label className="block font-semibold text-[#1E293B] mb-1">
+                      Resort Property Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Joy Heritage Palace, Jaipur"
+                      value={newResort.name}
+                      onChange={(e) =>
+                        setNewResort({ ...newResort, name: e.target.value })
+                      }
+                      className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block font-semibold text-[#1E293B] mb-1">
+                        City
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Jaipur"
+                        value={newResort.city}
+                        onChange={(e) =>
+                          setNewResort({ ...newResort, city: e.target.value })
+                        }
+                        className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+                      />
+                    </div>
+                    <div>
+                      <label className="block font-semibold text-[#1E293B] mb-1">
+                        State
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Rajasthan"
+                        value={newResort.state}
+                        onChange={(e) =>
+                          setNewResort({ ...newResort, state: e.target.value })
+                        }
+                        className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block font-semibold text-[#1E293B] mb-1">
+                        SaaS Plan Tier
+                      </label>
+                      <select
+                        value={newResort.plan}
+                        onChange={(e) =>
+                          setNewResort({
+                            ...newResort,
+                            plan: e.target.value as any,
+                          })
+                        }
+                        className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+                      >
+                        <option value="Basic">Basic (₹14,999/mo)</option>
+                        <option value="Pro">Pro (₹27,999/mo)</option>
+                        <option value="Enterprise">Enterprise (₹49,999/mo)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block font-semibold text-[#1E293B] mb-1">
+                        Total Room Keys
+                      </label>
+                      <input
+                        type="number"
+                        min="1"
+                        value={newResort.totalRooms}
+                        onChange={(e) =>
+                          setNewResort({
+                            ...newResort,
+                            totalRooms: Number(e.target.value),
+                          })
+                        }
+                        className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column */}
+                <div className="space-y-3">
+                  <div>
+                    <label className="block font-semibold text-[#1E293B] mb-1">
+                      Owner Full Name
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Raja Man Singh"
+                      value={newResort.ownerName}
+                      onChange={(e) =>
+                        setNewResort({ ...newResort, ownerName: e.target.value })
+                      }
+                      className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-semibold text-[#1E293B] mb-1">
+                      Owner Email *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="owner@palace.in"
+                      value={newResort.ownerEmail}
+                      onChange={(e) =>
+                        setNewResort({ ...newResort, ownerEmail: e.target.value })
+                      }
+                      className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
+                    />
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-emerald-50/60 border border-emerald-200/80 text-[11px] text-emerald-900 space-y-1">
+                    <span className="font-bold flex items-center gap-1.5 text-[#0F5132]">
+                      Isolated Tenant Infrastructure
+                    </span>
+                    <p className="text-slate-600 leading-relaxed">
+                      Instant multi-tenant provisioning with encrypted databases, staff role matrices, and Joy Resorts management engine.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block font-semibold text-[#1E293B] mb-1">
-                    City
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Jaipur"
-                    value={newResort.city}
-                    onChange={(e) =>
-                      setNewResort({ ...newResort, city: e.target.value })
-                    }
-                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
-                  />
-                </div>
-                <div>
-                  <label className="block font-semibold text-[#1E293B] mb-1">
-                    State
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Rajasthan"
-                    value={newResort.state}
-                    onChange={(e) =>
-                      setNewResort({ ...newResort, state: e.target.value })
-                    }
-                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block font-semibold text-[#1E293B] mb-1">
-                    SaaS Plan Tier
-                  </label>
-                  <select
-                    value={newResort.plan}
-                    onChange={(e) =>
-                      setNewResort({
-                        ...newResort,
-                        plan: e.target.value as any,
-                      })
-                    }
-                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
-                  >
-                    <option value="Basic">Basic (₹14,999/mo)</option>
-                    <option value="Pro">Pro (₹27,999/mo)</option>
-                    <option value="Enterprise">Enterprise (₹49,999/mo)</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block font-semibold text-[#1E293B] mb-1">
-                    Total Room Keys
-                  </label>
-                  <input
-                    type="number"
-                    min="1"
-                    value={newResort.totalRooms}
-                    onChange={(e) =>
-                      setNewResort({
-                        ...newResort,
-                        totalRooms: Number(e.target.value),
-                      })
-                    }
-                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block font-semibold text-[#1E293B] mb-1">
-                    Owner Full Name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Raja Man Singh"
-                    value={newResort.ownerName}
-                    onChange={(e) =>
-                      setNewResort({ ...newResort, ownerName: e.target.value })
-                    }
-                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
-                  />
-                </div>
-                <div>
-                  <label className="block font-semibold text-[#1E293B] mb-1">
-                    Owner Email *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="owner@palace.in"
-                    value={newResort.ownerEmail}
-                    onChange={(e) =>
-                      setNewResort({ ...newResort, ownerEmail: e.target.value })
-                    }
-                    className="w-full h-10 px-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0F5132]/30"
-                  />
-                </div>
-              </div>
-
-              <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E2E8F0]">
+              <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-[#E2E8F0]">
                 <button
                   type="button"
                   onClick={() => setIsAddModalOpen(false)}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#F1F5F9] text-[#475569] hover:bg-[#E2E8F0]"
+                  className="px-4 py-2.5 rounded-xl text-xs font-semibold bg-[#F1F5F9] text-[#475569] hover:bg-[#E2E8F0] transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#0F5132] hover:bg-[#0B3D25] text-white shadow-2xs"
+                  className="px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#0F5132] hover:bg-[#0B3D25] text-white shadow-xs transition-colors"
                 >
                   Provision Resort Tenant
                 </button>

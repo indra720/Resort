@@ -252,7 +252,7 @@ export const QuotationBuilderModal: React.FC<QuotationBuilderModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs overflow-y-auto">
-      <div className="bg-white rounded-3xl max-w-3xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-[#CBD5E1] text-[#0F172A] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div className="bg-white rounded-3xl max-w-4xl lg:max-w-5xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-[#CBD5E1] text-[#0F172A] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
         {/* Modal Header */}
         <div className="p-4 sm:p-5 border-b border-[#E2E8F0] bg-[#F8FAFC] flex items-center justify-between">

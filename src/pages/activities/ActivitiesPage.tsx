@@ -227,50 +227,56 @@ export const ActivitiesPage: React.FC = () => {
           onClose={() => setIsBookModalOpen(false)}
           title={`Reserve: ${selectedActivity.title}`}
           description={`${selectedActivity.timing} • ${formatINR(selectedActivity.price)} per guest`}
-          maxWidth="md"
+          maxWidth="xl"
         >
           <form onSubmit={handleBookSlot} className="space-y-4 text-left">
-            <Input
-              label="Guest Full Name"
-              placeholder="e.g. Vikramaditya Singhania"
-              value={guestName}
-              onChange={(e) => setGuestName(e.target.value)}
-              required
-            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-3.5">
+                <Input
+                  label="Guest Full Name"
+                  placeholder="e.g. Vikramaditya Singhania"
+                  value={guestName}
+                  onChange={(e) => setGuestName(e.target.value)}
+                  required
+                />
 
-            <div className="grid grid-cols-2 gap-3">
-              <Input
-                label="Room / Villa Number"
-                placeholder="e.g. 102"
-                value={roomNumber}
-                onChange={(e) => setRoomNumber(e.target.value)}
-                required
-              />
-              <Input
-                label="Number of Guests"
-                type="number"
-                value={String(guestCount)}
-                onChange={(e) => setGuestCount(Number(e.target.value) || 1)}
-                required
-              />
+                <div className="grid grid-cols-2 gap-3">
+                  <Input
+                    label="Room / Villa"
+                    placeholder="e.g. 102"
+                    value={roomNumber}
+                    onChange={(e) => setRoomNumber(e.target.value)}
+                    required
+                  />
+                  <Input
+                    label="Guests Pax"
+                    type="number"
+                    value={String(guestCount)}
+                    onChange={(e) => setGuestCount(Number(e.target.value) || 1)}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-3.5">
+                <Input
+                  label="Activity Date"
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  required
+                />
+
+                <div className="p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-between text-xs">
+                  <span className="text-[#64748B]">Total Billable Tariff:</span>
+                  <span className="font-extrabold text-sm text-[#0F5132]">
+                    {formatINR(selectedActivity.price * guestCount)}
+                  </span>
+                </div>
+              </div>
             </div>
 
-            <Input
-              label="Activity Date"
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              required
-            />
-
-            <div className="p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-between text-xs">
-              <span className="text-[#64748B]">Total Billable Tariff:</span>
-              <span className="font-extrabold text-sm text-[#0F5132]">
-                {formatINR(selectedActivity.price * guestCount)}
-              </span>
-            </div>
-
-            <div className="pt-2 flex justify-end gap-2">
+            <div className="pt-2 border-t border-[#E2E8F0] flex justify-end gap-2">
               <Button variant="ghost" type="button" onClick={() => setIsBookModalOpen(false)}>
                 Cancel
               </Button>

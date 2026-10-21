@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Modal } from '@/components/ui/Modal';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -46,7 +46,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
       onClose={onClose}
       title="Collect Payment"
       description={`Settle Folio for ${guestName} • Due: ${formatINR(amount)}`}
-      maxWidth="md"
+      maxWidth="xl"
       footer={
         <div className="flex flex-col sm:flex-row items-center justify-end gap-3 w-full">
           <Button variant="ghost" fullWidth className="sm:w-auto" onClick={onClose}>
